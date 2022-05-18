@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/event_bottom_btn"
+        android:enabled="true"
+        android:icon="@drawable/ic_events_24"
+        android:title="@string/events"/>
+    <item
+        android:id="@+id/discover_bottom_btn"
+        android:enabled="true"
+        android:icon="@drawable/ic_discover_24"
+        android:title="@string/discover"/>
+    <item
+        android:id="@+id/news_bottom_btn"
+        android:enabled="true"
+        android:icon="@drawable/ic_news_24"
+        android:title="@string/news"/>
+
+    <item
+        android:id="@+id/notifications_bottom_btn"
+        android:enabled="true"
+        android:icon="@drawable/ic_bell_24"
+        android:title="@string/notifications"/>
+</menu>

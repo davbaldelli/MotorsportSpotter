@@ -1,6 +1,7 @@
 package com.example.motorsportspotter.room.entities
 
 import androidx.room.*
+import java.util.*
 
 @Entity(indices = [Index(value = ["name","championship"], unique = true)])
 data class Event(
@@ -8,6 +9,7 @@ data class Event(
         @ColumnInfo(name = "name") val name : String,
         @ColumnInfo(name = "track_id") val trackId : Int,
         @ColumnInfo(name = "championship_id") val champId : Int,
+        @ColumnInfo(name = "date") val date : Date
 )
 
 data class EventWithTrackAndChamp(
