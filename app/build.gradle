@@ -48,5 +48,13 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
+    def fragment_version = "1.4.1"
+
+    // Java language implementation
+    implementation("androidx.fragment:fragment:$fragment_version")
+    // Kotlin
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
+
 
 }

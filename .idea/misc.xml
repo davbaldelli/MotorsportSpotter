@@ -6,6 +6,10 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/bottom_navigation.xml" value="0.5317708333333333" />
         <entry key="app/src/main/res/layout/event_card_layout.xml" value="0.5322916666666667" />
+        <entry key="app/src/main/res/layout/event_fragment.xml" value="0.43779392902949976" />
+        <entry key="app/src/main/res/layout/events_fragment.xml" value="0.43693886276186406" />
+        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.4322498944702406" />
+        <entry key="app/src/main/res/layout/news_fragment.xml" value="0.4322498944702406" />
         <entry key="app/src/main/res/layout/topbar.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.5322916666666667" />
         <entry key="app/src/main/res/menu/top_app_bar.xml" value="0.39921875" />

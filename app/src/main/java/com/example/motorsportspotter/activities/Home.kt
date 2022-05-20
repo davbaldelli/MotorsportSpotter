@@ -3,29 +3,59 @@ package com.example.motorsportspotter.activities
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.components.recyclerviews.CardAdapter
-import com.example.motorsportspotter.components.recyclerviews.Event
-import java.util.ArrayList
+import com.example.motorsportspotter.fragments.DiscoverFragment
+import com.example.motorsportspotter.fragments.EventFragment
+import com.example.motorsportspotter.fragments.NewsFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class Home : AppCompatActivity() {
 
-    lateinit var adapter : CardAdapter
-    lateinit var recyclerView: RecyclerView
+    private val fragmentManager = supportFragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setRecyclerView(this)
+        setBottomNavBehaviour(this)
     }
 
-    private fun setRecyclerView(activity : Activity){
-        recyclerView = activity.findViewById(R.id.home_recycler_view)
-        recyclerView.setHasFixedSize(true)
-        val events = ArrayList<Event>()
-        events.add(Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"))
-        adapter = CardAdapter(events, activity)
-        recyclerView.adapter = adapter
+    private inline fun <reified T:Fragment> changeFragment(){
+        val fragments = fragmentManager.fragments
+        if (fragments[0] !is T) {
+            fragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<T>(R.id.fragment_container_view)
+            }
+        }
+    }
+
+    private fun setBottomNavBehaviour(activity: Activity){
+        val bottomNavigation : BottomNavigationView = activity.findViewById(R.id.bottom_navigation)
+        bottomNavigation.setOnItemSelectedListener{ item ->
+            when(item.itemId) {
+                R.id.event_bottom_btn -> {
+                    changeFragment<EventFragment>()
+                    true
+                }
+                R.id.discover_bottom_btn -> {
+                    changeFragment<DiscoverFragment>()
+                    true
+                }
+                R.id.news_bottom_btn -> {
+                    changeFragment<NewsFragment>()
+                    true
+                }
+                R.id.notifications_bottom_btn -> {
+                    Toast.makeText(applicationContext, "notifications", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
