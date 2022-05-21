@@ -14,4 +14,7 @@ interface EventDao {
 
     @Query("SELECT * FROM events")
     fun getAll() : Flow<List<EventWithTrackAndChamp>>
+
+    @Query("DELETE FROM events")
+    suspend fun deleteAll()
 }

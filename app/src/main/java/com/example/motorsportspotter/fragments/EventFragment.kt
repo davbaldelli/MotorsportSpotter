@@ -14,7 +14,9 @@ import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.CardAdapter
 import com.example.motorsportspotter.components.recyclerviews.Event
+import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
+import com.example.motorsportspotter.room.entities.Track
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
 import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
 import java.util.*
@@ -46,11 +48,10 @@ class EventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(this.activity != null){
             setRecyclerView(this.requireActivity())
-            eventViewModel.allEvents.observe(viewLifecycleOwner, Observer { events ->
+            eventViewModel.allEvents.observe(viewLifecycleOwner) { events ->
                 // Update the cached copy of the words in the adapter.
-                events?.let { items -> adapter.updateList(eventConverter.convertAll(items)) }
-            })
-
+                events.let { adapter.updateList(eventConverter.convertAll(it)) }
+            }
         } else {
             Log.e("ERROR", "activity is null")
         }
@@ -59,9 +60,9 @@ class EventFragment : Fragment() {
 
     private fun setRecyclerView(activity : Activity){
         followedEventsRecyclerView = activity.findViewById(R.id.home_events_recycler_view)
-        followedEventsRecyclerView.setHasFixedSize(true)
+        followedEventsRecyclerView.setHasFixedSize(false)
         followedTracksRecyclerView = activity.findViewById(R.id.home_tracks_recycler_view)
-        followedTracksRecyclerView.setHasFixedSize(true)
+        followedTracksRecyclerView.setHasFixedSize(false)
         val events = ArrayList<Event>()
         Collections.addAll(events, Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"),
             Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"),

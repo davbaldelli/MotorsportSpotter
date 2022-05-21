@@ -16,4 +16,8 @@ interface ChampionshipDao {
 
     @Query("SELECT * FROM championships WHERE id = :id")
     fun getChampionshipWithEvents(id : Int) : Championship
+
+    @Query("DELETE FROM championships")
+    suspend fun deleteAll()
+
 }

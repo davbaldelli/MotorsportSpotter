@@ -1,12 +1,13 @@
 package com.example.motorsportspotter.components.recyclerviews
 
-import android.annotation.SuppressLint
 import android.app.Activity
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
 
@@ -28,10 +29,9 @@ class CardAdapter(private var cardItemList : ArrayList<Event>, val activity: Act
         return cardItemList.count()
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateList(events : List<Event>){
-        cardItemList.addAll(events)
-        notifyDataSetChanged()
+        cardItemList.addAll(0,events)
+        notifyItemRangeInserted(0, events.count())
     }
 }
 
