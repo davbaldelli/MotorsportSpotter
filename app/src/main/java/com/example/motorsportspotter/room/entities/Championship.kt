@@ -2,7 +2,7 @@ package com.example.motorsportspotter.room.entities
 
 import androidx.room.*
 
-@Entity(indices = [Index(value = ["name","year"], unique = true)])
+@Entity(indices = [Index(value = ["name","year"], unique = true)], tableName = "championships")
 data class Championship(
         @ColumnInfo(name = "id")@PrimaryKey val uid : Int,
         @ColumnInfo(name = "name") val name: String,

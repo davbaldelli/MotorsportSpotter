@@ -33,5 +33,6 @@ data class Event(
     val trackId: Int,
     val championshipId : Int,
     val name : String,
-    val date: Date
+    val date: Date,
+    val image: String
 )

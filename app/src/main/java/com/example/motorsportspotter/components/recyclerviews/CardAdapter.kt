@@ -1,5 +1,6 @@
 package com.example.motorsportspotter.components.recyclerviews
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
 
-class CardAdapter(private val cardItemList : List<Event>, val activity: Activity) : RecyclerView.Adapter<CardViewHolder>() {
+class CardAdapter(private var cardItemList : ArrayList<Event>, val activity: Activity) : RecyclerView.Adapter<CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val layoutView : View = LayoutInflater.from(parent.context).inflate(R.layout.event_card_layout, parent, false)
@@ -25,6 +26,12 @@ class CardAdapter(private val cardItemList : List<Event>, val activity: Activity
 
     override fun getItemCount(): Int {
         return cardItemList.count()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(events : List<Event>){
+        cardItemList.addAll(events)
+        notifyDataSetChanged()
     }
 }
 

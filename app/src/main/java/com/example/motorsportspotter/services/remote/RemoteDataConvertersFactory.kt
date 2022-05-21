@@ -1,13 +1,15 @@
 package com.example.motorsportspotter.services.remote
 
+
+import com.example.motorsportspotter.utilities.EntitiesConverter
 import com.example.motorsportspotter.room.entities.Track as EntityTrack
 import com.example.motorsportspotter.room.entities.Event as EntityEvent
 import com.example.motorsportspotter.room.entities.Championship as ChampionshipEvent
 
-class ConvertersFactory {
-    companion object{
-        fun getTrackConverter() : RemoteDataConverter<Track, EntityTrack> {
-            return RemoteDataConverter{ item ->
+class RemoteDataConvertersFactory {
+    companion object {
+        fun getTrackConverter(): EntitiesConverter<Track, EntityTrack> {
+            return EntitiesConverter { item: Track ->
                 EntityTrack(
                     item.id,
                     item.coordinates,
@@ -16,20 +18,21 @@ class ConvertersFactory {
             }
         }
 
-        fun getEventConverter() : RemoteDataConverter<Event, EntityEvent> {
-            return RemoteDataConverter{ item ->
+        fun getEventConverter(): EntitiesConverter<Event, EntityEvent> {
+            return EntitiesConverter { item ->
                 EntityEvent(
                     item.id,
                     item.name,
                     item.trackId,
                     item.championshipId,
-                    item.date,
+                    item.date.toString(),
+                    item.image,
                 )
             }
         }
 
-        fun getChampionshipConverter() : RemoteDataConverter<Championship, ChampionshipEvent> {
-            return RemoteDataConverter{ item ->
+        fun getChampionshipConverter(): EntitiesConverter<Championship, ChampionshipEvent> {
+            return EntitiesConverter { item ->
                 ChampionshipEvent(
                     item.id,
                     item.name,
