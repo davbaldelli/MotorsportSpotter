@@ -10,4 +10,7 @@
     <string name="date">prova</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_followed_events">Your Followed Events</string>
+    <string name="your_followed_tracks">Your Followed Tracks</string>
+    <string name="your_followed_championships">Your Followed Championships</string>
 </resources>

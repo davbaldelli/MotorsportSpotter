@@ -26,6 +26,7 @@ class EventFragment : Fragment() {
     lateinit var adapter : CardAdapter
     private lateinit var followedEventsRecyclerView: RecyclerView
     private lateinit var followedTracksRecyclerView: RecyclerView
+    private lateinit var followedChampRecyclerView: RecyclerView
     private val eventViewModel: EventsViewModel by viewModels {
         EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
     }
@@ -61,6 +62,7 @@ class EventFragment : Fragment() {
     private fun setRecyclerView(activity : Activity){
         followedEventsRecyclerView = activity.findViewById(R.id.home_events_recycler_view)
         followedTracksRecyclerView = activity.findViewById(R.id.home_tracks_recycler_view)
+        followedChampRecyclerView = activity.findViewById(R.id.home_championships_recycler_view)
         val events = ArrayList<Event>()
         Collections.addAll(events, Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"),
             Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"),
@@ -68,5 +70,6 @@ class EventFragment : Fragment() {
         adapter = CardAdapter(events, activity)
         followedEventsRecyclerView.adapter = adapter
         followedTracksRecyclerView.adapter = adapter
+        followedChampRecyclerView.adapter = adapter
     }
 }
