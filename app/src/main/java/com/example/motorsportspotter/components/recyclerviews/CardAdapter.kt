@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
+import com.example.motorsportspotter.components.recyclerviews.entities.Event
 
 class CardAdapter(private var cardItemList : ArrayList<Event>, val activity: Activity) : RecyclerView.Adapter<CardViewHolder>() {
 
@@ -35,16 +36,9 @@ class CardAdapter(private var cardItemList : ArrayList<Event>, val activity: Act
     }
 }
 
-data class Event (
-    val eventName : String,
-    val date : String,
-    val trackName : String,
-    val imageRes: String,
-    val championshipName : String
-)
-
 class CardViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
     val placeEventImage : ImageView = itemView.findViewById(R.id.place_imageview)
     val placeEventTitle : TextView = itemView.findViewById(R.id.place_event_title)
     val placeEventDate : TextView = itemView.findViewById(R.id.place_event_date)
 }
+

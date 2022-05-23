@@ -1,33 +1,45 @@
 package com.example.motorsportspotter.fragments
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.viewModels
+import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
+import com.example.motorsportspotter.components.recyclerviews.entities.Championship
+import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.components.recyclerviews.entities.Track
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
+import com.example.motorsportspotter.room.viewmodel.*
+import kotlin.properties.Delegates
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DiscoverFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DiscoverFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private val tracksViewModel: TracksViewModel by viewModels {
+        TracksViewModelFactory((this.activity?.application as EventsApplication).tracksRepository)
+    }
+    private val championshipsViewModel : ChampionshipsViewModel  by viewModels {
+        ChampionshipsViewModelFactory((this.activity?.application as EventsApplication).championshipRepository)
+    }
+    private val eventViewModel: EventsViewModel by viewModels {
+        EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
+    }
+    private val tracksConverter = DBEntitiesConvertersFactory.getTracksConverter()
+    private val championshipConverter = DBEntitiesConvertersFactory.getChampionshipsConverter()
+    private val eventConverter = DBEntitiesConvertersFactory.getEventsConverter()
+    private var tracks = ArrayList<Track>()
+    private var championships = ArrayList<Championship>()
+    private var events = ArrayList<Event>()
+    private lateinit var searchBar : SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -35,26 +47,63 @@ class DiscoverFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_discover, container, false)
+        return inflater.inflate(R.layout.discover_fragment, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DiscoverFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DiscoverFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if(this.activity != null){
+            tracksViewModel.allTracks.observe(viewLifecycleOwner) {items ->
+                items.let { this.tracks = tracksConverter.convertAll(it) as ArrayList<Track> }
             }
+            championshipsViewModel.allChampionships.observe(viewLifecycleOwner) {items ->
+                items.let { this.championships = championshipConverter.convertAll(it) as ArrayList<Championship>}
+            }
+            eventViewModel.allEvents.observe(viewLifecycleOwner) {
+                items -> items.let { this.events = eventConverter.convertAll(it)  as ArrayList<Event> }
+            }
+            setupSearchBar(this.requireActivity())
+        }
+    }
+
+    private fun setupSearchBar(activity: Activity){
+        searchBar = activity.findViewById(R.id.discover_search_bar)
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if(query != null){
+                    refreshTracksResultList(searchFromTracks(query))
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                if(query != null){
+                    refreshTracksResultList(searchFromTracks(query))
+                }
+                return true
+            }
+
+        })
+    }
+
+    private fun refreshTracksResultList(tracks : List<Track>){
+        Toast.makeText(this.requireActivity().applicationContext, tracks.size.toString(), Toast.LENGTH_SHORT).show()
+    }
+
+
+    private fun searchFromTracks(queryString : String) : List<Track>{
+        return tracks.filter { it.matchSearchQuery { value -> value.contains(queryString) } }
+    }
+
+    private fun searchFromEvents(queryString : String) : List<Event>{
+        return events.filter { it.matchSearchQuery { value -> value.contains(queryString) } }
+    }
+
+    private fun searchFromChampionships(queryString : String) : List<Championship>{
+        return championships.filter { it.matchSearchQuery { value -> value.contains(queryString) } }
+    }
+
+    private fun searchFromAll(queryString: String) : Triple<List<Track>, List<Event>, List<Championship>>{
+        return Triple(searchFromTracks(queryString), searchFromEvents(queryString), searchFromChampionships(queryString))
     }
 }
