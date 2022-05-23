@@ -10,6 +10,7 @@ import androidx.fragment.app.replace
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.DiscoverFragment
 import com.example.motorsportspotter.fragments.EventFragment
+import com.example.motorsportspotter.fragments.EventFragmentContainer
 import com.example.motorsportspotter.fragments.NewsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -39,7 +40,7 @@ class Home : AppCompatActivity() {
         bottomNavigation.setOnItemSelectedListener{ item ->
             when(item.itemId) {
                 R.id.event_bottom_btn -> {
-                    changeFragment<EventFragment>()
+                    changeFragment<EventFragmentContainer>()
                     true
                 }
                 R.id.discover_bottom_btn -> {

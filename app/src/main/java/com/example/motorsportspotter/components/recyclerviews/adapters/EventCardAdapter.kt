@@ -1,4 +1,4 @@
-package com.example.motorsportspotter.components.recyclerviews
+package com.example.motorsportspotter.components.recyclerviews.adapters
 
 import android.app.Activity
 import android.util.Log
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 
-class CardAdapter(private var cardItemList : ArrayList<Event>, val activity: Activity) : RecyclerView.Adapter<CardViewHolder>() {
+class EventCardAdapter(private var cardItemList : ArrayList<Event>, val activity: Activity) : RecyclerView.Adapter<CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val layoutView : View = LayoutInflater.from(parent.context).inflate(R.layout.event_card_layout, parent, false)
@@ -27,7 +27,7 @@ class CardAdapter(private var cardItemList : ArrayList<Event>, val activity: Act
     }
 
     override fun getItemCount(): Int {
-        return cardItemList.count()
+        return cardItemList.size
     }
 
     fun updateList(events : List<Event>){

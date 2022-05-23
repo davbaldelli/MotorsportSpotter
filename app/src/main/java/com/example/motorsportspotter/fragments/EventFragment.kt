@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.components.recyclerviews.CardAdapter
+import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
@@ -20,7 +20,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class EventFragment : Fragment() {
-    lateinit var adapter : CardAdapter
+    lateinit var adapter : EventCardAdapter
     private lateinit var followedEventsRecyclerView: RecyclerView
     private lateinit var followedTracksRecyclerView: RecyclerView
     private lateinit var followedChampRecyclerView: RecyclerView
@@ -43,9 +43,8 @@ class EventFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         if(this.activity != null){
-            setRecyclerView(this.requireActivity())
+            setRecyclerView(view)
             eventViewModel.allEvents.observe(viewLifecycleOwner) { events ->
                 // Update the cached copy of the words in the adapter.
                 events.let { adapter.updateList(eventConverter.convertAll(it)) }
@@ -56,17 +55,18 @@ class EventFragment : Fragment() {
     }
 
 
-    private fun setRecyclerView(activity : Activity){
-        followedEventsRecyclerView = activity.findViewById(R.id.home_events_recycler_view)
-        followedTracksRecyclerView = activity.findViewById(R.id.home_tracks_recycler_view)
-        followedChampRecyclerView = activity.findViewById(R.id.home_championships_recycler_view)
+    private fun setRecyclerView(view: View){
+        followedEventsRecyclerView = view.findViewById(R.id.home_events_recycler_view)
+        followedTracksRecyclerView = view.findViewById(R.id.home_tracks_recycler_view)
+        followedChampRecyclerView = view.findViewById(R.id.home_championships_recycler_view)
         val events = ArrayList<Event>()
         Collections.addAll(events, Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"),
             Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"),
             Event("24 Hours Of LeMans","24 Febbraio","Circuit De La Sharthe","","WEC 2022"),)
-        adapter = CardAdapter(events, activity)
+        adapter = EventCardAdapter(events, requireActivity())
         followedEventsRecyclerView.adapter = adapter
         followedTracksRecyclerView.adapter = adapter
         followedChampRecyclerView.adapter = adapter
     }
 }
+

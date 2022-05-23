@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/place_imageview"
             android:layout_width="match_parent"
-            android:layout_height="108dp"
+            android:layout_height="100dp"
             android:background="@color/purple_500"
             android:contentDescription="@string/image_of_the_place"
             android:scaleType="centerCrop"

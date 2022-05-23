@@ -9,13 +9,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
+import com.example.motorsportspotter.components.recyclerviews.adapters.EventSearchResultAdapter
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.room.viewmodel.*
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 
 class DiscoverFragment : Fragment() {
@@ -36,6 +40,7 @@ class DiscoverFragment : Fragment() {
     private var championships = ArrayList<Championship>()
     private var events = ArrayList<Event>()
     private lateinit var searchBar : SearchView
+    private lateinit var adapter : EventSearchResultAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,23 +67,34 @@ class DiscoverFragment : Fragment() {
             eventViewModel.allEvents.observe(viewLifecycleOwner) {
                 items -> items.let { this.events = eventConverter.convertAll(it)  as ArrayList<Event> }
             }
-            setupSearchBar(this.requireActivity())
+            setupRecyclerView(requireActivity())
+            setupSearchBar(requireActivity())
         }
+    }
+
+    private fun setupRecyclerView(activity: Activity){
+        val resultView = activity.findViewById<RecyclerView>(R.id.search_result_list)
+        adapter = EventSearchResultAdapter(ArrayList(), activity)
+        resultView.adapter = adapter
     }
 
     private fun setupSearchBar(activity: Activity){
         searchBar = activity.findViewById(R.id.discover_search_bar)
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if(query != null){
-                    refreshTracksResultList(searchFromTracks(query))
+                if(query != null && query != ""){
+                    adapter.updateList(searchFromEvents(query))
+                } else {
+                    adapter.updateList(ArrayList())
                 }
                 return true
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                if(query != null){
-                    refreshTracksResultList(searchFromTracks(query))
+                if(query != null && query != ""){
+                    adapter.updateList(searchFromEvents(query))
+                } else {
+                    adapter.updateList(ArrayList())
                 }
                 return true
             }
@@ -86,21 +102,16 @@ class DiscoverFragment : Fragment() {
         })
     }
 
-    private fun refreshTracksResultList(tracks : List<Track>){
-        Toast.makeText(this.requireActivity().applicationContext, tracks.size.toString(), Toast.LENGTH_SHORT).show()
-    }
-
-
     private fun searchFromTracks(queryString : String) : List<Track>{
-        return tracks.filter { it.matchSearchQuery { value -> value.contains(queryString) } }
+        return tracks.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
     }
 
     private fun searchFromEvents(queryString : String) : List<Event>{
-        return events.filter { it.matchSearchQuery { value -> value.contains(queryString) } }
+        return events.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
     }
 
     private fun searchFromChampionships(queryString : String) : List<Championship>{
-        return championships.filter { it.matchSearchQuery { value -> value.contains(queryString) } }
+        return championships.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
     }
 
     private fun searchFromAll(queryString: String) : Triple<List<Track>, List<Event>, List<Championship>>{

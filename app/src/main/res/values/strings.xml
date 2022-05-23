@@ -13,4 +13,5 @@
     <string name="your_followed_events">Your Followed Events</string>
     <string name="your_followed_tracks">Your Followed Tracks</string>
     <string name="your_followed_championships">Your Followed Championships</string>
+    <string name="event_thumbnail">Event Thumbnail</string>
 </resources>
