@@ -41,10 +41,10 @@ abstract class EventDatabase : RoomDatabase() {
             championshipDao.deleteAll()
 
             // Add sample elements.
-            trackDao.insert(Track(0,"44.34405459714158, 11.71431871153961","Autodromo Enzo e Dino Ferrari"))
-            trackDao.insert(Track(1,"44.34405459714158, 11.71431871153961","Autodromo Di Monza"))
-            championshipDao.insert(Championship(0,"Formula 1",2022))
-            championshipDao.insert(Championship(1,"GT WORLD CHALLENGE",2022))
+            trackDao.insert(Track(0,"44.34405459714158,11.71431871153961","Autodromo Enzo e Dino Ferrari"))
+            trackDao.insert(Track(1,"45.635647814537485,9.280773774962698","Autodromo Di Monza"))
+            championshipDao.insert(Championship(0,"Formula 1",2022, "F1"))
+            championshipDao.insert(Championship(1,"GT WORLD CHALLENGE",2022, "GTWC"))
             eventDao.insert(Event(0,"Gran Premio dell'Emilia-Romagna",0,0,"25/5/2022","https://i.imgur.com/T1KIu0G.jpg?2"))
             eventDao.insert(Event(2,"Gran Premio D'Italia",1,0,"25/5/2022","https://i.imgur.com/gGEzkIn.jpg"))
             eventDao.insert(Event(1,"3 Hours Of Imola",0,1,"25/5/2022","https://i.imgur.com/TAqGxSv.jpg"))

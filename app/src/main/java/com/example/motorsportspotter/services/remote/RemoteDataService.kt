@@ -26,6 +26,7 @@ data class Championship(
     val id: Int,
     val name : String,
     val year: Int,
+    val prettyName : String
 )
 
 data class Event(

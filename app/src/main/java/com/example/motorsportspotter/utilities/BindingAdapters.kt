@@ -5,6 +5,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
@@ -13,7 +14,9 @@ import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        imgView.load(imgUri)
+        imgView.load(imgUri) {
+
+        }
     }
 }
 

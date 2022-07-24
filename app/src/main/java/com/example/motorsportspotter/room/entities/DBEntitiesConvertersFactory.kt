@@ -8,13 +8,17 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Champions
 class DBEntitiesConvertersFactory {
     companion object {
         fun getEventsConverter() : EntitiesConverter<EventWithTrackAndChamp, AdapterEvent>{
+
             return EntitiesConverter {
+                val coordinates = it.track.coordinates.split(',')
+                val location = Pair(coordinates[0].toDouble(),coordinates[1].toDouble())
                 AdapterEvent(
                     it.event.name,
                     it.event.date,
                     it.track.name,
                     it.event.image,
-                    it.championship.name
+                    it.championship.prettyName,
+                    location
                 )
             }
         }

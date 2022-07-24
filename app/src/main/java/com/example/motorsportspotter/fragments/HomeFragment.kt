@@ -7,7 +7,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,16 +16,32 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
+import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
+import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
+import com.example.motorsportspotter.room.viewmodel.EventsViewModel
+import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
+import com.example.motorsportspotter.utilities.EntitiesFilter
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
+import com.google.android.gms.location.Priority.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.tasks.Task
 import java.util.*
 
 
+typealias LocationHandler = (Location) -> Unit
+
 class HomeFragment : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var locationCallback: LocationCallback
+    private lateinit var address : Address
+    private val eventViewModel: EventsViewModel by viewModels {
+        EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
+    }
 
 
     override fun onCreateView(
@@ -38,50 +54,87 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-        val locationHandler = { location : Location? ->
+        val handler = { location : Location ->
             val geocoder = Geocoder(requireContext(), Locale.ITALY)
-            if (location != null) {
-                val addresses: List<Address> =
-                    geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                val locationText = view.findViewById<TextView>(R.id.location_text)
-                locationText.text =
-                    addresses.map { el -> el.toString() }.reduce { res, address -> res + address }
-            }
+            val addresses: List<Address> =
+                geocoder.getFromLocation(location.latitude, location.longitude, 1)
+            address = addresses[0]
+            val resultView = view.findViewById<RecyclerView>(R.id.home_fragment_rw)
+            val adapter = EventCardAdapter()
+            resultView.adapter = adapter
+            eventViewModel.allEvents.observe(viewLifecycleOwner) { events -> adapter.submitList(EntitiesFilter.filterEventByRegion(DBEntitiesConvertersFactory.getEventsConverter().convertAll(events), address.adminArea, requireContext()))}
         }
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
         ) {
             val locationPermissionRequest = registerForActivityResult(
                 ActivityResultContracts.RequestMultiplePermissions()
             ) { permissions ->
                 when {
                     permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                        fusedLocationClient.lastLocation.addOnSuccessListener(locationHandler)
+                        getLocation(handler)
                     }
                     permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                        fusedLocationClient.lastLocation.addOnSuccessListener(locationHandler)
+                        getLocation(handler)
                     }
                     else -> {
-                        Toast.makeText(requireContext(), "no auth", Toast.LENGTH_SHORT).show()
+                        val geocoder = Geocoder(requireContext(), Locale.ITALY)
+                        val addresses: List<Address> = geocoder.getFromLocation(44.0217208, 12.4915422,1)
+                        address = addresses[0]
                     }
                 }
             }
 
             locationPermissionRequest.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION))
 
-
         } else {
-            fusedLocationClient.lastLocation.addOnSuccessListener(locationHandler)
+            getLocation(handler)
         }
 
+    }
+
+    private fun getLocation(handler: LocationHandler){
+        val locationRequest = LocationRequest.create().apply {
+            interval = 10000
+            fastestInterval = 5000
+            priority = PRIORITY_HIGH_ACCURACY
+        }
+
+        val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
+        val client: SettingsClient = LocationServices.getSettingsClient(requireActivity())
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+
+        task.addOnFailureListener { exception ->
+            if (exception is ResolvableApiException){
+                // Location settings are not satisfied, but this can be fixed
+                // by showing the user a dialog.
+                try {
+                    // Show the dialog by calling startResolutionForResult(),
+                    // and check the result in onActivityResult().
+                    exception.startResolutionForResult(requireActivity(), 0x1)
+                } catch (sendEx: IntentSender.SendIntentException) {
+                    // Ignore the error.
+                }
+            }
+        }
+
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationRes: LocationResult) {
+                locationRes ?: return
+                for (location in locationRes.locations){
+                    if (location != null) {
+                        handler(location)
+                    }
+                }
+                fusedLocationClient.removeLocationUpdates(locationCallback)
+            }
+        }
+
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
     }
 
 

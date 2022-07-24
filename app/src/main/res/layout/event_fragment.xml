@@ -1,4 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,16 +7,11 @@
     tools:context=".fragments.FavouritesEventFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_events_recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
+        android:id="@+id/fav_events_rw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/first_event_card"
         tools:itemCount="10" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

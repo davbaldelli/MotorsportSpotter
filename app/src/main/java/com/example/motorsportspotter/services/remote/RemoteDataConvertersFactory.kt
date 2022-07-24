@@ -37,6 +37,7 @@ class RemoteDataConvertersFactory {
                     item.id,
                     item.name,
                     item.year,
+                    item.prettyName
                 )
             }
         }
