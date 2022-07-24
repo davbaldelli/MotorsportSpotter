@@ -15,6 +15,7 @@ import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventSearchResultAdapter
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.room.viewmodel.*
@@ -83,7 +84,7 @@ class DiscoverFragment : Fragment() {
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if(query != null && query != ""){
-                    adapter.updateList(searchFromEvents(query))
+                    adapter.updateList(searchFromAll(query))
                 } else {
                     adapter.updateList(ArrayList())
                 }
@@ -92,7 +93,7 @@ class DiscoverFragment : Fragment() {
 
             override fun onQueryTextChange(query: String?): Boolean {
                 if(query != null && query != ""){
-                    adapter.updateList(searchFromEvents(query))
+                    adapter.updateList(searchFromAll(query))
                 } else {
                     adapter.updateList(ArrayList())
                 }
@@ -114,7 +115,11 @@ class DiscoverFragment : Fragment() {
         return championships.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
     }
 
-    private fun searchFromAll(queryString: String) : Triple<List<Track>, List<Event>, List<Championship>>{
-        return Triple(searchFromTracks(queryString), searchFromEvents(queryString), searchFromChampionships(queryString))
+    private fun searchFromAll(queryString: String) : List<SearchResult>{
+        val items = ArrayList<SearchResult>()
+        items.addAll(searchFromTracks(queryString))
+        items.addAll(searchFromEvents(queryString))
+        items.addAll(searchFromChampionships(queryString))
+        return items
     }
 }

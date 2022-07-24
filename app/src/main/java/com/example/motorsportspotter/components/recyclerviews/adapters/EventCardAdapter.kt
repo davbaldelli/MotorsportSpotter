@@ -1,44 +1,51 @@
 package com.example.motorsportspotter.components.recyclerviews.adapters
 
 import android.app.Activity
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.databinding.FirstEventCardBinding
 
-class EventCardAdapter(private var cardItemList : ArrayList<Event>, val activity: Activity) : RecyclerView.Adapter<CardViewHolder>() {
+class EventCardAdapter : ListAdapter<Event, CardViewHolder>(DiffCallback) {
+
+    companion object DiffCallback : DiffUtil.ItemCallback<Event>() {
+        override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
+            return oldItem.eventName == newItem.eventName
+        }
+
+        override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean {
+            return oldItem.eventName == newItem.eventName
+        }
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val layoutView : View = LayoutInflater.from(parent.context).inflate(R.layout.event_card_layout, parent, false)
-        return CardViewHolder(layoutView)
+        return CardViewHolder(FirstEventCardBinding.inflate(LayoutInflater.from(parent.context)))
+
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        //return if (position == 0)  0 else 1
+        return 0
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        val event = cardItemList[position]
-        val imagePath = event.imageRes
-        holder.placeEventTitle.text = event.eventName
-        holder.placeEventDate.text = event.date
+        val event = getItem(position)
+        holder.bind(event)
     }
 
-    override fun getItemCount(): Int {
-        return cardItemList.size
-    }
+}
 
-    fun updateList(events : List<Event>){
-        cardItemList.addAll(0,events)
-        notifyItemRangeInserted(0, events.count())
+class CardViewHolder(private var binding: FirstEventCardBinding): RecyclerView.ViewHolder(binding.root) {
+    fun bind(event: Event) {
+        binding.event = event
+        binding.executePendingBindings()
     }
 }
 
-class CardViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-    val placeEventImage : ImageView = itemView.findViewById(R.id.place_imageview)
-    val placeEventTitle : TextView = itemView.findViewById(R.id.place_event_title)
-    val placeEventDate : TextView = itemView.findViewById(R.id.place_event_date)
-}
 

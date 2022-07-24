@@ -14,4 +14,7 @@
     <string name="your_followed_tracks">Your Followed Tracks</string>
     <string name="your_followed_championships">Your Followed Championships</string>
     <string name="event_thumbnail">Event Thumbnail</string>
+    <string name="tab_layout_desc">events fragments</string>
+    <string name="favorites">favorites</string>
+    <string name="event_image">event image</string>
 </resources>

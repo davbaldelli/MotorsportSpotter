@@ -8,26 +8,27 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
 
-class EventSearchResultAdapter(private var itemList: ArrayList<Event>, val activity : Activity) : RecyclerView.Adapter<EventSearchResultViewHolder>() {
+class EventSearchResultAdapter(private var itemList: ArrayList<SearchResult>, val activity : Activity) : RecyclerView.Adapter<EventSearchResultViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventSearchResultViewHolder {
         val layoutView : View = LayoutInflater.from(parent.context).inflate(R.layout.event_search_result_card, parent, false)
         return EventSearchResultViewHolder(layoutView)
     }
 
     override fun onBindViewHolder(holder: EventSearchResultViewHolder, position: Int) {
-        val event = itemList[position]
-        holder.placeCardTitle.text = event.eventName
-        holder.placeCardDesc.text = event.date
+        val result = itemList[position]
+        holder.placeCardTitle.text = result.getTitle()
+        holder.placeCardDesc.text = result.getDescription()
     }
 
     override fun getItemCount(): Int {
         return itemList.size
     }
 
-    fun updateList(events : List<Event>){
+    fun updateList(results : List<SearchResult>){
         itemList.clear()
-        itemList.addAll(events)
+        itemList.addAll(results)
         notifyDataSetChanged()
     }
 }

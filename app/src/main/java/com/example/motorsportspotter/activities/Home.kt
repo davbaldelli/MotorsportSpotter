@@ -1,6 +1,8 @@
 package com.example.motorsportspotter.activities
 
 import android.app.Activity
+import android.content.Intent
+import android.content.IntentSender
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,10 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.fragments.DiscoverFragment
-import com.example.motorsportspotter.fragments.EventFragment
-import com.example.motorsportspotter.fragments.EventFragmentContainer
-import com.example.motorsportspotter.fragments.NewsFragment
+import com.example.motorsportspotter.fragments.*
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
+import com.google.android.gms.tasks.Task
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -24,6 +26,7 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         setBottomNavBehaviour(this)
     }
+
 
     private inline fun <reified T:Fragment> changeFragment(){
         val fragments = fragmentManager.fragments
@@ -39,8 +42,12 @@ class Home : AppCompatActivity() {
         val bottomNavigation : BottomNavigationView = activity.findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnItemSelectedListener{ item ->
             when(item.itemId) {
-                R.id.event_bottom_btn -> {
-                    changeFragment<EventFragmentContainer>()
+                R.id.home_bottom_btn -> {
+                    changeFragment<HomeFragment>()
+                    true
+                }
+                R.id.favourites_bottom_btn -> {
+                    changeFragment<FavouritesEventFragment>()
                     true
                 }
                 R.id.discover_bottom_btn -> {

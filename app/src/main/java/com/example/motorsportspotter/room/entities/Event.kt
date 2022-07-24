@@ -10,7 +10,7 @@ data class Event(
         @ColumnInfo(name = "track_id") val trackId : Int,
         @ColumnInfo(name = "championship_id") val champId : Int,
         @ColumnInfo(name = "date") val date : String,
-        @ColumnInfo(name = "image") val image : String
+        @ColumnInfo(name = "image") val image : String,
 )
 
 data class EventWithTrackAndChamp(
