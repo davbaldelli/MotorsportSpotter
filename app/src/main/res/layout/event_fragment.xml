@@ -16,6 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/event_card_layout" />
+        tools:listitem="@layout/first_event_card"
+        tools:itemCount="10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

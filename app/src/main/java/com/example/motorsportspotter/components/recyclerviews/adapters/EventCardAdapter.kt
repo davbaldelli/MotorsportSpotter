@@ -1,17 +1,16 @@
 package com.example.motorsportspotter.components.recyclerviews.adapters
 
-import android.app.Activity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.databinding.EventCardBinding
 import com.example.motorsportspotter.databinding.FirstEventCardBinding
 
-class EventCardAdapter : ListAdapter<Event, CardViewHolder>(DiffCallback) {
+class EventCardAdapter : ListAdapter<Event, EventCardViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Event>() {
         override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
@@ -24,25 +23,36 @@ class EventCardAdapter : ListAdapter<Event, CardViewHolder>(DiffCallback) {
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        return CardViewHolder(FirstEventCardBinding.inflate(LayoutInflater.from(parent.context)))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventCardViewHolder {
+        return if (viewType == 0) FirstCardViewHolder(FirstEventCardBinding.inflate(LayoutInflater.from(parent.context)))
+        else NormalCardViewHolder(EventCardBinding.inflate(LayoutInflater.from(parent.context)))
 
     }
 
     override fun getItemViewType(position: Int): Int {
-        //return if (position == 0)  0 else 1
-        return 0
+        return if (position == 0)  0 else 1
     }
 
-    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EventCardViewHolder, position: Int) {
         val event = getItem(position)
         holder.bind(event)
     }
 
 }
 
-class CardViewHolder(private var binding: FirstEventCardBinding): RecyclerView.ViewHolder(binding.root) {
-    fun bind(event: Event) {
+abstract class EventCardViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root){
+    abstract fun bind(event: Event)
+}
+
+class FirstCardViewHolder(private var binding: FirstEventCardBinding): EventCardViewHolder(binding) {
+    override fun bind(event: Event) {
+        binding.event = event
+        binding.executePendingBindings()
+    }
+}
+
+class NormalCardViewHolder(private var binding: EventCardBinding): EventCardViewHolder(binding){
+    override fun bind(event: Event) {
         binding.event = event
         binding.executePendingBindings()
     }
