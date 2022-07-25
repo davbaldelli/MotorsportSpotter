@@ -7,6 +7,7 @@ data class Track(
         @ColumnInfo(name = "id")@PrimaryKey val uid : Int,
         @ColumnInfo(name = "coordinates") val coordinates: String,
         @ColumnInfo(name = "name") val name: String,
+        @ColumnInfo(name = "image") val image : String,
 )
 
 data class TrackWithEvents(

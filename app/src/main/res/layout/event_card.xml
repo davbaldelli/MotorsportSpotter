@@ -33,10 +33,9 @@
                     android:id="@+id/place_event_imageview"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:background="@color/purple_500"
                     android:contentDescription="@string/image_of_the_place"
                     android:scaleType="centerCrop"
-                    tools:srcCompat="@drawable/gtwc122_040210011309290ms_scaled"
+                    tools:srcCompat="@drawable/audi_gtwc"
                     app:imageUrl='@{event.imageRes}'/>
 
                 <LinearLayout
@@ -51,9 +50,11 @@
                         android:layout_marginStart="7dp"
                         android:layout_marginTop="7dp"
                         android:layout_marginBottom="3dp"
+                        android:onClick="openChampionshipActivity"
                         android:text="@{event.date}"
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        android:textColor="#DD2C00" />
+                        android:textColor="#DD2C00"
+                        tools:text="2022-07-24" />
 
                     <TextView
                         android:id="@+id/place_event_title"
@@ -62,7 +63,8 @@
                         android:layout_marginVertical="3dp"
                         android:layout_marginStart="7dp"
                         android:text='@{event.eventName +" • "+event.championshipName}'
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        tools:text="Round 1 - Imola"/>
 
                     <TextView
                         android:id="@+id/place_event_circuit"
@@ -72,7 +74,8 @@
                         android:layout_marginStart="7dp"
                         android:text='@{event.trackName}'
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Circuito Enzo e Dino Ferrari"/>
 
                 </LinearLayout>
 

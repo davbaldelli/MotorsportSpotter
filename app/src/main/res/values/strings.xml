@@ -17,4 +17,7 @@
     <string name="tab_layout_desc">events fragments</string>
     <string name="favorites">favorites</string>
     <string name="event_image">event image</string>
+    <string name="championship_image">Championship image</string>
+    <string name="championship_logo">championship logo</string>
+    <string name="set_favourite">set favourite</string>
 </resources>

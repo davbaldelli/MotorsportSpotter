@@ -2,18 +2,18 @@ package com.example.motorsportspotter.activities
 
 import android.app.Activity
 import android.content.Intent
-import android.content.IntentSender
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.fragments.*
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
-import com.google.android.gms.tasks.Task
+import com.example.motorsportspotter.fragments.home.DiscoverFragment
+import com.example.motorsportspotter.fragments.home.FavouritesEventFragment
+import com.example.motorsportspotter.fragments.home.HomeFragment
+import com.example.motorsportspotter.fragments.home.NewsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -37,6 +37,12 @@ class Home : AppCompatActivity() {
             }
         }
     }
+
+    fun openChampionshipActivity(view : View){
+        val intent = Intent(this, ChampionshipDetail::class.java).apply {}
+        startActivity(intent)
+    }
+
 
     private fun setBottomNavBehaviour(activity: Activity){
         val bottomNavigation : BottomNavigationView = activity.findViewById(R.id.bottom_navigation)

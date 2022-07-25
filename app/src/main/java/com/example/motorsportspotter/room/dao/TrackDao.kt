@@ -18,6 +18,4 @@ interface TrackDao {
     @Query("SELECT * FROM tracks WHERE id= :id")
     fun getTrackWithEvents(id : Int) : TrackWithEvents
 
-    @Query("DELETE FROM tracks")
-    suspend fun deleteAll()
 }

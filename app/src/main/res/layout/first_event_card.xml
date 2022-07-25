@@ -35,7 +35,7 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/event_image"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/gtwc122_040210011309290ms_scaled"
+                    android:src="@drawable/audi_gtwc"
                     app:imageUrl="@{event.imageRes}" />
 
 

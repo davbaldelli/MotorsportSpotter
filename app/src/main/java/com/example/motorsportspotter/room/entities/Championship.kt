@@ -7,7 +7,9 @@ data class Championship(
         @ColumnInfo(name = "id")@PrimaryKey val uid : Int,
         @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "year") val year: Int,
-        @ColumnInfo(name = "pretty_name") val prettyName : String
+        @ColumnInfo(name = "pretty_name") val prettyName : String,
+        @ColumnInfo(name = "image") val image : String,
+        @ColumnInfo(name = "logo") val logo : String,
 )
 
 data class ChampionshipWithEvents(

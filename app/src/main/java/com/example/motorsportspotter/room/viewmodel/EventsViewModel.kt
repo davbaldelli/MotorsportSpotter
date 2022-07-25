@@ -13,6 +13,8 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
     fun insert(event: Event) = viewModelScope.launch {
         repository.insert(event)
     }
+
+    fun getByChampionship(champId : Int) = repository.eventsByChamp(champId)
 }
 
 class EventsViewModelFactory(private val repository: EventRepository) : ViewModelProvider.Factory {

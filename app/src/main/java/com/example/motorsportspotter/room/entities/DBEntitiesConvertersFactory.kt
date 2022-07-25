@@ -8,7 +8,6 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Champions
 class DBEntitiesConvertersFactory {
     companion object {
         fun getEventsConverter() : EntitiesConverter<EventWithTrackAndChamp, AdapterEvent>{
-
             return EntitiesConverter {
                 val coordinates = it.track.coordinates.split(',')
                 val location = Pair(coordinates[0].toDouble(),coordinates[1].toDouble())
@@ -30,11 +29,14 @@ class DBEntitiesConvertersFactory {
             ) }
         }
 
-        fun getChampionshipsConverter() : EntitiesConverter<Championship, AdapterChampionship>{
+        fun getChampionshipsConverter() : EntitiesConverter<ChampionshipWithEvents, AdapterChampionship>{
             return EntitiesConverter {
                 AdapterChampionship(
-                    it.name,
-                    it.year
+                    it.championship.name,
+                    it.championship.year,
+                    it.championship.prettyName,
+                    it.championship.image,
+                    it.championship.logo
                 )
             }
         }

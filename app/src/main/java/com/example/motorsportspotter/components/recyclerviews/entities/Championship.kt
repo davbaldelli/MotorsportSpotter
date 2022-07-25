@@ -1,12 +1,12 @@
 package com.example.motorsportspotter.components.recyclerviews.entities
 
-class Championship(val name: String, val year : Int) : Searchable, SearchResult {
+class Championship(val name: String, val year : Int, val prettyName : String, val backgroundUrl : String, val logoUrl : String) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
-        return query(name)
+        return query(name+prettyName)
     }
 
     override fun getTitle(): String {
-        return name
+        return prettyName
     }
 
     override fun getDescription(): String {
@@ -14,6 +14,6 @@ class Championship(val name: String, val year : Int) : Searchable, SearchResult 
     }
 
     override fun getImgRes(): String {
-        return ""
+        return logoUrl
     }
 }

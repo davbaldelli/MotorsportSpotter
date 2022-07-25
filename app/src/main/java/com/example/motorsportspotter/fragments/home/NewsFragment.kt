@@ -1,4 +1,4 @@
-package com.example.motorsportspotter.fragments
+package com.example.motorsportspotter.fragments.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
