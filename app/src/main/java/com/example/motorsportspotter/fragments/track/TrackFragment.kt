@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
@@ -20,6 +21,9 @@ class TrackFragment : Fragment() {
     private val tracksViewModel: TracksViewModel by viewModels {
         TracksViewModelFactory((requireActivity().application as EventsApplication).tracksRepository)
     }
+
+    private val activityViewModel: TrackFragmentViewModel by activityViewModels()
+
     private lateinit var binding: TrackFragmentBinding
 
     override fun onCreateView(
@@ -36,9 +40,11 @@ class TrackFragment : Fragment() {
         val resultView = view.findViewById<RecyclerView>(R.id.track_events_rw)
         val adapter = TrackEventsAdapter()
         resultView.adapter = adapter
-        tracksViewModel.getTrack(0).observe(viewLifecycleOwner) { track ->
-            binding.track = Converters.TracksConverter.convertAll(listOf(track))[0]
-            adapter.submitList(Converters.TrackEventConverter.convertAll(track.events))
+        activityViewModel.trackId.observe(viewLifecycleOwner) { trackId ->
+            tracksViewModel.getTrack(trackId).observe(viewLifecycleOwner) { track ->
+                binding.track = Converters.TracksConverter.convertAll(listOf(track))[0]
+                adapter.submitList(Converters.TrackEventConverter.convertAll(track.events))
+            }
         }
     }
 

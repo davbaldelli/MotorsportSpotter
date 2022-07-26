@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
@@ -23,6 +24,8 @@ class ChampionshipFragment : Fragment() {
         ChampionshipsViewModelFactory((this.activity?.application as EventsApplication).championshipRepository)
     }
 
+    private val viewModel : ChampionshipFragmentViewModel by activityViewModels()
+
     private lateinit var binding: ChampionshipFragmentBinding
 
     override fun onCreateView(
@@ -38,10 +41,13 @@ class ChampionshipFragment : Fragment() {
         val resultView = view.findViewById<RecyclerView>(R.id.champ_events_rw)
         val adapter = ChampionshipEventCardAdapter()
         resultView.adapter = adapter
-        championshipsViewModel.getChampionshipById(1).observe(viewLifecycleOwner){
-            binding.championship = Converter.ChampionshipsConverter.convertAll(listOf(it))[0]
-            adapter.submitList(Converter.ChampionshipEventConverter.convertAll(it.events.sortedBy { event -> event.startDate }))
+        viewModel.championshipId.observe(viewLifecycleOwner) { championshipId ->
+            championshipsViewModel.getChampionshipById(championshipId).observe(viewLifecycleOwner){
+                binding.championship = Converter.ChampionshipsConverter.convertAll(listOf(it))[0]
+                adapter.submitList(Converter.ChampionshipEventConverter.convertAll(it.events.sortedBy { event -> event.startDate }))
+            }
         }
+
     }
 
 

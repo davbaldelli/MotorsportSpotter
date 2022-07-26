@@ -39,12 +39,19 @@ class Home : AppCompatActivity() {
     }
 
     fun openChampionshipActivity(view : View){
-        val intent = Intent(this, ChampionshipActivity::class.java).apply {}
+        val championshipId = view.tag as Int
+        val intent = Intent(this, ChampionshipActivity::class.java).apply {
+            putExtra("championship_id", championshipId)
+        }
         startActivity(intent)
     }
 
     fun openTrackActivity(view :View){
-        val intent = Intent(this, TrackActivity::class.java).apply {}
+        val trackId = view.tag as Int
+        val intent = Intent(this, TrackActivity::class.java).apply {
+            putExtra("track_id", trackId)
+        }
+
         startActivity(intent)
     }
 

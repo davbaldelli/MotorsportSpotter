@@ -16,8 +16,10 @@ class DBEntitiesConvertersFactory {
                 it.event.startDate,
                 it.event.endDate,
                 it.track.name,
+                it.track.uid,
                 it.event.image,
                 it.championship.prettyName,
+                it.championship.uid,
                 location
             )
         }
@@ -28,7 +30,9 @@ class DBEntitiesConvertersFactory {
                 it.startDate,
                 it.endDate,
                 it.trackName,
+                null,
                 it.image,
+                null,
                 null,
                 null
             )
@@ -40,8 +44,10 @@ class DBEntitiesConvertersFactory {
                 it.startDate,
                 it.endDate,
                 null,
+                null,
                 it.image,
                 it.championshipName,
+                null,
                 null
             )
 

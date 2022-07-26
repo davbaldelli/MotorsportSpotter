@@ -5,8 +5,10 @@ class Event(
     val startDate: String,
     val endDate: String,
     val trackName: String?,
+    val trackId : Int?,
     val imageRes: String,
     val championshipName: String?,
+    val championshipId : Int?,
     val trackLocation : Pair<Double, Double>?
 ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
