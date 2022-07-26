@@ -55,6 +55,15 @@ class Home : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun openEventActivity(view :View){
+        val eventId = view.tag as Int
+        val intent = Intent(this, EventActivity::class.java).apply {
+            putExtra("event_id", eventId)
+        }
+
+        startActivity(intent)
+    }
+
 
     private fun setBottomNavBehaviour(activity: Activity){
         val bottomNavigation : BottomNavigationView = activity.findViewById(R.id.bottom_navigation)

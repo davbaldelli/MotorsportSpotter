@@ -18,4 +18,6 @@ class EventRepository(private val dao: EventDao) {
 
     fun eventsByChamp(champId : Int) = dao.getAllFromChampionship(champId)
 
+    fun getEventById(id : Int) = dao.getById(id)
+
 }

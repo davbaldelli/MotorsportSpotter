@@ -1,6 +1,9 @@
 package com.example.motorsportspotter.room.entities
 
 import com.example.motorsportspotter.utilities.EntitiesConverter
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship as AdapterChampionship
 import com.example.motorsportspotter.components.recyclerviews.entities.Event as AdapterEvent
 import com.example.motorsportspotter.components.recyclerviews.entities.Track as AdapterTrack
@@ -12,26 +15,30 @@ class DBEntitiesConvertersFactory {
             val coordinates = it.track.coordinates.split(',')
             val location = Pair(coordinates[0].toDouble(),coordinates[1].toDouble())
             AdapterEvent(
+                it.event.uid,
                 it.event.name,
-                it.event.startDate,
-                it.event.endDate,
+                LocalDate.parse(it.event.startDate),
+                LocalDate.parse(it.event.endDate),
                 it.track.name,
                 it.track.uid,
                 it.event.image,
                 it.championship.prettyName,
                 it.championship.uid,
+                it.championship.logo,
                 location
             )
         }
 
         val ChampionshipEventConverter = EntitiesConverter<EventWithTrack, AdapterEvent>{
             AdapterEvent(
+                it.uid,
                 it.name,
-                it.startDate,
-                it.endDate,
+                LocalDate.parse(it.startDate),
+                LocalDate.parse(it.endDate),
                 it.trackName,
                 null,
                 it.image,
+                null,
                 null,
                 null,
                 null
@@ -40,13 +47,15 @@ class DBEntitiesConvertersFactory {
 
         val TrackEventConverter = EntitiesConverter<EventWithChampionship, AdapterEvent>{
             AdapterEvent(
+                it.uid,
                 it.name,
-                it.startDate,
-                it.endDate,
+                LocalDate.parse(it.startDate),
+                LocalDate.parse(it.endDate),
                 null,
                 null,
                 it.image,
                 it.championshipName,
+                null,
                 null,
                 null
             )

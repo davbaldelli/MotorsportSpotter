@@ -15,6 +15,8 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
     }
 
     fun getByChampionship(champId : Int) = repository.eventsByChamp(champId)
+
+    fun getById(id : Int) = repository.getEventById(id)
 }
 
 class EventsViewModelFactory(private val repository: EventRepository) : ViewModelProvider.Factory {

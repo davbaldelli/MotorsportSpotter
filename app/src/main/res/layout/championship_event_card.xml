@@ -35,7 +35,7 @@
                     android:contentDescription="@string/image_of_the_place"
                     android:scaleType="centerCrop"
                     tools:srcCompat="@drawable/audi_gtwc"
-                    app:imageUrl='@{event.imageRes}'/>
+                    app:imageUrl="@{event.imageUrl}"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                         android:layout_marginTop="7dp"
                         android:layout_marginBottom="3dp"
                         android:onClick="openChampionshipActivity"
-                        android:text="@{event.startDate}"
+                        android:text='@{event.startDate.dayOfMonth+"-"+event.endDate.dayOfMonth}'
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                         android:textColor="#DD2C00"
                         tools:text="2022-07-24" />

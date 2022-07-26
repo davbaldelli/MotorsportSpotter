@@ -16,6 +16,9 @@ interface EventDao {
     @Query("SELECT * FROM events ORDER BY start_date")
     fun getAll() : Flow<List<EventWithTrackAndChamp>>
 
+    @Query("SELECT * FROM events WHERE uid = :id LIMIT 1")
+    fun getById(id : Int) : LiveData<EventWithTrackAndChamp>
+
     @Query("SELECT * FROM events WHERE championship_id = :champId ORDER BY start_date")
     fun getAllFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
 

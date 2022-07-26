@@ -15,6 +15,7 @@ data class Event(
 
 @DatabaseView("SELECT events.* , tracks.name as track_name FROM events JOIN tracks ON track_id = tracks.id")
 data class EventWithTrack(
+        @PrimaryKey val uid : Int,
         @ColumnInfo(name = "name") val name : String,
         @ColumnInfo(name = "track_id") val trackId : Int,
         @ColumnInfo(name = "championship_id") val champId : Int,
@@ -26,6 +27,7 @@ data class EventWithTrack(
 
 @DatabaseView("SELECT events.* , championships.name as championship_name FROM events JOIN championships ON championship_id = championships.id")
 data class EventWithChampionship(
+        @PrimaryKey val uid : Int,
         @ColumnInfo(name = "name") val name : String,
         @ColumnInfo(name = "track_id") val trackId : Int,
         @ColumnInfo(name = "championship_id") val champId : Int,

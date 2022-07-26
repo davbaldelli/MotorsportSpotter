@@ -22,4 +22,5 @@
     <string name="set_favourite">set favourite</string>
     <string name="track_background">track background</string>
     <string name="track_logo">track logo</string>
+    <string name="event_icon">event_icon</string>
 </resources>
