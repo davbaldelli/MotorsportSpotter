@@ -12,6 +12,8 @@ class ChampionshipsViewModel(private val repository: ChampionshipRepository): Vi
     fun insert(championship: Championship) = viewModelScope.launch{
         repository.insert(championship)
     }
+
+    fun getChampionshipById(id : Int) = repository.getChampionshipById(id)
 }
 
 

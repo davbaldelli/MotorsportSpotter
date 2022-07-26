@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -62,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:layout_marginStart="7dp"
-                        android:text='@{event.eventName +" • "+event.championshipName}'
+                        android:text='@{event.eventName}'
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         tools:text="Round 1 - Imola"/>
 

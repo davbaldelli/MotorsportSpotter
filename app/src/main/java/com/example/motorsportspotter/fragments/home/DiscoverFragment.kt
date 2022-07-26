@@ -16,7 +16,7 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Champions
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converter
 import com.example.motorsportspotter.room.viewmodel.*
 import kotlin.collections.ArrayList
 
@@ -31,9 +31,9 @@ class DiscoverFragment : Fragment() {
     private val eventViewModel: EventsViewModel by viewModels {
         EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
     }
-    private val tracksConverter = DBEntitiesConvertersFactory.getTracksConverter()
-    private val championshipConverter = DBEntitiesConvertersFactory.getChampionshipsConverter()
-    private val eventConverter = DBEntitiesConvertersFactory.getEventsConverter()
+    private val tracksConverter = Converter.TracksConverter
+    private val championshipConverter = Converter.ChampionshipsConverter
+    private val eventConverter = Converter.CompleteEventConverter
     private var tracks = ArrayList<Track>()
     private var championships = ArrayList<Championship>()
     private var events = ArrayList<Event>()

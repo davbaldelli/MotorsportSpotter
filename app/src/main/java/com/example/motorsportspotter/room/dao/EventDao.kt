@@ -13,10 +13,10 @@ interface EventDao {
     @Insert
     fun insert(event: Event)
 
-    @Query("SELECT * FROM events ORDER BY date")
+    @Query("SELECT * FROM events ORDER BY start_date")
     fun getAll() : Flow<List<EventWithTrackAndChamp>>
 
-    @Query("SELECT * FROM events WHERE championship_id = :champId ORDER BY date")
+    @Query("SELECT * FROM events WHERE championship_id = :champId ORDER BY start_date")
     fun getAllFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
 
 }

@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
             val resultView = view.findViewById<RecyclerView>(R.id.home_fragment_rw)
             val adapter = EventCardAdapter()
             resultView.adapter = adapter
-            eventViewModel.allEvents.observe(viewLifecycleOwner) { events -> adapter.submitList(EntitiesFilter.filterEventByRegion(DBEntitiesConvertersFactory.getEventsConverter().convertAll(events), address.adminArea, requireContext()))}
+            eventViewModel.allEvents.observe(viewLifecycleOwner) { events -> adapter.submitList(EntitiesFilter.filterEventByRegion(DBEntitiesConvertersFactory.CompleteEventConverter.convertAll(events), address.adminArea, requireContext()))}
         }
 
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&

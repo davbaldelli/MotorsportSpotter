@@ -11,11 +11,12 @@ import com.example.motorsportspotter.room.dao.EventDao
 import com.example.motorsportspotter.room.dao.TrackDao
 import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.entities.Event
+import com.example.motorsportspotter.room.entities.EventWithTrack
 import com.example.motorsportspotter.room.entities.Track
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Event::class, Track::class, Championship::class], version = 1, exportSchema = false)
+@Database(entities = [Event::class, Track::class, Championship::class], views  = [EventWithTrack::class], version = 1, exportSchema = false)
 abstract class EventDatabase : RoomDatabase() {
 
     abstract fun eventDao(): EventDao
@@ -45,17 +46,17 @@ abstract class EventDatabase : RoomDatabase() {
             championshipDao.insert(Championship(0,"Formula 1",2022, "F1","https://i.imgur.com/Z00oqIB.jpg", "https://i.imgur.com/08VyCYc.png"))
             championshipDao.insert(Championship(1,"GT WORLD CHALLENGE EUROPE",2022, "GTWC","https://i.imgur.com/YPN6RHj.jpg", "https://i.imgur.com/E2KSk8R.png"))
             championshipDao.insert(Championship(2,"World Endurance Championship", 2022, "WEC","https://i.imgur.com/1hPGMQb.jpg","https://i.imgur.com/uMkbl5c.png"))
-            championshipDao.insert(Championship(3, "Deutsche Tourenwagen Masters",2022, "DTM","https://i.imgur.com/deJgy9H.png", "https://i.imgur.com/KQ2ep4I.jpg"))
-            eventDao.insert(Event(0,"Gran Premio dell'Emilia-Romagna",0,0,"2022-04-24","https://i.imgur.com/T1KIu0G.jpg?2"))
-            eventDao.insert(Event(1,"Gran Premio D'Italia",1,0,"2022-09-11","https://i.imgur.com/XtVWUlf.jpg"))
-            eventDao.insert(Event(2,"Round 1 - Imola",0,1,"2022-04-03","https://i.imgur.com/myshDJU.jpg"))
-            eventDao.insert(Event(3, "Round 6 - Misano", 2, 1, "2022-07-03", "https://i.imgur.com/t6HWcyF.jpg"))
-            eventDao.insert(Event(4,"6 Hours Of Monza", 1, 2,"2022-07-10", "https://i.imgur.com/H9YCaPs.jpg"))
-            eventDao.insert(Event(5,"Belgian Gran Prix",3,0,"2022-08-28","https://i.imgur.com/kIYSYh0.jpg"))
-            eventDao.insert(Event(6,"TotalEnergies 24 Hours of Spa",3,1, "2022-07-30", "https://i.imgur.com/D8t6mcp.jpg"))
-            eventDao.insert(Event(7, "Round 3 - Imola", 0, 3, "2022-06-19","https://i.imgur.com/fu9POfW.jpg"))
-            eventDao.insert(Event(8, "Round 6 - Spa-Francorchamps",3 ,3, "2022-09-11", "https://i.imgur.com/sXhpNYS.jpg"))
-            eventDao.insert(Event(9, "6 Hours Of Spa-Francorchamps", 3, 2, "2022-05-07", "https://i.imgur.com/KiZbfho.jpg"))
+            championshipDao.insert(Championship(3, "Deutsche Tourenwagen Masters",2022, "DTM", "https://i.imgur.com/KQ2ep4I.jpg","https://i.imgur.com/deJgy9H.png"))
+            eventDao.insert(Event(0,"Gran Premio dell'Emilia-Romagna",0,0,"2022-04-22","2022-04-24","https://i.imgur.com/T1KIu0G.jpg?2"))
+            eventDao.insert(Event(1,"Gran Premio D'Italia",1,0,"2022-09-09","2022-09-11","https://i.imgur.com/XtVWUlf.jpg"))
+            eventDao.insert(Event(2,"Round 1 - Imola",0,1,"2022-04-1","2022-04-03","https://i.imgur.com/myshDJU.jpg"))
+            eventDao.insert(Event(3, "Round 6 - Misano", 2, 1,"2022-07-01", "2022-07-03", "https://i.imgur.com/t6HWcyF.jpg"))
+            eventDao.insert(Event(4,"6 Hours Of Monza", 1, 2,"2022-07-08","2022-07-10", "https://i.imgur.com/H9YCaPs.jpg"))
+            eventDao.insert(Event(5,"Belgian Gran Prix",3,0,"2022-08-26","2022-08-28","https://i.imgur.com/kIYSYh0.jpg"))
+            eventDao.insert(Event(6,"TotalEnergies 24 Hours of Spa",3,1,"2022-07-28", "2022-07-30", "https://i.imgur.com/D8t6mcp.jpg"))
+            eventDao.insert(Event(7, "Round 3 - Imola", 0, 3,"2022-06-17", "2022-06-19","https://i.imgur.com/fu9POfW.jpg"))
+            eventDao.insert(Event(8, "Round 6 - Spa-Francorchamps",3 ,3,"2022-09-09", "2022-09-11", "https://i.imgur.com/sXhpNYS.jpg"))
+            eventDao.insert(Event(9, "6 Hours Of Spa-Francorchamps", 3, 2, "2022-05-05","2022-05-07", "https://i.imgur.com/KiZbfho.jpg"))
         }
     }
 

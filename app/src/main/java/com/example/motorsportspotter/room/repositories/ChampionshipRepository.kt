@@ -14,4 +14,6 @@ class ChampionshipRepository(private val dao: ChampionshipDao) {
     suspend fun insert(championship: Championship) {
         dao.insert(championship)
     }
+
+    fun getChampionshipById(id : Int) = dao.getChampionshipWithEvents(id)
 }

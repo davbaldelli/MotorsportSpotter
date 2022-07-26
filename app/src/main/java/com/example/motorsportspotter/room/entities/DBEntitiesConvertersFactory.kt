@@ -7,38 +7,48 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Champions
 
 class DBEntitiesConvertersFactory {
     companion object {
-        fun getEventsConverter() : EntitiesConverter<EventWithTrackAndChamp, AdapterEvent>{
-            return EntitiesConverter {
-                val coordinates = it.track.coordinates.split(',')
-                val location = Pair(coordinates[0].toDouble(),coordinates[1].toDouble())
-                AdapterEvent(
-                    it.event.name,
-                    it.event.date,
-                    it.track.name,
-                    it.event.image,
-                    it.championship.prettyName,
-                    location
-                )
-            }
+
+        val CompleteEventConverter = EntitiesConverter<EventWithTrackAndChamp, AdapterEvent> {
+            val coordinates = it.track.coordinates.split(',')
+            val location = Pair(coordinates[0].toDouble(),coordinates[1].toDouble())
+            AdapterEvent(
+                it.event.name,
+                it.event.startDate,
+                it.event.endDate,
+                it.track.name,
+                it.event.image,
+                it.championship.prettyName,
+                location
+            )
         }
 
-        fun getTracksConverter() : EntitiesConverter<Track, AdapterTrack>{
-            return EntitiesConverter { AdapterTrack(
+        val ChampionshipEventConverter = EntitiesConverter<EventWithTrack, AdapterEvent>{
+            AdapterEvent(
+                it.name,
+                it.startDate,
+                it.endDate,
+                it.trackName,
+                it.image,
+                null,
+                null
+            )
+        }
+
+        val TracksConverter = EntitiesConverter<Track, AdapterTrack> {
+            AdapterTrack(
                 it.name,
                 it.coordinates
-            ) }
+            )
         }
 
-        fun getChampionshipsConverter() : EntitiesConverter<ChampionshipWithEvents, AdapterChampionship>{
-            return EntitiesConverter {
-                AdapterChampionship(
-                    it.championship.name,
-                    it.championship.year,
-                    it.championship.prettyName,
-                    it.championship.image,
-                    it.championship.logo
-                )
-            }
+        val ChampionshipsConverter = EntitiesConverter<ChampionshipWithEvents, AdapterChampionship>{
+            AdapterChampionship(
+                it.championship.name,
+                it.championship.year,
+                it.championship.prettyName,
+                it.championship.image,
+                it.championship.logo
+            )
         }
     }
 }

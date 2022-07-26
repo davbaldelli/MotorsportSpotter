@@ -32,6 +32,6 @@ class FavouritesEventFragment : Fragment() {
         val resultView = view.findViewById<RecyclerView>(R.id.fav_events_rw)
         val adapter = EventCardAdapter()
         resultView.adapter = adapter
-        eventViewModel.allEvents.observe(viewLifecycleOwner) { events -> events.let { adapter.submitList(DBEntitiesConvertersFactory.getEventsConverter().convertAll(it)) } }
+        eventViewModel.allEvents.observe(viewLifecycleOwner) { events -> events.let { adapter.submitList(DBEntitiesConvertersFactory.CompleteEventConverter.convertAll(it)) } }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.motorsportspotter.room.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -16,6 +17,6 @@ interface ChampionshipDao {
     fun getAll() : Flow<List<ChampionshipWithEvents>>
 
     @Query("SELECT * FROM championships WHERE id = :id")
-    fun getChampionshipWithEvents(id : Int) : Championship
+    fun getChampionshipWithEvents(id : Int) : LiveData<ChampionshipWithEvents>
 
 }

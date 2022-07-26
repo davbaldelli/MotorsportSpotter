@@ -18,5 +18,5 @@ data class ChampionshipWithEvents(
                 parentColumn = "id",
                 entityColumn = "championship_id"
         )
-        val events : List<Event>
+        val events : List<EventWithTrack>
 )

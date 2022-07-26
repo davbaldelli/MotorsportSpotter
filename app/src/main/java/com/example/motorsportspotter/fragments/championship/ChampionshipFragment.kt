@@ -6,20 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
+import com.example.motorsportspotter.components.recyclerviews.adapters.ChampionshipEventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
 import com.example.motorsportspotter.databinding.ChampionshipFragmentBinding
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converter
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
 import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class ChampionshipFragment : Fragment() {
 
@@ -43,17 +40,13 @@ class ChampionshipFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val resultView = view.findViewById<RecyclerView>(R.id.champ_events_rw)
-        val adapter = EventCardAdapter()
+        val adapter = ChampionshipEventCardAdapter()
         resultView.adapter = adapter
-        championshipsViewModel.allChampionships.observe(viewLifecycleOwner){championships ->
-            val championship = DBEntitiesConvertersFactory.getChampionshipsConverter().convertAll(championships)[0]
+        championshipsViewModel.getChampionshipById(3).observe(viewLifecycleOwner){it ->
+            val championship = Converter.ChampionshipsConverter.convertAll(
+                listOf(it))[0]
             binding.championship = championship
-            eventViewModel.getByChampionship(championships[0].championship.uid).observe(viewLifecycleOwner){ events ->
-                adapter.submitList(
-                    DBEntitiesConvertersFactory.getEventsConverter().convertAll(events)
-                )
-            }
-
+            adapter.submitList(Converter.ChampionshipEventConverter.convertAll(it.events))
         }
     }
 

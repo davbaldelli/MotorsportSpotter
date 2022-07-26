@@ -9,8 +9,20 @@ data class Event(
         @ColumnInfo(name = "name") val name : String,
         @ColumnInfo(name = "track_id") val trackId : Int,
         @ColumnInfo(name = "championship_id") val champId : Int,
-        @ColumnInfo(name = "date") val date : String,
+        @ColumnInfo(name = "start_date") val startDate : String,
+        @ColumnInfo(name = "end_date") val endDate : String,
         @ColumnInfo(name = "image") val image : String,
+)
+
+@DatabaseView("SELECT events.* , tracks.name as track_name FROM events JOIN tracks ON track_id = tracks.id")
+data class EventWithTrack(
+        @ColumnInfo(name = "name") val name : String,
+        @ColumnInfo(name = "track_id") val trackId : Int,
+        @ColumnInfo(name = "championship_id") val champId : Int,
+        @ColumnInfo(name = "start_date") val startDate : String,
+        @ColumnInfo(name = "end_date") val endDate : String,
+        @ColumnInfo(name = "image") val image : String,
+        @ColumnInfo(name ="track_name")val trackName : String,
 )
 
 data class EventWithTrackAndChamp(
