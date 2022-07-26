@@ -2,10 +2,10 @@ package com.example.motorsportspotter.activities
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -23,7 +23,7 @@ class Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.home_activity)
         setBottomNavBehaviour(this)
     }
 
@@ -39,7 +39,12 @@ class Home : AppCompatActivity() {
     }
 
     fun openChampionshipActivity(view : View){
-        val intent = Intent(this, ChampionshipDetail::class.java).apply {}
+        val intent = Intent(this, ChampionshipActivity::class.java).apply {}
+        startActivity(intent)
+    }
+
+    fun openTrackActivity(view :View){
+        val intent = Intent(this, TrackActivity::class.java).apply {}
         startActivity(intent)
     }
 

@@ -20,4 +20,6 @@
     <string name="championship_image">Championship image</string>
     <string name="championship_logo">championship logo</string>
     <string name="set_favourite">set favourite</string>
+    <string name="track_background">track background</string>
+    <string name="track_logo">track logo</string>
 </resources>

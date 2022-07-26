@@ -12,11 +12,11 @@ data class Championship(
         @ColumnInfo(name = "logo") val logo : String,
 )
 
-data class ChampionshipWithEvents(
+class ChampionshipWithEvents(
         @Embedded val championship: Championship,
         @Relation(
                 parentColumn = "id",
                 entityColumn = "championship_id"
         )
-        val events : List<EventWithTrack>
+        val events : List<EventWithTrack>,
 )

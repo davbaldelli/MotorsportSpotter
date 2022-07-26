@@ -1,7 +1,6 @@
 package com.example.motorsportspotter.room.entities
 
 import androidx.room.*
-import java.util.*
 
 @Entity(indices = [Index(value = ["name","championship_id"], unique = true)], tableName = "events")
 data class Event(
@@ -23,6 +22,17 @@ data class EventWithTrack(
         @ColumnInfo(name = "end_date") val endDate : String,
         @ColumnInfo(name = "image") val image : String,
         @ColumnInfo(name ="track_name")val trackName : String,
+)
+
+@DatabaseView("SELECT events.* , championships.name as championship_name FROM events JOIN championships ON championship_id = championships.id")
+data class EventWithChampionship(
+        @ColumnInfo(name = "name") val name : String,
+        @ColumnInfo(name = "track_id") val trackId : Int,
+        @ColumnInfo(name = "championship_id") val champId : Int,
+        @ColumnInfo(name = "start_date") val startDate : String,
+        @ColumnInfo(name = "end_date") val endDate : String,
+        @ColumnInfo(name = "image") val image : String,
+        @ColumnInfo(name ="championship_name")val championshipName : String,
 )
 
 data class EventWithTrackAndChamp(

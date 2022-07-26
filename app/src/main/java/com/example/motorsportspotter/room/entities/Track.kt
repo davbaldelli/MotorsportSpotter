@@ -8,10 +8,11 @@ data class Track(
         @ColumnInfo(name = "coordinates") val coordinates: String,
         @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "image") val image : String,
+        @ColumnInfo(name = "logo") val logo : String,
 )
 
 data class TrackWithEvents(
         @Embedded val track: Track,
         @Relation( parentColumn = "id", entityColumn = "track_id")
-        val events : List<Event>
+        val events : List<EventWithChampionship>
 )

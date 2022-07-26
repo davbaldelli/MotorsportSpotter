@@ -1,13 +1,13 @@
 package com.example.motorsportspotter.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.motorsportspotter.R
 
-class ChampionshipDetail : AppCompatActivity() {
+class ChampionshipActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_championship_detail)
+        setContentView(R.layout.championship_activity)
     }
 
 

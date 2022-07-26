@@ -19,9 +19,13 @@
         android:theme="@style/Theme.MotorsportSpotter"
         tools:targetApi="31">
         <activity
-            android:name=".activities.ChampionshipDetail"
-            android:parentActivityName=".activities.Home"
-            android:exported="false" />
+            android:name=".activities.TrackActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.Home"/>
+        <activity
+            android:name=".activities.ChampionshipActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.Home" />
         <activity
             android:name=".activities.Home"
             android:exported="true">

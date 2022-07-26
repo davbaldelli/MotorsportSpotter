@@ -4,7 +4,7 @@ class Event(
     val eventName: String,
     val startDate: String,
     val endDate: String,
-    val trackName: String,
+    val trackName: String?,
     val imageRes: String,
     val championshipName: String?,
     val trackLocation : Pair<Double, Double>?

@@ -1,74 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="championship"
-            type="com.example.motorsportspotter.components.recyclerviews.entities.Championship" />
-        <variable
-            name="events"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            name="track"
+            type="com.example.motorsportspotter.components.recyclerviews.entities.Track" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".fragments.championship.ChampionshipFragment">
+        tools:context=".fragments.track.TrackFragment" >
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:contentDescription="@string/championship_image"
+            android:contentDescription="@string/track_background"
             android:scaleType="centerCrop"
-            app:imageUrl='@{championship.backgroundUrl}'
+            app:imageUrl="@{track.backgroundUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/f1_background" />
+            tools:src="@drawable/nurburgring_backround" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/cardView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
             <ImageView
-                android:id="@+id/imageView"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="5dp"
-                android:contentDescription="@string/championship_logo"
-                app:imageUrl='@{championship.logoUrl}'
-                tools:src="@drawable/f1_logo" />
+                android:contentDescription="@string/track_logo"
+                app:imageUrl="@{track.logoUrl}"
+                tools:src="@drawable/nurburgring_logo" />
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{championship.name}"
+            android:text="@{track.name}"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/champ_events_rw"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardView"
-            tools:text="Formula 1" />
-
+            app:layout_constraintTop_toBottomOf="@+id/cardView2"
+            tools:text="Nurburgring" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/champ_events_rw"
+            android:id="@+id/track_events_rw"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
@@ -76,8 +69,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:listitem="@layout/event_card" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:listitem="@layout/track_event_card"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

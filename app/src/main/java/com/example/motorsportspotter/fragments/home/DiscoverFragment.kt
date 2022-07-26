@@ -2,11 +2,11 @@ package com.example.motorsportspotter.fragments.home
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
@@ -16,9 +16,8 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Champions
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converter
 import com.example.motorsportspotter.room.viewmodel.*
-import kotlin.collections.ArrayList
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converter
 
 class DiscoverFragment : Fragment() {
 

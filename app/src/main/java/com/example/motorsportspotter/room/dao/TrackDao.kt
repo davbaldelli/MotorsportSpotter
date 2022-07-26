@@ -1,5 +1,6 @@
 package com.example.motorsportspotter.room.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -13,9 +14,9 @@ interface TrackDao {
     fun insert(track : Track)
 
     @Query("SELECT * FROM tracks")
-    fun getAll() : Flow<List<Track>>
+    fun getAll() : Flow<List<TrackWithEvents>>
 
     @Query("SELECT * FROM tracks WHERE id= :id")
-    fun getTrackWithEvents(id : Int) : TrackWithEvents
+    fun getTrackWithEvents(id : Int) : LiveData<TrackWithEvents>
 
 }

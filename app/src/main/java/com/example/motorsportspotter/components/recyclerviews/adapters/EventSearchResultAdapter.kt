@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
 
 class EventSearchResultAdapter(private var itemList: ArrayList<SearchResult>, val activity : Activity) : RecyclerView.Adapter<EventSearchResultViewHolder>() {

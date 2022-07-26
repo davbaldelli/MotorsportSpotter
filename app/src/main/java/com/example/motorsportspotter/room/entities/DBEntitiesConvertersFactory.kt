@@ -1,9 +1,9 @@
 package com.example.motorsportspotter.room.entities
 
 import com.example.motorsportspotter.utilities.EntitiesConverter
+import com.example.motorsportspotter.components.recyclerviews.entities.Championship as AdapterChampionship
 import com.example.motorsportspotter.components.recyclerviews.entities.Event as AdapterEvent
 import com.example.motorsportspotter.components.recyclerviews.entities.Track as AdapterTrack
-import com.example.motorsportspotter.components.recyclerviews.entities.Championship as AdapterChampionship
 
 class DBEntitiesConvertersFactory {
     companion object {
@@ -34,10 +34,25 @@ class DBEntitiesConvertersFactory {
             )
         }
 
-        val TracksConverter = EntitiesConverter<Track, AdapterTrack> {
-            AdapterTrack(
+        val TrackEventConverter = EntitiesConverter<EventWithChampionship, AdapterEvent>{
+            AdapterEvent(
                 it.name,
-                it.coordinates
+                it.startDate,
+                it.endDate,
+                null,
+                it.image,
+                it.championshipName,
+                null
+            )
+
+        }
+
+        val TracksConverter = EntitiesConverter<TrackWithEvents, AdapterTrack> {
+            AdapterTrack(
+                it.track.name,
+                it.track.coordinates,
+                it.track.image,
+                it.track.logo
             )
         }
 
@@ -50,5 +65,6 @@ class DBEntitiesConvertersFactory {
                 it.championship.logo
             )
         }
+
     }
 }
