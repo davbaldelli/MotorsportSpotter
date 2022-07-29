@@ -1,6 +1,8 @@
 package com.example.motorsportspotter.components.recyclerviews.entities
 
+import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class Event(
@@ -33,6 +35,7 @@ class Event(
     }
 
     fun getPeriod() : String{
-        return "${startDate.dayOfMonth}${if (startDate.monthValue != endDate.monthValue) " "+startDate.month.name else ""}-${endDate.dayOfMonth} ${endDate.month.name}"
+        val formatter = DateTimeFormatter.ofPattern("MMM")
+        return "${startDate.dayOfMonth}${if (startDate.monthValue != endDate.monthValue) " "+startDate.format(formatter)+" " else ""}-${endDate.dayOfMonth} ${endDate.format(formatter)}"
     }
 }

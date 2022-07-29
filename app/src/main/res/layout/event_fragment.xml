@@ -1,17 +1,26 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.home.FavouritesEventFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fav_events_rw"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.motorsportspotter.room.viewmodel.EventsViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/first_event_card"
-        tools:itemCount="10" />
+        tools:context=".fragments.home.FavouritesEventFragment">
 
-</RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fav_events_rw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            listData="@{viewModel.allEvents}"
+            tools:listitem="@layout/first_event_card"
+            tools:itemCount="10" />
+
+    </RelativeLayout>
+</layout>

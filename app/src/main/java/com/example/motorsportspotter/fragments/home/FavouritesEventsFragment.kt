@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
+import com.example.motorsportspotter.databinding.EventFragmentBinding
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
 import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
@@ -21,17 +22,16 @@ class FavouritesEventFragment : Fragment() {
         EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
     }
 
+    private lateinit var binding : EventFragmentBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.event_fragment, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val resultView = view.findViewById<RecyclerView>(R.id.fav_events_rw)
-        val adapter = EventCardAdapter()
-        resultView.adapter = adapter
-        eventViewModel.allEvents.observe(viewLifecycleOwner) { events -> events.let { adapter.submitList(DBEntitiesConvertersFactory.CompleteEventConverter.convertAll(it)) } }
+    ): View {
+        binding = EventFragmentBinding.inflate(inflater)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = eventViewModel
+        binding.favEventsRw.adapter = EventCardAdapter()
+        return binding.root
     }
 }

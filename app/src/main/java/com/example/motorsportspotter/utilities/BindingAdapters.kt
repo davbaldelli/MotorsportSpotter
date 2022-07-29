@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
+import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
 import java.util.*
 
 @BindingAdapter("imageUrl")
@@ -33,10 +35,10 @@ fun bindAddress(textView: TextView, coordinates: Pair<String, String>?){
 }
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Event>?) {
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<EventWithTrackAndChamp>?) {
     data?.let{
         val adapter = recyclerView.adapter as EventCardAdapter
-        adapter.submitList(it)
+        adapter.submitList(Converters.CompleteEventConverter.convertAll(it))
     }
 }
 
