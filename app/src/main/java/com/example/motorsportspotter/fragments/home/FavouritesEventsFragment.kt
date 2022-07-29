@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
-import com.example.motorsportspotter.databinding.EventFragmentBinding
+import com.example.motorsportspotter.databinding.FavouriteEventsFragmentBinding
+
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
@@ -22,13 +23,13 @@ class FavouritesEventFragment : Fragment() {
         EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
     }
 
-    private lateinit var binding : EventFragmentBinding
+    private lateinit var binding : FavouriteEventsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = EventFragmentBinding.inflate(inflater)
+        binding = FavouriteEventsFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = eventViewModel
         binding.favEventsRw.adapter = EventCardAdapter()

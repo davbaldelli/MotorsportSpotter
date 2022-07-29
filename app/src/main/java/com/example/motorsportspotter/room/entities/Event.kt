@@ -11,6 +11,7 @@ data class Event(
         @ColumnInfo(name = "start_date") val startDate : String,
         @ColumnInfo(name = "end_date") val endDate : String,
         @ColumnInfo(name = "image") val image : String,
+        @ColumnInfo(name = "favourites") val favourites: Boolean
 )
 
 @DatabaseView("SELECT events.* , tracks.name as track_name FROM events JOIN tracks ON track_id = tracks.id")
@@ -23,6 +24,7 @@ data class EventWithTrack(
         @ColumnInfo(name = "end_date") val endDate : String,
         @ColumnInfo(name = "image") val image : String,
         @ColumnInfo(name ="track_name")val trackName : String,
+        @ColumnInfo(name = "favourites") val favourites: Boolean
 )
 
 @DatabaseView("SELECT events.* , championships.name as championship_name FROM events JOIN championships ON championship_id = championships.id")
@@ -35,6 +37,7 @@ data class EventWithChampionship(
         @ColumnInfo(name = "end_date") val endDate : String,
         @ColumnInfo(name = "image") val image : String,
         @ColumnInfo(name ="championship_name")val championshipName : String,
+        @ColumnInfo(name = "favourites") val favourites: Boolean
 )
 
 data class EventWithTrackAndChamp(

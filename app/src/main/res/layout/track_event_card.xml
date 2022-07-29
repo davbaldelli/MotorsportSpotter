@@ -18,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:onClick="openEventActivity"
+            android:tag="@{event.eventId}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/cardview_default_radius"
             app:strokeColor="@color/material_on_surface_stroke"

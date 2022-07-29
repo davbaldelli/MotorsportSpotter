@@ -10,6 +10,8 @@ class EventRepository(private val dao: EventDao) {
 
     val allEvents : Flow<List<EventWithTrackAndChamp>> = dao.getAll()
 
+    val favouritesEvents = dao.getFavourites()
+
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(event: Event) {

@@ -17,5 +17,15 @@ class EntitiesFilter {
             }
 
         }
+
+        fun filterEventsByCountry(events : List<Event>, country : String, context : Context) : List<Event>{
+            return events.filter { event ->
+                val geocoder = Geocoder(context, Locale.ITALY)
+                val addresses: List<Address> =
+                    geocoder.getFromLocation(event.trackLocation!!.first.toDouble(), event.trackLocation.second.toDouble(), 1)
+                addresses[0].countryCode == country
+            }
+
+        }
     }
 }

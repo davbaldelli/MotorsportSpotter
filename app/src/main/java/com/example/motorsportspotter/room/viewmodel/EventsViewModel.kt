@@ -8,7 +8,8 @@ import kotlinx.coroutines.launch
 
 class EventsViewModel(private val repository: EventRepository) : ViewModel() {
 
-    val allEvents : LiveData<List<EventWithTrackAndChamp>> = repository.allEvents.asLiveData()
+    val allEvents = repository.allEvents.asLiveData()
+    val favouritesEvents = repository.favouritesEvents.asLiveData()
 
     fun insert(event: Event) = viewModelScope.launch {
         repository.insert(event)
