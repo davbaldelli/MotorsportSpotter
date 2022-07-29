@@ -17,6 +17,8 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
 
     fun getByChampionship(champId : Int) = repository.eventsByChamp(champId)
 
+    fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = repository.getSimilarEvents(champId, trackId, eventId)
+
     fun getById(id : Int) = repository.getEventById(id)
 }
 
