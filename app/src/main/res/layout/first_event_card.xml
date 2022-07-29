@@ -45,7 +45,7 @@
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginBottom="3dp"
-                    android:text='@{event.startDate.dayOfMonth+"-"+event.endDate.dayOfMonth}'
+                    android:text='@{event.period}'
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textColor="#DD2C00" />
 

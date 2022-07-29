@@ -12,7 +12,7 @@ class EntitiesFilter {
             return events.filter { event ->
                 val geocoder = Geocoder(context, Locale.ITALY)
                 val addresses: List<Address> =
-                    geocoder.getFromLocation(event.trackLocation!!.first, event.trackLocation.second, 1)
+                    geocoder.getFromLocation(event.trackLocation!!.first.toDouble(), event.trackLocation.second.toDouble(), 1)
                 addresses[0].adminArea == region
             }
 

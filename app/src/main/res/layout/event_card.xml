@@ -52,7 +52,7 @@
                         android:layout_marginBottom="3dp"
                         android:onClick="openChampionshipActivity"
                         android:tag="@{event.championshipId}"
-                        android:text='@{event.startDate.dayOfMonth+"-"+event.endDate.dayOfMonth}'
+                        android:text='@{event.period}'
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                         android:textColor="#DD2C00"
                         tools:text="2022-07-24" />

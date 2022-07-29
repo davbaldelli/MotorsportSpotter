@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:paddingStart="20dp"
+            android:paddingHorizontal="20dp"
             android:text="@{event.eventName}"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
@@ -90,29 +90,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout2">
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginHorizontal="35dp"
-                android:src="@drawable/ic_events_24"
-                android:contentDescription="@string/event_icon" />
+                android:contentDescription="@string/event_icon"
+                android:src="@drawable/ic_events_24" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text='@{event.startDate.dayOfMonth+"-"+event.endDate.dayOfMonth}'
+                    android:text='@{event.period}'
                     android:textColor="@color/black"
                     tools:text="4-6 April" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -123,8 +122,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout3">
 
             <ImageView
@@ -137,6 +137,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -147,6 +148,7 @@
                     tools:text="Autodromo Enzo e Dino Ferrari" />
 
                 <TextView
+                    addressCoordinates="@{event.trackLocation}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="Piazza Ayrton Senna da Silva, 1, Imola" />

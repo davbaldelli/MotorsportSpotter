@@ -13,7 +13,7 @@ class DBEntitiesConvertersFactory {
 
         val CompleteEventConverter = EntitiesConverter<EventWithTrackAndChamp, AdapterEvent> {
             val coordinates = it.track.coordinates.split(',')
-            val location = Pair(coordinates[0].toDouble(),coordinates[1].toDouble())
+            val location = Pair(coordinates[0],coordinates[1])
             AdapterEvent(
                 it.event.uid,
                 it.event.name,

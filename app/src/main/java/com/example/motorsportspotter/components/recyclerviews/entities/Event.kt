@@ -14,7 +14,7 @@ class Event(
     val championshipName: String?,
     val championshipId : Int?,
     val championshipIconUrl : String?,
-    val trackLocation : Pair<Double, Double>?
+    val trackLocation : Pair<String, String>?
 ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
         return query(eventName)
@@ -30,5 +30,9 @@ class Event(
 
     override fun getImgRes(): String {
         return imageUrl
+    }
+
+    fun getPeriod() : String{
+        return "${startDate.dayOfMonth}${if (startDate.monthValue != endDate.monthValue) " "+startDate.month.name else ""}-${endDate.dayOfMonth} ${endDate.month.name}"
     }
 }
