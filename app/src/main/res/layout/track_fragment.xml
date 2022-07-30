@@ -7,6 +7,15 @@
         <variable
             name="track"
             type="com.example.motorsportspotter.components.recyclerviews.entities.Track" />
+        <variable
+            name="ongoingEvents"
+            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+        <variable
+            name="futureEvents"
+            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+        <variable
+            name="pastEvents"
+            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
     </data>
 
     <ScrollView
@@ -71,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                app:layout_constraintBottom_toTopOf="@+id/ongoing_events_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -80,37 +89,107 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:text="@string/follow" />
             </FrameLayout>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/ongoing_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-
-                android:text="@string/events"
+                android:layout_marginBottom="10dp"
+                android:text="@string/ongoing_events"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/track_events_rw"
+                app:layout_constraintBottom_toTopOf="@+id/ongoing_camp_events_rw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/follow_layout" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/track_events_rw"
+                android:id="@+id/ongoing_camp_events_rw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:isScrollContainer="false"
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
-                tools:listitem="@layout/track_event_card" />
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label"
+                tools:listitem="@layout/event_card"
+                tools:itemCount="3"
+                trackDataList="@{ongoingEvents}"/>
+
+            <TextView
+                android:id="@+id/future_events_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/future_events"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/future_camp_events_rw"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_camp_events_rw" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/future_camp_events_rw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:isScrollContainer="false"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/future_events_label"
+                tools:listitem="@layout/event_card"
+                tools:itemCount="3"
+                trackDataList="@{futureEvents}"/>
+
+            <TextView
+                android:id="@+id/past_events_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/past_events"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/past_camp_events_rw"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/future_camp_events_rw" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/past_camp_events_rw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:isScrollContainer="false"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/past_events_label"
+                tools:listitem="@layout/event_card"
+                tools:itemCount="3"
+                trackDataList="@{pastEvents}"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,9 +14,17 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
         repository.insert(event)
     }
 
+    fun setFavourite(id : Int) {
+        repository.setFavourite(id)
+    }
+
     fun futureChampionshipEvents(champId : Int) = repository.futureEventsByChamp(champId)
     fun ongoingChampionshipEvents(champId : Int) = repository.ongoingByChamp(champId)
     fun pastChampionshipEvents(champId : Int) = repository.pastEventsByChamp(champId)
+
+    fun futureTrackEvents(trackId : Int) = repository.futureEventsByTrack(trackId)
+    fun ongoingTrackEvents(trackId : Int) = repository.ongoingByTrack(trackId)
+    fun pastTrackEvents(trackId : Int) = repository.pastEventsByTrack(trackId)
 
     fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = repository.getSimilarEvents(champId, trackId, eventId)
 

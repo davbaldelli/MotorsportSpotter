@@ -10,6 +10,7 @@ data class Championship(
         @ColumnInfo(name = "pretty_name") val prettyName : String,
         @ColumnInfo(name = "image") val image : String,
         @ColumnInfo(name = "logo") val logo : String,
+        @ColumnInfo(name = "favourite") val favourite : Boolean
 )
 
 class ChampionshipWithEvents(

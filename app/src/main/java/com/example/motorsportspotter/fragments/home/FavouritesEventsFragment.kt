@@ -35,4 +35,8 @@ class FavouritesEventFragment : Fragment() {
         binding.favEventsRw.adapter = EventCardAdapter()
         return binding.root
     }
+
+    fun favButtonCLick(view : View){
+        eventViewModel.setFavourite(view.tag as Int)
+    }
 }

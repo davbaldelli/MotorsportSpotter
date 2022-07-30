@@ -15,64 +15,68 @@
         android:padding="2dp"
         android:layout_margin="2dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="250dp"
-                android:layout_height="200dp"
-                android:onClick="openEventActivity"
-                android:tag="@{event.eventId}"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/cardview_default_radius"
-                app:strokeColor="@color/material_on_surface_stroke"
-                app:strokeWidth="1dp">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="200dp"
+            android:layout_height="220dp"
+            android:onClick="openEventActivity"
+            android:tag="@{event.eventId}"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/cardview_default_radius"
+            app:strokeColor="@color/material_on_surface_stroke"
+            app:strokeWidth="1dp">
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    imageUrl="@{event.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/event_image"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/audi_gtwc" />
+
+                <TextView
+                    android:id="@+id/place_event_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        imageUrl="@{event.imageUrl}"
-                        android:contentDescription="@string/event_image"
-                        android:scaleType="centerCrop"
-                        tools:src="@drawable/audi_gtwc"/>
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="3dp"
+                    android:text='@{event.period}'
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textColor="#DD2C00"
+                    tools:text="2022-07-24" />
 
-                    <TextView
-                        android:id="@+id/place_event_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginBottom="3dp"
-                        android:text='@{event.period}'
-                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        android:textColor="#DD2C00"
-                        tools:text="2022-07-24" />
+                <TextView
+                    android:id="@+id/place_event_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="7dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:singleLine="false"
+                    android:text='@{event.championshipName +" • "+event.eventName}'
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    tools:text="Round 1 - Imola" />
 
-                    <TextView
-                        android:id="@+id/place_event_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="3dp"
-                        android:layout_marginStart="7dp"
-                        android:text='@{event.championshipName +" • "+event.eventName}'
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                        tools:text="Round 1 - Imola"/>
-
-                    <TextView
-                        android:id="@+id/place_event_circuit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="3dp"
-                        android:layout_marginStart="7dp"
-                        android:text='@{event.trackName}'
-                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        android:textSize="12sp"
-                        tools:text="Circuito Enzo e Dino Ferrari"/>
+                <TextView
+                    android:id="@+id/place_event_circuit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="7dp"
+                    android:text='@{event.trackName}'
+                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                    android:textSize="12sp"
+                    tools:text="Circuito Enzo e Dino Ferrari" />
 
 
-                </LinearLayout>
+            </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 </layout>

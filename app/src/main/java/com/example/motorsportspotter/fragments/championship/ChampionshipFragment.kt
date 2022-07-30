@@ -50,12 +50,21 @@ class ChampionshipFragment : Fragment() {
             championshipsViewModel.getChampionshipById(championshipId).observe(viewLifecycleOwner){
                 binding.championship = Converters.ChampionshipsConverter.convertAll(listOf(it))[0]
                 eventsViewModel.ongoingChampionshipEvents(championshipId).observe(viewLifecycleOwner) { ongoingEvents ->
+                    if(ongoingEvents.isEmpty()){
+                        binding.ongoingEventsLabel.visibility = View.GONE
+                    }
                     binding.ongoingEvents = Converters.CompleteEventConverter.convertAll(ongoingEvents)
                 }
                 eventsViewModel.futureChampionshipEvents(championshipId).observe(viewLifecycleOwner) { futureEvents ->
+                    if(futureEvents.isEmpty()){
+                        binding.futureEventsLabel.visibility = View.GONE
+                    }
                     binding.futureEvents = Converters.CompleteEventConverter.convertAll(futureEvents)
                 }
                 eventsViewModel.pastChampionshipEvents(championshipId).observe(viewLifecycleOwner) { pastEvents ->
+                    if(pastEvents.isEmpty()){
+                        binding.pastCampEventsRw.visibility = View.GONE
+                    }
                     binding.pastEvents = Converters.CompleteEventConverter.convertAll(pastEvents)
                 }
             }

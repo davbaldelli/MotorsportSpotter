@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/championship_image"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:contentDescription="@string/championship_image"
@@ -39,17 +39,17 @@
                 tools:srcCompat="@drawable/f1_background" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/championship_logo_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="50dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintBottom_toBottomOf="@+id/championship_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2">
+                app:layout_constraintTop_toBottomOf="@+id/championship_image">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/championship_logo"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
@@ -59,7 +59,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/championship_name_place"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -71,7 +71,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/follow_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardView"
+                app:layout_constraintTop_toBottomOf="@id/championship_logo_card"
                 tools:text="Formula 1" />
 
 
@@ -81,20 +81,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                app:layout_constraintBottom_toTopOf="@+id/ongoing_events_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                app:layout_constraintTop_toBottomOf="@+id/championship_name_place">
 
                 <Button
+                    android:id="@+id/follow_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:text="@string/follow" />
             </FrameLayout>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/ongoing_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -117,19 +119,20 @@
                 android:layout_marginTop="10dp"
                 android:isScrollContainer="false"
                 android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label"
                 tools:listitem="@layout/event_card"
                 tools:itemCount="3"
-                championshipDataList="@{ongoingEvents}"
-                />
+                championshipDataList="@{ongoingEvents}"/>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/future_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/future_events"
@@ -139,8 +142,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/future_camp_events_rw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ongoing_camp_events_rw"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_camp_events_rw" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/future_camp_events_rw"
@@ -153,16 +155,17 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/future_events_label"
                 tools:listitem="@layout/event_card"
                 tools:itemCount="3"
                 championshipDataList="@{futureEvents}"/>
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/past_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/past_events"
@@ -185,7 +188,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/past_events_label"
                 tools:listitem="@layout/event_card"
                 tools:itemCount="3"
                 championshipDataList="@{pastEvents}"/>

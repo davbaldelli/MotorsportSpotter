@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.motorsportspotter.components.recyclerviews.adapters.ChampionshipEventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
+import com.example.motorsportspotter.components.recyclerviews.adapters.TrackEventsAdapter
 import com.example.motorsportspotter.components.recyclerviews.adapters.VerticalEventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
@@ -57,6 +58,14 @@ fun bindSimilarRecyclerView(recyclerView: RecyclerView, data: List<Event>?){
 fun bindChampionshipRecyclerView(recyclerView: RecyclerView, events : List<Event>?){
     events?.let {
         val adapter = recyclerView.adapter as ChampionshipEventCardAdapter
+        adapter.submitList(events)
+    }
+}
+
+@BindingAdapter("trackDataList")
+fun bindTrackRecyclerView(recyclerView: RecyclerView, events : List<Event>?){
+    events?.let {
+        val adapter = recyclerView.adapter as TrackEventsAdapter
         adapter.submitList(events)
     }
 }
