@@ -1,31 +1,31 @@
 <resources>
     <string name="app_name">Motorsport Spotter</string>
-    <string name="page_title">home</string>
-    <string name="events">events</string>
-    <string name="news">news</string>
-    <string name="discover">discover</string>
-    <string name="notifications">notifications</string>
-    <string name="image_of_the_place">prova</string>
-    <string name="place_title">prova</string>
-    <string name="date">prova</string>
+    <string name="page_title">Home</string>
+    <string name="events">Events</string>
+    <string name="news">News</string>
+    <string name="discover">Discover</string>
+    <string name="notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="your_followed_events">Your Followed Events</string>
     <string name="your_followed_tracks">Your Followed Tracks</string>
     <string name="your_followed_championships">Your Followed Championships</string>
     <string name="event_thumbnail">Event Thumbnail</string>
-    <string name="tab_layout_desc">events fragments</string>
-    <string name="favorites">favorites</string>
-    <string name="event_image">event image</string>
+    <string name="tab_layout_desc">Events fragments</string>
+    <string name="favorites">Favorites</string>
+    <string name="event_image">Event image</string>
     <string name="championship_image">Championship image</string>
     <string name="championship_logo">championship logo</string>
-    <string name="set_favourite">set favourite</string>
-    <string name="track_background">track background</string>
-    <string name="track_logo">track logo</string>
-    <string name="event_icon">event_icon</string>
+    <string name="set_favourite">Set favourite</string>
+    <string name="track_background">Track background</string>
+    <string name="track_logo">Track logo</string>
+    <string name="event_icon">Event icon</string>
     <string name="info">Info</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu blandit magna. Nam sagittis, lorem sed tempus mattis, nibh metus mattis arcu, feugiat iaculis dui justo ut urna. Sed vehicula, dui eget gravida sodales, turpis orci rhoncus lectus, eget tempor dui sapien nec neque. Vestibulum mauris nunc, iaculis in varius ut, maximus eleifend enim. Donec a ex tristique, imperdiet nulla ac, placerat arcu.</string>
     <string name="follow">Follow</string>
     <string name="similar_events">Similar Events</string>
     <string name="buy_tickets">Buy Tickets</string>
+    <string name="ongoing_events">Ongoing Events</string>
+    <string name="future_events">Future Events</string>
+    <string name="past_events">Past Events</string>
 </resources>

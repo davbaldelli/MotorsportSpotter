@@ -8,11 +8,13 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.motorsportspotter.components.recyclerviews.adapters.ChampionshipEventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.adapters.VerticalEventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
+import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import java.util.*
 
 @BindingAdapter("imageUrl")
@@ -48,6 +50,14 @@ fun bindSimilarRecyclerView(recyclerView: RecyclerView, data: List<Event>?){
     data?.let {
         val adapter = recyclerView.adapter as VerticalEventCardAdapter
         adapter.submitList(it)
+    }
+}
+
+@BindingAdapter("championshipDataList")
+fun bindChampionshipRecyclerView(recyclerView: RecyclerView, events : List<Event>?){
+    events?.let {
+        val adapter = recyclerView.adapter as ChampionshipEventCardAdapter
+        adapter.submitList(events)
     }
 }
 

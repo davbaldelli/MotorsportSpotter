@@ -2,7 +2,6 @@ package com.example.motorsportspotter.room.viewmodel
 
 import androidx.lifecycle.*
 import com.example.motorsportspotter.room.entities.Event
-import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
 import com.example.motorsportspotter.room.repositories.EventRepository
 import kotlinx.coroutines.launch
 
@@ -15,7 +14,9 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
         repository.insert(event)
     }
 
-    fun getByChampionship(champId : Int) = repository.eventsByChamp(champId)
+    fun futureChampionshipEvents(champId : Int) = repository.futureEventsByChamp(champId)
+    fun ongoingChampionshipEvents(champId : Int) = repository.ongoingByChamp(champId)
+    fun pastChampionshipEvents(champId : Int) = repository.pastEventsByChamp(champId)
 
     fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = repository.getSimilarEvents(champId, trackId, eventId)
 

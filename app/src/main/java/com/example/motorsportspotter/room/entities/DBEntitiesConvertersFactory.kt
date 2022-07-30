@@ -76,6 +76,7 @@ class DBEntitiesConvertersFactory {
 
         val ChampionshipsConverter = EntitiesConverter<ChampionshipWithEvents, AdapterChampionship>{
             AdapterChampionship(
+                it.championship.uid,
                 it.championship.name,
                 it.championship.year,
                 it.championship.prettyName,

@@ -16,12 +16,16 @@ import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
 import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converter
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 
 class ChampionshipFragment : Fragment() {
 
     private val championshipsViewModel: ChampionshipsViewModel by viewModels {
         ChampionshipsViewModelFactory((this.activity?.application as EventsApplication).championshipRepository)
+    }
+
+    private val eventsViewModel : EventsViewModel by viewModels {
+        EventsViewModelFactory((requireActivity().application as EventsApplication).eventRepository)
     }
 
     private val viewModel : ChampionshipFragmentViewModel by activityViewModels()
@@ -33,18 +37,26 @@ class ChampionshipFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ChampionshipFragmentBinding.inflate(inflater)
+        binding.ongoingCampEventsRw.adapter = ChampionshipEventCardAdapter()
+        binding.futureCampEventsRw.adapter = ChampionshipEventCardAdapter()
+        binding.pastCampEventsRw.adapter = ChampionshipEventCardAdapter()
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val resultView = view.findViewById<RecyclerView>(R.id.champ_events_rw)
-        val adapter = ChampionshipEventCardAdapter()
-        resultView.adapter = adapter
         viewModel.championshipId.observe(viewLifecycleOwner) { championshipId ->
             championshipsViewModel.getChampionshipById(championshipId).observe(viewLifecycleOwner){
-                binding.championship = Converter.ChampionshipsConverter.convertAll(listOf(it))[0]
-                adapter.submitList(Converter.ChampionshipEventConverter.convertAll(it.events.sortedBy { event -> event.startDate }))
+                binding.championship = Converters.ChampionshipsConverter.convertAll(listOf(it))[0]
+                eventsViewModel.ongoingChampionshipEvents(championshipId).observe(viewLifecycleOwner) { ongoingEvents ->
+                    binding.ongoingEvents = Converters.CompleteEventConverter.convertAll(ongoingEvents)
+                }
+                eventsViewModel.futureChampionshipEvents(championshipId).observe(viewLifecycleOwner) { futureEvents ->
+                    binding.futureEvents = Converters.CompleteEventConverter.convertAll(futureEvents)
+                }
+                eventsViewModel.pastChampionshipEvents(championshipId).observe(viewLifecycleOwner) { pastEvents ->
+                    binding.pastEvents = Converters.CompleteEventConverter.convertAll(pastEvents)
+                }
             }
         }
 

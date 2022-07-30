@@ -25,7 +25,13 @@ interface EventDao {
     @Query("SELECT * FROM events WHERE (championship_id = :champId OR track_id = :trackId) AND NOT uid = :eventId LIMIT 7")
     fun getSimilarEvents(champId: Int, trackId: Int, eventId:Int) : LiveData<List<EventWithTrackAndChamp>>
 
-    @Query("SELECT * FROM events WHERE championship_id = :champId ORDER BY start_date")
-    fun getAllFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
+    @Query("SELECT * FROM events WHERE championship_id = :champId AND start_date > DATE('now') ORDER BY start_date")
+    fun getFutureFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
+
+    @Query("SELECT * FROM events WHERE championship_id = :champId AND (DATE('now') BETWEEN start_date AND end_date) ORDER BY start_date")
+    fun getOngoingFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
+
+    @Query("SELECT * FROM events WHERE championship_id = :champId AND end_date < DATE('now') ORDER BY start_date")
+    fun getPastFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
 
 }

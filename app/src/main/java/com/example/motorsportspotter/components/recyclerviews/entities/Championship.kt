@@ -1,6 +1,7 @@
 package com.example.motorsportspotter.components.recyclerviews.entities
 
 class Championship(
+    val id : Int,
     val name: String,
     val year : Int,
     val prettyName : String,

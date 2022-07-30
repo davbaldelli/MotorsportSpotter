@@ -18,7 +18,9 @@ class EventRepository(private val dao: EventDao) {
         dao.insert(event)
     }
 
-    fun eventsByChamp(champId : Int) = dao.getAllFromChampionship(champId)
+    fun futureEventsByChamp(champId : Int) = dao.getFutureFromChampionship(champId)
+    fun ongoingByChamp(champId : Int) = dao.getOngoingFromChampionship(champId)
+    fun pastEventsByChamp(champId : Int) = dao.getPastFromChampionship(champId)
 
     fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = dao.getSimilarEvents(champId, trackId, eventId)
 
