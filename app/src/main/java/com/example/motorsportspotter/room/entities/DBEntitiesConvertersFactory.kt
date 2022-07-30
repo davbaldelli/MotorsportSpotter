@@ -25,7 +25,8 @@ class DBEntitiesConvertersFactory {
                 it.championship.prettyName,
                 it.championship.uid,
                 it.championship.logo,
-                location
+                location,
+                it.track.locationName
             )
         }
 
@@ -38,6 +39,7 @@ class DBEntitiesConvertersFactory {
                 it.trackName,
                 null,
                 it.image,
+                null,
                 null,
                 null,
                 null,
@@ -55,6 +57,7 @@ class DBEntitiesConvertersFactory {
                 null,
                 it.image,
                 it.championshipName,
+                null,
                 null,
                 null,
                 null

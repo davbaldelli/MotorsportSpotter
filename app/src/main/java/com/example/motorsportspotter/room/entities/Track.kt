@@ -9,6 +9,7 @@ data class Track(
         @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "image") val image : String,
         @ColumnInfo(name = "logo") val logo : String,
+        @ColumnInfo(name = "locationName") val locationName : String
 )
 
 data class TrackWithEvents(

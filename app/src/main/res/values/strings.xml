@@ -27,4 +27,5 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu blandit magna. Nam sagittis, lorem sed tempus mattis, nibh metus mattis arcu, feugiat iaculis dui justo ut urna. Sed vehicula, dui eget gravida sodales, turpis orci rhoncus lectus, eget tempor dui sapien nec neque. Vestibulum mauris nunc, iaculis in varius ut, maximus eleifend enim. Donec a ex tristique, imperdiet nulla ac, placerat arcu.</string>
     <string name="follow">Follow</string>
     <string name="similar_events">Similar Events</string>
+    <string name="buy_tickets">Buy Tickets</string>
 </resources>

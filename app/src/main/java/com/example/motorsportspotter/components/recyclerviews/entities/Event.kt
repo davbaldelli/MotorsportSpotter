@@ -16,7 +16,8 @@ class Event(
     val championshipName: String?,
     val championshipId : Int?,
     val championshipIconUrl : String?,
-    val trackLocation : Pair<String, String>?
+    val trackLocation : Pair<String, String>?,
+    val trackLocationName : String?
 ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
         return query(eventName)

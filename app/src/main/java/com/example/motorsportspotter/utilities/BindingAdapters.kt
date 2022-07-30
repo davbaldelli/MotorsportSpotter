@@ -26,10 +26,10 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 @BindingAdapter("addressCoordinates")
-fun bindAddress(textView: TextView, coordinates: Pair<String, String>?){
-    coordinates?.let {
+fun bindAddress(textView: TextView, locationName : String?){
+    locationName?.let {
         val geocoder = Geocoder(textView.context, Locale.ITALY)
-        val addresses: List<Address> = geocoder.getFromLocation(it.first.toDouble(), it.second.toDouble(), 1)
+        val addresses: List<Address> = geocoder.getFromLocationName(it, 1)
         val address = addresses[0]
         textView.text = address.getAddressLine(0)
     }
