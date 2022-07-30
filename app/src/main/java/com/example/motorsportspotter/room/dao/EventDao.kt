@@ -22,7 +22,7 @@ interface EventDao {
     @Query("SELECT * FROM events WHERE uid = :id LIMIT 1")
     fun getById(id : Int) : LiveData<EventWithTrackAndChamp>
 
-    @Query("SELECT * FROM events WHERE (championship_id = :champId OR track_id = :trackId) AND NOT uid = :eventId LIMIT 7")
+    @Query("SELECT * FROM events WHERE (championship_id = :champId OR track_id = :trackId) AND NOT uid = :eventId AND end_date > DATE('now') ORDER BY start_date LIMIT 10")
     fun getSimilarEvents(champId: Int, trackId: Int, eventId:Int) : LiveData<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE championship_id = :champId AND start_date > DATE('now') ORDER BY start_date")

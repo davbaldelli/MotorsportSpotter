@@ -35,6 +35,8 @@ abstract class EventDatabase : RoomDatabase() {
             // Delete all content here.
 
             // Add sample elements.
+
+
             trackDao.insert(Track(0,"44.344431108468314, 11.719529003311498","Autodromo Enzo e Dino Ferrari","https://i.imgur.com/gAidPWR.jpg","https://i.imgur.com/Zv8dYhd.png","Autodromo Enzo e Dino Ferrari"))
             trackDao.insert(Track(1,"45.62220618007739, 9.284707054933946","Autodromo Di Monza","https://i.imgur.com/zDnWVPJ.jpg","https://i.imgur.com/stxBber.png","Autodromo Nazionale Monza"))
             trackDao.insert(Track(2,"43.96145885255295, 12.685946829946975","Misano World Circuit Marco Simoncelli","https://i.imgur.com/HoxRd1p.jpg","https://i.imgur.com/uW4JlT1.jpg","Misano Motocircuito Marco Simoncelli"))
@@ -51,6 +53,14 @@ abstract class EventDatabase : RoomDatabase() {
             trackDao.insert(Track(13, "47.956346471012736, 0.20774175218750832", "Circuit de la Sarthe", "https://i.imgur.com/TX3Q2fD.jpg", "https://i.imgur.com/zs4KUtw.png","Circuit de la Sarthe"))
             trackDao.insert(Track(14, "35.372882282577514, 138.92879996887177", "Fuji Speedway", "https://i.imgur.com/11ADibg.jpg", "https://i.imgur.com/x0OpZUR.jpg", "Circuito del Fuji"))
             trackDao.insert(Track(15, "26.03694764332214, 50.51072123981255", "Bahrain International Circuit", "https://i.imgur.com/wToPBVm.jpg", "https://i.imgur.com/39Wh6uz.png","Bahrain International Circuit"))
+            trackDao.insert(Track(16, "51.535143806175334, 13.928420398407987", "EuroSpeedway Lausitz","https://i.imgur.com/ewwT1Z2.jpg", "https://i.imgur.com/xW7s6Na.png", "Lausitzring"))
+            trackDao.insert(Track(17, "49.431810139242735, 11.124788682985908", "Norisring", "https://i.imgur.com/v6VTte7.jpg", "https://i.imgur.com/epMXkRn.png", "Norisring"))
+            trackDao.insert(Track(18, "47.58213444244969, 19.25053549666542","Hungaroring", "https://i.imgur.com/X91V6se.jpg", "https://i.imgur.com/QesKKhW.png" , "Hungaroring"))
+            trackDao.insert(Track(19, "51.35959079765026, 0.257210560922282", "Brands Hatch", "https://i.imgur.com/yVq2DAX.jpg", "https://i.imgur.com/enrjZkc.png", "Circuito di Brands Hatch"))
+            trackDao.insert(Track(20, "46.86204060787945, 3.163283779952909", "Circuit de Nevers Magny-Cours", "https://i.imgur.com/DQCzxQW.jpg", "https://i.imgur.com/Ke8vdmO.jpg", "Circuito di Nevers Magny-Cours"))
+            trackDao.insert(Track(21, "1.2915778918991436, 103.86390316123044", "Singapore Street Circuit", "https://i.imgur.com/0FjXH1U.jpg", "https://i.imgur.com/tvcWrA1.png", "Singapore Street Circuit"))
+            trackDao.insert(Track(22, "34.845739369622024, 136.53895191102146", "Suzuka Circuit", "https://i.imgur.com/PGvPCDs.jpg", "https://i.imgur.com/HD0FGZw.png", "Circuito di Suzuka"))
+            trackDao.insert(Track(23, "30.134789555043266, -97.63588328875515", "Circuit Of The Americas" , "https://i.imgur.com/6etZB5Q.jpg", "https://i.imgur.com/CZZ0LIq.jpg", "Circuito delle Americhe"))
             championshipDao.insert(Championship(0,"Formula 1",2022, "F1","https://i.imgur.com/Z00oqIB.jpg", "https://i.imgur.com/08VyCYc.png"))
             championshipDao.insert(Championship(1,"GT World Challenge Europe",2022, "GTWC Europe","https://i.imgur.com/YPN6RHj.jpg", "https://i.imgur.com/E2KSk8R.png"))
             championshipDao.insert(Championship(2,"World Endurance Championship", 2022, "WEC","https://i.imgur.com/1hPGMQb.jpg","https://i.imgur.com/uMkbl5c.png"))
@@ -83,6 +93,14 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(25, "6 Hours Of Fuji",14, 2,"2022-09-09" ,"2022-09-11","https://i.imgur.com/ETowGwu.jpg", true))
             eventDao.insert(Event(26, "8 Hours of Bahrain", 15, 2, "2022-11-10", "2022-11-12", "https://i.imgur.com/bHoMwfG.jpg", true))
             eventDao.insert(Event(27, "Bahrain Grand Prix", 15, 0, "2022-03-18", "2022-03-20", "https://i.imgur.com/zZ1ger9.jpg", true))
+            eventDao.insert(Event(28,"Round 2 - Lausitzring Turn 1 powered by Autohero", 16, 3, "2022-05-20", "2022-05-22", "https://i.imgur.com/Z3OPGpX.jpg", true))
+            eventDao.insert(Event(29, "Round 4 - Norisring powered by BMW M", 17, 3, "2022-07-01", "2022-07-03", "https://i.imgur.com/VwQf8ww.jpg", true))
+            eventDao.insert(Event(30, "Hungarian Gran Prix", 18, 0, "2022-07-29", "2022-07-31", "https://i.imgur.com/q6nXsRH.jpg", true))
+            eventDao.insert(Event(31, "Round 2 - Brands Hatch", 19, 1, "2022-04-30", "2022-05-01", "https://i.imgur.com/Ra0J9AX.jpg", true))
+            eventDao.insert(Event(32, "Round 3- Magny-Cours", 20, 1, "2022-05-11", "2022-05-15", "https://i.imgur.com/uvRIsXi.jpg", true))
+            eventDao.insert(Event(33, "Singapore Grand Prix", 21, 0, "2022-09-30", "2022-10-02", "https://i.imgur.com/Xu5QAUo.jpg", true))
+            eventDao.insert(Event(34, "Japanese Grand Prix", 22, 0, "2022-11-07", "2022-11-09", "https://i.imgur.com/gB6YVYs.jpg", true))
+            eventDao.insert(Event(35, "United States Grand Prix", 23, 0, "2022-11-21", "2022-11-23", "https://i.imgur.com/QO9fmK0.jpg", true))
         }
     }
 
