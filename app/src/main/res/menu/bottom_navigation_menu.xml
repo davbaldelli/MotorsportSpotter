@@ -9,7 +9,7 @@
         android:id="@+id/favourites_bottom_btn"
         android:enabled="true"
         android:icon="@drawable/ic_favorite_24"
-        android:title="@string/favorites" />
+        android:title="@string/favourites" />
     <item
         android:id="@+id/discover_bottom_btn"
         android:enabled="true"

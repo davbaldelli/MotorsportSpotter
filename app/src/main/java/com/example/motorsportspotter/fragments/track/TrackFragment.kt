@@ -64,7 +64,7 @@ class TrackFragment : Fragment() {
                 }
                 eventsViewModel.pastTrackEvents(trackId).observe(viewLifecycleOwner) { pastEvents ->
                     if(pastEvents.isEmpty()){
-                        binding.pastCampEventsRw.visibility = View.GONE
+                        binding.pastEventsLabel.visibility = View.GONE
                     }
                     binding.pastEvents = Converters.CompleteEventConverter.convertAll(pastEvents)
                 }

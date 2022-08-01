@@ -12,16 +12,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="7dp"
+        android:paddingVertical="5dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/single_card"
+            style="?attr/materialCardViewElevatedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             android:onClick="openEventActivity"
-            android:tag="@{event.eventId}"
-            style="?attr/materialCardViewElevatedStyle">
+            android:tag="@{event.eventId}">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,8 +36,8 @@
                     android:layout_height="100dp"
                     android:contentDescription="@string/event_image"
                     android:scaleType="centerCrop"
-                    tools:srcCompat="@drawable/audi_gtwc"
-                    app:imageUrl="@{event.imageUrl}"/>
+                    app:imageUrl="@{event.imageUrl}"
+                    tools:srcCompat="@drawable/audi_gtwc" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -59,22 +61,22 @@
                         android:id="@+id/place_event_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="3dp"
                         android:layout_marginHorizontal="7dp"
+                        android:layout_marginVertical="3dp"
                         android:text='@{event.championshipName +" • "+event.eventName}'
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                        tools:text="Round 1 - Imola"/>
+                        tools:text="Round 1 - Imola" />
 
                     <TextView
                         android:id="@+id/place_event_circuit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="3dp"
                         android:layout_marginHorizontal="7dp"
+                        android:layout_marginVertical="3dp"
                         android:text='@{event.trackName}'
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                         android:textSize="12sp"
-                        tools:text="Circuito Enzo e Dino Ferrari"/>
+                        tools:text="Autodromo Enzo e Dino Ferrari" />
 
                 </LinearLayout>
 

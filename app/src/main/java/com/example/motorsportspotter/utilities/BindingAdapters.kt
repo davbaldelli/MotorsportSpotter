@@ -8,13 +8,13 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.motorsportspotter.components.recyclerviews.adapters.ChampionshipEventCardAdapter
-import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
-import com.example.motorsportspotter.components.recyclerviews.adapters.TrackEventsAdapter
-import com.example.motorsportspotter.components.recyclerviews.adapters.VerticalEventCardAdapter
+import com.example.motorsportspotter.components.recyclerviews.adapters.*
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.room.entities.Championship
+import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
+import com.example.motorsportspotter.room.entities.TrackWithEvents
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import java.util.*
 
@@ -67,6 +67,22 @@ fun bindTrackRecyclerView(recyclerView: RecyclerView, events : List<Event>?){
     events?.let {
         val adapter = recyclerView.adapter as TrackEventsAdapter
         adapter.submitList(events)
+    }
+}
+
+@BindingAdapter("suggestedChampionshipsList")
+fun bindChampionshipsRecyclerView(recyclerView: RecyclerView, championships : List<ChampionshipWithEvents>?){
+    championships?.let {
+        val adapter = recyclerView.adapter as ChampionshipsCardsAdapter
+        adapter.submitList(Converters.ChampionshipsConverter.convertAll(it))
+    }
+}
+
+@BindingAdapter("suggestedTracksList")
+fun  bindTracksRecyclerView(recyclerView: RecyclerView, tracks : List<TrackWithEvents>?){
+    tracks?.let {
+        val adapter = recyclerView.adapter as TrackCardsAdapter
+        adapter.submitList(Converters.TracksConverter.convertAll(it))
     }
 }
 

@@ -10,10 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.fragments.home.DiscoverFragment
-import com.example.motorsportspotter.fragments.home.FavouritesEventFragment
-import com.example.motorsportspotter.fragments.home.HomeFragment
-import com.example.motorsportspotter.fragments.home.NewsFragment
+import com.example.motorsportspotter.fragments.home.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -53,7 +50,7 @@ class Home : AppCompatActivity() {
         bottomNavigation.setOnItemSelectedListener{ item ->
             when(item.itemId) {
                 R.id.home_bottom_btn -> {
-                    changeFragment<HomeFragment>()
+                    changeFragment<HomeFragmentX>()
                     true
                 }
                 R.id.favourites_bottom_btn -> {

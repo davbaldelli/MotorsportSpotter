@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.databinding.TrackEventCardBinding
 
-class TrackEventsAdapter:  ListAdapter<Event, TrackEventViewHolder>(EventCardAdapter) {
+class TrackEventsAdapter:  ListAdapter<Event, TrackEventViewHolder>(TrackEventsAdapter) {
     companion object DiffCallback : DiffUtil.ItemCallback<Event>() {
         override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
             return oldItem.eventName == newItem.eventName

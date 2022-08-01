@@ -12,7 +12,7 @@
     <string name="your_followed_championships">Your Followed Championships</string>
     <string name="event_thumbnail">Event Thumbnail</string>
     <string name="tab_layout_desc">Events fragments</string>
-    <string name="favorites">Favorites</string>
+    <string name="favourites">Favourites</string>
     <string name="event_image">Event image</string>
     <string name="championship_image">Championship image</string>
     <string name="championship_logo">championship logo</string>
@@ -28,4 +28,7 @@
     <string name="ongoing_events">Ongoing Events</string>
     <string name="future_events">Future Events</string>
     <string name="past_events">Past Events</string>
+    <string name="incoming_events">Incoming Events</string>
+    <string name="suggested_championships">Suggested Championships</string>
+    <string name="suggested_tracks">Suggested Tracks</string>
 </resources>

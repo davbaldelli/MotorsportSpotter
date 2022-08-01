@@ -63,7 +63,7 @@ class ChampionshipFragment : Fragment() {
                 }
                 eventsViewModel.pastChampionshipEvents(championshipId).observe(viewLifecycleOwner) { pastEvents ->
                     if(pastEvents.isEmpty()){
-                        binding.pastCampEventsRw.visibility = View.GONE
+                        binding.pastEventsLabel.visibility = View.GONE
                     }
                     binding.pastEvents = Converters.CompleteEventConverter.convertAll(pastEvents)
                 }

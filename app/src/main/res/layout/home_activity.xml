@@ -9,20 +9,21 @@
     tools:context=".activities.Home">
 
     <include
-        android:id="@+id/topAppBar"
+        android:id="@+id/topbar"
         layout="@layout/topbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_container_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
-        android:name="com.example.motorsportspotter.fragments.home.HomeFragment"
+        android:name="com.example.motorsportspotter.fragments.home.HomeFragmentX"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topbar" />
 
 
     <include
@@ -31,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
         app:layout_constraintTop_toBottomOf="@+id/fragment_container_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
 
     val allEvents = repository.allEvents.asLiveData()
     val favouritesEvents = repository.favouritesEvents.asLiveData()
+    val incomingEvents = repository.incomingEvents.asLiveData()
 
     fun insert(event: Event) = viewModelScope.launch {
         repository.insert(event)
