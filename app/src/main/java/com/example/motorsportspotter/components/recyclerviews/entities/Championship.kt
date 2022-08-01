@@ -6,7 +6,8 @@ class Championship(
     val year : Int,
     val prettyName : String,
     val backgroundUrl : String,
-    val logoUrl : String
+    val logoUrl : String,
+    val followed : Boolean,
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
         return query(name+prettyName)

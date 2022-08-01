@@ -29,11 +29,11 @@ class HomeFragmentX : Fragment() {
         ChampionshipsViewModelFactory((this.activity?.application as EventsApplication).championshipRepository)
     }
 
-    private val tracksViewModel : TracksViewModel by viewModels {
+    private val tracksViewModel: TracksViewModel by viewModels {
         TracksViewModelFactory((requireActivity().application as EventsApplication).tracksRepository)
     }
 
-    private lateinit var binding : HomeFragmentBinding
+    private lateinit var binding: HomeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,16 +41,16 @@ class HomeFragmentX : Fragment() {
     ): View {
         binding = HomeFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
+
         binding.eventViewModel = eventViewModel
         binding.championshipViewModel = championshipsViewModel
         binding.trackViewModel = tracksViewModel
+
         binding.homeFragmentRw.adapter = EventCardAdapter()
         binding.suggestedTracksRw.adapter = TrackCardsAdapter()
         binding.suggestedChampionshipsRw.adapter = ChampionshipsCardsAdapter()
+
         return binding.root
     }
 
-    fun favButtonClick(view : View){
-        eventViewModel.setFavourite(view.tag as Int)
-    }
 }

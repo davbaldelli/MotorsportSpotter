@@ -15,6 +15,7 @@ class Event(
     val imageUrl: String,
     val championshipName: String?,
     val championshipId : Int?,
+    val championshipFollowed : Boolean?,
     val championshipIconUrl : String?,
     val trackLocation : Pair<String, String>?,
     val trackLocationName : String?

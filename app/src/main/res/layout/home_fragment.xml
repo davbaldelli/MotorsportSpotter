@@ -80,7 +80,7 @@
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/championship_card"
-                        suggestedChampionshipsList="@{championshipViewModel.allChampionships}"/>
+                        suggestedChampionshipsList="@{championshipViewModel.allUnfollowedChampionships}"/>
 
                 </RelativeLayout>
 
@@ -111,7 +111,7 @@
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/track_card"
-                        suggestedTracksList="@{trackViewModel.allTracks}"/>
+                        suggestedTracksList="@{trackViewModel.unfollowedTracks}"/>
 
                 </RelativeLayout>
             </HorizontalScrollView>

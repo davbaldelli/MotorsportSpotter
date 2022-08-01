@@ -5,16 +5,34 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.fragment.app.viewModels
+import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.home.*
+import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
+import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
+import com.example.motorsportspotter.room.viewmodel.TracksViewModel
+import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class Home : AppCompatActivity() {
+
+    private val championshipsViewModel: ChampionshipsViewModel by viewModels {
+        ChampionshipsViewModelFactory((application as EventsApplication).championshipRepository)
+    }
+
+    private val tracksViewModel: TracksViewModel by viewModels {
+        TracksViewModelFactory((application as EventsApplication).tracksRepository)
+    }
 
     private val fragmentManager = supportFragmentManager
 
@@ -43,6 +61,41 @@ class Home : AppCompatActivity() {
 
         startActivity(intent)
     }
+
+    fun openChampionshipActivity(view : View){
+        val championshipId = view.tag as Int
+        val intent = Intent(this, ChampionshipActivity::class.java).apply {
+            putExtra("championship_id", championshipId)
+        }
+        startActivity(intent)
+    }
+
+    fun openTrackActivity(view : View){
+        val trackId = view.tag as Int
+        val intent = Intent(this, TrackActivity::class.java).apply {
+            putExtra("track_id", trackId)
+        }
+
+        startActivity(intent)
+    }
+
+    fun onTrackFollowButtonClick(view : View){
+        runBlocking {
+            launch {
+                tracksViewModel.changeFollowed(view.tag as Int)
+            }
+        }
+
+    }
+
+    fun onChampionshipFollowButtonClick(view : View){
+        runBlocking {
+            launch {
+                championshipsViewModel.changeFollowed(view.tag as Int)
+            }
+        }
+    }
+
 
 
     private fun setBottomNavBehaviour(activity: Activity){

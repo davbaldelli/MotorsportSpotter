@@ -5,12 +5,21 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.championship.ChampionshipFragmentViewModel
+import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
+import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ChampionshipActivity : AppCompatActivity() {
 
     private val fragmentViewModel : ChampionshipFragmentViewModel by viewModels()
+
+    private val championshipsViewModel: ChampionshipsViewModel by viewModels {
+        ChampionshipsViewModelFactory((application as EventsApplication).championshipRepository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,5 +36,12 @@ class ChampionshipActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun onChampionshipFollowButtonClick(view : View){
+        runBlocking {
+            launch {
+                championshipsViewModel.changeFollowed(view.tag as Int)
+            }
+        }
+    }
 
 }

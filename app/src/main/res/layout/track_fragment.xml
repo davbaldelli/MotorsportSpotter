@@ -90,7 +90,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     style="?attr/materialButtonOutlinedStyle"
-                    android:text="@string/follow" />
+                    tools:text="Follow"
+                    android:onClick="onTrackFollowButtonClick"
+                    android:tag="@{track.id}"
+                    android:text='@{track.followed ? "Unfollow" : "Follow" }'  />
             </FrameLayout>
 
             <TextView

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
 import com.example.motorsportspotter.room.entities.Track
 import com.example.motorsportspotter.room.entities.TrackWithEvents
 import kotlinx.coroutines.flow.Flow
@@ -15,6 +16,12 @@ interface TrackDao {
 
     @Query("SELECT * FROM tracks")
     fun getAll() : Flow<List<TrackWithEvents>>
+
+    @Query("SELECT * FROM tracks WHERE favourite = 0")
+    fun getUnfollowed() : Flow<List<TrackWithEvents>>
+
+    @Query("UPDATE tracks SET favourite = NOT favourite WHERE id = :id")
+    fun changeFavourite(id : Int) : Int
 
     @Query("SELECT * FROM tracks WHERE id= :id")
     fun getTrackWithEvents(id : Int) : LiveData<TrackWithEvents>

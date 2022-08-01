@@ -16,6 +16,12 @@ interface ChampionshipDao {
     @Query("SELECT * FROM championships")
     fun getAll() : Flow<List<ChampionshipWithEvents>>
 
+    @Query("SELECT * FROM championships WHERE favourite = 0")
+    fun getUnfollowed() : Flow<List<ChampionshipWithEvents>>
+
+    @Query("UPDATE championships SET favourite = NOT favourite WHERE id = :id")
+    fun changeFavourite(id : Int) : Int
+
     @Query("SELECT * FROM championships WHERE id = :id")
     fun getChampionshipWithEvents(id : Int) : LiveData<ChampionshipWithEvents>
 

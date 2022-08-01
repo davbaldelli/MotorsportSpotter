@@ -24,6 +24,7 @@ class DBEntitiesConvertersFactory {
                 it.event.image,
                 it.championship.prettyName,
                 it.championship.uid,
+                it.championship.favourite,
                 it.championship.logo,
                 location,
                 it.track.locationName
@@ -39,6 +40,7 @@ class DBEntitiesConvertersFactory {
                 it.trackName,
                 null,
                 it.image,
+                null,
                 null,
                 null,
                 null,
@@ -60,6 +62,7 @@ class DBEntitiesConvertersFactory {
                 null,
                 null,
                 null,
+                null,
                 null
             )
 
@@ -67,10 +70,12 @@ class DBEntitiesConvertersFactory {
 
         val TracksConverter = EntitiesConverter<TrackWithEvents, AdapterTrack> {
             AdapterTrack(
+                it.track.uid,
                 it.track.name,
                 it.track.coordinates,
                 it.track.image,
-                it.track.logo
+                it.track.logo,
+                it.track.favourite,
             )
         }
 
@@ -81,7 +86,8 @@ class DBEntitiesConvertersFactory {
                 it.championship.year,
                 it.championship.prettyName,
                 it.championship.image,
-                it.championship.logo
+                it.championship.logo,
+                it.championship.favourite
             )
         }
 

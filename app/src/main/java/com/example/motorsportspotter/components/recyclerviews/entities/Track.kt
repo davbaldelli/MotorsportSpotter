@@ -1,10 +1,12 @@
 package com.example.motorsportspotter.components.recyclerviews.entities
 
 class Track(
+    val id : Int,
     val name : String,
     val coordinates : String,
     val backgroundUrl : String,
-    val logoUrl : String
+    val logoUrl : String,
+    val followed : Boolean,
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
         return query(name)

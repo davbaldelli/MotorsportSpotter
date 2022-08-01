@@ -94,7 +94,10 @@
                             android:layout_gravity="center_vertical|end"
                             android:layout_marginHorizontal="10dp"
                             style="?attr/materialButtonOutlinedStyle"
-                            android:text="@string/follow" />
+                            tools:text="Follow"
+                            android:tag="@{event.championshipId}"
+                            android:onClick="onChampionshipFollowButtonClick"
+                            android:text='@{event.championshipFollowed ? "Unfollow" : "Follow" }'  />
 
 
                 </LinearLayout>
