@@ -65,6 +65,11 @@ abstract class EventDatabase : RoomDatabase() {
             trackDao.insert(Track(24, "", "Autodromo di Vallelunga", "https://i.imgur.com/3aqM2To.jpg","https://i.imgur.com/1DCVGui.png","Autodromo Nazionale di Vallelunga “Piero Taruffi”", false))
             trackDao.insert(Track(25,"","Autodromo internazionale del Mugello", "https://i.imgur.com/IwQ0IWm.jpg", "https://i.imgur.com/dR6HEOC.png", "Mugello Circuit", false))
             trackDao.insert(Track(26, "", "Silverstone Circuit", "https://i.imgur.com/bMEkUTX.jpg", "https://i.imgur.com/lDKGAX1.png", "Circuito di Silverstone", false))
+            trackDao.insert(Track(27, "", "Nürburgring Nordschleife", "https://i.imgur.com/MfcGvUb.jpg", "https://i.imgur.com/TCkxzf1.jpg", "Nürburgring Nordschleife", false))
+            trackDao.insert(Track(28, "", "Autodrom Most", "https://i.imgur.com/4DAcTbg.jpg", "https://i.imgur.com/mNKzg1Y.png", "Autodromo di Most", false))
+            trackDao.insert(Track(29, "", "Motorland Aragòn", "https://i.imgur.com/yuGmfW1.jpg", "https://i.imgur.com/rxIAZGz.jpg", "Ciudad del Motor de Aragón", false))
+            trackDao.insert(Track(30,"","Anneau du Rhin", "https://i.imgur.com/4LrcxMj.jpg", "https://i.imgur.com/n8FWKjg.jpg", "Anneau du Rhin", false))
+            trackDao.insert(Track(31, "", "Circuit Zolder", "https://i.imgur.com/mnNwnDx.jpg", "https://i.imgur.com/5pmBfHb.png", "Circuito di Zolder", false))
             championshipDao.insert(Championship(0,"Formula 1",2022, "F1","https://i.imgur.com/Z00oqIB.jpg", "https://i.imgur.com/08VyCYc.png", true))
             championshipDao.insert(Championship(1,"GT World Challenge Europe",2022, "GTWC Europe","https://i.imgur.com/YPN6RHj.jpg", "https://i.imgur.com/E2KSk8R.png", true))
             championshipDao.insert(Championship(2,"World Endurance Championship", 2022, "WEC","https://i.imgur.com/1hPGMQb.jpg","https://i.imgur.com/uMkbl5c.png", true))
@@ -125,6 +130,15 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(48, "Race Of Italy", 24, 8, "2022-07-23", "2022-07-24", "https://i.imgur.com/Wty97Dz.jpg", false))
             eventDao.insert(Event(49, "British Grand Prix", 26, 0, "2022-07-03", "2022-07-05", "https://i.imgur.com/VNKnXjd.jpg" , false))
             eventDao.insert(Event(50, "Gran Premi Monster Energy de Catalunya", 8, 7,"2022-06-03", "2022-06-05", "https://i.imgur.com/4Dov9bs.jpg", false))
+            eventDao.insert(Event(51, "Race Of Germany", 27, 8, "2022-05-26", "2022-05-28", "https://i.imgur.com/NexR6as.jpg", false))
+            eventDao.insert(Event(52, "Race Of Hungary", 18, 8, "2022-06-11", "2022-06-12", "https://i.imgur.com/kMz798n.jpg", false))
+            eventDao.insert(Event(53, "GP Czech Republic", 28, 9, "2022-09-03", "2022-09-04", "https://i.imgur.com/b0OFya4.jpg", false))
+            eventDao.insert(Event(54, "Gran Premio Animoca Brands de Aragón", 29, 7, "2022-09-16", "2022-09-18", "https://i.imgur.com/ujGyw4v.jpg", false))
+            eventDao.insert(Event(56, "Race Of Spain", 29, 8, "2022-06-25", "2022-06-26", "https://i.imgur.com/nGcy1wA.jpg", false))
+            eventDao.insert(Event(57, "Red Bull Grand Prix of The Americas", 23, 7, "2022-04-08", "2022-04-10", "https://i.imgur.com/suYb1yM.jpg", false))
+            eventDao.insert(Event(58, "Shark Grand Prix de France", 13, 7, "2022-05-13","2022-05-15", "https://i.imgur.com/iFeSDK1.jpg", false))
+            eventDao.insert(Event(59, "Race of Alsace GrandEst", 30, 8, "2022-08-05", "2022-08-07", "https://i.imgur.com/Sua1PAt.jpg", false))
+            eventDao.insert(Event(60, "GP Belgium", 31, 9, "2022-10-08", "2022-10-09", "https://i.imgur.com/ZDiJkK6.jpg", false))
 
         }
     }
