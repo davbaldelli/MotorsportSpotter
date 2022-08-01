@@ -11,6 +11,7 @@ import com.example.motorsportspotter.room.dao.TrackDao
 import com.example.motorsportspotter.room.entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlin.math.E
 
 @Database(entities = [Event::class, Track::class, Championship::class], views  = [EventWithTrack::class, EventWithChampionship::class], version = 1, exportSchema = false)
 abstract class EventDatabase : RoomDatabase() {
@@ -61,15 +62,18 @@ abstract class EventDatabase : RoomDatabase() {
             trackDao.insert(Track(21, "1.2915778918991436, 103.86390316123044", "Singapore Street Circuit", "https://i.imgur.com/0FjXH1U.jpg", "https://i.imgur.com/tvcWrA1.png", "Singapore Street Circuit", false))
             trackDao.insert(Track(22, "34.845739369622024, 136.53895191102146", "Suzuka Circuit", "https://i.imgur.com/PGvPCDs.jpg", "https://i.imgur.com/HD0FGZw.png", "Circuito di Suzuka", true))
             trackDao.insert(Track(23, "30.134789555043266, -97.63588328875515", "Circuit Of The Americas" , "https://i.imgur.com/6etZB5Q.jpg", "https://i.imgur.com/CZZ0LIq.jpg", "Circuito delle Americhe", false))
+            trackDao.insert(Track(24, "", "Autodromo di Vallelunga", "https://i.imgur.com/3aqM2To.jpg","https://i.imgur.com/1DCVGui.png","Autodromo Nazionale di Vallelunga “Piero Taruffi”", false))
+            trackDao.insert(Track(25,"","Autodromo internazionale del Mugello", "https://i.imgur.com/IwQ0IWm.jpg", "https://i.imgur.com/dR6HEOC.png", "Mugello Circuit", false))
+            trackDao.insert(Track(26, "", "Silverstone Circuit", "https://i.imgur.com/bMEkUTX.jpg", "https://i.imgur.com/lDKGAX1.png", "Circuito di Silverstone", false))
             championshipDao.insert(Championship(0,"Formula 1",2022, "F1","https://i.imgur.com/Z00oqIB.jpg", "https://i.imgur.com/08VyCYc.png", true))
             championshipDao.insert(Championship(1,"GT World Challenge Europe",2022, "GTWC Europe","https://i.imgur.com/YPN6RHj.jpg", "https://i.imgur.com/E2KSk8R.png", true))
             championshipDao.insert(Championship(2,"World Endurance Championship", 2022, "WEC","https://i.imgur.com/1hPGMQb.jpg","https://i.imgur.com/uMkbl5c.png", true))
             championshipDao.insert(Championship(3, "Deutsche Tourenwagen Masters",2022, "DTM", "https://i.imgur.com/KQ2ep4I.jpg","https://i.imgur.com/deJgy9H.png", true))
             championshipDao.insert(Championship(4,"Formula 2", 2022, "F2", "https://i.imgur.com/zGUwAwa.jpg", "https://i.imgur.com/zcmfcya.png", false))
             championshipDao.insert(Championship(5,"Formula 3", 2022, "F3", "https://i.imgur.com/j4RYC28.jpg", "https://i.imgur.com/xIaspSP.png", false))
-            championshipDao.insert(Championship(6, "Super GT", 2022, "Super GT", "https://i.imgur.com/CaBfE4C.jpg", "https://i.imgur.com/hGw8xrB.png", false))
             championshipDao.insert(Championship(7, "MotoGP", 2022, "MotoGP", "https://i.imgur.com/3ABc863.jpg", "https://i.imgur.com/V20HyhG.png", false))
-            championshipDao.insert(Championship(8,"NASCAR Cup Series", 2022, "NASCAR", "https://i.imgur.com/AMu9wTr.jpg","https://i.imgur.com/c4zWXi6.png", true))
+            championshipDao.insert(Championship(8, "World Turing Car Cup", 2022, "WTCR" , "https://i.imgur.com/Gvwgzr3.jpg", "https://i.imgur.com/EBzb5GK.png", false))
+            championshipDao.insert(Championship(9, "EuroNASCAR PRO", 2022, "EuroNASCAR PRO", "https://i.imgur.com/glyOXEt.jpg", "https://i.imgur.com/EAlUhbZ.png", false))
             eventDao.insert(Event(0,"Gran Premio dell'Emilia-Romagna",0,0,"2022-04-22","2022-04-24","https://i.imgur.com/T1KIu0G.jpg?2",true))
             eventDao.insert(Event(1,"Gran Premio D'Italia",1,0,"2022-09-09","2022-09-11","https://i.imgur.com/XtVWUlf.jpg", true))
             eventDao.insert(Event(2,"Round 1 - Imola",0,1,"2022-04-01","2022-04-03","https://i.imgur.com/myshDJU.jpg", true))
@@ -110,6 +114,18 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(37, "Monza", 1, 4, "2022-09-09", "2022-09-11", "https://i.imgur.com/050ZtIT.jpg", false))
             eventDao.insert(Event(38, "Spa-Francorchamps", 3, 4,"2022-08-26", "2022-08-28", "https://i.imgur.com/VJgk97z.jpg", false))
             eventDao.insert(Event(39, "Gran Premio di San Marino e della Riviera di Rimini", 2, 7, "2022-09-02", "2022-09-04", "https://i.imgur.com/EhOQ9Qs.jpg",true))
+            eventDao.insert(Event(40, "Grande Prémio Tissot de Portugal", 4, 7, "2022-04-22","2022-04-24", "https://i.imgur.com/5Y6tUyC.jpg", false))
+            eventDao.insert(Event(41, "Gran Premio d'Italia Oakley", 25, 7, "2022-05-27", "2022-05-29", "https://i.imgur.com/Y8xKe1B.jpg", false))
+            eventDao.insert(Event(42, "Monster Energy British Grand Prix", 26, 7, "2022-08-05", "2022-08-07", "https://i.imgur.com/dfBAQ3P.jpg", false))
+            eventDao.insert(Event(43, "CryptoDATA Motorrad Grand Prix von Österreich", 10, 7, "2022-08-19", "2022-08-21", "https://i.imgur.com/pc3AT9v.jpg", false))
+            eventDao.insert(Event(44, "Gran Premio Motul de la Comunitat Valenciana", 11, 7, "2022-11-04", "2022-11-06", "https://i.imgur.com/EvLxJac.jpg", false))
+            eventDao.insert(Event(45, "GP Spain", 11, 9, "2022-05-14", "2022-05-15", "https://i.imgur.com/pNbHDXz.jpg", false))
+            eventDao.insert(Event(46, "GP UK", 19, 9, "2022-06-11", "2022-06-12", "https://i.imgur.com/YuBDxDb.jpg", false))
+            eventDao.insert(Event(47, "GP Italy", 24, 9, "2022-07-09", "2022-07-10", "https://i.imgur.com/sWiezCw.jpg", false))
+            eventDao.insert(Event(48, "Race Of Italy", 24, 8, "2022-07-23", "2022-07-24", "https://i.imgur.com/Wty97Dz.jpg", false))
+            eventDao.insert(Event(49, "British Grand Prix", 26, 0, "2022-07-03", "2022-07-05", "https://i.imgur.com/VNKnXjd.jpg" , false))
+            eventDao.insert(Event(50, "Gran Premi Monster Energy de Catalunya", 8, 7,"2022-06-03", "2022-06-05", "https://i.imgur.com/4Dov9bs.jpg", false))
+
         }
     }
 

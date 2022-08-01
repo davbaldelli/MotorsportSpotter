@@ -12,8 +12,6 @@ class DBEntitiesConvertersFactory {
     companion object {
 
         val CompleteEventConverter = EntitiesConverter<EventWithTrackAndChamp, AdapterEvent> {
-            val coordinates = it.track.coordinates.split(',')
-            val location = Pair(coordinates[0],coordinates[1])
             AdapterEvent(
                 it.event.uid,
                 it.event.name,
@@ -26,7 +24,7 @@ class DBEntitiesConvertersFactory {
                 it.championship.uid,
                 it.championship.favourite,
                 it.championship.logo,
-                location,
+                null,
                 it.track.locationName
             )
         }
