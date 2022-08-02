@@ -70,6 +70,15 @@ abstract class EventDatabase : RoomDatabase() {
             trackDao.insert(Track(29, "", "Motorland Aragòn", "https://i.imgur.com/yuGmfW1.jpg", "https://i.imgur.com/rxIAZGz.jpg", "Ciudad del Motor de Aragón", false))
             trackDao.insert(Track(30,"","Anneau du Rhin", "https://i.imgur.com/4LrcxMj.jpg", "https://i.imgur.com/n8FWKjg.jpg", "Anneau du Rhin", false))
             trackDao.insert(Track(31, "", "Circuit Zolder", "https://i.imgur.com/mnNwnDx.jpg", "https://i.imgur.com/5pmBfHb.png", "Circuito di Zolder", false))
+            trackDao.insert(Track(32, "", "Twin Ring Motegi", "https://i.imgur.com/LxI9mGb.jpg", "https://i.imgur.com/lrHwN0u.png", "Twin Ring Motegi", false))
+            trackDao.insert(Track(33, "", "Chang International Circuit", "https://i.imgur.com/G9uo5gD.jpg","https://i.imgur.com/zPRZMM7.png", "Chang International Circuit", false ))
+            trackDao.insert(Track(34, "", "Phillip Island Grand Prix Circuit", "https://i.imgur.com/yfaHT2S.jpg", "https://i.imgur.com/o7FVR0l.png", "Circuito di Phillip Island (Phillip Island Grand Prix Circuit)", false))
+            trackDao.insert(Track(35, "", "Sepang International Circuit", "https://i.imgur.com/0sYRm1K.jpg", "https://i.imgur.com/J1Pe5i6.png", "Circuito di Sepang", false))
+            trackDao.insert(Track(36, "", "TT Circuit Assen", "https://i.imgur.com/svsT8KT.jpg", "https://i.imgur.com/1zRUeH0.png", "TT Circuit Assen", false))
+            trackDao.insert(Track(37, "", "Circuito de Jerez - Angel Nieto", "https://i.imgur.com/U58rqh4.jpg", "https://i.imgur.com/lQfG9bk.jpg", "Circuito di Jerez de la Frontera", false))
+            trackDao.insert(Track(38, "","Sachsenring", "https://i.imgur.com/ZGYXigl.jpg", "https://i.imgur.com/boL5mb2.png", "Sachsenring", false))
+            trackDao.insert(Track(39, "","Pertamina Mandalika Circuit", "https://i.imgur.com/6rEeMqs.jpg", "https://i.imgur.com/UXAlfTL.png", "Circuito di Mandalika", false))
+            trackDao.insert(Track(40, "", "Autódromo Internacional de Termas de Río Hondo", "https://i.imgur.com/rIyeN4W.jpg", "https://i.imgur.com/fU2Avar.png", "Autodromo di Termas de Río Hondo (Autódromo Internacional de Termas de Río Hondo", false))
             championshipDao.insert(Championship(0,"Formula 1",2022, "F1","https://i.imgur.com/Z00oqIB.jpg", "https://i.imgur.com/08VyCYc.png", true))
             championshipDao.insert(Championship(1,"GT World Challenge Europe",2022, "GTWC Europe","https://i.imgur.com/YPN6RHj.jpg", "https://i.imgur.com/E2KSk8R.png", true))
             championshipDao.insert(Championship(2,"World Endurance Championship", 2022, "WEC","https://i.imgur.com/1hPGMQb.jpg","https://i.imgur.com/uMkbl5c.png", true))
@@ -139,7 +148,14 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(58, "Shark Grand Prix de France", 13, 7, "2022-05-13","2022-05-15", "https://i.imgur.com/iFeSDK1.jpg", false))
             eventDao.insert(Event(59, "Race of Alsace GrandEst", 30, 8, "2022-08-05", "2022-08-07", "https://i.imgur.com/Sua1PAt.jpg", false))
             eventDao.insert(Event(60, "GP Belgium", 31, 9, "2022-10-08", "2022-10-09", "https://i.imgur.com/ZDiJkK6.jpg", false))
-
+            eventDao.insert(Event(61, "Motul Grand Prix of Japan", 32, 7,"2022-09-23", "2022-08-25", "https://i.imgur.com/XtltJJX.jpg", false))
+            eventDao.insert(Event(62, "Thailand Grand Prix ", 33, 7, "2022-09-30", "2022-10-02", "https://i.imgur.com/9svI6ob.jpg", false))
+            eventDao.insert(Event(63, "Animoca Brands Australian Motorcycle Grand Prix", 34, 7, "2022-10-14", "2022-10-16", "https://i.imgur.com/cbOsemk.jpg", false))
+            eventDao.insert(Event(64, "PETRONAS Grand Prix of Malaysia", 35, 7, "2022-10-21", "2022-10-23", "https://i.imgur.com/ATm92jo.jpg", false))
+            eventDao.insert(Event(65, "Gran Premio Red Bull de España", 37, 7, "2022-04-29", "2022-05-01", "https://i.imgur.com/xfZPSzI.jpg", false))
+            eventDao.insert(Event(66, "Liqui Moly Motorrad Grand Prix Deutschland", 38, 7, "2022-06-17", "2022-06-19", "https://i.imgur.com/LWdbEsu.jpg", false))
+            eventDao.insert(Event(67, "Pertamina Grand Prix of Indonesia", 39, 7, "2022-03-18", "2022-03-20", "https://i.imgur.com/izwgUGN.jpg", false))
+            eventDao.insert(Event(68, "Gran Premio Michelin® de la República Argentina", 40, 7, "2022-04-01", "2022-04-03", "https://i.imgur.com/5jbIbbR.jpg", false))
         }
     }
 
