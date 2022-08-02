@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class TracksViewModel(private val repository: TracksRepository) : ViewModel() {
     val allTracks = repository.allTracks.asLiveData()
     val unfollowedTracks = repository.unfollowedTracks.asLiveData()
+    val followedTracks = repository.followedTracks.asLiveData()
 
     fun insert(track : Track) = viewModelScope.launch {
         repository.insert(track)

@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/championship_fragment.xml" value="0.42481884057971014" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/event_search_result_card.xml" value="0.55" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/favourite_all_fragment.xml" value="0.5359375" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/favourite_events_fragment.xml" value="0.43779392902949976" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/favourites_championships_fragment.xml" value="0.55" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/favourites_tracks_fragment.xml" value="0.55" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/fragment_blank.xml" value="0.55" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/horizontal_championship_card.xml" value="0.5489583333333333" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/horizontal_track_card.xml" value="0.5489583333333333" />
+        <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/track_card.xml" value="0.55" />
         <entry key="..\:/Users/david/Documents/GitHub/MotorsportSpotter/app/src/main/res/layout/vertical_event_card.xml" value="0.55" />
         <entry key="app/src/main/res/layout/activity_championship_detail.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />

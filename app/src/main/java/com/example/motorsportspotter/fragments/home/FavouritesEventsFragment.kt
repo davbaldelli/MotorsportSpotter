@@ -5,38 +5,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
-import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.R
-import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.motorsportspotter.databinding.FavouriteEventsFragmentBinding
-
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
-
-import com.example.motorsportspotter.room.viewmodel.EventsViewModel
-import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
+import com.google.android.material.tabs.TabLayoutMediator
 
 class FavouritesEventFragment : Fragment() {
 
-    private val eventViewModel: EventsViewModel by viewModels {
-        EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
-    }
-
-    private lateinit var binding : FavouriteEventsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FavouriteEventsFragmentBinding.inflate(inflater)
+        val binding = FavouriteEventsFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = eventViewModel
-        binding.favEventsRw.adapter = EventCardAdapter()
+
+        binding.favViewPager.adapter = FavouritesPagerAdapter(this)
+
+        TabLayoutMediator(binding.favTabLayout, binding.favViewPager) { tab, position ->
+            when(position){
+                0 -> tab.text = "All"
+                1 -> tab.text = "Championships"
+                2 -> tab.text = "Tracks"
+            }
+        }.attach()
+
         return binding.root
     }
 
-    fun favButtonCLick(view : View){
-        eventViewModel.setFavourite(view.tag as Int)
+
+
+}
+
+class FavouritesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+    val fragments = listOf(FavouriteAllFragment(), FavouritesChampionshipsFragment(), FavouritesTracksFragment())
+    override fun getItemCount(): Int = fragments.size
+
+    override fun createFragment(position: Int): Fragment {
+        return fragments[position]
     }
+
 }

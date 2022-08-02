@@ -31,4 +31,5 @@
     <string name="incoming_events">Incoming Events</string>
     <string name="suggested_championships">Suggested Championships</string>
     <string name="suggested_tracks">Suggested Tracks</string>
+    <string name="unfollow">Unfollow</string>
 </resources>

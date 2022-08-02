@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.home.FavouritesChampionshipsFragment">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/followed_championships_rw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            horizontalChampionshipsList="@{viewModel.followedChampionships}"
+            tools:listitem="@layout/horizontal_championship_card"/>
+
+    </FrameLayout>
+</layout>

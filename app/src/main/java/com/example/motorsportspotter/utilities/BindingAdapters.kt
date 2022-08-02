@@ -86,4 +86,18 @@ fun  bindTracksRecyclerView(recyclerView: RecyclerView, tracks : List<TrackWithE
     }
 }
 
+@BindingAdapter("horizontalTracksList")
+fun bindHorizontalTracksRecyclerView(recyclerView: RecyclerView, tracks : List<TrackWithEvents>?){
+    tracks?.let {
+        val adapter = recyclerView.adapter as HorizontalTrackCardsAdapter
+        adapter.submitList(Converters.TracksConverter.convertAll(it))
+    }
+}
 
+@BindingAdapter("horizontalChampionshipsList")
+fun bindHorizontalChampionshipsRecyclerView(recyclerView: RecyclerView, tracks : List<ChampionshipWithEvents>?){
+    tracks?.let {
+        val adapter = recyclerView.adapter as HorizontalChampionshipCardsAdapter
+        adapter.submitList(Converters.ChampionshipsConverter.convertAll(it))
+    }
+}

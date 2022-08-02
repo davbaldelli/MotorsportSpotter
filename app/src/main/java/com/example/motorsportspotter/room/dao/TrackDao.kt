@@ -20,6 +20,9 @@ interface TrackDao {
     @Query("SELECT * FROM tracks WHERE favourite = 0")
     fun getUnfollowed() : Flow<List<TrackWithEvents>>
 
+    @Query("SELECT * FROM tracks WHERE favourite = 1")
+    fun getFollowed() : Flow<List<TrackWithEvents>>
+
     @Query("UPDATE tracks SET favourite = NOT favourite WHERE id = :id")
     fun changeFavourite(id : Int) : Int
 

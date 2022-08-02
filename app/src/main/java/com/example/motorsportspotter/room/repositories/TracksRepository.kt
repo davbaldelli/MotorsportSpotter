@@ -10,6 +10,7 @@ class TracksRepository(private val dao : TrackDao) {
 
     val allTracks = dao.getAll()
     val unfollowedTracks = dao.getUnfollowed()
+    val followedTracks = dao.getFollowed()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
