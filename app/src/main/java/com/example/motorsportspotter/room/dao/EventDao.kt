@@ -14,7 +14,7 @@ interface EventDao {
     fun insert(event: Event)
 
     @Query("UPDATE events SET favourites = NOT favourites WHERE uid = :id")
-    fun setCarFavourite(id : Int)
+    fun setFavourite(id : Int) : Int
 
     @Query("SELECT * FROM events ORDER BY start_date")
     fun getAll() : Flow<List<EventWithTrackAndChamp>>
@@ -23,7 +23,7 @@ interface EventDao {
     fun getAllFutureEvents() : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE end_date > DATE('NOW') ORDER BY start_date LIMIT 5")
-    fun getIncomingEvents() : Flow<List<EventWithTrackAndChamp>>
+    fun getIncomingEvents() : LiveData<List<EventWithTrackAndChamp>>
 
     @Query("SELECT e.* FROM events e JOIN championships c on c.id = e.championship_id JOIN tracks t on t.id = e.track_id WHERE (e.favourites = 1 OR t.favourite = 1 OR c.favourite = 1 ) AND end_date > DATE('now') ORDER BY start_date")
     fun getFavourites() : Flow<List<EventWithTrackAndChamp>>

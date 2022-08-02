@@ -10,6 +10,7 @@ import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.track.TrackFragmentViewModel
 import com.example.motorsportspotter.room.viewmodel.TracksViewModel
 import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -25,6 +26,11 @@ class TrackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel.setTrackId(intent.getIntExtra("track_id",0))
         setContentView(R.layout.track_activity)
+        val actionBar: MaterialToolbar = findViewById(R.id.event_toolbar)
+        setSupportActionBar(actionBar)
+        supportActionBar?.title = ""
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_white_24)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun openEventActivity(view : View){

@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 
 class ChampionshipRepository(private val dao: ChampionshipDao) {
     val allChampionships : Flow<List<ChampionshipWithEvents>> = dao.getAll()
-    val allUnfollowedChampionships : Flow<List<ChampionshipWithEvents>> = dao.getUnfollowed()
+    val allUnfollowedChampionships = dao.getUnfollowed()
     val followedChampionships = dao.getFollowed()
 
     @Suppress("RedundantSuspendModifier")

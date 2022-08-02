@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_share_24.xml" value="0.499" />
         <entry key="app/src/main/res/layout/activity_championship_detail.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/bottom_navigation.xml" value="0.5317708333333333" />
@@ -16,12 +17,14 @@
         <entry key="app/src/main/res/layout/event_card_layout.xml" value="0.5322916666666667" />
         <entry key="app/src/main/res/layout/event_container_fragment.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/event_detail_fragment.xml" value="0.34125" />
+        <entry key="app/src/main/res/layout/event_detail_topbar.xml" value="0.4170444242973708" />
         <entry key="app/src/main/res/layout/event_fragment.xml" value="0.46153846153846156" />
         <entry key="app/src/main/res/layout/event_search_result_card.xml" value="0.4365113296280462" />
         <entry key="app/src/main/res/layout/events_fragment.xml" value="0.43693886276186406" />
         <entry key="app/src/main/res/layout/favourite_events_fragment.xml" value="0.43693886276186406" />
         <entry key="app/src/main/res/layout/first_event_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/first_event_card_image.xml" value="0.43693886276186406" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.4170444242973708" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.4322498944702406" />
         <entry key="app/src/main/res/layout/home_activity.xml" value="0.43693886276186406" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.33" />
@@ -35,6 +38,7 @@
         <entry key="app/src/main/res/layout/track_fragment.xml" value="0.42883046237534" />
         <entry key="app/src/main/res/layout/vertical_event_card.xml" value="0.43693886276186406" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.5322916666666667" />
+        <entry key="app/src/main/res/menu/event_apbbar_menu.xml" value="0.4360837964942283" />
         <entry key="app/src/main/res/menu/top_app_bar.xml" value="0.39921875" />
       </map>
     </option>

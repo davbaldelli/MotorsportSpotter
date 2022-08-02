@@ -9,14 +9,16 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
 
     val allEvents = repository.allEvents.asLiveData()
     val favouritesEvents = repository.favouritesEvents.asLiveData()
-    val incomingEvents = repository.incomingEvents.asLiveData()
+    val incomingEvents = repository.incomingEvents
 
     fun insert(event: Event) = viewModelScope.launch {
         repository.insert(event)
     }
 
-    fun setFavourite(id : Int) {
-        repository.setFavourite(id)
+    suspend fun setFavourite(id : Int) {
+        viewModelScope.launch {
+            repository.setFavourite(id)
+        }
     }
 
     fun futureChampionshipEvents(champId : Int) = repository.futureEventsByChamp(champId)

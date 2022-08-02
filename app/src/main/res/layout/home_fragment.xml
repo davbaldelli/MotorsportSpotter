@@ -32,6 +32,7 @@
                 android:text="@string/incoming_events"
                 android:textColor="@color/black"
                 android:textSize="24sp"
+                optionalLabel="@{eventViewModel.incomingEvents}"
                 android:textStyle="bold" />
 
 
@@ -63,7 +64,8 @@
                 android:text="@string/suggested_championships"
                 android:textColor="@color/black"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                optionalLabel="@{championshipViewModel.allUnfollowedChampionships}"/>
 
             <HorizontalScrollView
                 android:layout_width="wrap_content"
@@ -94,7 +96,8 @@
                 android:text="@string/suggested_tracks"
                 android:textColor="@color/black"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                optionalLabel="@{trackViewModel.unfollowedTracks}"/>
 
             <HorizontalScrollView
                 android:layout_width="wrap_content"

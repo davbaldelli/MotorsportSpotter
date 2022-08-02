@@ -2,6 +2,8 @@ package com.example.motorsportspotter.utilities
 
 import android.location.Address
 import android.location.Geocoder
+import android.opengl.Visibility
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -106,5 +108,14 @@ fun bindHorizontalChampionshipsRecyclerView(recyclerView: RecyclerView, tracks :
     tracks?.let {
         val adapter = recyclerView.adapter as HorizontalChampionshipCardsAdapter
         adapter.submitList(Converters.ChampionshipsConverter.convertAll(it))
+    }
+}
+
+@BindingAdapter("optionalLabel")
+fun bindOptionalLabel(textView: TextView, dataList : List<Any>?){
+    if (dataList != null && dataList.isNotEmpty()) {
+        textView.visibility = View.VISIBLE
+    }else{
+        textView.visibility = View.GONE
     }
 }

@@ -10,6 +10,7 @@ import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.championship.ChampionshipFragmentViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -25,6 +26,11 @@ class ChampionshipActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         fragmentViewModel.setChampionshipId(intent.getIntExtra("championship_id",0))
         setContentView(R.layout.championship_activity)
+        val actionBar: MaterialToolbar = findViewById(R.id.event_toolbar)
+        setSupportActionBar(actionBar)
+        supportActionBar?.title = ""
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_white_24)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun openEventActivity(view : View){

@@ -4,12 +4,14 @@ import androidx.annotation.WorkerThread
 import com.example.motorsportspotter.room.dao.EventDao
 import com.example.motorsportspotter.room.entities.Event
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 
 class EventRepository(private val dao: EventDao) {
 
     val allEvents : Flow<List<EventWithTrackAndChamp>> = dao.getAllFutureEvents()
-    val incomingEvents : Flow<List<EventWithTrackAndChamp>> = dao.getIncomingEvents()
+    val incomingEvents  = dao.getIncomingEvents()
 
     val favouritesEvents = dao.getFavourites()
 
@@ -19,8 +21,10 @@ class EventRepository(private val dao: EventDao) {
         dao.insert(event)
     }
 
-    fun setFavourite(id : Int){
-        dao.setCarFavourite(id)
+    suspend fun setFavourite(id : Int) : Int{
+        return withContext(Dispatchers.IO){
+            dao.setFavourite(id)
+        }
     }
 
 

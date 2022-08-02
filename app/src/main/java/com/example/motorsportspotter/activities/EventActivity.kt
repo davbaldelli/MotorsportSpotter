@@ -1,15 +1,22 @@
 package com.example.motorsportspotter.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.event.EventDetailFragmentViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
+import com.example.motorsportspotter.room.viewmodel.EventsViewModel
+import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -21,11 +28,46 @@ class EventActivity : AppCompatActivity() {
         ChampionshipsViewModelFactory((application as EventsApplication).championshipRepository)
     }
 
+    private val eventViewModel: EventsViewModel by viewModels {
+        EventsViewModelFactory((this.application as EventsApplication).eventRepository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fragmentViewModel.setEventId(intent.getIntExtra("event_id", 0))
         setContentView(R.layout.event_activity)
+
+        val actionBar: MaterialToolbar = findViewById(R.id.event_toolbar)
+        setSupportActionBar(actionBar)
+        supportActionBar?.title = ""
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_white_24)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.event_appbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.follow -> {
+                runBlocking {
+                    launch {
+                        eventViewModel.setFavourite(intent.getIntExtra("event_id", 0))
+                    }
+                }
+                true
+            }
+            R.id.share -> {
+                // save profile changes
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
 
     fun openChampionshipActivity(view : View){
         val championshipId = view.tag as Int
@@ -40,7 +82,6 @@ class EventActivity : AppCompatActivity() {
         val intent = Intent(this, TrackActivity::class.java).apply {
             putExtra("track_id", trackId)
         }
-
         startActivity(intent)
     }
 
