@@ -34,9 +34,16 @@ fun bindAddress(textView: TextView, locationName : String?){
         val geocoder = Geocoder(textView.context, Locale.ITALY)
         val addresses: List<Address> = geocoder.getFromLocationName(it, 1)
         val address = addresses[0]
-        textView.text = address.getAddressLine(0)
+        textView.text = "${address.getAddressLine(0)}  ${address.countryCode.flagEmoji}"
     }
 }
+
+val String.flagEmoji: String
+    get() {
+        val firstLetter = Character.codePointAt(this, 0) - 0x41 + 0x1F1E6
+        val secondLetter = Character.codePointAt(this, 1) - 0x41 + 0x1F1E6
+        return String(Character.toChars(firstLetter)) + String(Character.toChars(secondLetter))
+    }
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<EventWithTrackAndChamp>?) {

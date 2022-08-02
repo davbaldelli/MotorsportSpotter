@@ -7,6 +7,7 @@ class Track(
     val backgroundUrl : String,
     val logoUrl : String,
     val followed : Boolean,
+    val location : String,
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
         return query(name)

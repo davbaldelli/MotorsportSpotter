@@ -81,30 +81,80 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/ongoing_events_label"
+                app:layout_constraintBottom_toTopOf="@+id/separator1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/championship_name_place">
 
                 <Button
                     android:id="@+id/follow_button"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    style="?attr/materialButtonOutlinedStyle"
-                    tools:text="Follow"
                     android:onClick="onChampionshipFollowButtonClick"
                     android:tag="@{championship.id}"
-                    android:text='@{championship.followed ? "Unfollow" : "Follow" }' />
+                    android:text='@{championship.followed ? "Unfollow" : "Follow" }'
+                    tools:text="Follow" />
             </FrameLayout>
+
+            <View
+                android:id="@+id/separator1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/follow_layout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separator1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingHorizontal="15dp"
+                    android:text="@string/about_this_championship"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:text="@string/lorem_ipsum" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separator2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout5"/>
+
 
             <TextView
                 android:id="@+id/ongoing_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/ongoing_events"
                 android:textColor="@color/black"
@@ -113,14 +163,14 @@
                 app:layout_constraintBottom_toTopOf="@+id/ongoing_camp_events_rw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/follow_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/separator2" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ongoing_camp_events_rw"
                 championshipDataList="@{ongoingEvents}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -151,7 +201,7 @@
                 android:id="@+id/future_camp_events_rw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -181,18 +231,20 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/past_camp_events_rw"
+                championshipDataList="@{pastEvents}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/past_events_label"
-                tools:listitem="@layout/event_card"
                 tools:itemCount="3"
-                championshipDataList="@{pastEvents}"/>
+                tools:listitem="@layout/event_card" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

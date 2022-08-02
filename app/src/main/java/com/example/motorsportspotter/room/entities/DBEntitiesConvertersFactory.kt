@@ -74,6 +74,7 @@ class DBEntitiesConvertersFactory {
                 it.track.image,
                 it.track.logo,
                 it.track.favourite,
+                it.track.locationName
             )
         }
 

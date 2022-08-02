@@ -80,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/ongoing_events_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -96,27 +95,110 @@
                     android:text='@{track.followed ? "Unfollow" : "Follow" }'  />
             </FrameLayout>
 
+            <LinearLayout
+                android:id="@+id/location_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/follow_layout">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/event_icon"
+                    android:src="@drawable/ic_location_24" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        addressCoordinates='@{track.location}'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Piazza Ayrton Senna da Silva, 1, Imola, Italy" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separator1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="15dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_layout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separator1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingHorizontal="15dp"
+                    android:text="@string/about_this_track"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:text="@string/lorem_ipsum" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separator2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout5"/>
+
             <TextView
                 android:id="@+id/ongoing_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/ongoing_events"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/ongoing_camp_events_rw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/follow_layout" />
+                app:layout_constraintTop_toBottomOf="@id/separator2" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ongoing_camp_events_rw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -131,9 +213,8 @@
                 android:id="@+id/future_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/future_events"
                 android:textColor="@color/black"
@@ -148,7 +229,7 @@
                 android:id="@+id/future_camp_events_rw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -163,9 +244,8 @@
                 android:id="@+id/past_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/past_events"
                 android:textColor="@color/black"
@@ -178,18 +258,20 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/past_camp_events_rw"
+                trackDataList="@{pastEvents}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/past_events_label"
-                tools:listitem="@layout/event_card"
                 tools:itemCount="3"
-                trackDataList="@{pastEvents}"/>
+                tools:listitem="@layout/event_card" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

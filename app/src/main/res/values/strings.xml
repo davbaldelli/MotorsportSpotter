@@ -32,4 +32,6 @@
     <string name="suggested_championships">Suggested Championships</string>
     <string name="suggested_tracks">Suggested Tracks</string>
     <string name="unfollow">Unfollow</string>
+    <string name="about_this_championship">About This Championship</string>
+    <string name="about_this_track">About This Track</string>
 </resources>

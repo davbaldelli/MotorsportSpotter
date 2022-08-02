@@ -28,19 +28,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    app:cardCornerRadius="70dp">
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_margin="2dp"
-                        imageUrl="@{championship.logoUrl}"
-                        android:contentDescription="@string/track_logo"
-                        tools:src="@drawable/f1_logo"/>
-                </com.google.android.material.card.MaterialCardView>
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="5dp"
+                    imageUrl="@{championship.logoUrl}"
+                    android:contentDescription="@string/track_logo"
+                    tools:src="@drawable/f1_logo"/>
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
