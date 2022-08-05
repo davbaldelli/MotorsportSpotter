@@ -27,6 +27,13 @@ class EventRepository(private val dao: EventDao) {
         }
     }
 
+    suspend fun getFavSync() : List<EventWithTrackAndChamp>{
+        return  withContext(Dispatchers.IO){
+            dao.getFavouritesSync()
+        }
+    }
+
+
 
 
     fun futureEventsByChamp(champId : Int) = dao.getFutureFromChampionship(champId)

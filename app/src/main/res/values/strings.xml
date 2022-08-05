@@ -35,4 +35,6 @@
     <string name="about_this_championship">About This Championship</string>
     <string name="about_this_track">About This Track</string>
     <string name="share">Share</string>
+    <string name="running_now">running now</string>
+    <string name="live_icon">live icon</string>
 </resources>

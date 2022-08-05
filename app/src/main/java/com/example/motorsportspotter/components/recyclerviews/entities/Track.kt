@@ -1,5 +1,10 @@
 package com.example.motorsportspotter.components.recyclerviews.entities
 
+import android.app.Activity
+import android.content.Intent
+import android.view.View
+import com.example.motorsportspotter.activities.TrackActivity
+
 class Track(
     val id : Int,
     val name : String,
@@ -22,6 +27,17 @@ class Track(
     }
 
     override fun getImgRes(): String {
-        return ""
+        return backgroundUrl
+    }
+
+    override fun onClick(view: View) {
+        val activity : Activity = view.context as Activity
+        activity.apply {
+            val intent = Intent(this, TrackActivity::class.java).apply {
+                putExtra("track_id", id)
+            }
+
+            startActivity(intent)
+        }
     }
 }

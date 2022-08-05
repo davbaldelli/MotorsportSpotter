@@ -1,9 +1,12 @@
 package com.example.motorsportspotter.utilities
 
+import android.R
 import android.location.Address
 import android.location.Geocoder
-import android.opengl.Visibility
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.view.animation.AnimationUtils.loadAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -12,13 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.motorsportspotter.components.recyclerviews.adapters.*
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
-import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
 import com.example.motorsportspotter.room.entities.TrackWithEvents
-import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
+import java.time.LocalDate
 import java.util.*
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
+
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
@@ -117,5 +120,22 @@ fun bindOptionalLabel(textView: TextView, dataList : List<Any>?){
         textView.visibility = View.VISIBLE
     }else{
         textView.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("optionalRunningIcon")
+fun bindRunningIcon(imageView: ImageView, event : Event){
+    val current = LocalDate.now()
+    if(current >= event.startDate && current <= event.endDate){
+        imageView.visibility = View.VISIBLE
+        val animFadeOut: Animation = AnimationUtils.loadAnimation(
+            imageView.context,
+            R.anim.fade_out
+        )
+        animFadeOut.repeatCount = Animation.INFINITE;
+        animFadeOut.repeatMode = Animation.REVERSE;
+        imageView.startAnimation(animFadeOut)
+    } else {
+        imageView.visibility = View.GONE
     }
 }

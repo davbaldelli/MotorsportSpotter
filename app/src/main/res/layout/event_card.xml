@@ -63,20 +63,40 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="7dp"
                         android:layout_marginVertical="3dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text='@{event.championshipName +" • "+event.eventName}'
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         tools:text="Round 1 - Imola" />
 
-                    <TextView
-                        android:id="@+id/place_event_circuit"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="7dp"
-                        android:layout_marginVertical="3dp"
-                        android:text='@{event.trackName}'
-                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        android:textSize="12sp"
-                        tools:text="Autodromo Enzo e Dino Ferrari" />
+                        android:orientation="horizontal"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="7dp">
+                        <TextView
+                            android:id="@+id/place_event_circuit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@{event.trackName}"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                            android:textSize="12sp"
+                            tools:text="Autodromo Enzo e Dino Ferrari"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:paddingHorizontal="3dp"
+                            android:visibility="invisible"
+                            optionalRunningIcon="@{event}"
+                            android:layout_marginHorizontal="10dp"
+                            android:src="@drawable/ic_live_circle_red_24"
+                            android:contentDescription="@string/live_icon" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

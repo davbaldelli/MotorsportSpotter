@@ -1,5 +1,9 @@
 package com.example.motorsportspotter.components.recyclerviews.entities
 
+import android.app.Activity
+import android.content.Intent
+import android.view.View
+import com.example.motorsportspotter.activities.EventActivity
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -29,11 +33,21 @@ class Event(
     }
 
     override fun getDescription(): String {
-        return endDate.toString()
+        return getPeriod()
     }
 
     override fun getImgRes(): String {
         return imageUrl
+    }
+
+    override fun onClick(view: View) {
+        val activity : Activity = view.context as Activity
+        activity.apply {
+            val intent = Intent(this, EventActivity::class.java).apply {
+                putExtra("event_id", eventId)
+            }
+            startActivity(intent)
+        }
     }
 
     fun getPeriod() : String{

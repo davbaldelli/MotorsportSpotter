@@ -71,7 +71,7 @@ class DiscoverFragment : Fragment() {
 
     private fun setupRecyclerView(activity: Activity){
         val resultView = activity.findViewById<RecyclerView>(R.id.search_result_list)
-        adapter = EventSearchResultAdapter(ArrayList(), activity)
+        adapter = EventSearchResultAdapter()
         resultView.adapter = adapter
     }
 
@@ -80,18 +80,18 @@ class DiscoverFragment : Fragment() {
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if(query != null && query != ""){
-                    adapter.updateList(searchFromAll(query))
+                    adapter.submitList(searchFromAll(query))
                 } else {
-                    adapter.updateList(ArrayList())
+                    adapter.submitList(ArrayList())
                 }
                 return true
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
                 if(query != null && query != ""){
-                    adapter.updateList(searchFromAll(query))
+                    adapter.submitList(searchFromAll(query))
                 } else {
-                    adapter.updateList(ArrayList())
+                    adapter.submitList(ArrayList())
                 }
                 return true
             }

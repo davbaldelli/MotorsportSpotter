@@ -5,34 +5,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.R
+import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
+import com.example.motorsportspotter.databinding.EventSearchResultCardBinding
 
-class EventSearchResultAdapter(private var itemList: ArrayList<SearchResult>, val activity : Activity) : RecyclerView.Adapter<EventSearchResultViewHolder>() {
+class EventSearchResultAdapter : ListAdapter<SearchResult, EventSearchResultViewHolder>(EventSearchResultAdapter){
+
+    companion object DiffCallback : DiffUtil.ItemCallback<SearchResult>() {
+        override fun areItemsTheSame(oldItem: SearchResult, newItem: SearchResult): Boolean {
+            return oldItem.getTitle() == newItem.getTitle()
+        }
+
+        override fun areContentsTheSame(oldItem: SearchResult, newItem: SearchResult): Boolean {
+            return oldItem.getTitle() == newItem.getTitle()
+        }
+
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventSearchResultViewHolder {
-        val layoutView : View = LayoutInflater.from(parent.context).inflate(R.layout.event_search_result_card, parent, false)
-        return EventSearchResultViewHolder(layoutView)
+        return EventSearchResultViewHolder(EventSearchResultCardBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: EventSearchResultViewHolder, position: Int) {
-        val result = itemList[position]
-        holder.placeCardTitle.text = result.getTitle()
-        holder.placeCardDesc.text = result.getDescription()
+        val result = getItem(position)
+        holder.bind(result)
     }
 
-    override fun getItemCount(): Int {
-        return itemList.size
-    }
-
-    fun updateList(results : List<SearchResult>){
-        itemList.clear()
-        itemList.addAll(results)
-        notifyDataSetChanged()
-    }
 }
 
-class EventSearchResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val placeCardTitle : TextView = itemView.findViewById(R.id.event_search_result_title)
-    val placeCardDesc : TextView = itemView.findViewById(R.id.event_search_result_desc)
+class EventSearchResultViewHolder(private var binding : EventSearchResultCardBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(result : SearchResult){
+        binding.searchResult = result
+        binding.executePendingBindings()
+    }
 }

@@ -1,35 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+        <variable
+            name="searchResult"
+            type="com.example.motorsportspotter.components.recyclerviews.entities.SearchResult" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/event_thumbnail"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/backgrounds/scenic"
-            android:background="@color/purple_500" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/event_search_result_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="prova"/>
-            <TextView
-                android:id="@+id/event_search_result_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="prova"/>
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="7dp"
+        android:paddingVertical="5dp">
 
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.CardView.Elevated"
+            android:layout_margin="2dp"
+            android:onClick="@{searchResult::onClick}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="200dp"
+                    android:layout_margin="5dp"
+                    android:padding="1dp">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:contentDescription="@string/event_thumbnail"
+                        android:scaleType="centerCrop"
+                        imageUrl="@{searchResult.imgRes}"
+                        tools:srcCompat="@drawable/audi_gtwc" />
+                </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/event_search_result_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="7dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="3dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{searchResult.title}"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                    <TextView
+                        android:id="@+id/event_search_result_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="7dp"
+                        android:layout_marginVertical="3dp"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                        android:text="@{searchResult.description}" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+</layout>

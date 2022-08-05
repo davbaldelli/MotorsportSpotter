@@ -1,8 +1,11 @@
 package com.example.motorsportspotter.activities
 
-import android.app.Activity
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -10,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import androidx.fragment.app.viewModels
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkRequest
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.home.*
@@ -18,8 +23,8 @@ import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
 import com.example.motorsportspotter.room.viewmodel.TracksViewModel
 import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
+import com.example.motorsportspotter.utilities.StartedEventBroadcastReceiver
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -40,7 +45,41 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
         setBottomNavBehaviour(this)
+        createNotificationChannel()
+
+        val alarmMgr = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val alarmIntent = Intent(applicationContext, StartedEventBroadcastReceiver::class.java).let { intent ->
+            PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+        }
+
+        alarmMgr.setInexactRepeating(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime(),
+            AlarmManager.INTERVAL_HALF_HOUR,
+            alarmIntent
+        )
+
+
+
     }
+
+    private fun createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "0"
+            val descriptionText = "0"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("0", name, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
 
 
     private inline fun <reified T:Fragment> changeFragment(){
