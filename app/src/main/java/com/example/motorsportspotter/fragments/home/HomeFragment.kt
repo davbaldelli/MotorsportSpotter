@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
                 geocoder.getFromLocation(location.latitude, location.longitude, 1)
             address = addresses[0]
             val resultView = view.findViewById<RecyclerView>(R.id.home_fragment_rw)
-            val adapter = EventCardAdapter()
+            val adapter = EventCardAdapter(this)
             resultView.adapter = adapter
             eventViewModel.allEvents.observe(viewLifecycleOwner) { events -> adapter.submitList(EntitiesFilter.filterEventsByCountry(DBEntitiesConvertersFactory.CompleteEventConverter.convertAll(events), address.countryCode, requireContext()))}
         }

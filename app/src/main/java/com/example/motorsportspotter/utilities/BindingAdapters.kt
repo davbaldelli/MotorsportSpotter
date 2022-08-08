@@ -18,6 +18,8 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
 import com.example.motorsportspotter.room.entities.TrackWithEvents
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.*
 import java.time.LocalDate
 import java.util.*
@@ -138,4 +140,14 @@ fun bindRunningIcon(imageView: ImageView, event : Event){
     } else {
         imageView.visibility = View.GONE
     }
+}
+
+@BindingAdapter("optionalTicketButton")
+fun bindOptionalTicketsButton(floatingActionButton: ExtendedFloatingActionButton, event : Event?){
+    event?.let {
+        if (LocalDate.now() > event.endDate){
+            floatingActionButton.isEnabled = false
+        }
+    }
+
 }

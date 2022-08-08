@@ -40,8 +40,8 @@ class StartedEventBroadcastReceiver: BroadcastReceiver() {
                     }
 
                     val builder = NotificationCompat.Builder(context, "EventUpdate")
-                        .setSmallIcon(R.drawable.ic_favorite_24)
-                        .setContentTitle("${event.event.name} of ${event.championship.prettyName} has just started!")
+                        .setSmallIcon(R.drawable.ic_events_24)
+                        .setContentTitle("${event.event.name} of ${event.championship.prettyName} is in progress today!")
                         .setContentText("Click here to see the event details")
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setContentIntent(resultPendingIntent)

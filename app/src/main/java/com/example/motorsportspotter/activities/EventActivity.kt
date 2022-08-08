@@ -1,14 +1,13 @@
 package com.example.motorsportspotter.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.event.EventDetailFragmentViewModel
@@ -100,6 +99,16 @@ class EventActivity : AppCompatActivity() {
                 championshipsViewModel.changeFollowed(view.tag as Int)
             }
         }
+    }
+
+    fun onBuyTicketsClick(view : View){
+        goToUrl(view.tag as String)
+    }
+
+    private fun goToUrl(url: String) {
+        val uriUrl: Uri = Uri.parse(url)
+        val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
+        startActivity(launchBrowser)
     }
 
 }

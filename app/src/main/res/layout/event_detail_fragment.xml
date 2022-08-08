@@ -253,13 +253,15 @@
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            optionalTicketButton="@{event}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_margin="30dp"
+            android:onClick="onBuyTicketsClick"
+            android:tag="https://biglietti.monzanet.it/it/event/formula-1-pirelli-gran-premio-d-italia-2022/179546"
             android:text="@string/buy_tickets"
-            android:textAlignment="center"
-            />
+            android:textAlignment="center" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

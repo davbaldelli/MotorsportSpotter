@@ -29,7 +29,7 @@ class Event(
     }
 
     override fun getTitle(): String {
-        return eventName
+        return "$championshipName • $eventName"
     }
 
     override fun getDescription(): String {
