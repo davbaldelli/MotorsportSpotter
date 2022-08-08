@@ -18,6 +18,7 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
 import com.example.motorsportspotter.room.entities.TrackWithEvents
+import kotlinx.coroutines.*
 import java.time.LocalDate
 import java.util.*
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
@@ -28,7 +29,6 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         imgView.load(imgUri) {
-
         }
     }
 }

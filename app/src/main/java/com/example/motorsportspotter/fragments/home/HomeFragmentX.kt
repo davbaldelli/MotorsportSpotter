@@ -46,9 +46,9 @@ class HomeFragmentX : Fragment() {
         binding.championshipViewModel = championshipsViewModel
         binding.trackViewModel = tracksViewModel
 
-        binding.homeFragmentRw.adapter = EventCardAdapter()
-        binding.suggestedTracksRw.adapter = TrackCardsAdapter()
-        binding.suggestedChampionshipsRw.adapter = ChampionshipsCardsAdapter()
+        binding.homeFragmentRw.adapter = EventCardAdapter(this)
+        binding.suggestedTracksRw.adapter = TrackCardsAdapter(this)
+        binding.suggestedChampionshipsRw.adapter = ChampionshipsCardsAdapter(this)
 
         return binding.root
     }

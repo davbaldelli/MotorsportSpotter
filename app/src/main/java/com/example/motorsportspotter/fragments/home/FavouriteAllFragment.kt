@@ -30,7 +30,8 @@ class FavouriteAllFragment : Fragment() {
         binding = FavouriteAllFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = eventViewModel
-        binding.favEventsRw.adapter = EventCardAdapter()
+        binding.favEventsRw.adapter = EventCardAdapter(this)
         return binding.root
     }
+
 }

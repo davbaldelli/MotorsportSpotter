@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 
 class EventRepository(private val dao: EventDao) {
 
-    val allEvents : Flow<List<EventWithTrackAndChamp>> = dao.getAllFutureEvents()
+    val allEvents : Flow<List<EventWithTrackAndChamp>> = dao.getAll()
     val incomingEvents  = dao.getIncomingEvents()
 
     val favouritesEvents = dao.getFavourites()

@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/layout/championship_activity.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/championship_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/championship_event_card.xml" value="0.43693886276186406" />
-        <entry key="app/src/main/res/layout/championship_fragment.xml" value="0.43779392902949976" />
+        <entry key="app/src/main/res/layout/championship_fragment.xml" value="0.3690863127482846" />
         <entry key="app/src/main/res/layout/discover_fragment.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/event_activity.xml" value="0.2479692176143651" />
         <entry key="app/src/main/res/layout/event_card.xml" value="0.42883046237534" />
@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/event_fragment.xml" value="0.46153846153846156" />
         <entry key="app/src/main/res/layout/event_search_result_card.xml" value="0.67" />
         <entry key="app/src/main/res/layout/events_fragment.xml" value="0.43693886276186406" />
+        <entry key="app/src/main/res/layout/favourite_all_fragment.xml" value="0.4170444242973708" />
         <entry key="app/src/main/res/layout/favourite_events_fragment.xml" value="0.43693886276186406" />
         <entry key="app/src/main/res/layout/first_event_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/first_event_card_image.xml" value="0.43693886276186406" />

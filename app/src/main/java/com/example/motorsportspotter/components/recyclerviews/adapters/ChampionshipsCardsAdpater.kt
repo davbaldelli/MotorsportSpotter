@@ -3,13 +3,19 @@ package com.example.motorsportspotter.components.recyclerviews.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship
+import com.example.motorsportspotter.components.recyclerviews.entities.Track
 import com.example.motorsportspotter.databinding.ChampionshipCardBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class ChampionshipsCardsAdapter:  ListAdapter<Championship, ChampionshipViewHolder>(ChampionshipsCardsAdapter) {
+class ChampionshipsCardsAdapter(val fragment: Fragment):  ListAdapter<Championship, ChampionshipViewHolder>(ChampionshipsCardsAdapter) {
     companion object DiffCallback : DiffUtil.ItemCallback<Championship>() {
         override fun areItemsTheSame(oldItem: Championship, newItem: Championship): Boolean {
             return oldItem.name == newItem.name
@@ -28,6 +34,14 @@ class ChampionshipsCardsAdapter:  ListAdapter<Championship, ChampionshipViewHold
     override fun onBindViewHolder(holder: ChampionshipViewHolder, position: Int) {
         val championship = getItem(position)
         holder.bind(championship)
+    }
+
+    override fun submitList(list: List<Championship>?) {
+        fragment.viewLifecycleOwner.lifecycleScope.launch {
+            withContext(Dispatchers.IO){
+                super.submitList(list)
+            }
+        }
     }
 
 }

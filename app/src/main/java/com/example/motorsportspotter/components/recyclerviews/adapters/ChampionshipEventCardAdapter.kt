@@ -12,11 +12,11 @@ import com.example.motorsportspotter.databinding.ChampionshipEventCardBinding
 class ChampionshipEventCardAdapter : ListAdapter<Event, ChampEventCardViewHolder>(EventCardAdapter) {
     companion object DiffCallback : DiffUtil.ItemCallback<Event>() {
         override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
-            return oldItem.eventName == newItem.eventName
+            return false
         }
 
         override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean {
-            return oldItem.eventName == newItem.eventName
+            return false
         }
 
     }
@@ -30,7 +30,6 @@ class ChampionshipEventCardAdapter : ListAdapter<Event, ChampEventCardViewHolder
         val event = getItem(position)
         holder.bind(event)
     }
-
 }
 
 abstract class ChampEventCardViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root){

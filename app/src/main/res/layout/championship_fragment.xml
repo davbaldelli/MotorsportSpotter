@@ -160,25 +160,32 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/ongoing_camp_events_rw"
+                app:layout_constraintBottom_toTopOf="@+id/ongoing_camp_events_rw_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/separator2" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ongoing_camp_events_rw"
-                championshipDataList="@{ongoingEvents}"
+            <RelativeLayout
+                android:id="@+id/ongoing_camp_events_rw_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:nestedScrollingEnabled="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label"
-                tools:itemCount="3"
-                tools:listitem="@layout/event_card" />
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ongoing_camp_events_rw"
+                    championshipDataList="@{ongoingEvents}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/event_card"
+                    tools:itemCount="3"/>
+            </RelativeLayout>
+
+
 
             <TextView
                 android:id="@+id/future_events_label"
@@ -195,7 +202,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/future_camp_events_rw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ongoing_camp_events_rw" />
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_camp_events_rw_container" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/future_camp_events_rw"
