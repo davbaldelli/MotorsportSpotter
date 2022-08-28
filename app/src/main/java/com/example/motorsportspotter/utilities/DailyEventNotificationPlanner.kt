@@ -27,20 +27,7 @@ class DailyEventNotificationPlanner: BroadcastReceiver() {
             launch {
                 val events = repo.getFavSync()
                 events.forEach { event ->
-
                     val alarmMgr = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                    /*
-                    val alarmIntent = Intent(context, StartedEventBroadcastReceiver::class.java).let { intent ->
-                        intent.putExtra("Title","${event.event.name} of ${event.championship.prettyName} is in progress today!" )
-                        intent.putExtra("EventId", event.event.id)
-                        intent.putExtra("NotifyId", event.event.id)
-                        PendingIntent.getBroadcast(context, event.event.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-                    }
-                    alarmMgr.set(
-                        AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                        SystemClock.elapsedRealtime() + (30 * 1000),
-                        alarmIntent
-                    )*/
 
                     DBEntitiesConvertersFactory.SessionConverter.convertAll(event.sessions).forEach { session ->
                         val alarmIntent2 = Intent(context, StartedEventBroadcastReceiver::class.java).let { intent ->
