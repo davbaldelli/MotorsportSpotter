@@ -4,32 +4,25 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.example.motorsportspotter.activities.EventActivity
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 class Event(
     val eventId : Int,
     val eventName: String,
     val startDate: LocalDate,
     val endDate: LocalDate,
-    val trackName: String?,
-    val trackId : Int?,
     val imageUrl: String,
-    val championshipName: String?,
-    val championshipId : Int?,
-    val championshipFollowed : Boolean?,
-    val championshipIconUrl : String?,
-    val trackLocation : Pair<String, String>?,
-    val trackLocationName : String?
+    val track : Track,
+    val championship: Championship,
+    val sessions : List<Session>
 ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
         return query(eventName)
     }
 
     override fun getTitle(): String {
-        return "$championshipName • $eventName"
+        return "${championship.prettyName} • $eventName"
     }
 
     override fun getDescription(): String {

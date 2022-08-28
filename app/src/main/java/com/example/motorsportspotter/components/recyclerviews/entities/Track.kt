@@ -8,7 +8,7 @@ import com.example.motorsportspotter.activities.TrackActivity
 class Track(
     val id : Int,
     val name : String,
-    val coordinates : String,
+    val coordinates : Pair<String, String>?,
     val backgroundUrl : String,
     val logoUrl : String,
     val followed : Boolean,

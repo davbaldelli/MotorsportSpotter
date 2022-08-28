@@ -6,18 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.adapters.ChampionshipsCardsAdapter
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
 import com.example.motorsportspotter.components.recyclerviews.adapters.TrackCardsAdapter
-import com.example.motorsportspotter.databinding.FavouriteEventsFragmentBinding
 import com.example.motorsportspotter.databinding.HomeFragmentBinding
 import com.example.motorsportspotter.room.viewmodel.*
-
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 
 class HomeFragmentX : Fragment() {
 

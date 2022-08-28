@@ -65,7 +65,7 @@
                         android:layout_marginVertical="3dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text='@{event.championshipName +" • "+event.eventName}'
+                        android:text='@{event.championship.prettyName +" • "+event.eventName}'
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         tools:text="Round 1 - Imola" />
 
@@ -81,7 +81,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@{event.trackName}"
+                            android:text="@{event.track.name}"
                             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                             android:textSize="12sp"
                             tools:text="Autodromo Enzo e Dino Ferrari"/>

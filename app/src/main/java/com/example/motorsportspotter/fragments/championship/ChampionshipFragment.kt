@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.adapters.ChampionshipEventCardAdapter
 import com.example.motorsportspotter.databinding.ChampionshipFragmentBinding
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel

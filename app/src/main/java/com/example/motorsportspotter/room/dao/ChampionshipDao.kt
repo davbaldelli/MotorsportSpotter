@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.motorsportspotter.room.entities.Championship
-import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -14,18 +13,18 @@ interface ChampionshipDao {
     fun insert(championship: Championship)
 
     @Query("SELECT * FROM championships")
-    fun getAll() : Flow<List<ChampionshipWithEvents>>
+    fun getAll() : Flow<List<Championship>>
 
     @Query("SELECT * FROM championships WHERE favourite = 0")
-    fun getUnfollowed() : LiveData<List<ChampionshipWithEvents>>
+    fun getUnfollowed() : LiveData<List<Championship>>
 
     @Query("SELECT * FROM championships WHERE favourite = 1")
-    fun getFollowed() : Flow<List<ChampionshipWithEvents>>
+    fun getFollowed() : Flow<List<Championship>>
 
     @Query("UPDATE championships SET favourite = NOT favourite WHERE id = :id")
     fun changeFavourite(id : Int) : Int
 
     @Query("SELECT * FROM championships WHERE id = :id")
-    fun getChampionshipWithEvents(id : Int) : LiveData<ChampionshipWithEvents>
+    fun getChampionshipWithEvents(id : Int) : LiveData<Championship>
 
 }

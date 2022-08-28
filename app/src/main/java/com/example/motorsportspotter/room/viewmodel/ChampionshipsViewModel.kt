@@ -1,14 +1,15 @@
 package com.example.motorsportspotter.room.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.motorsportspotter.room.entities.Championship
-import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
 import com.example.motorsportspotter.room.repositories.ChampionshipRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ChampionshipsViewModel(private val repository: ChampionshipRepository): ViewModel() {
-    val allChampionships : LiveData<List<ChampionshipWithEvents>> = repository.allChampionships.asLiveData()
+    val allChampionships = repository.allChampionships.asLiveData()
     val allUnfollowedChampionships = repository.allUnfollowedChampionships
     val followedChampionships = repository.followedChampionships.asLiveData()
 

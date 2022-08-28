@@ -1,92 +1,63 @@
 package com.example.motorsportspotter.room.entities
 
 import com.example.motorsportspotter.utilities.EntitiesConverter
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.util.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship as AdapterChampionship
 import com.example.motorsportspotter.components.recyclerviews.entities.Event as AdapterEvent
 import com.example.motorsportspotter.components.recyclerviews.entities.Track as AdapterTrack
+import com.example.motorsportspotter.components.recyclerviews.entities.Session as AdapterSession
 
 class DBEntitiesConvertersFactory {
     companion object {
 
         val CompleteEventConverter = EntitiesConverter<EventWithTrackAndChamp, AdapterEvent> {
             AdapterEvent(
-                it.event.uid,
+                it.event.id,
                 it.event.name,
                 LocalDate.parse(it.event.startDate),
                 LocalDate.parse(it.event.endDate),
-                it.track.name,
-                it.track.uid,
                 it.event.image,
-                it.championship.prettyName,
-                it.championship.uid,
-                it.championship.favourite,
-                it.championship.logo,
-                null,
-                it.track.locationName
+                TracksConverter.convertAll(listOf(it.track))[0],
+                ChampionshipsConverter.convertAll(listOf(it.championship))[0],
+                SessionConverter.convertAll(it.sessions),
             )
         }
 
-        val ChampionshipEventConverter = EntitiesConverter<EventWithTrack, AdapterEvent>{
-            AdapterEvent(
-                it.uid,
+        val SessionConverter = EntitiesConverter<Session, AdapterSession> {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            AdapterSession(
+                it.id,
                 it.name,
-                LocalDate.parse(it.startDate),
-                LocalDate.parse(it.endDate),
-                it.trackName,
-                null,
-                it.image,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
+                LocalDateTime.parse(it.datetime, formatter),
+                it.durationMin,
             )
         }
 
-        val TrackEventConverter = EntitiesConverter<EventWithChampionship, AdapterEvent>{
-            AdapterEvent(
-                it.uid,
-                it.name,
-                LocalDate.parse(it.startDate),
-                LocalDate.parse(it.endDate),
-                null,
-                null,
-                it.image,
-                it.championshipName,
-                null,
-                null,
-                null,
-                null,
-                null
-            )
-
-        }
-
-        val TracksConverter = EntitiesConverter<TrackWithEvents, AdapterTrack> {
+        val TracksConverter = EntitiesConverter<Track, AdapterTrack> {
+            val coordinates = it.coordinates.split(",")
             AdapterTrack(
-                it.track.uid,
-                it.track.name,
-                it.track.coordinates,
-                it.track.image,
-                it.track.logo,
-                it.track.favourite,
-                it.track.locationName
+                it.uid,
+                it.name,
+                //Pair(coordinates[0], coordinates[1]),
+                null,
+                it.image,
+                it.logo,
+                it.favourite,
+                it.locationName
             )
         }
 
-        val ChampionshipsConverter = EntitiesConverter<ChampionshipWithEvents, AdapterChampionship>{
+        val ChampionshipsConverter = EntitiesConverter<Championship, AdapterChampionship>{
             AdapterChampionship(
-                it.championship.uid,
-                it.championship.name,
-                it.championship.year,
-                it.championship.prettyName,
-                it.championship.image,
-                it.championship.logo,
-                it.championship.favourite
+                it.uid,
+                it.name,
+                it.year,
+                it.prettyName,
+                it.image,
+                it.logo,
+                it.favourite
             )
         }
 

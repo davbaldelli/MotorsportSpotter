@@ -1,7 +1,6 @@
 package com.example.motorsportspotter.components.recyclerviews.entities
 
 import android.app.Activity
-import android.app.Application
 import android.content.Intent
 import android.view.View
 import com.example.motorsportspotter.activities.ChampionshipActivity

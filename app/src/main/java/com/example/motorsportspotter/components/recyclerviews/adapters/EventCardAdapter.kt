@@ -1,21 +1,15 @@
 package com.example.motorsportspotter.components.recyclerviews.adapters
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.databinding.EventCardBinding
 import com.example.motorsportspotter.databinding.FirstEventCardBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 
 class EventCardAdapter(val fragment: Fragment) : ListAdapter<Event, EventCardViewHolder>(DiffCallback) {
 

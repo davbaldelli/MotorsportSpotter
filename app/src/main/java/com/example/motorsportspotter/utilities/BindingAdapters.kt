@@ -6,7 +6,6 @@ import android.location.Geocoder
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.view.animation.AnimationUtils.loadAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -15,12 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.motorsportspotter.components.recyclerviews.adapters.*
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
-import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
+import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
-import com.example.motorsportspotter.room.entities.TrackWithEvents
+import com.example.motorsportspotter.room.entities.Track
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.*
 import java.time.LocalDate
 import java.util.*
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
@@ -85,7 +82,7 @@ fun bindTrackRecyclerView(recyclerView: RecyclerView, events : List<Event>?){
 }
 
 @BindingAdapter("suggestedChampionshipsList")
-fun bindChampionshipsRecyclerView(recyclerView: RecyclerView, championships : List<ChampionshipWithEvents>?){
+fun bindChampionshipsRecyclerView(recyclerView: RecyclerView, championships : List<Championship>?){
     championships?.let {
         val adapter = recyclerView.adapter as ChampionshipsCardsAdapter
         adapter.submitList(Converters.ChampionshipsConverter.convertAll(it))
@@ -93,7 +90,7 @@ fun bindChampionshipsRecyclerView(recyclerView: RecyclerView, championships : Li
 }
 
 @BindingAdapter("suggestedTracksList")
-fun  bindTracksRecyclerView(recyclerView: RecyclerView, tracks : List<TrackWithEvents>?){
+fun  bindTracksRecyclerView(recyclerView: RecyclerView, tracks : List<Track>?){
     tracks?.let {
         val adapter = recyclerView.adapter as TrackCardsAdapter
         adapter.submitList(Converters.TracksConverter.convertAll(it))
@@ -101,7 +98,7 @@ fun  bindTracksRecyclerView(recyclerView: RecyclerView, tracks : List<TrackWithE
 }
 
 @BindingAdapter("horizontalTracksList")
-fun bindHorizontalTracksRecyclerView(recyclerView: RecyclerView, tracks : List<TrackWithEvents>?){
+fun bindHorizontalTracksRecyclerView(recyclerView: RecyclerView, tracks : List<Track>?){
     tracks?.let {
         val adapter = recyclerView.adapter as HorizontalTrackCardsAdapter
         adapter.submitList(Converters.TracksConverter.convertAll(it))
@@ -109,7 +106,7 @@ fun bindHorizontalTracksRecyclerView(recyclerView: RecyclerView, tracks : List<T
 }
 
 @BindingAdapter("horizontalChampionshipsList")
-fun bindHorizontalChampionshipsRecyclerView(recyclerView: RecyclerView, tracks : List<ChampionshipWithEvents>?){
+fun bindHorizontalChampionshipsRecyclerView(recyclerView: RecyclerView, tracks : List<Championship>?){
     tracks?.let {
         val adapter = recyclerView.adapter as HorizontalChampionshipCardsAdapter
         adapter.submitList(Converters.ChampionshipsConverter.convertAll(it))

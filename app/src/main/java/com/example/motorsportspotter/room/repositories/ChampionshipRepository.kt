@@ -3,13 +3,11 @@ package com.example.motorsportspotter.room.repositories
 import androidx.annotation.WorkerThread
 import com.example.motorsportspotter.room.dao.ChampionshipDao
 import com.example.motorsportspotter.room.entities.Championship
-import com.example.motorsportspotter.room.entities.ChampionshipWithEvents
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class ChampionshipRepository(private val dao: ChampionshipDao) {
-    val allChampionships : Flow<List<ChampionshipWithEvents>> = dao.getAll()
+    val allChampionships = dao.getAll()
     val allUnfollowedChampionships = dao.getUnfollowed()
     val followedChampionships = dao.getFollowed()
 

@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:layout_marginStart="7dp"
-                        android:text='@{event.championshipName}'
+                        android:text='@{event.championship.name}'
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                         android:textSize="12sp"
                         tools:text="GT World Challenge"/>

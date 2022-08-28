@@ -12,7 +12,7 @@ class EntitiesFilter {
             return events.filter { event ->
                 val geocoder = Geocoder(context, Locale.ITALY)
                 val addresses: List<Address> =
-                    geocoder.getFromLocationName(event.trackLocationName, 1)
+                    geocoder.getFromLocationName(event.track.location, 1)
                 addresses[0].adminArea == region
             }
 
@@ -20,10 +20,12 @@ class EntitiesFilter {
 
         fun filterEventsByCountry(events : List<Event>, country : String, context : Context) : List<Event>{
             return events.filter { event ->
-                val geocoder = Geocoder(context, Locale.ITALY)
-                val addresses: List<Address> =
-                    geocoder.getFromLocation(event.trackLocation!!.first.toDouble(), event.trackLocation.second.toDouble(), 1)
-                addresses[0].countryCode == country
+                event.track.coordinates?.let {
+                    val geocoder = Geocoder(context, Locale.ITALY)
+                    val addresses: List<Address> =
+                        geocoder.getFromLocation(event.track.coordinates.first.toDouble(), event.track.coordinates.second.toDouble(), 1)
+                    addresses[0].countryCode == country
+                } == true
             }
 
         }

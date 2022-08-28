@@ -15,11 +15,15 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.fragments.home.*
+import com.example.motorsportspotter.fragments.home.DiscoverFragment
+import com.example.motorsportspotter.fragments.home.FavouritesEventFragment
+import com.example.motorsportspotter.fragments.home.HomeFragmentX
+import com.example.motorsportspotter.fragments.home.NewsFragment
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
 import com.example.motorsportspotter.room.viewmodel.TracksViewModel
 import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
+import com.example.motorsportspotter.utilities.DailyEventNotificationPlanner
 import com.example.motorsportspotter.utilities.StartedEventBroadcastReceiver
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
@@ -45,18 +49,16 @@ class Home : AppCompatActivity() {
         createNotificationChannel()
 
         val alarmMgr = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val alarmIntent = Intent(applicationContext, StartedEventBroadcastReceiver::class.java).let { intent ->
-            PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+        val alarmIntent = Intent(applicationContext, DailyEventNotificationPlanner::class.java).let { intent ->
+            PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
-        alarmMgr.setInexactRepeating(
+        alarmMgr.setRepeating(
             AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HOUR,
-            AlarmManager.INTERVAL_DAY,
+            SystemClock.elapsedRealtime(),
+            AlarmManager.INTERVAL_HOUR,
             alarmIntent
         )
-
-
 
     }
 

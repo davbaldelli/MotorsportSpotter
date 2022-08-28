@@ -18,7 +18,9 @@ class EventRepository(private val dao: EventDao) {
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(event: Event) {
-        dao.insert(event)
+        withContext(Dispatchers.IO){
+            dao.insert(event)
+        }
     }
 
     suspend fun setFavourite(id : Int) : Int{

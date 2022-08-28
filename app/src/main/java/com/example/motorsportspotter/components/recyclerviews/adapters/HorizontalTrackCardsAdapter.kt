@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
 import com.example.motorsportspotter.databinding.HorizontalTrackCardBinding
-import com.example.motorsportspotter.databinding.TrackCardBinding
 
 
 class HorizontalTrackCardsAdapter : ListAdapter<Track, HorizontalTrackViewHolder>(HorizontalTrackCardsAdapter) {

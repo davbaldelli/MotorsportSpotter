@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -56,7 +55,7 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:singleLine="false"
-                    android:text='@{event.championshipName +" • "+event.eventName}'
+                    android:text='@{event.championship.name +" • "+event.eventName}'
                     android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                     tools:text="Round 1 - Imola" />
 
@@ -66,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="3dp"
                     android:layout_marginStart="7dp"
-                    android:text='@{event.trackName}'
+                    android:text='@{event.track.name}'
                     android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                     android:textSize="12sp"
                     tools:text="Circuito Enzo e Dino Ferrari" />

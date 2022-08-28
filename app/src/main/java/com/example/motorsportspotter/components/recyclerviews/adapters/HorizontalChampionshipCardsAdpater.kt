@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship
-import com.example.motorsportspotter.databinding.ChampionshipCardBinding
 import com.example.motorsportspotter.databinding.HorizontalChampionshipCardBinding
 
 class HorizontalChampionshipCardsAdapter:  ListAdapter<Championship, HorizontalChampionshipViewHolder>(HorizontalChampionshipCardsAdapter) {

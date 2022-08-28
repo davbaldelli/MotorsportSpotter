@@ -1,6 +1,9 @@
 package com.example.motorsportspotter.room.entities
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
 
 @Entity(indices = [Index(value = ["name"], unique = true)], tableName = "tracks")
 data class Track(
@@ -11,10 +14,4 @@ data class Track(
         @ColumnInfo(name = "logo") val logo : String,
         @ColumnInfo(name = "locationName") val locationName : String,
         @ColumnInfo(name = "favourite") val favourite : Boolean
-)
-
-data class TrackWithEvents(
-        @Embedded val track: Track,
-        @Relation( parentColumn = "id", entityColumn = "track_id")
-        val events : List<EventWithChampionship>
 )

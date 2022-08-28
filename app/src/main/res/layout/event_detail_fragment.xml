@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="openChampionshipActivity"
                     android:orientation="horizontal"
-                    android:tag="@{event.championshipId}">
+                    android:tag="@{event.championship.id}">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                         app:cardCornerRadius="30dp">
 
                         <ImageView
-                            imageUrl="@{event.championshipIconUrl}"
+                            imageUrl="@{event.championship.logoUrl}"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="5dp"
@@ -81,7 +81,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@{event.championshipName}"
+                        android:text="@{event.championship.name}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -95,9 +95,9 @@
                             android:layout_marginHorizontal="10dp"
                             style="?attr/materialButtonOutlinedStyle"
                             tools:text="Follow"
-                            android:tag="@{event.championshipId}"
+                            android:tag="@{event.championship.id}"
                             android:onClick="onChampionshipFollowButtonClick"
-                            android:text='@{event.championshipFollowed ? "Unfollow" : "Follow" }'  />
+                            android:text='@{event.championship.followed ? "Unfollow" : "Follow" }'  />
 
 
                 </LinearLayout>
@@ -141,7 +141,7 @@
                     android:clickable="true"
                     android:onClick="openTrackActivity"
                     android:orientation="horizontal"
-                    android:tag="@{event.trackId}">
+                    android:tag="@{event.track.id}">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -159,12 +159,12 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@{event.trackName}'
+                            android:text='@{event.track.name}'
                             android:textColor="@color/black"
                             tools:text="Autodromo Enzo e Dino Ferrari" />
 
                         <TextView
-                            addressCoordinates="@{event.trackLocationName}"
+                            addressCoordinates="@{event.track.location}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             tools:text="Piazza Ayrton Senna da Silva, 1, Imola" />

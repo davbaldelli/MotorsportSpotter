@@ -1,19 +1,18 @@
 package com.example.motorsportspotter.fragments.event
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.R
 import com.example.motorsportspotter.components.recyclerviews.adapters.VerticalEventCardAdapter
 import com.example.motorsportspotter.databinding.EventDetailFragmentBinding
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
 import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
+import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
 
 class EventDetailFragment : Fragment() {
 
@@ -34,7 +33,7 @@ class EventDetailFragment : Fragment() {
         viewModel.eventId.observe(viewLifecycleOwner) {id ->
             eventViewModel.getById(id).observe(viewLifecycleOwner) { event ->
                 binding.event = Converters.CompleteEventConverter.convertAll(listOf(event))[0]
-                eventViewModel.getSimilarEvents(event.championship.uid, event.track.uid, event.event.uid).observe(viewLifecycleOwner) {similarEvents ->
+                eventViewModel.getSimilarEvents(event.championship.uid, event.track.uid, event.event.id).observe(viewLifecycleOwner) { similarEvents ->
                     binding.similarEvents = Converters.CompleteEventConverter.convertAll(similarEvents)
                 }
             }
