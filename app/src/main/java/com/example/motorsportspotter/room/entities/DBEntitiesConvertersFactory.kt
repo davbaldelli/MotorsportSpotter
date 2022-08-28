@@ -32,6 +32,7 @@ class DBEntitiesConvertersFactory {
                 it.name,
                 LocalDateTime.parse(it.datetime, formatter),
                 it.durationMin,
+                it.durationLaps,
             )
         }
 
@@ -57,7 +58,8 @@ class DBEntitiesConvertersFactory {
                 it.prettyName,
                 it.image,
                 it.logo,
-                it.favourite
+                it.favourite,
+                it.liveStreamLink,
             )
         }
 

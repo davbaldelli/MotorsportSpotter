@@ -35,5 +35,6 @@ data class Session(
         @ColumnInfo(name = "name") val name : String,
         @ColumnInfo(name = "event_id", index = true) val eventId : Int,
         @ColumnInfo(name = "datetime") val datetime : String,
-        @ColumnInfo(name = "duration") val durationMin: Int?,
+        @ColumnInfo(name = "durationMin") val durationMin: Int?,
+        @ColumnInfo(name = "durationLaps") val durationLaps: Int?,
 )

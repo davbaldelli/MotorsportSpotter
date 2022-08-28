@@ -13,5 +13,6 @@ data class Championship(
         @ColumnInfo(name = "pretty_name") val prettyName : String,
         @ColumnInfo(name = "image") val image : String,
         @ColumnInfo(name = "logo") val logo : String,
-        @ColumnInfo(name = "favourite") val favourite : Boolean
+        @ColumnInfo(name = "favourite") val favourite : Boolean,
+        @ColumnInfo(name = "live_stream") val liveStreamLink : String?,
 )

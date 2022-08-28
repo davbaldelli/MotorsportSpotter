@@ -142,8 +142,8 @@ fun bindRunningIcon(imageView: ImageView, event : Event){
 @BindingAdapter("optionalTicketButton")
 fun bindOptionalTicketsButton(floatingActionButton: ExtendedFloatingActionButton, event : Event?){
     event?.let {
-        if (LocalDate.now() > event.endDate){
-            floatingActionButton.isEnabled = false
+        if (LocalDate.now() <= event.endDate && LocalDate.now() >= event.startDate && event.championship.liveStreamLink != null){
+            floatingActionButton.visibility = View.VISIBLE
         }
     }
 

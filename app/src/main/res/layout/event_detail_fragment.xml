@@ -173,6 +173,37 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/sessionsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginHorizontal="35dp"
+                        android:contentDescription="@string/event_icon"
+                        android:src="@drawable/ic_format_list_bulleted_24" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="60dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text='@{event.sessionsDesc}'
+                            android:textColor="@color/black"
+                            tools:text="Qualifying: Saturday, April 5, 15:00\nRace 1: Saturday, April 5, 17:00" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
                 <View
                     android:id="@+id/separator1"
                     android:layout_width="match_parent"
@@ -259,9 +290,11 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_margin="30dp"
             android:onClick="onBuyTicketsClick"
-            android:tag="https://biglietti.monzanet.it/it/event/formula-1-pirelli-gran-premio-d-italia-2022/179546"
-            android:text="@string/buy_tickets"
-            android:textAlignment="center" />
+            android:tag="@{event.championship.liveStreamLink}"
+            android:text="@string/watch_it_here"
+            android:textAlignment="center"
+            android:visibility="gone"
+            tools:visibility="visible"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

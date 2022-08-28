@@ -47,4 +47,13 @@ class Event(
         val formatter = DateTimeFormatter.ofPattern("MMM")
         return "${startDate.dayOfMonth}${if (startDate.monthValue != endDate.monthValue) " "+startDate.format(formatter)+" " else ""}-${endDate.dayOfMonth} ${endDate.format(formatter)}"
     }
+
+    fun getSessionsDesc() : String {
+        val formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return sessions.fold("") { res, session ->
+            res + "${session.name}: ${session.startDateTime.dayOfWeek.name.lowercase()}, " +
+                    "${session.startDateTime.month.name.lowercase()} ${session.startDateTime.dayOfMonth}, " +
+                    "${session.startDateTime.format(formatter)}\n"
+        }
+    }
 }

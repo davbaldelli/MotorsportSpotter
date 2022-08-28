@@ -6,4 +6,6 @@ data class Session (
     val id : Int?,
     val name : String,
     val startDateTime : LocalDateTime,
-    val durationMin : Int?)
+    val durationMin : Int?,
+    val durationLaps : Int?
+    )
