@@ -46,8 +46,14 @@ data class EventWithTrackAndChamp(
 data class Session(
         @PrimaryKey(autoGenerate = true) val id : Int?,
         @ColumnInfo(name = "name") val name : String,
-        @ColumnInfo(name = "event_id", index = true) val eventId : Int,
+        @ColumnInfo(name = "event_id", index = true)
+        @SerializedName("event_id")
+        val eventId : Int,
         @ColumnInfo(name = "datetime") val datetime : String,
-        @ColumnInfo(name = "durationMin") val durationMin: Int?,
-        @ColumnInfo(name = "durationLaps") val durationLaps: Int?,
+        @ColumnInfo(name = "duration_min")
+        @SerializedName("duration_min")
+        val durationMin: Int?,
+        @ColumnInfo(name = "duration_laps")
+        @SerializedName("duration_laps")
+        val durationLaps: Int?,
 )

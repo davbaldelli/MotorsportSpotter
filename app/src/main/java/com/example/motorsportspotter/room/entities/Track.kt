@@ -12,6 +12,6 @@ data class Track(
         @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "image") val image : String,
         @ColumnInfo(name = "logo") val logo : String,
-        @ColumnInfo(name = "locationName") val locationName : String,
+        @ColumnInfo(name = "location_name") val locationName : String,
         @ColumnInfo(name = "favourite") val favourite : Boolean
 )

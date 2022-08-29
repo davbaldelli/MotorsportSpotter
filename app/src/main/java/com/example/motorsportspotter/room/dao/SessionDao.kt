@@ -2,10 +2,11 @@ package com.example.motorsportspotter.room.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import com.example.motorsportspotter.room.entities.Session
 
 @Dao
 interface SessionDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(session: Session)
 }

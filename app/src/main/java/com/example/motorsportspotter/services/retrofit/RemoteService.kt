@@ -1,9 +1,9 @@
 package com.example.motorsportspotter.services.retrofit
 
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship
-import com.example.motorsportspotter.components.recyclerviews.entities.Session
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
 import com.example.motorsportspotter.room.entities.Event
+import com.example.motorsportspotter.room.entities.Session
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -18,5 +18,5 @@ interface RemoteService {
     fun allEvents() : Call<List<Event>>?
 
     @GET("sessions")
-    fun allSessions() : Call<List<Session?>?>?
+    fun allSessions() : Call<List<Session>>?
 }

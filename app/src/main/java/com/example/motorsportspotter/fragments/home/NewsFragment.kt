@@ -14,6 +14,7 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Champions
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.room.entities.Event
+import com.example.motorsportspotter.room.entities.Session
 import com.example.motorsportspotter.room.viewmodel.*
 import com.example.motorsportspotter.services.retrofit.RemoteClient
 import retrofit2.Call
@@ -32,6 +33,10 @@ class NewsFragment : Fragment() {
 
     private val eventViewModel: EventsViewModel by viewModels {
         EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
+    }
+
+    private val sessionsViewModel: SessionViewModel by viewModels {
+        SessionViewModelFactory((requireActivity().application as EventsApplication).sessionRepository)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -76,6 +81,21 @@ class NewsFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<List<Event>>, t: Throwable) {
+                //TODO("Not yet implemented")
+            }
+
+        })
+
+        service.allSessions()?.enqueue(object : Callback<List<Session>> {
+            override fun onResponse(call: Call<List<Session>>, response: Response<List<Session>>) {
+                response.body()?.let {
+                    it.forEach { session ->
+                        sessionsViewModel.insert(session)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Session>>, t: Throwable) {
                 //TODO("Not yet implemented")
             }
 
