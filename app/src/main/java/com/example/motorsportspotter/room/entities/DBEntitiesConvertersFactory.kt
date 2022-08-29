@@ -12,7 +12,7 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Session a
 class DBEntitiesConvertersFactory {
     companion object {
 
-        val CompleteEventConverter = EntitiesConverter<EventWithTrackAndChamp, AdapterEvent> {
+        val EventConverter = EntitiesConverter<EventWithTrackAndChamp, AdapterEvent> {
             AdapterEvent(
                 it.event.id,
                 it.event.name,
@@ -24,6 +24,8 @@ class DBEntitiesConvertersFactory {
                 SessionConverter.convertAll(it.sessions),
             )
         }
+
+
 
         val SessionConverter = EntitiesConverter<Session, AdapterSession> {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -50,6 +52,18 @@ class DBEntitiesConvertersFactory {
             )
         }
 
+        val ToDBTrackConverter = EntitiesConverter<AdapterTrack, Track> {
+            Track(
+                it.id,
+                "",
+                it.name,
+                it.backgroundUrl,
+                it.logoUrl,
+                it.location,
+                it.followed
+            )
+        }
+
         val ChampionshipsConverter = EntitiesConverter<Championship, AdapterChampionship>{
             AdapterChampionship(
                 it.uid,
@@ -60,6 +74,19 @@ class DBEntitiesConvertersFactory {
                 it.logo,
                 it.favourite,
                 it.liveStreamLink,
+            )
+        }
+
+        val ToDBChampConverter = EntitiesConverter<AdapterChampionship, Championship> {
+            Championship(
+                it.id,
+                it.name,
+                it.year,
+                it.prettyName,
+                it.backgroundUrl,
+                it.logoUrl,
+                it.followed,
+                it.liveStreamLink
             )
         }
 

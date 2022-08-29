@@ -4,8 +4,8 @@ buildscript {
 }
 
 plugins {
-    id 'com.android.application' version '7.2.1' apply false
-    id 'com.android.library' version '7.2.1' apply false
+    id 'com.android.application' version '7.2.2' apply false
+    id 'com.android.library' version '7.2.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
 }
 
@@ -15,10 +15,10 @@ ext {
     constraintLayoutVersion = '2.1.2'
     coreTestingVersion = '2.1.0'
     coroutines = '1.6.4'
-    lifecycleVersion = '2.5.0'
+    lifecycleVersion = '2.5.1'
     materialVersion = '1.4.0'
-    roomVersion = '2.4.2'
-    fragmentVersion = "1.5.0"
+    roomVersion = '2.4.3'
+    fragmentVersion = "1.5.2"
     // testing
     junitVersion = '4.13.2'
     espressoVersion = '3.4.0'

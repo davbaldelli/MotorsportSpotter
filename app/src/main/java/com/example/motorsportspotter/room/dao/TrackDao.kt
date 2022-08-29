@@ -3,13 +3,14 @@ package com.example.motorsportspotter.room.dao
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.motorsportspotter.room.entities.Track
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TrackDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(track : Track)
 
     @Query("SELECT * FROM tracks")

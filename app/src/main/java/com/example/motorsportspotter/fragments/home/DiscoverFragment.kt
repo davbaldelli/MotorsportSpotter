@@ -32,7 +32,7 @@ class DiscoverFragment : Fragment() {
     }
     private val tracksConverter = Converter.TracksConverter
     private val championshipConverter = Converter.ChampionshipsConverter
-    private val eventConverter = Converter.CompleteEventConverter
+    private val eventConverter = Converter.EventConverter
     private var tracks = ArrayList<Track>()
     private var championships = ArrayList<Championship>()
     private var events = ArrayList<Event>()

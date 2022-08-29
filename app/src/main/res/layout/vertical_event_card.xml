@@ -18,7 +18,7 @@
             android:layout_width="200dp"
             android:layout_height="220dp"
             android:onClick="openEventActivity"
-            android:tag="@{event.eventId}"
+            android:tag="@{event.id}"
             style="?attr/materialCardViewElevatedStyle">
 
             <LinearLayout
@@ -55,7 +55,7 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:singleLine="false"
-                    android:text='@{event.championship.name +" • "+event.eventName}'
+                    android:text='@{event.championship.name +" • "+event.name}'
                     android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                     tools:text="Round 1 - Imola" />
 

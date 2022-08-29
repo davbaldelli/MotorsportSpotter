@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:onClick="openEventActivity"
-            android:tag="@{event.eventId}"
+            android:tag="@{event.id}"
             style="?attr/materialCardViewElevatedStyle">
 
             <LinearLayout
@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:layout_marginStart="7dp"
-                        android:text='@{event.eventName}'
+                        android:text="@{event.name}"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         tools:text="Round 1 - Imola"/>
 

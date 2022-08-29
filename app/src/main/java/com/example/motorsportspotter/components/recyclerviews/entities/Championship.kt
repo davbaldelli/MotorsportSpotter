@@ -4,15 +4,20 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.example.motorsportspotter.activities.ChampionshipActivity
+import com.google.gson.annotations.SerializedName
 
 class Championship(
     val id : Int,
     val name: String,
     val year : Int,
+    @SerializedName("pretty_name")
     val prettyName : String,
+    @SerializedName("background_url")
     val backgroundUrl : String,
+    @SerializedName("logo_url")
     val logoUrl : String,
     val followed : Boolean,
+    @SerializedName("live_stream_link")
     val liveStreamLink : String?
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {

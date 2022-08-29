@@ -45,7 +45,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:paddingHorizontal="20dp"
-                    android:text="@{event.eventName}"
+                    android:text="@{event.name}"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
                     android:textSize="24sp"

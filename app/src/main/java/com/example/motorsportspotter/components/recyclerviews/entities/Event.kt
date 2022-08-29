@@ -4,25 +4,29 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.example.motorsportspotter.activities.EventActivity
+import com.google.gson.annotations.SerializedName
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class Event(
-    val eventId : Int,
-    val eventName: String,
+    val id : Int,
+    val name: String,
+    @SerializedName("start_date")
     val startDate: LocalDate,
+    @SerializedName("end_date")
     val endDate: LocalDate,
+    @SerializedName("image_url")
     val imageUrl: String,
     val track : Track,
     val championship: Championship,
     val sessions : List<Session>
 ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
-        return query(eventName)
+        return query(name)
     }
 
     override fun getTitle(): String {
-        return "${championship.prettyName} • $eventName"
+        return "${championship.prettyName} • $name"
     }
 
     override fun getDescription(): String {
@@ -37,7 +41,7 @@ class Event(
         val activity : Activity = view.context as Activity
         activity.apply {
             val intent = Intent(this, EventActivity::class.java).apply {
-                putExtra("event_id", eventId)
+                putExtra("event_id", id)
             }
             startActivity(intent)
         }

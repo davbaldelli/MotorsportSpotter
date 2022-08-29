@@ -51,19 +51,19 @@ class TrackFragment : Fragment() {
                     if(ongoingEvents.isEmpty()){
                         binding.ongoingEventsLabel.visibility = View.GONE
                     }
-                    binding.ongoingEvents = Converters.CompleteEventConverter.convertAll(ongoingEvents)
+                    binding.ongoingEvents = Converters.EventConverter.convertAll(ongoingEvents)
                 }
                 eventsViewModel.futureTrackEvents(trackId).observe(viewLifecycleOwner) { futureEvents ->
                     if(futureEvents.isEmpty()){
                         binding.futureEventsLabel.visibility = View.GONE
                     }
-                    binding.futureEvents = Converters.CompleteEventConverter.convertAll(futureEvents)
+                    binding.futureEvents = Converters.EventConverter.convertAll(futureEvents)
                 }
                 eventsViewModel.pastTrackEvents(trackId).observe(viewLifecycleOwner) { pastEvents ->
                     if(pastEvents.isEmpty()){
                         binding.pastEventsLabel.visibility = View.GONE
                     }
-                    binding.pastEvents = Converters.CompleteEventConverter.convertAll(pastEvents)
+                    binding.pastEvents = Converters.EventConverter.convertAll(pastEvents)
                 }
             }
         }

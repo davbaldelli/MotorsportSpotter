@@ -53,7 +53,7 @@ val String.flagEmoji: String
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<EventWithTrackAndChamp>?) {
     data?.let{
         val adapter = recyclerView.adapter as EventCardAdapter
-        adapter.submitList(Converters.CompleteEventConverter.convertAll(it))
+        adapter.submitList(Converters.EventConverter.convertAll(it))
     }
 }
 

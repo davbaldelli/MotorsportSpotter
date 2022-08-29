@@ -4,12 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.example.motorsportspotter.activities.TrackActivity
+import com.google.gson.annotations.SerializedName
 
 class Track(
     val id : Int,
     val name : String,
     val coordinates : Pair<String, String>?,
+    @SerializedName("background_url")
     val backgroundUrl : String,
+    @SerializedName("logo_url")
     val logoUrl : String,
     val followed : Boolean,
     val location : String,

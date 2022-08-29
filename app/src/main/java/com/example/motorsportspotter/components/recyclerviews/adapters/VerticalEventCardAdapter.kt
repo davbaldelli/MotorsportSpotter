@@ -12,11 +12,11 @@ import com.example.motorsportspotter.databinding.VerticalEventCardBinding
 class VerticalEventCardAdapter : ListAdapter<Event, VerticalEventCardViewHolder>(EventCardAdapter) {
     companion object DiffCallback : DiffUtil.ItemCallback<Event>() {
         override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
-            return oldItem.eventName == newItem.eventName
+            return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean {
-            return oldItem.eventName == newItem.eventName
+            return oldItem.name == newItem.name
         }
 
     }

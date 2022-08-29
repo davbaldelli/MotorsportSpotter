@@ -3,6 +3,7 @@ package com.example.motorsportspotter.room.dao
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.motorsportspotter.room.entities.Event
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EventDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(event: Event)
 
     @Query("UPDATE events SET favourites = NOT favourites WHERE id = :id")
