@@ -127,7 +127,7 @@ abstract class EventDatabase : RoomDatabase() {
             sessionDao.insert(Session(null, "Qualifying", 13, "2022-09-04 09:45", 45, null))
             sessionDao.insert(Session(null, "Race", 13, "2022-09-04 15:00", 60 * 3, null))
             eventDao.insert(Event(14, "Round 5 - Nürburgring powered by Mercedes-AMG", 7, 3, "2022-08-26", "2022-08-29", "https://i.imgur.com/kBjtpod.jpg", true))
-            sessionDao.insert(Session(null, "Race 2", 14, "2022-08-28 19:33", null, null))
+            sessionDao.insert(Session(null, "Race 2", 14, "2022-08-29 11:00", null, null))
             eventDao.insert(Event(15, "Round 8 - Hockenheimring", 6, 3, "2022-10-07", "2022-10-09", "https://i.imgur.com/qvbJH4d.jpg", true))
             eventDao.insert(Event(16, "Dutch Gran Prix",9, 0, "2022-09-02", "2022-09-04", "https://i.imgur.com/oTp9iic.jpg", true))
             sessionDao.insert(Session(null, "Free Practise 1", 16, "2022-09-02 12:30", 60, null))

@@ -47,12 +47,13 @@ class DailyEventNotificationPlanner: BroadcastReceiver() {
                             set(Calendar.SECOND, 0)
                         }
 
-
-                        alarmMgr.setExact(
-                            AlarmManager.RTC_WAKEUP,
-                            calendar.timeInMillis - (60 * 5 * 1000),
-                            alarmIntent2
-                        )
+                        if(System.currentTimeMillis() < (calendar.timeInMillis - (60 * 5 * 1000))){
+                            alarmMgr.setExact(
+                                AlarmManager.RTC_WAKEUP,
+                                calendar.timeInMillis - (60 * 5 * 1000),
+                                alarmIntent2
+                            )
+                        }
                     }
 
                 }
