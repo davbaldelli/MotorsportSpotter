@@ -1,9 +1,10 @@
 package com.example.motorsportspotter.services.retrofit
 
-import com.example.motorsportspotter.components.recyclerviews.entities.Championship
-import com.example.motorsportspotter.components.recyclerviews.entities.Track
+
+import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.entities.Event
 import com.example.motorsportspotter.room.entities.Session
+import com.example.motorsportspotter.room.entities.Track
 import retrofit2.Call
 import retrofit2.http.GET
 

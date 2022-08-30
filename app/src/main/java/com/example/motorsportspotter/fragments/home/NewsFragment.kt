@@ -10,11 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.components.recyclerviews.entities.Championship
-import com.example.motorsportspotter.components.recyclerviews.entities.Track
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
-import com.example.motorsportspotter.room.entities.Event
-import com.example.motorsportspotter.room.entities.Session
+import com.example.motorsportspotter.room.entities.*
 import com.example.motorsportspotter.room.viewmodel.*
 import com.example.motorsportspotter.services.retrofit.RemoteClient
 import retrofit2.Call
@@ -45,7 +41,7 @@ class NewsFragment : Fragment() {
         service.allChampionships()?.enqueue(object : Callback<List<Championship>> {
             override fun onResponse(call: Call<List<Championship>>, response: Response<List<Championship>>) {
                 response.body()?.let {
-                    DBEntitiesConvertersFactory.ToDBChampConverter.convertAll(it).forEach { champ ->
+                    it.forEach { champ ->
                         championshipsViewModel.insert(champ)
                     }
                 }
@@ -59,7 +55,7 @@ class NewsFragment : Fragment() {
         service.allTracks()?.enqueue(object : Callback<List<Track>> {
             override fun onResponse(call: Call<List<Track>>, response: Response<List<Track>>) {
                 response.body()?.let {
-                    DBEntitiesConvertersFactory.ToDBTrackConverter.convertAll(it).forEach { track ->
+                    it.forEach { track ->
                         tracksViewModel.insert(track)
                     }
                 }
