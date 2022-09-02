@@ -33,7 +33,7 @@ class EventDetailFragment : Fragment() {
         viewModel.eventId.observe(viewLifecycleOwner) {id ->
             eventViewModel.getById(id).observe(viewLifecycleOwner) { event ->
                 binding.event = Converters.EventConverter.convertAll(listOf(event))[0]
-                eventViewModel.getSimilarEvents(event.championship.uid, event.track.uid, event.event.id).observe(viewLifecycleOwner) { similarEvents ->
+                eventViewModel.getSimilarEvents(event.championship.id, event.track.id, event.event.id).observe(viewLifecycleOwner) { similarEvents ->
                     binding.similarEvents = Converters.EventConverter.convertAll(similarEvents)
                 }
             }

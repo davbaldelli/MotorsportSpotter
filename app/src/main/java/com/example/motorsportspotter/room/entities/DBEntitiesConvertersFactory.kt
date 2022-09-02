@@ -39,9 +39,8 @@ class DBEntitiesConvertersFactory {
         }
 
         val TracksConverter = EntitiesConverter<Track, AdapterTrack> {
-            val coordinates = it.coordinates.split(",")
             AdapterTrack(
-                it.uid,
+                it.id,
                 it.name,
                 //Pair(coordinates[0], coordinates[1]),
                 null,
@@ -52,21 +51,10 @@ class DBEntitiesConvertersFactory {
             )
         }
 
-        val ToDBTrackConverter = EntitiesConverter<AdapterTrack, Track> {
-            Track(
-                it.id,
-                "",
-                it.name,
-                it.backgroundUrl,
-                it.logoUrl,
-                it.location,
-                it.followed
-            )
-        }
 
         val ChampionshipsConverter = EntitiesConverter<Championship, AdapterChampionship>{
             AdapterChampionship(
-                it.uid,
+                it.id,
                 it.name,
                 it.year,
                 it.prettyName,
@@ -74,19 +62,6 @@ class DBEntitiesConvertersFactory {
                 it.logo,
                 it.favourite,
                 it.liveStreamLink,
-            )
-        }
-
-        val ToDBChampConverter = EntitiesConverter<AdapterChampionship, Championship> {
-            Championship(
-                it.id,
-                it.name,
-                it.year,
-                it.prettyName,
-                it.backgroundUrl,
-                it.logoUrl,
-                it.followed,
-                it.liveStreamLink
             )
         }
 
