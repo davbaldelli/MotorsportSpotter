@@ -34,7 +34,7 @@ class StartedEventBroadcastReceiver: BroadcastReceiver() {
         val builder = NotificationCompat.Builder(context, "EventUpdate")
             .setSmallIcon(R.drawable.ic_events_24)
             .setContentTitle(intent.getStringExtra("Title"))
-            .setContentText("Click here to see the event details")
+            .setContentText(intent.getStringExtra("Description"))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(resultPendingIntent)
             .setAutoCancel(true)

@@ -28,7 +28,8 @@ class DailyEventNotificationPlanner: BroadcastReceiver() {
 
                     DBEntitiesConvertersFactory.SessionConverter.convertAll(event.sessions).forEach { session ->
                         val alarmIntent2 = Intent(context, StartedEventBroadcastReceiver::class.java).let { intent ->
-                            intent.putExtra("Title","${session.name} of ${event.event.name} will start shortly")
+                            intent.putExtra("Title", event.championship.prettyName)
+                            intent.putExtra("Description", "${event.event.name} ${session.name} is about to start")
                             intent.putExtra("EventId", event.event.id)
                             intent.putExtra("NotifyId", session.id)
                             PendingIntent.getBroadcast(context, session.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
