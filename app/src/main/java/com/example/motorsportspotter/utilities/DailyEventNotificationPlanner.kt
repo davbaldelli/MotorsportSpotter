@@ -14,15 +14,12 @@ import com.example.motorsportspotter.activities.EventActivity
 import com.example.motorsportspotter.room.EventDatabase
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.room.repositories.EventRepository
-import kotlinx.coroutines.CoroutineName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import java.util.*
 
 class DailyEventNotificationPlanner: BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
-        val repo = EventRepository(EventDatabase.getDatabase(context, CoroutineScope(CoroutineName("eventNotification"))).eventDao())
+        val repo = EventRepository(EventDatabase.getDatabase(context, CoroutineScope(Dispatchers.IO + Job())).eventDao())
         runBlocking{
             launch {
                 val events = repo.getFavSync()

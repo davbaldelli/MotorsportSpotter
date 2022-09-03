@@ -24,7 +24,7 @@ interface EventDao {
     fun getFavouritesSync() : List<EventWithTrackAndChamp>
 
     @Query("SELECT * FROM events WHERE end_date >= DATE('NOW') ORDER BY start_date LIMIT 8")
-    fun getIncomingEvents() : LiveData<List<EventWithTrackAndChamp>>
+    fun getIncomingEvents() : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT e.* FROM events e JOIN championships c on c.id = e.championship_id JOIN tracks t on t.id = e.track_id WHERE (e.favourites = 1 OR t.favourite = 1 OR c.favourite = 1 ) AND end_date >= DATE('now') ORDER BY start_date")
     fun getFavourites() : Flow<List<EventWithTrackAndChamp>>

@@ -19,84 +19,12 @@ import retrofit2.Response
 
 class NewsFragment : Fragment() {
 
-    private val championshipsViewModel: ChampionshipsViewModel by viewModels {
-        ChampionshipsViewModelFactory((requireActivity().application as EventsApplication).championshipRepository)
-    }
-
-    private val tracksViewModel: TracksViewModel by viewModels {
-        TracksViewModelFactory((requireActivity().application as EventsApplication).tracksRepository)
-    }
-
-    private val eventViewModel: EventsViewModel by viewModels {
-        EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)
-    }
-
-    private val sessionsViewModel: SessionViewModel by viewModels {
-        SessionViewModelFactory((requireActivity().application as EventsApplication).sessionRepository)
+    private val newsViewModel: NewsViewModel by viewModels {
+        NewsViewModelFactory((this.activity?.application as EventsApplication).newsRepository)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val service = RemoteClient.getRemoteService()
-        service.allChampionships()?.enqueue(object : Callback<List<Championship>> {
-            override fun onResponse(call: Call<List<Championship>>, response: Response<List<Championship>>) {
-                response.body()?.let {
-                    it.forEach { champ ->
-                        championshipsViewModel.insert(champ)
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<Championship>>, t: Throwable) {
-                Log.e("ERROR", t.toString())
-            }
-        })
-
-        service.allTracks()?.enqueue(object : Callback<List<Track>> {
-            override fun onResponse(call: Call<List<Track>>, response: Response<List<Track>>) {
-                response.body()?.let {
-                    it.forEach { track ->
-                        tracksViewModel.insert(track)
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<Track>>, t: Throwable) {
-                //TODO("Not yet implemented")
-            }
-
-        })
-
-        service.allEvents()?.enqueue(object : Callback<List<Event>> {
-            override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
-                response.body()?.let {
-                    it.forEach { event ->
-                        eventViewModel.insert(event)
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<Event>>, t: Throwable) {
-                //TODO("Not yet implemented")
-            }
-
-        })
-
-        service.allSessions()?.enqueue(object : Callback<List<Session>> {
-            override fun onResponse(call: Call<List<Session>>, response: Response<List<Session>>) {
-                response.body()?.let {
-                    it.forEach { session ->
-                        sessionsViewModel.insert(session)
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<Session>>, t: Throwable) {
-                //TODO("Not yet implemented")
-            }
-
-        })
-
         return inflater.inflate(R.layout.news_fragment, container, false)
     }
 }

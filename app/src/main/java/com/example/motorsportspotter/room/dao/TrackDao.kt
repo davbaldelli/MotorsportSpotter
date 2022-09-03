@@ -10,14 +10,14 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TrackDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(track : Track)
 
     @Query("SELECT * FROM tracks")
     fun getAll() : Flow<List<Track>>
 
-    @Query("SELECT * FROM tracks WHERE favourite = 0 LIMIT 10")
-    fun getUnfollowed() : LiveData<List<Track>>
+    @Query("SELECT * FROM tracks WHERE favourite = 0 LIMIT 30")
+    fun getUnfollowed() : Flow<List<Track>>
 
     @Query("SELECT * FROM tracks WHERE favourite = 1")
     fun getFollowed() : Flow<List<Track>>

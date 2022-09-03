@@ -46,6 +46,7 @@
         </activity>
         <receiver android:name=".utilities.StartedEventBroadcastReceiver"/>
         <receiver android:name=".utilities.DailyEventNotificationPlanner"/>
+        <service android:name=".utilities.SyncService"/>
     </application>
 
 </manifest>

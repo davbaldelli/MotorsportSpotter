@@ -5,24 +5,19 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.motorsportspotter.room.dao.ChampionshipDao
-import com.example.motorsportspotter.room.dao.EventDao
-import com.example.motorsportspotter.room.dao.SessionDao
-import com.example.motorsportspotter.room.dao.TrackDao
-import com.example.motorsportspotter.room.entities.Championship
-import com.example.motorsportspotter.room.entities.Event
-import com.example.motorsportspotter.room.entities.Session
-import com.example.motorsportspotter.room.entities.Track
+import com.example.motorsportspotter.room.dao.*
+import com.example.motorsportspotter.room.entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Event::class, Track::class, Championship::class, Session::class], version = 1, exportSchema = false)
+@Database(entities = [Event::class, Track::class, Championship::class, Session::class, News::class], version = 1, exportSchema = false)
 abstract class EventDatabase : RoomDatabase() {
 
     abstract fun eventDao(): EventDao
     abstract fun trackDao(): TrackDao
     abstract fun championshipDao(): ChampionshipDao
     abstract fun sessionDao(): SessionDao
+    abstract fun newsDao() : NewsDao
 
     private class EventDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
 
@@ -113,7 +108,6 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(3, "Round 6 - Misano", 2, 1,"2022-07-01", "2022-07-03", "https://i.imgur.com/t6HWcyF.jpg", true))
             eventDao.insert(Event(4,"6 Hours Of Monza", 1, 2,"2022-07-08","2022-07-10", "https://i.imgur.com/H9YCaPs.jpg", true))
             eventDao.insert(Event(5,"Belgian Gran Prix",3,0,"2022-08-26","2022-08-28","https://i.imgur.com/kIYSYh0.jpg", true))
-            sessionDao.insert(Session(null, "Race", 5, "2022-08-28 19:34", null, 44))
             eventDao.insert(Event(6,"Round 7 - TotalEnergies 24 Hours of Spa",3,1,"2022-07-28", "2022-07-31", "https://i.imgur.com/D8t6mcp.jpg", true))
             eventDao.insert(Event(7, "Round 3 - Imola", 0, 3,"2022-06-17", "2022-06-19","https://i.imgur.com/fu9POfW.jpg", true))
             eventDao.insert(Event(8, "Round 6 - Spa-Francorchamps",3 ,3,"2022-09-09", "2022-09-11", "https://i.imgur.com/sXhpNYS.jpg", true))
@@ -122,19 +116,9 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(11, "Gran Prix De France", 5, 0 ,"2022-07-22", "2022-07-24", "https://i.imgur.com/x9t7kZf.jpg", true))
             eventDao.insert(Event(12, "Round 4 - Circuit Paul Ricard 1000Km",5,1,"2022-06-03", "2022-06-05", "https://i.imgur.com/nkqfPjg.jpg", true))
             eventDao.insert(Event(13, "Round 8 - Hockenheim",6,1, "2022-09-02", "2022-09-04", "https://i.imgur.com/qYeUmqp.jpg", true))
-            sessionDao.insert(Session(null,"Free Practise", 13, "2022-09-03 09:45", 90, null))
-            sessionDao.insert(Session(null,"Pre-Qualifying Session", 13, "2022-09-03 14:05", 90, null))
-            sessionDao.insert(Session(null, "Qualifying", 13, "2022-09-04 09:45", 45, null))
-            sessionDao.insert(Session(null, "Race", 13, "2022-09-04 15:00", 60 * 3, null))
             eventDao.insert(Event(14, "Round 5 - Nürburgring powered by Mercedes-AMG", 7, 3, "2022-08-26", "2022-08-29", "https://i.imgur.com/kBjtpod.jpg", true))
-            sessionDao.insert(Session(null, "Race 2", 14, "2022-08-29 11:00", null, null))
             eventDao.insert(Event(15, "Round 8 - Hockenheimring", 6, 3, "2022-10-07", "2022-10-09", "https://i.imgur.com/qvbJH4d.jpg", true))
             eventDao.insert(Event(16, "Dutch Gran Prix",9, 0, "2022-09-02", "2022-09-04", "https://i.imgur.com/oTp9iic.jpg", true))
-            sessionDao.insert(Session(null, "Free Practise 1", 16, "2022-09-02 12:30", 60, null))
-            sessionDao.insert(Session(null, "Free Practise 2", 16, "2022-09-02 16:00", 60, null))
-            sessionDao.insert(Session(null, "Free Practise 3", 16, "2022-09-03 12:00", 60, null))
-            sessionDao.insert(Session(null, "Qualifying", 16, "2022-09-03 15:00", null, null))
-            sessionDao.insert(Session(null, "Race", 16, "2022-09-03 15:00", null, null))
             eventDao.insert(Event(17, "Gran Premio De Espana", 8, 0, "2022-05-20", "2022-05-22", "https://i.imgur.com/hgdZtgJ.jpg", true))
             eventDao.insert(Event(18, "Round 10 - Barcellona", 8, 1, "2022-09-30", "2022-10-02", "https://i.imgur.com/du7CQ1Q.jpg", true))
             eventDao.insert(Event(19, "Round 5 - Zandvoort",9, 1,"2022-06-16", "2022-06-18", "https://i.imgur.com/3K8GLLH.jpg", true))
@@ -158,11 +142,6 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(37, "Monza", 1, 4, "2022-09-09", "2022-09-11", "https://i.imgur.com/050ZtIT.jpg", false))
             eventDao.insert(Event(38, "Spa-Francorchamps", 3, 4,"2022-08-26", "2022-08-28", "https://i.imgur.com/VJgk97z.jpg", false))
             eventDao.insert(Event(39, "Gran Premio di San Marino e della Riviera di Rimini", 2, 7, "2022-09-02", "2022-09-04", "https://i.imgur.com/EhOQ9Qs.jpg",true))
-            sessionDao.insert(Session(null, "Free Practise 1", 39, "2022-09-02 09:55", null, null))
-            sessionDao.insert(Session(null, "Free Practise 2", 39, "2022-09-02 14:10", null, null))
-            sessionDao.insert(Session(null, "Free Practise 3", 39, "2022-09-03 09:55", null, null))
-            sessionDao.insert(Session(null, "Qualifying", 39, "2022-09-03 14:10", null, null))
-            sessionDao.insert(Session(null, "Race", 39, "2022-09-04 14:00", null, null))
             eventDao.insert(Event(40, "Grande Prémio Tissot de Portugal", 4, 7, "2022-04-22","2022-04-24", "https://i.imgur.com/5Y6tUyC.jpg", false))
             eventDao.insert(Event(41, "Gran Premio d'Italia Oakley", 25, 7, "2022-05-27", "2022-05-29", "https://i.imgur.com/Y8xKe1B.jpg", false))
             eventDao.insert(Event(42, "Monster Energy British Grand Prix", 26, 7, "2022-08-05", "2022-08-07", "https://i.imgur.com/dfBAQ3P.jpg", false))
@@ -177,12 +156,6 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(51, "Race Of Germany", 27, 8, "2022-05-26", "2022-05-28", "https://i.imgur.com/NexR6as.jpg", false))
             eventDao.insert(Event(52, "Race Of Hungary", 18, 8, "2022-06-11", "2022-06-12", "https://i.imgur.com/kMz798n.jpg", false))
             eventDao.insert(Event(53, "NASCAR GP Czech Republic", 28, 9, "2022-09-02", "2022-09-04", "https://i.imgur.com/b0OFya4.jpg", false))
-            sessionDao.insert(Session(null, "Free Practise 1", 53, "2022-09-02 14:10", 30, null))
-            sessionDao.insert(Session(null, "Free Practise 2", 53, "2022-09-02 16:50", 30, null))
-            sessionDao.insert(Session(null, "Qualifying", 53, "2022-09-03 10:50", 15, null))
-            sessionDao.insert(Session(null, "Superpole", 53, "2022-09-03 11:10", 5, null))
-            sessionDao.insert(Session(null, "Race 1", 53, "2022-09-03 13:50", null, null))
-            sessionDao.insert(Session(null, "Race 2", 53, "2022-09-04 15:00", null, null))
         }
     }
 

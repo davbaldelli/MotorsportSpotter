@@ -1,10 +1,7 @@
 package com.example.motorsportspotter.services.retrofit
 
 
-import com.example.motorsportspotter.room.entities.Championship
-import com.example.motorsportspotter.room.entities.Event
-import com.example.motorsportspotter.room.entities.Session
-import com.example.motorsportspotter.room.entities.Track
+import com.example.motorsportspotter.room.entities.*
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -20,4 +17,7 @@ interface RemoteService {
 
     @GET("sessions")
     fun allSessions() : Call<List<Session>>?
+
+    @GET("news")
+    fun allNews() : Call<List<News>>?
 }

@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class ChampionshipsViewModel(private val repository: ChampionshipRepository): ViewModel() {
     val allChampionships = repository.allChampionships.asLiveData()
-    val allUnfollowedChampionships = repository.allUnfollowedChampionships
+    val allUnfollowedChampionships = repository.allUnfollowedChampionships.asLiveData()
     val followedChampionships = repository.followedChampionships.asLiveData()
 
     fun insert(championship: Championship) = viewModelScope.launch{

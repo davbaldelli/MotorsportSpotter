@@ -25,6 +25,7 @@ import com.example.motorsportspotter.room.viewmodel.TracksViewModel
 import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
 import com.example.motorsportspotter.utilities.DailyEventNotificationPlanner
 import com.example.motorsportspotter.utilities.StartedEventBroadcastReceiver
+import com.example.motorsportspotter.utilities.SyncService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -59,6 +60,10 @@ class Home : AppCompatActivity() {
             AlarmManager.INTERVAL_HOUR,
             alarmIntent
         )
+
+        Intent(this, SyncService::class.java).also { intent ->
+            startService(intent)
+        }
 
     }
 
