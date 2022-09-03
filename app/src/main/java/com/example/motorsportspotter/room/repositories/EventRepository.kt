@@ -36,8 +36,6 @@ class EventRepository(private val dao: EventDao) {
     }
 
 
-
-
     fun futureEventsByChamp(champId : Int) = dao.getFutureFromChampionship(champId)
     fun ongoingByChamp(champId : Int) = dao.getOngoingFromChampionship(champId)
     fun pastEventsByChamp(champId : Int) = dao.getPastFromChampionship(champId)

@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
 class NewsViewModel(private val repository: NewsRepository) : ViewModel() {
     val allNews = repository.allNews.asLiveData()
 
+    fun getById(id: Int) = repository.getById(id).asLiveData()
+
     fun insert(news : News) = viewModelScope.launch {
         repository.insert(news)
     }

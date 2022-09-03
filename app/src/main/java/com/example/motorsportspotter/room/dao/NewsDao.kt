@@ -10,9 +10,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NewsDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(news: News)
 
     @Query("SELECT * FROM news ORDER BY date DESC")
     fun getAll() : Flow<List<News>>
+
+    @Query("SELECT * FROM news WHERE id = :id")
+    fun getById(id : Int) : Flow<News>
 }

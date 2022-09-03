@@ -24,17 +24,17 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
         }
     }
 
-    fun futureChampionshipEvents(champId : Int) = repository.futureEventsByChamp(champId)
-    fun ongoingChampionshipEvents(champId : Int) = repository.ongoingByChamp(champId)
-    fun pastChampionshipEvents(champId : Int) = repository.pastEventsByChamp(champId)
+    fun futureChampionshipEvents(champId : Int) = repository.futureEventsByChamp(champId).asLiveData()
+    fun ongoingChampionshipEvents(champId : Int) = repository.ongoingByChamp(champId).asLiveData()
+    fun pastChampionshipEvents(champId : Int) = repository.pastEventsByChamp(champId).asLiveData()
 
-    fun futureTrackEvents(trackId : Int) = repository.futureEventsByTrack(trackId)
-    fun ongoingTrackEvents(trackId : Int) = repository.ongoingByTrack(trackId)
-    fun pastTrackEvents(trackId : Int) = repository.pastEventsByTrack(trackId)
+    fun futureTrackEvents(trackId : Int) = repository.futureEventsByTrack(trackId).asLiveData()
+    fun ongoingTrackEvents(trackId : Int) = repository.ongoingByTrack(trackId).asLiveData()
+    fun pastTrackEvents(trackId : Int) = repository.pastEventsByTrack(trackId).asLiveData()
 
-    fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = repository.getSimilarEvents(champId, trackId, eventId)
+    fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = repository.getSimilarEvents(champId, trackId, eventId).asLiveData()
 
-    fun getById(id : Int) = repository.getEventById(id)
+    fun getById(id : Int) = repository.getEventById(id).asLiveData()
 }
 
 class EventsViewModelFactory(private val repository: EventRepository) : ViewModelProvider.Factory {

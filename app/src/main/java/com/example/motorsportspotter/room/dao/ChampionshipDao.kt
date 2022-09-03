@@ -26,6 +26,6 @@ interface ChampionshipDao {
     fun changeFavourite(id : Int) : Int
 
     @Query("SELECT * FROM championships WHERE id = :id")
-    fun getChampionshipWithEvents(id : Int) : LiveData<Championship>
+    fun getChampionshipWithEvents(id : Int) : Flow<Championship>
 
 }

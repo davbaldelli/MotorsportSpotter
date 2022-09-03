@@ -8,6 +8,7 @@ import com.example.motorsportspotter.components.recyclerviews.entities.Champions
 import com.example.motorsportspotter.components.recyclerviews.entities.Event as AdapterEvent
 import com.example.motorsportspotter.components.recyclerviews.entities.Track as AdapterTrack
 import com.example.motorsportspotter.components.recyclerviews.entities.Session as AdapterSession
+import com.example.motorsportspotter.components.recyclerviews.entities.News as AdapterNews
 
 class DBEntitiesConvertersFactory {
     companion object {
@@ -62,6 +63,18 @@ class DBEntitiesConvertersFactory {
                 it.logo,
                 it.favourite,
                 it.liveStreamLink,
+            )
+        }
+
+        val NewsConverter = EntitiesConverter<News, AdapterNews>{
+            AdapterNews(
+                it.id,
+                it.title,
+                it.subtitle,
+                it.content,
+                it.author,
+                LocalDate.parse(it.date),
+                it.image
             )
         }
 

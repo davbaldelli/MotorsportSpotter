@@ -122,6 +122,14 @@ class Home : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun openNewsActivity(view : View){
+        val newsId = view.tag as Int
+        val intent = Intent(this, NewsActivity::class.java).apply {
+            putExtra("news_id", newsId)
+        }
+        startActivity(intent)
+    }
+
     fun onTrackFollowButtonClick(view : View){
         runBlocking {
             launch {
@@ -159,10 +167,6 @@ class Home : AppCompatActivity() {
                 }
                 R.id.news_bottom_btn -> {
                     changeFragment<NewsFragment>()
-                    true
-                }
-                R.id.notifications_bottom_btn -> {
-                    Toast.makeText(applicationContext, "notifications", Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false

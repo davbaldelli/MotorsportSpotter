@@ -16,6 +16,7 @@ import com.example.motorsportspotter.components.recyclerviews.adapters.*
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
+import com.example.motorsportspotter.room.entities.News
 import com.example.motorsportspotter.room.entities.Track
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import java.time.LocalDate
@@ -54,6 +55,14 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<EventWithTrackAndCha
     data?.let{
         val adapter = recyclerView.adapter as EventCardAdapter
         adapter.submitList(Converters.EventConverter.convertAll(it))
+    }
+}
+
+@BindingAdapter("newsListData")
+fun bindNewsCardRecyclerView(recyclerView: RecyclerView, data: List<News>?) {
+    data?.let{
+        val adapter = recyclerView.adapter as NewsCardAdapter
+        adapter.submitList(Converters.NewsConverter.convertAll(it))
     }
 }
 

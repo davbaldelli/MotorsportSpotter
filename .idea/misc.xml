@@ -39,7 +39,10 @@
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/horizontal_championship_card.xml" value="0.4170444242973708" />
         <entry key="app/src/main/res/layout/horizontal_track_card.xml" value="0.4170444242973708" />
-        <entry key="app/src/main/res/layout/news_fragment.xml" value="0.4322498944702406" />
+        <entry key="app/src/main/res/layout/news_activity.xml" value="0.43563009972801453" />
+        <entry key="app/src/main/res/layout/news_card.xml" value="0.34843950406156476" />
+        <entry key="app/src/main/res/layout/news_detail_fragment.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/news_fragment.xml" value="0.5" />
         <entry key="app/src/main/res/layout/topbar.xml" value="0.33" />
         <entry key="app/src/main/res/layout/track_activity.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/track_card.xml" value="0.4360837964942283" />
@@ -61,7 +64,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.43779392902949976" />
+        <option name="scale" value="0.4322498944702406" />
       </ProjectState>
     </option>
   </component>

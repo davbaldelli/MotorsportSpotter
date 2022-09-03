@@ -172,6 +172,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/ongoing_camp_events_rw"
                     championshipDataList="@{ongoingEvents}"
@@ -181,8 +182,8 @@
                     android:layout_marginTop="10dp"
                     android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/event_card"
-                    tools:itemCount="3"/>
+                    tools:itemCount="3"
+                    tools:listitem="@layout/event_card" />
             </RelativeLayout>
 
 

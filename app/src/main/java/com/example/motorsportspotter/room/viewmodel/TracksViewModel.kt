@@ -17,7 +17,7 @@ class TracksViewModel(private val repository: TracksRepository) : ViewModel() {
         repository.insert(track)
     }
 
-    fun getTrack(id : Int) = repository.getTrackById(id)
+    fun getTrack(id : Int) = repository.getTrackById(id).asLiveData()
 
     fun changeFollowed(id : Int) {
         viewModelScope.launch {

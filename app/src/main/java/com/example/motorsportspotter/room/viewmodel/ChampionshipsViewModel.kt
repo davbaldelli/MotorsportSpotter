@@ -24,7 +24,7 @@ class ChampionshipsViewModel(private val repository: ChampionshipRepository): Vi
     }
 
 
-    fun getChampionshipById(id : Int) = repository.getChampionshipById(id)
+    fun getChampionshipById(id : Int) = repository.getChampionshipById(id).asLiveData()
 }
 
 

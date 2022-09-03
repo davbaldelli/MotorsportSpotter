@@ -10,6 +10,8 @@ class NewsRepository(private val dao : NewsDao) {
 
     val allNews = dao.getAll()
 
+    fun getById(id : Int) = dao.getById(id)
+
     @WorkerThread
     suspend fun insert(news: News) {
         withContext(Dispatchers.IO){

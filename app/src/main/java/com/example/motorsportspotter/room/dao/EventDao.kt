@@ -26,31 +26,31 @@ interface EventDao {
     @Query("SELECT * FROM events WHERE end_date >= DATE('NOW') ORDER BY start_date LIMIT 8")
     fun getIncomingEvents() : Flow<List<EventWithTrackAndChamp>>
 
-    @Query("SELECT e.* FROM events e JOIN championships c on c.id = e.championship_id JOIN tracks t on t.id = e.track_id WHERE (e.favourites = 1 OR t.favourite = 1 OR c.favourite = 1 ) AND end_date >= DATE('now') ORDER BY start_date")
+    @Query("SELECT e.* FROM events e JOIN championships c on c.id = e.championship_id JOIN tracks t on t.id = e.track_id WHERE (e.favourites = 1 OR t.favourite = 1 OR c.favourite = 1 ) AND end_date >= DATE('now') ORDER BY start_date LIMIT 25")
     fun getFavourites() : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE id = :id LIMIT 1")
-    fun getById(id : Int) : LiveData<EventWithTrackAndChamp>
+    fun getById(id : Int) : Flow<EventWithTrackAndChamp>
 
     @Query("SELECT * FROM events WHERE (championship_id = :champId OR track_id = :trackId) AND NOT id = :eventId AND end_date > DATE('now') ORDER BY start_date LIMIT 10")
-    fun getSimilarEvents(champId: Int, trackId: Int, eventId:Int) : LiveData<List<EventWithTrackAndChamp>>
+    fun getSimilarEvents(champId: Int, trackId: Int, eventId:Int) : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE championship_id = :champId AND start_date > DATE('now') ORDER BY start_date")
-    fun getFutureFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
+    fun getFutureFromChampionship(champId : Int) : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE championship_id = :champId AND (DATE('now') BETWEEN start_date AND end_date) ORDER BY start_date")
-    fun getOngoingFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
+    fun getOngoingFromChampionship(champId : Int) : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE championship_id = :champId AND end_date < DATE('now') ORDER BY start_date DESC")
-    fun getPastFromChampionship(champId : Int) : LiveData<List<EventWithTrackAndChamp>>
+    fun getPastFromChampionship(champId : Int) : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE track_id = :trackId AND start_date > DATE('now') ORDER BY start_date")
-    fun getFutureFromTrack(trackId : Int) : LiveData<List<EventWithTrackAndChamp>>
+    fun getFutureFromTrack(trackId : Int) : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE track_id = :trackId AND (DATE('now') BETWEEN start_date AND end_date) ORDER BY start_date")
-    fun getOngoingFromTrack(trackId : Int) : LiveData<List<EventWithTrackAndChamp>>
+    fun getOngoingFromTrack(trackId : Int) : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT * FROM events WHERE track_id = :trackId AND end_date < DATE('now') ORDER BY start_date DESC")
-    fun getPastFromTrack(trackId : Int) : LiveData<List<EventWithTrackAndChamp>>
+    fun getPastFromTrack(trackId : Int) : Flow<List<EventWithTrackAndChamp>>
 
 }

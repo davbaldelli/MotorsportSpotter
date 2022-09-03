@@ -21,9 +21,4 @@
         android:icon="@drawable/ic_news_24"
         android:title="@string/news"/>
 
-    <item
-        android:id="@+id/notifications_bottom_btn"
-        android:enabled="true"
-        android:icon="@drawable/ic_bell_24"
-        android:title="@string/notifications"/>
 </menu>

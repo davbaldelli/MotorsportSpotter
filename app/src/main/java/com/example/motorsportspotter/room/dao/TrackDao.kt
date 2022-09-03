@@ -26,6 +26,6 @@ interface TrackDao {
     fun changeFavourite(id : Int) : Int
 
     @Query("SELECT * FROM tracks WHERE id= :id")
-    fun getTrackWithEvents(id : Int) : LiveData<Track>
+    fun getTrackWithEvents(id : Int) : Flow<Track>
 
 }
