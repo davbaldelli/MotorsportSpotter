@@ -36,7 +36,7 @@ abstract class EventDatabase : RoomDatabase() {
 
             // Add sample elements.
 
-
+            /*
             trackDao.insert(Track(0,"Autodromo Enzo e Dino Ferrari","https://i.imgur.com/gAidPWR.jpg","https://i.imgur.com/Zv8dYhd.png","Autodromo Enzo e Dino Ferrari", true))
             trackDao.insert(Track(1,"Autodromo Di Monza","https://i.imgur.com/zDnWVPJ.jpg","https://i.imgur.com/stxBber.png","Autodromo Nazionale Monza", true))
             trackDao.insert(Track(2,"Misano World Circuit Marco Simoncelli","https://i.imgur.com/HoxRd1p.jpg","https://i.imgur.com/uW4JlT1.jpg","Misano Motocircuito Marco Simoncelli", true))
@@ -156,6 +156,8 @@ abstract class EventDatabase : RoomDatabase() {
             eventDao.insert(Event(51, "Race Of Germany", 27, 8, "2022-05-26", "2022-05-28", "https://i.imgur.com/NexR6as.jpg", false))
             eventDao.insert(Event(52, "Race Of Hungary", 18, 8, "2022-06-11", "2022-06-12", "https://i.imgur.com/kMz798n.jpg", false))
             eventDao.insert(Event(53, "NASCAR GP Czech Republic", 28, 9, "2022-09-02", "2022-09-04", "https://i.imgur.com/b0OFya4.jpg", false))
+
+             */
         }
     }
 

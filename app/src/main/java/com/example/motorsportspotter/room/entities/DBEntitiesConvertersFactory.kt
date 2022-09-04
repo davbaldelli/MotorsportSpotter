@@ -48,7 +48,8 @@ class DBEntitiesConvertersFactory {
                 it.image,
                 it.logo,
                 it.favourite,
-                it.locationName
+                it.locationName,
+                it.nationCode
             )
         }
 

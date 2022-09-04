@@ -12,6 +12,7 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 
 class SyncService : Service() {
     private var serviceLooper: Looper? = null
@@ -61,100 +62,70 @@ class SyncService : Service() {
 
             val service = RemoteClient.getRemoteService()
 
-            service.allChampionships()?.enqueue(object : Callback<List<Championship>> {
-                override fun onResponse(call: Call<List<Championship>>, response: Response<List<Championship>>) {
-                    response.body()?.let {
-                        it.forEach { champ ->
-                            runBlocking {
-                                launch {
+            runBlocking {
+                launch {
+                    withContext(Dispatchers.IO) {
+                        try {
+                            val champsRes = service.allChampionships()?.execute()
+                            champsRes?.body()?.let {
+                                it.forEach { champ ->
                                     champRepo.insert(champ)
                                 }
                             }
-                        }
-                    }
-                }
-                override fun onFailure(call: Call<List<Championship>>, t: Throwable) {
-                    Log.e("ERROR", t.toString())
-                }
-            })
 
-            service.allTracks()?.enqueue(object : Callback<List<Track>> {
-                override fun onResponse(call: Call<List<Track>>, response: Response<List<Track>>) {
-                    response.body()?.let {
-                        it.forEach { track ->
-                            runBlocking {
-                                launch {
+                            val trackRes = service.allTracks()?.execute()
+                            trackRes?.body()?.let {
+                                it.forEach { track ->
                                     tracksRepo.insert(track)
                                 }
                             }
 
-                        }
-                    }
-                }
+                            val eventRes = service.allEvents()?.execute()
 
-                override fun onFailure(call: Call<List<Track>>, t: Throwable) {
-                    //TODO("Not yet implemented")
-                }
-
-            })
-
-            service.allEvents()?.enqueue(object : Callback<List<Event>> {
-                override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
-                    response.body()?.let {
-                        it.forEach { event ->
-                            runBlocking {
-                                launch {
-                                    eventRepo.insert(event)
-                                }
-                            }
-                        }
-                        service.allSessions()?.enqueue(object : Callback<List<Session>> {
-                            override fun onResponse(call: Call<List<Session>>, response: Response<List<Session>>) {
-                                response.body()?.let { sessions ->
-                                    sessions.forEach { session ->
-                                        runBlocking {
-                                            launch {
-                                                sessionsRepo.insert(session)
-                                            }
+                            eventRes?.body()?.let {
+                                it.forEach { event ->
+                                    runBlocking {
+                                        launch {
+                                            eventRepo.insert(event)
                                         }
                                     }
                                 }
                             }
 
-                            override fun onFailure(call: Call<List<Session>>, t: Throwable) {
-                                //TODO("Not yet implemented")
-                            }
+                            val sessionsRes = service.allSessions()?.execute()
 
-                        })
-                    }
-                }
-
-                override fun onFailure(call: Call<List<Event>>, t: Throwable) {
-                    //TODO("Not yet implemented")
-                }
-
-            })
-
-            service.allNews()?.enqueue(object : Callback<List<News>> {
-                override fun onResponse(call: Call<List<News>>, response: Response<List<News>>) {
-                    response.body()?.let {
-                        it.forEach { news ->
-                            runBlocking {
-                                launch {
-                                    newsRepo.insert(news)
+                            sessionsRes?.body()?.let { sessions ->
+                                sessions.forEach { session ->
+                                    runBlocking {
+                                        launch {
+                                            sessionsRepo.insert(session)
+                                        }
+                                    }
                                 }
                             }
+
+                            val newsRes = service.allNews()?.execute()
+
+                            newsRes?.body()?.let {
+                                it.forEach { news ->
+                                    runBlocking {
+                                        launch {
+                                            newsRepo.insert(news)
+                                        }
+                                    }
+                                }
+                            }
+
+                        } catch (e: IOException) {
+
                         }
                     }
                 }
+            }
 
-                override fun onFailure(call: Call<List<News>>, t: Throwable) {
-                    //TODO("Not yet implemented")
-                }
-
-            })
         }
     }
+
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         // For each start request, send a message to start a job and deliver the

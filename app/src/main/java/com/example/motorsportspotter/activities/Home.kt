@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -17,14 +16,13 @@ import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.home.DiscoverFragment
 import com.example.motorsportspotter.fragments.home.FavouritesEventFragment
-import com.example.motorsportspotter.fragments.home.HomeFragmentX
+import com.example.motorsportspotter.fragments.home.HomeFragment
 import com.example.motorsportspotter.fragments.home.NewsFragment
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
 import com.example.motorsportspotter.room.viewmodel.TracksViewModel
 import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
 import com.example.motorsportspotter.utilities.DailyEventNotificationPlanner
-import com.example.motorsportspotter.utilities.StartedEventBroadcastReceiver
 import com.example.motorsportspotter.utilities.SyncService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
@@ -130,6 +128,11 @@ class Home : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun openNearbyEventsActivity(view : View){
+        val intent = Intent(this, NearbyEventsActivity::class.java)
+        startActivity(intent)
+    }
+
     fun onTrackFollowButtonClick(view : View){
         runBlocking {
             launch {
@@ -154,7 +157,7 @@ class Home : AppCompatActivity() {
         bottomNavigation.setOnItemSelectedListener{ item ->
             when(item.itemId) {
                 R.id.home_bottom_btn -> {
-                    changeFragment<HomeFragmentX>()
+                    changeFragment<HomeFragment>()
                     true
                 }
                 R.id.favourites_bottom_btn -> {

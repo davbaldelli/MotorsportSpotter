@@ -17,7 +17,8 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:context=".fragments.event.EventDetailFragment">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -26,14 +27,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:context=".fragments.event.EventDetailFragment">
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageView4"
                     imageUrl="@{event.imageUrl}"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="250dp"
                     android:contentDescription="@string/event_image"
                     android:scaleType="centerCrop"
                     tools:src="@drawable/audi_gtwc" />
@@ -56,6 +56,7 @@
                     android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
                     android:onClick="openChampionshipActivity"
                     android:orientation="horizontal"
                     android:tag="@{event.championship.id}">
@@ -81,23 +82,23 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
                         android:text="@{event.championship.name}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:layout_weight="1"
                         tools:text="Formula 1" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_vertical|end"
-                            android:layout_marginHorizontal="10dp"
-                            style="?attr/materialButtonOutlinedStyle"
-                            tools:text="Follow"
-                            android:tag="@{event.championship.id}"
-                            android:onClick="onChampionshipFollowButtonClick"
-                            android:text='@{event.championship.followed ? "Unfollow" : "Follow" }'  />
+                    <Button
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginHorizontal="10dp"
+                        android:onClick="onChampionshipFollowButtonClick"
+                        android:tag="@{event.championship.id}"
+                        android:text='@{event.championship.followed ? "Unfollow" : "Follow" }'
+                        tools:text="Follow" />
 
 
                 </LinearLayout>
@@ -138,6 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:onClick="openTrackActivity"
                     android:orientation="horizontal"

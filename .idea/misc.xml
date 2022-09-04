@@ -39,10 +39,12 @@
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/horizontal_championship_card.xml" value="0.4170444242973708" />
         <entry key="app/src/main/res/layout/horizontal_track_card.xml" value="0.4170444242973708" />
+        <entry key="app/src/main/res/layout/nearby_events_activity.xml" value="0.43693886276186406" />
+        <entry key="app/src/main/res/layout/nearby_events_fragment.xml" value="0.4360837964942283" />
         <entry key="app/src/main/res/layout/news_activity.xml" value="0.43563009972801453" />
         <entry key="app/src/main/res/layout/news_card.xml" value="0.34843950406156476" />
         <entry key="app/src/main/res/layout/news_detail_fragment.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/news_fragment.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/news_fragment.xml" value="0.17202491163103856" />
         <entry key="app/src/main/res/layout/topbar.xml" value="0.33" />
         <entry key="app/src/main/res/layout/track_activity.xml" value="0.43779392902949976" />
         <entry key="app/src/main/res/layout/track_card.xml" value="0.4360837964942283" />

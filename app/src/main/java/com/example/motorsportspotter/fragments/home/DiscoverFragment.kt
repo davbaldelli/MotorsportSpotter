@@ -1,6 +1,7 @@
 package com.example.motorsportspotter.fragments.home
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +9,19 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
 import com.example.motorsportspotter.R
+import com.example.motorsportspotter.activities.NearbyEventsActivity
 import com.example.motorsportspotter.components.recyclerviews.adapters.EventSearchResultAdapter
 import com.example.motorsportspotter.components.recyclerviews.entities.Championship
 import com.example.motorsportspotter.components.recyclerviews.entities.Event
 import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
 import com.example.motorsportspotter.components.recyclerviews.entities.Track
+import com.example.motorsportspotter.databinding.DiscoverFragmentBinding
 import com.example.motorsportspotter.room.viewmodel.*
+import com.google.android.material.textfield.TextInputEditText
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converter
 
 class DiscoverFragment : Fragment() {
@@ -36,20 +41,14 @@ class DiscoverFragment : Fragment() {
     private var tracks = ArrayList<Track>()
     private var championships = ArrayList<Championship>()
     private var events = ArrayList<Event>()
-    private lateinit var searchBar : SearchView
-    private lateinit var adapter : EventSearchResultAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding : DiscoverFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.discover_fragment, container, false)
+    ): View {
+        binding = DiscoverFragmentBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,13 +69,12 @@ class DiscoverFragment : Fragment() {
     }
 
     private fun setupRecyclerView(activity: Activity){
-        val resultView = activity.findViewById<RecyclerView>(R.id.search_result_list)
-        adapter = EventSearchResultAdapter()
-        resultView.adapter = adapter
+        binding.searchResultList.adapter = EventSearchResultAdapter()
     }
 
     private fun setupSearchBar(activity: Activity){
-        searchBar = activity.findViewById(R.id.discover_search_bar)
+        val searchBar = binding.discoverSearchBar
+        val adapter = binding.searchResultList.adapter as EventSearchResultAdapter
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if(query != null && query != ""){
@@ -99,6 +97,7 @@ class DiscoverFragment : Fragment() {
         })
     }
 
+
     private fun searchFromTracks(queryString : String) : List<Track>{
         return tracks.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
     }
@@ -110,6 +109,7 @@ class DiscoverFragment : Fragment() {
     private fun searchFromChampionships(queryString : String) : List<Championship>{
         return championships.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
     }
+
 
     private fun searchFromAll(queryString: String) : List<SearchResult>{
         val items = ArrayList<SearchResult>()

@@ -38,8 +38,10 @@ fun bindAddress(textView: TextView, locationName : String?){
     locationName?.let {
         val geocoder = Geocoder(textView.context, Locale.ITALY)
         val addresses: List<Address> = geocoder.getFromLocationName(it, 1)
-        val address = addresses[0]
-        textView.text = "${address.getAddressLine(0)}  ${address.countryCode.flagEmoji}"
+        if(addresses.isNotEmpty()) {
+            val address = addresses[0]
+            textView.text = "${address.getAddressLine(0)}  ${address.countryCode.flagEmoji}"
+        }
     }
 }
 
@@ -151,7 +153,7 @@ fun bindRunningIcon(imageView: ImageView, event : Event){
 @BindingAdapter("optionalTicketButton")
 fun bindOptionalTicketsButton(floatingActionButton: ExtendedFloatingActionButton, event : Event?){
     event?.let {
-        if (LocalDate.now() <= event.endDate && LocalDate.now() >= event.startDate && event.championship.liveStreamLink != null){
+        if (LocalDate.now() <= event.endDate && LocalDate.now() >= event.startDate && !event.championship.liveStreamLink.isNullOrEmpty()){
             floatingActionButton.visibility = View.VISIBLE
         }
     }

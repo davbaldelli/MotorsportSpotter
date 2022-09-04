@@ -10,12 +10,8 @@ class EntitiesFilter {
     companion object{
         fun filterEventByRegion(events : List<Event>, region : String, context : Context) : List<Event>{
             return events.filter { event ->
-                val geocoder = Geocoder(context, Locale.ITALY)
-                val addresses: List<Address> =
-                    geocoder.getFromLocationName(event.track.location, 1)
-                addresses[0].adminArea == region
+                event.track.nationCode == region
             }
-
         }
 
         fun filterEventsByCountry(events : List<Event>, country : String, context : Context) : List<Event>{

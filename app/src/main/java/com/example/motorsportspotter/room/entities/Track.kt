@@ -20,5 +20,7 @@ data class Track(
         @SerializedName("location")
         @ColumnInfo(name = "location_name")
         val locationName : String,
-        @ColumnInfo(name = "favourite") val favourite : Boolean
+        @ColumnInfo(name = "favourite") val favourite : Boolean,
+        @ColumnInfo(name = "nation_code")
+        @SerializedName("nation_code")val nationCode : String,
 )

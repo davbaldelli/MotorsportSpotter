@@ -10,12 +10,11 @@ class Track(
     val id : Int,
     val name : String,
     val coordinates : Pair<String, String>?,
-    @SerializedName("background_url")
     val backgroundUrl : String,
-    @SerializedName("logo_url")
     val logoUrl : String,
     val followed : Boolean,
     val location : String,
+    val nationCode : String,
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
         return query(name)
