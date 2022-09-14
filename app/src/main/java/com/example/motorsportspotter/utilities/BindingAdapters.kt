@@ -45,6 +45,11 @@ fun bindAddress(textView: TextView, locationName : String?){
     }
 }
 
+@BindingAdapter("scale")
+fun bindScale(image : ImageView, string: String){
+    image.scaleType = if (string != "Circuit" && string != "Championship") ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.CENTER_INSIDE
+}
+
 val String.flagEmoji: String
     get() {
         val firstLetter = Character.codePointAt(this, 0) - 0x41 + 0x1F1E6

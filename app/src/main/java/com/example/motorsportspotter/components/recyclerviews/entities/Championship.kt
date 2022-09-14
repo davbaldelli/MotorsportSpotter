@@ -33,7 +33,7 @@ class Championship(
     }
 
     override fun getImgRes(): String {
-        return backgroundUrl
+        return logoUrl
     }
 
     override fun onClick(view: View) {

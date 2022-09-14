@@ -33,12 +33,15 @@
                     app:cardCornerRadius="200dp"
                     android:layout_margin="5dp"
                     android:padding="1dp">
+
                     <ImageView
+                        imageUrl="@{searchResult.imgRes}"
+                        scale="@{searchResult.description}"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:adjustViewBounds="true"
                         android:contentDescription="@string/event_thumbnail"
                         android:scaleType="centerCrop"
-                        imageUrl="@{searchResult.imgRes}"
                         tools:srcCompat="@drawable/audi_gtwc" />
                 </com.google.android.material.card.MaterialCardView>
                 <LinearLayout
