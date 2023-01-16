@@ -12,15 +12,15 @@ data class Track(
         val id : Int,
         @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "image")
-        @SerializedName("background_url")
+        @SerializedName("image")
         val image : String,
         @ColumnInfo(name = "logo")
-        @SerializedName("logo_url")
+        @SerializedName("logo")
         val logo : String,
-        @SerializedName("location")
+        @SerializedName("locationName")
         @ColumnInfo(name = "location_name")
         val locationName : String,
         @ColumnInfo(name = "favourite") val favourite : Boolean,
         @ColumnInfo(name = "nation_code")
-        @SerializedName("nation_code")val nationCode : String,
+        @SerializedName("nationCode")val nationCode : String,
 )

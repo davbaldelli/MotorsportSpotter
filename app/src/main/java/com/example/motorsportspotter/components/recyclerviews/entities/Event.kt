@@ -11,11 +11,11 @@ import java.time.format.DateTimeFormatter
 class Event(
     val id : Int,
     val name: String,
-    @SerializedName("start_date")
+    @SerializedName("startDate")
     val startDate: LocalDate,
-    @SerializedName("end_date")
+    @SerializedName("endDate")
     val endDate: LocalDate,
-    @SerializedName("image_url")
+    @SerializedName("image")
     val imageUrl: String,
     val track : Track,
     val championship: Championship,
@@ -54,7 +54,7 @@ class Event(
 
     fun getSessionsDesc() : String {
         val formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return sessions.fold("") { res, session ->
+        return sessions.sortedBy { session -> session.startDateTime }.fold("") { res, session ->
             res + "${session.name}: ${session.startDateTime.dayOfWeek.name.lowercase()}, " +
                     "${session.startDateTime.month.name.lowercase()} ${session.startDateTime.dayOfMonth}, " +
                     "${session.startDateTime.format(formatter)}\n"

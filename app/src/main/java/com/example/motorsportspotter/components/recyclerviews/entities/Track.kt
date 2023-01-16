@@ -10,7 +10,9 @@ class Track(
     val id : Int,
     val name : String,
     val coordinates : Pair<String, String>?,
+    @SerializedName("image")
     val backgroundUrl : String,
+    @SerializedName("logo")
     val logoUrl : String,
     val followed : Boolean,
     val location : String,

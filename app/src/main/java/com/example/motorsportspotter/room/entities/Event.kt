@@ -13,16 +13,16 @@ data class Event(
         @ColumnInfo(name = "name")
         val name : String,
         @ColumnInfo(name = "track_id", index = true)
-        @SerializedName("track_id")
+        @SerializedName("trackId")
         val trackId : Int,
         @ColumnInfo(name = "championship_id", index = true)
-        @SerializedName("championship_id")
+        @SerializedName("championshipId")
         val champId : Int,
         @ColumnInfo(name = "start_date")
-        @SerializedName("start_date")
+        @SerializedName("startDate")
         val startDate : String,
         @ColumnInfo(name = "end_date")
-        @SerializedName("end_date")
+        @SerializedName("endDate")
         val endDate : String,
         @ColumnInfo(name = "image")
         val image : String,
@@ -47,13 +47,14 @@ data class Session(
         @PrimaryKey(autoGenerate = true) val id : Int?,
         @ColumnInfo(name = "name") val name : String,
         @ColumnInfo(name = "event_id", index = true)
-        @SerializedName("event_id")
+        @SerializedName("eventId")
         val eventId : Int,
-        @ColumnInfo(name = "datetime") val datetime : String,
+        @ColumnInfo(name = "date") val date : String,
+        @ColumnInfo(name = "time") val time : String,
         @ColumnInfo(name = "duration_min")
-        @SerializedName("duration_min")
+        @SerializedName("durationMin")
         val durationMin: Int?,
         @ColumnInfo(name = "duration_laps")
-        @SerializedName("duration_laps")
+        @SerializedName("durationLaps")
         val durationLaps: Int?,
 )

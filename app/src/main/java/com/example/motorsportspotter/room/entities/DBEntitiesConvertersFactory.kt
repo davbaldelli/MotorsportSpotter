@@ -29,11 +29,11 @@ class DBEntitiesConvertersFactory {
 
 
         val SessionConverter = EntitiesConverter<Session, AdapterSession> {
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             AdapterSession(
                 it.id,
                 it.name,
-                LocalDateTime.parse(it.datetime, formatter),
+                LocalDateTime.parse(it.date+" "+it.time, formatter),
                 it.durationMin,
                 it.durationLaps,
             )

@@ -14,20 +14,20 @@ data class Championship(
         @ColumnInfo(name = "year") val year: Int,
 
         @ColumnInfo(name = "pretty_name")
-        @SerializedName("pretty_name")
+        @SerializedName("prettyName")
         val prettyName : String,
 
         @ColumnInfo(name = "image")
-        @SerializedName("background_url")
+        @SerializedName("image")
         val image : String,
 
         @ColumnInfo(name = "logo")
-        @SerializedName("logo_url")
+        @SerializedName("logo")
         val logo : String,
 
         @ColumnInfo(name = "favourite") val favourite : Boolean,
 
         @ColumnInfo(name = "live_stream")
-        @SerializedName("live_stream_link")
+        @SerializedName("liveStream")
         val liveStreamLink : String?,
 )

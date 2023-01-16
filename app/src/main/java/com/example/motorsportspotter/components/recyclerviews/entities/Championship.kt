@@ -10,14 +10,14 @@ class Championship(
     val id : Int,
     val name: String,
     val year : Int,
-    @SerializedName("pretty_name")
+    @SerializedName("prettyName")
     val prettyName : String,
-    @SerializedName("background_url")
+    @SerializedName("image")
     val backgroundUrl : String,
-    @SerializedName("logo_url")
+    @SerializedName("logo")
     val logoUrl : String,
     val followed : Boolean,
-    @SerializedName("live_stream_link")
+    @SerializedName("liveStream")
     val liveStreamLink : String?
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
