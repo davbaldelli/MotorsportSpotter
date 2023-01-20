@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TrackDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(track : Track)
+    suspend fun insert(track : Track)
 
     @Query("SELECT * FROM tracks")
     fun getAll() : Flow<List<Track>>
@@ -23,7 +23,7 @@ interface TrackDao {
     fun getFollowed() : Flow<List<Track>>
 
     @Query("UPDATE tracks SET favourite = NOT favourite WHERE id = :id")
-    fun changeFavourite(id : Int) : Int
+    suspend fun changeFavourite(id : Int) : Int
 
     @Query("SELECT * FROM tracks WHERE id= :id")
     fun getTrackWithEvents(id : Int) : Flow<Track>

@@ -6,6 +6,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.repositories.ChampionshipRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ChampionshipsViewModel(private val repository: ChampionshipRepository): ViewModel() {
@@ -13,13 +14,15 @@ class ChampionshipsViewModel(private val repository: ChampionshipRepository): Vi
     val allUnfollowedChampionships = repository.allUnfollowedChampionships.asLiveData()
     val followedChampionships = repository.followedChampionships.asLiveData()
 
-    fun insert(championship: Championship) = viewModelScope.launch{
-        repository.insert(championship)
+    fun insert(championship: Championship) {
+        viewModelScope.launch(Dispatchers.IO){
+            repository.insert(championship)
+        }
     }
 
     fun changeFollowed(id : Int) {
-        viewModelScope.launch {
-            repository.changeFollowed(id)
+        viewModelScope.launch{
+            val result = repository.changeFollowed(id)
         }
     }
 

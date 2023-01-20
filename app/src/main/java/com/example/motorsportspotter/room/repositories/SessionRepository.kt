@@ -8,10 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class SessionRepository(private val dao: SessionDao) {
-    @WorkerThread
+
     suspend fun insert(session: Session){
-        withContext(Dispatchers.IO){
-            dao.insert(session)
-        }
+        dao.insert(session)
     }
 }

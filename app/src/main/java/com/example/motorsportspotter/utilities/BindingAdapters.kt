@@ -65,6 +65,14 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<EventWithTrackAndCha
     }
 }
 
+@BindingAdapter("listRoomData")
+fun bindRecyclerViewRoom(recyclerView: RecyclerView, data: List<Event>?) {
+    data?.let{
+        val adapter = recyclerView.adapter as EventCardAdapter
+        adapter.submitList(data)
+    }
+}
+
 @BindingAdapter("newsListData")
 fun bindNewsCardRecyclerView(recyclerView: RecyclerView, data: List<News>?) {
     data?.let{

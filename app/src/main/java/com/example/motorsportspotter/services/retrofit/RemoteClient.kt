@@ -1,8 +1,13 @@
 package com.example.motorsportspotter.services.retrofit
 
-import com.google.gson.GsonBuilder
+import com.google.gson.*
+import com.google.gson.stream.JsonReader
+import com.google.gson.stream.JsonWriter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Type
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class RemoteClient {
@@ -20,5 +25,30 @@ class RemoteClient {
 
             return retrofit.create(RemoteService::class.java)
         }
+
+        fun getApiInterface() : ApiInterface {
+
+            val gson = GsonBuilder()
+                .setDateFormat("yyyy-MM-dd")
+                .registerTypeAdapter(LocalDate::class.java, LocalDateTypeAdapter().nullSafe())
+                .create()
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://spotter.davidebaldelli.it:7151/api/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+
+            return retrofit.create(ApiInterface::class.java)
+        }
     }
+
+    internal class LocalDateTypeAdapter : TypeAdapter<LocalDate>() {
+
+        override fun write(out: JsonWriter, value: LocalDate) {
+            out.value(DateTimeFormatter.ISO_LOCAL_DATE.format(value))
+        }
+
+        override fun read(input: JsonReader): LocalDate = LocalDate.parse(input.nextString())
+    }
+
 }

@@ -54,10 +54,10 @@ class Event(
 
     fun getSessionsDesc() : String {
         val formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return sessions.sortedBy { session -> session.startDateTime }.fold("") { res, session ->
-            res + "${session.name}: ${session.startDateTime.dayOfWeek.name.lowercase()}, " +
-                    "${session.startDateTime.month.name.lowercase()} ${session.startDateTime.dayOfMonth}, " +
-                    "${session.startDateTime.format(formatter)}\n"
+        return sessions.sortedBy { session -> session.startDateTime() }.fold("") { res, session ->
+            res + "${session.name}: ${session.startDateTime().dayOfWeek.name.lowercase()}, " +
+                    "${session.startDateTime().month.name.lowercase()} ${session.startDateTime().dayOfMonth}, " +
+                    "${session.startDateTime().format(formatter)}\n"
         }
     }
 }

@@ -14,8 +14,6 @@ class NewsRepository(private val dao : NewsDao) {
 
     @WorkerThread
     suspend fun insert(news: News) {
-        withContext(Dispatchers.IO){
-            dao.insert(news)
-        }
+        dao.insert(news)
     }
 }

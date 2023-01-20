@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName
 class Track(
     val id : Int,
     val name : String,
-    val coordinates : Pair<String, String>?,
     @SerializedName("image")
     val backgroundUrl : String,
     @SerializedName("logo")

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ChampionshipDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(championship: Championship)
+    suspend fun insert(championship: Championship)
 
     @Query("SELECT * FROM championships")
     fun getAll() : Flow<List<Championship>>
@@ -23,7 +23,7 @@ interface ChampionshipDao {
     fun getFollowed() : Flow<List<Championship>>
 
     @Query("UPDATE championships SET favourite = NOT favourite WHERE id = :id")
-    fun changeFavourite(id : Int) : Int
+    suspend fun changeFavourite(id : Int) : Int
 
     @Query("SELECT * FROM championships WHERE id = :id")
     fun getChampionshipWithEvents(id : Int) : Flow<Championship>

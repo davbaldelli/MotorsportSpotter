@@ -11,18 +11,14 @@ class ChampionshipRepository(private val dao: ChampionshipDao) {
     val allUnfollowedChampionships = dao.getUnfollowed()
     val followedChampionships = dao.getFollowed()
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
     suspend fun insert(championship: Championship) {
-        withContext(Dispatchers.IO) {
-            dao.insert(championship)
-        }
+        dao.insert(championship)
     }
 
     fun getChampionshipById(id : Int) = dao.getChampionshipWithEvents(id)
 
     suspend fun changeFollowed(id : Int) : Int {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             dao.changeFavourite(id)
         }
     }

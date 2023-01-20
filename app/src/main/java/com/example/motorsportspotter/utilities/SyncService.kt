@@ -61,65 +61,48 @@ class SyncService : Service() {
             newsRepo = NewsRepository(db.newsDao())
 
             val service = RemoteClient.getRemoteService()
-
-            runBlocking {
-                launch {
-                    withContext(Dispatchers.IO) {
-                        try {
-                            val champsRes = service.allChampionships()?.execute()
-                            champsRes?.body()?.let {
-                                it.forEach { champ ->
-                                    champRepo.insert(champ)
-                                }
-                            }
-
-                            val trackRes = service.allTracks()?.execute()
-                            trackRes?.body()?.let {
-                                it.forEach { track ->
-                                    tracksRepo.insert(track)
-                                }
-                            }
-
-                            val eventRes = service.allEvents()?.execute()
-
-                            eventRes?.body()?.let {
-                                it.forEach { event ->
-                                    runBlocking {
-                                        launch {
-                                            eventRepo.insert(event)
-                                        }
-                                    }
-                                }
-                            }
-
-                            val sessionsRes = service.allSessions()?.execute()
-
-                            sessionsRes?.body()?.let { sessions ->
-                                sessions.forEach { session ->
-                                    runBlocking {
-                                        launch {
-                                            sessionsRepo.insert(session)
-                                        }
-                                    }
-                                }
-                            }
-
-                            val newsRes = service.allNews()?.execute()
-
-                            newsRes?.body()?.let {
-                                it.forEach { news ->
-                                    runBlocking {
-                                        launch {
-                                            newsRepo.insert(news)
-                                        }
-                                    }
-                                }
-                            }
-
-                        } catch (e: IOException) {
-
+            scope.launch {
+                try {
+                    val champsRes = service.allChampionships()?.execute()
+                    champsRes?.body()?.let {
+                        it.forEach { champ ->
+                            champRepo.insert(champ)
                         }
                     }
+
+                    val trackRes = service.allTracks()?.execute()
+                    trackRes?.body()?.let {
+                        it.forEach { track ->
+                            tracksRepo.insert(track)
+                        }
+                    }
+
+                    val eventRes = service.allEvents()?.execute()
+
+                    eventRes?.body()?.let {
+                        it.forEach { event ->
+                            eventRepo.insert(event)
+                        }
+                    }
+
+                    val sessionsRes = service.allSessions()?.execute()
+
+                    sessionsRes?.body()?.let { sessions ->
+                        sessions.forEach { session ->
+                            sessionsRepo.insert(session)
+                        }
+                    }
+
+                    val newsRes = service.allNews()?.execute()
+
+                    newsRes?.body()?.let {
+                        it.forEach { news ->
+                            newsRepo.insert(news)
+                        }
+                    }
+
+                } catch (e: IOException) {
+
                 }
             }
 

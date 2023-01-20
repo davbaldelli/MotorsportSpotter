@@ -12,16 +12,16 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface EventDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(event: Event)
+    suspend fun insert(event: Event)
 
     @Query("UPDATE events SET favourites = NOT favourites WHERE id = :id")
-    fun setFavourite(id : Int) : Int
+    suspend fun setFavourite(id : Int) : Int
 
     @Query("SELECT * FROM events WHERE end_date >= DATE('NOW') ORDER BY start_date")
     fun getAll() : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT e.* FROM events e JOIN championships c on c.id = e.championship_id JOIN tracks t on t.id = e.track_id WHERE (e.favourites = 1 OR t.favourite = 1 OR c.favourite = 1 ) AND (DATE('now') BETWEEN start_date AND end_date) ORDER BY start_date")
-    fun getFavouritesSync() : List<EventWithTrackAndChamp>
+    suspend fun getFavouritesSync() : List<EventWithTrackAndChamp>
 
     @Query("SELECT * FROM events WHERE (start_date BETWEEN DATE('NOW') AND DATE('NOW', '+7 days')) || (end_date BETWEEN DATE('NOW') AND DATE('NOW', '+7 days')) ORDER BY start_date")
     fun getIncomingEvents() : Flow<List<EventWithTrackAndChamp>>

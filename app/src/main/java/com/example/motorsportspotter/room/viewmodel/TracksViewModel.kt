@@ -6,6 +6,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.motorsportspotter.room.entities.Track
 import com.example.motorsportspotter.room.repositories.TracksRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TracksViewModel(private val repository: TracksRepository) : ViewModel() {
@@ -13,15 +14,17 @@ class TracksViewModel(private val repository: TracksRepository) : ViewModel() {
     val unfollowedTracks = repository.unfollowedTracks.asLiveData()
     val followedTracks = repository.followedTracks.asLiveData()
 
-    fun insert(track : Track) = viewModelScope.launch {
-        repository.insert(track)
+    fun insert(track : Track) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insert(track)
+        }
     }
 
     fun getTrack(id : Int) = repository.getTrackById(id).asLiveData()
 
     fun changeFollowed(id : Int) {
         viewModelScope.launch {
-            repository.changeFollowed(id)
+            val result = repository.changeFollowed(id)
         }
     }
 

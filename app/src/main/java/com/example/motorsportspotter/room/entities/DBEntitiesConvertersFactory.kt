@@ -29,11 +29,11 @@ class DBEntitiesConvertersFactory {
 
 
         val SessionConverter = EntitiesConverter<Session, AdapterSession> {
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             AdapterSession(
                 it.id,
                 it.name,
-                LocalDateTime.parse(it.date+" "+it.time, formatter),
+                it.date,
+                it.time,
                 it.durationMin,
                 it.durationLaps,
             )
@@ -43,8 +43,6 @@ class DBEntitiesConvertersFactory {
             AdapterTrack(
                 it.id,
                 it.name,
-                //Pair(coordinates[0], coordinates[1]),
-                null,
                 it.image,
                 it.logo,
                 it.favourite,

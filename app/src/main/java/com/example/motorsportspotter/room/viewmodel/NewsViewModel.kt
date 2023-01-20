@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.motorsportspotter.room.entities.News
 import com.example.motorsportspotter.room.repositories.EventRepository
 import com.example.motorsportspotter.room.repositories.NewsRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NewsViewModel(private val repository: NewsRepository) : ViewModel() {
@@ -14,8 +15,10 @@ class NewsViewModel(private val repository: NewsRepository) : ViewModel() {
 
     fun getById(id: Int) = repository.getById(id).asLiveData()
 
-    fun insert(news : News) = viewModelScope.launch {
-        repository.insert(news)
+    fun insert(news : News) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insert(news)
+        }
     }
 }
 

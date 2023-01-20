@@ -15,9 +15,7 @@ class TracksRepository(private val dao : TrackDao) {
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(track: Track) {
-        withContext(Dispatchers.IO) {
-            dao.insert(track)
-        }
+        dao.insert(track)
     }
 
     fun getTrackById(id : Int) = dao.getTrackWithEvents(id)

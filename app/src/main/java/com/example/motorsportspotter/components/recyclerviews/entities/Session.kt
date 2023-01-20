@@ -2,14 +2,21 @@ package com.example.motorsportspotter.components.recyclerviews.entities
 
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 data class Session (
     val id : Int?,
     val name : String,
-    @SerializedName("start_date_time")
-    val startDateTime : LocalDateTime,
-    @SerializedName("duration_min")
+    val date : String,
+    val time : String,
+    @SerializedName("durationMin")
     val durationMin : Int?,
-    @SerializedName("duration_laps")
+    @SerializedName("durationLaps")
     val durationLaps : Int?
-    )
+    ) {
+    fun startDateTime() : LocalDateTime{
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return LocalDateTime.parse(this.date+" "+this.time, formatter)
+    }
+
+}

@@ -15,22 +15,18 @@ class EventRepository(private val dao: EventDao) {
 
     val favouritesEvents = dao.getFavourites()
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
     suspend fun insert(event: Event) {
-        withContext(Dispatchers.IO){
-            dao.insert(event)
-        }
+        dao.insert(event)
     }
 
     suspend fun setFavourite(id : Int) : Int{
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             dao.setFavourite(id)
         }
     }
 
     suspend fun getFavSync() : List<EventWithTrackAndChamp>{
-        return  withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             dao.getFavouritesSync()
         }
     }

@@ -6,6 +6,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.motorsportspotter.room.entities.Event
 import com.example.motorsportspotter.room.repositories.EventRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class EventsViewModel(private val repository: EventRepository) : ViewModel() {
@@ -14,13 +15,15 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
     val favouritesEvents = repository.favouritesEvents.asLiveData()
     val incomingEvents = repository.incomingEvents.asLiveData()
 
-    fun insert(event: Event) = viewModelScope.launch {
-        repository.insert(event)
+    fun insert(event: Event) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insert(event)
+        }
     }
 
     suspend fun setFavourite(id : Int) {
         viewModelScope.launch {
-            repository.setFavourite(id)
+            val result = repository.setFavourite(id)
         }
     }
 

@@ -7,6 +7,6 @@ import com.example.motorsportspotter.room.entities.Session
 
 @Dao
 interface SessionDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(session: Session)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(session: Session)
 }

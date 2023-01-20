@@ -37,11 +37,11 @@ class DailyEventNotificationPlanner: BroadcastReceiver() {
 
 
                         val calendar: Calendar = Calendar.getInstance().apply {
-                            set(Calendar.YEAR, session.startDateTime.year)
-                            set(Calendar.MONTH, session.startDateTime.monthValue - 1)
-                            set(Calendar.DAY_OF_MONTH, session.startDateTime.dayOfMonth)
-                            set(Calendar.HOUR_OF_DAY, session.startDateTime.hour)
-                            set(Calendar.MINUTE, session.startDateTime.minute)
+                            set(Calendar.YEAR, session.startDateTime().year)
+                            set(Calendar.MONTH, session.startDateTime().monthValue - 1)
+                            set(Calendar.DAY_OF_MONTH, session.startDateTime().dayOfMonth)
+                            set(Calendar.HOUR_OF_DAY, session.startDateTime().hour)
+                            set(Calendar.MINUTE, session.startDateTime().minute)
                             set(Calendar.SECOND, 0)
                         }
 
