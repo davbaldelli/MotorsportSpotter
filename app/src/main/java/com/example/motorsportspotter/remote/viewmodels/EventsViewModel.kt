@@ -1,10 +1,10 @@
-package com.example.motorsportspotter.services.retrofit.viewmodels
+package com.example.motorsportspotter.remote.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.motorsportspotter.models.Event
-import com.example.motorsportspotter.services.retrofit.repositories.EventsRepository
+import com.example.motorsportspotter.remote.repositories.EventsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

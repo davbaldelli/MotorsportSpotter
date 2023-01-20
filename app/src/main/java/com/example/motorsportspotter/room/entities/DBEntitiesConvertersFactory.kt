@@ -31,6 +31,7 @@ class DBEntitiesConvertersFactory {
                 it.name,
                 it.date,
                 it.time,
+                it.timezone,
                 it.durationMin,
                 it.durationLaps,
             )

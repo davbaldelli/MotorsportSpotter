@@ -15,7 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.motorsportspotter.EventsApplication
+import com.example.motorsportspotter.services.EventsApplication
 import com.example.motorsportspotter.adapters.EventCardAdapter
 import com.example.motorsportspotter.databinding.NearbyEventsFragmentBinding
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.motorsportspotter.EventsApplication
+import com.example.motorsportspotter.services.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.championship.ChampionshipFragmentViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel

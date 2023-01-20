@@ -1,4 +1,4 @@
-package com.example.motorsportspotter
+package com.example.motorsportspotter.services
 
 import android.app.Application
 import com.example.motorsportspotter.room.EventDatabase

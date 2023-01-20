@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.motorsportspotter.EventsApplication
+import com.example.motorsportspotter.services.EventsApplication
 import com.example.motorsportspotter.adapters.EventSearchResultAdapter
 import com.example.motorsportspotter.models.Championship
 import com.example.motorsportspotter.models.Event

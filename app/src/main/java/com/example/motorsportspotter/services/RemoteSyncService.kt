@@ -1,20 +1,15 @@
-package com.example.motorsportspotter.utilities
+package com.example.motorsportspotter.services
 
 import android.app.Service
 import android.content.Intent
 import android.os.*
-import android.util.Log
 import com.example.motorsportspotter.room.EventDatabase
-import com.example.motorsportspotter.room.entities.*
 import com.example.motorsportspotter.room.repositories.*
-import com.example.motorsportspotter.services.retrofit.RemoteClient
+import com.example.motorsportspotter.remote.RemoteClient
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.IOException
 
-class SyncService : Service() {
+class RemoteSyncService : Service() {
     private var serviceLooper: Looper? = null
     private var serviceHandler: ServiceHandler? = null
     private lateinit var eventRepo : EventRepository

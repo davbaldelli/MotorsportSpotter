@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.motorsportspotter.EventsApplication
+import com.example.motorsportspotter.services.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.home.DiscoverFragment
 import com.example.motorsportspotter.fragments.home.FavouritesEventFragment
@@ -21,8 +21,8 @@ import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
 import com.example.motorsportspotter.room.viewmodel.TracksViewModel
 import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
-import com.example.motorsportspotter.utilities.DailyEventNotificationPlanner
-import com.example.motorsportspotter.utilities.SyncService
+import com.example.motorsportspotter.services.DailyEventNotificationPlanner
+import com.example.motorsportspotter.services.RemoteSyncService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -58,7 +58,7 @@ class Home : AppCompatActivity() {
             alarmIntent
         )
 
-        Intent(this, SyncService::class.java).also { intent ->
+        Intent(this, RemoteSyncService::class.java).also { intent ->
             startService(intent)
         }
 

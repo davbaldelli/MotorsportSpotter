@@ -1,18 +1,18 @@
-package com.example.motorsportspotter.services.retrofit
+package com.example.motorsportspotter.remote
 
+import com.example.motorsportspotter.services.remote.ApiInterface
 import com.google.gson.*
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.reflect.Type
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
 class RemoteClient {
     companion object{
-        fun getRemoteService() : RemoteService {
+        fun getRemoteService() : RemoteApiInterface {
 
             val gson = GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm")
@@ -23,7 +23,7 @@ class RemoteClient {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
 
-            return retrofit.create(RemoteService::class.java)
+            return retrofit.create(RemoteApiInterface::class.java)
         }
 
         fun getApiInterface() : ApiInterface {
