@@ -6,15 +6,15 @@
     <data>
         <variable
             name="eventViewModel"
-            type="com.example.motorsportspotter.room.viewmodel.EventsViewModel" />
+            type="com.example.motorsportspotter.database.viewmodel.EventsViewModel" />
 
         <variable
             name="championshipViewModel"
-            type="com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel" />
+            type="com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModel" />
 
         <variable
             name="trackViewModel"
-            type="com.example.motorsportspotter.room.viewmodel.TracksViewModel" />
+            type="com.example.motorsportspotter.database.viewmodel.TracksViewModel" />
     </data>
 
     <ScrollView

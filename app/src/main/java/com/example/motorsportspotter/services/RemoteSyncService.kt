@@ -3,8 +3,8 @@ package com.example.motorsportspotter.services
 import android.app.Service
 import android.content.Intent
 import android.os.*
-import com.example.motorsportspotter.room.EventDatabase
-import com.example.motorsportspotter.room.repositories.*
+import com.example.motorsportspotter.database.EventDatabase
+import com.example.motorsportspotter.database.repositories.*
 import com.example.motorsportspotter.remote.RemoteClient
 import kotlinx.coroutines.*
 import java.io.IOException

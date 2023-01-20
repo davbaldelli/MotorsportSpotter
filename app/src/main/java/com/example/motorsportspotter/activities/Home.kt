@@ -3,7 +3,6 @@ package com.example.motorsportspotter.activities
 import android.app.*
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
@@ -12,15 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.motorsportspotter.services.EventsApplication
+import com.example.motorsportspotter.database.EventsApplication
 import com.example.motorsportspotter.R
-import com.example.motorsportspotter.fragments.home.DiscoverFragment
-import com.example.motorsportspotter.fragments.home.FavouritesEventFragment
+import com.example.motorsportspotter.fragments.discover.DiscoverFragment
+import com.example.motorsportspotter.fragments.favorites.FavouritesEventFragment
 import com.example.motorsportspotter.fragments.home.HomeFragment
-import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
-import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
-import com.example.motorsportspotter.room.viewmodel.TracksViewModel
-import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
+import com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModel
+import com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModelFactory
+import com.example.motorsportspotter.database.viewmodel.TracksViewModel
+import com.example.motorsportspotter.database.viewmodel.TracksViewModelFactory
 import com.example.motorsportspotter.services.DailyEventNotificationPlanner
 import com.example.motorsportspotter.services.RemoteSyncService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -67,18 +66,16 @@ class Home : AppCompatActivity() {
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Events Updates"
-            val descriptionText = "Notifications concerning the new about the events"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel("EventUpdate", name, importance).apply {
-                description = descriptionText
-            }
-            // Register the channel with the system
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
+        val name = "Events Updates"
+        val descriptionText = "Notifications concerning the new about the events"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel("EventUpdate", name, importance).apply {
+            description = descriptionText
         }
+        // Register the channel with the system
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
 

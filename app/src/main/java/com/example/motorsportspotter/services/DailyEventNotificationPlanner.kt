@@ -5,10 +5,9 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.example.motorsportspotter.room.EventDatabase
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
-import com.example.motorsportspotter.room.repositories.EventRepository
-import com.example.motorsportspotter.utilities.StartedEventBroadcastReceiver
+import com.example.motorsportspotter.database.EventDatabase
+import com.example.motorsportspotter.database.entities.DBEntitiesConvertersFactory
+import com.example.motorsportspotter.database.repositories.EventRepository
 import kotlinx.coroutines.*
 import java.util.*
 

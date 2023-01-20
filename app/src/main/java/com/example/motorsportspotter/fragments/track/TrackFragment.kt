@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.example.motorsportspotter.services.EventsApplication
+import com.example.motorsportspotter.database.EventsApplication
 import com.example.motorsportspotter.adapters.TrackEventsAdapter
 import com.example.motorsportspotter.databinding.TrackFragmentBinding
-import com.example.motorsportspotter.room.viewmodel.EventsViewModel
-import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
-import com.example.motorsportspotter.room.viewmodel.TracksViewModel
-import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
+import com.example.motorsportspotter.database.viewmodel.EventsViewModel
+import com.example.motorsportspotter.database.viewmodel.EventsViewModelFactory
+import com.example.motorsportspotter.database.viewmodel.TracksViewModel
+import com.example.motorsportspotter.database.viewmodel.TracksViewModelFactory
+import com.example.motorsportspotter.database.entities.DBEntitiesConvertersFactory as Converters
 
 class TrackFragment : Fragment() {
 

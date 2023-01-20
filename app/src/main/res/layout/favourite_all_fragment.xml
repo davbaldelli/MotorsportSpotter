@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.motorsportspotter.room.viewmodel.EventsViewModel" />
+            type="com.example.motorsportspotter.database.viewmodel.EventsViewModel" />
     </data>
 
     <RelativeLayout

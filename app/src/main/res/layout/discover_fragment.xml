@@ -10,7 +10,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.home.DiscoverFragment">
+        tools:context=".fragments.discover.DiscoverFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,7 +1,7 @@
 package com.example.motorsportspotter.remote
 
 
-import com.example.motorsportspotter.room.entities.*
+import com.example.motorsportspotter.database.entities.*
 import retrofit2.Call
 import retrofit2.http.GET
 

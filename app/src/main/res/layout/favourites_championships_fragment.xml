@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel" />
+            type="com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.home.FavouritesChampionshipsFragment">
+        tools:context=".fragments.favorites.FavouritesChampionshipsFragment">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/followed_championships_rw"
             android:layout_width="match_parent"

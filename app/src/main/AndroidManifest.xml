@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
-        android:name=".services.EventsApplication"
+        android:name=".database.EventsApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".utilities.StartedEventBroadcastReceiver" />
+        <receiver android:name=".services.StartedEventBroadcastReceiver" />
         <receiver android:name=".services.DailyEventNotificationPlanner" />
 
         <service android:name=".services.RemoteSyncService" />

@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.example.motorsportspotter.services.EventsApplication
+import com.example.motorsportspotter.database.EventsApplication
 import com.example.motorsportspotter.adapters.VerticalEventCardAdapter
 import com.example.motorsportspotter.databinding.EventDetailFragmentBinding
-import com.example.motorsportspotter.room.viewmodel.EventsViewModel
-import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory
-import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
+import com.example.motorsportspotter.database.viewmodel.EventsViewModel
+import com.example.motorsportspotter.database.viewmodel.EventsViewModelFactory
+import com.example.motorsportspotter.database.entities.DBEntitiesConvertersFactory as Converters
 
 class EventDetailFragment : Fragment() {
 

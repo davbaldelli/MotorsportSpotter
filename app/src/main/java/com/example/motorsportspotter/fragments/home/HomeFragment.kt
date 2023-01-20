@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.motorsportspotter.services.EventsApplication
+import com.example.motorsportspotter.database.EventsApplication
 import com.example.motorsportspotter.adapters.ChampionshipsCardsAdapter
 import com.example.motorsportspotter.adapters.EventCardAdapter
 import com.example.motorsportspotter.adapters.TrackCardsAdapter
 import com.example.motorsportspotter.databinding.HomeFragmentBinding
-import com.example.motorsportspotter.room.viewmodel.*
+import com.example.motorsportspotter.database.viewmodel.*
 
 class HomeFragment : Fragment() {
+
+    companion object{
+        val Instance = HomeFragment()
+    }
 
     private val eventViewModel: EventsViewModel by viewModels {
         EventsViewModelFactory((this.activity?.application as EventsApplication).eventRepository)

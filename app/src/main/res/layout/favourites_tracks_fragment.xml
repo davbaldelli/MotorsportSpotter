@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.motorsportspotter.room.viewmodel.TracksViewModel" />
+            type="com.example.motorsportspotter.database.viewmodel.TracksViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.home.FavouritesTracksFragment">
+        tools:context=".fragments.favorites.FavouritesTracksFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fav_tracks_rw"

@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.motorsportspotter.services.EventsApplication
+import com.example.motorsportspotter.database.EventsApplication
 import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.track.TrackFragmentViewModel
-import com.example.motorsportspotter.room.viewmodel.TracksViewModel
-import com.example.motorsportspotter.room.viewmodel.TracksViewModelFactory
+import com.example.motorsportspotter.database.viewmodel.TracksViewModel
+import com.example.motorsportspotter.database.viewmodel.TracksViewModelFactory
 import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
