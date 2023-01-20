@@ -1,4 +1,4 @@
-package com.example.motorsportspotter.components.recyclerviews.entities
+package com.example.motorsportspotter.models
 
 interface Searchable {
     fun matchSearchQuery(query : (String) -> Boolean) : Boolean

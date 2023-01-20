@@ -6,16 +6,16 @@
     <data>
         <variable
             name="track"
-            type="com.example.motorsportspotter.components.recyclerviews.entities.Track" />
+            type="com.example.motorsportspotter.models.Track" />
         <variable
             name="ongoingEvents"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            type="java.util.List&lt;com.example.motorsportspotter.models.Event&gt;" />
         <variable
             name="futureEvents"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            type="java.util.List&lt;com.example.motorsportspotter.models.Event&gt;" />
         <variable
             name="pastEvents"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            type="java.util.List&lt;com.example.motorsportspotter.models.Event&gt;" />
     </data>
 
     <ScrollView

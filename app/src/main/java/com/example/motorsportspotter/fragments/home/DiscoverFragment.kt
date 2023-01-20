@@ -1,7 +1,6 @@
 package com.example.motorsportspotter.fragments.home
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,19 +8,14 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.R
-import com.example.motorsportspotter.activities.NearbyEventsActivity
-import com.example.motorsportspotter.components.recyclerviews.adapters.EventSearchResultAdapter
-import com.example.motorsportspotter.components.recyclerviews.entities.Championship
-import com.example.motorsportspotter.components.recyclerviews.entities.Event
-import com.example.motorsportspotter.components.recyclerviews.entities.SearchResult
-import com.example.motorsportspotter.components.recyclerviews.entities.Track
+import com.example.motorsportspotter.adapters.EventSearchResultAdapter
+import com.example.motorsportspotter.models.Championship
+import com.example.motorsportspotter.models.Event
+import com.example.motorsportspotter.models.SearchResult
+import com.example.motorsportspotter.models.Track
 import com.example.motorsportspotter.databinding.DiscoverFragmentBinding
 import com.example.motorsportspotter.room.viewmodel.*
-import com.google.android.material.textfield.TextInputEditText
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converter
 
 class DiscoverFragment : Fragment() {

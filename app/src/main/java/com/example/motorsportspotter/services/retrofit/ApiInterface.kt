@@ -1,6 +1,6 @@
 package com.example.motorsportspotter.services.retrofit
 
-import com.example.motorsportspotter.components.recyclerviews.entities.*
+import com.example.motorsportspotter.models.*
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -17,6 +17,4 @@ interface ApiInterface {
     @GET("sessions")
     fun allSessions() : Call<List<Session>>?
 
-    @GET("news")
-    fun allNews() : Call<List<News>>?
 }

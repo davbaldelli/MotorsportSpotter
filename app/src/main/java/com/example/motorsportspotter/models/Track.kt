@@ -1,27 +1,24 @@
-package com.example.motorsportspotter.components.recyclerviews.entities
+package com.example.motorsportspotter.models
 
 import android.app.Activity
 import android.content.Intent
 import android.view.View
-import com.example.motorsportspotter.activities.ChampionshipActivity
+import com.example.motorsportspotter.activities.TrackActivity
 import com.google.gson.annotations.SerializedName
 
-class Championship(
+class Track(
     val id : Int,
-    val name: String,
-    val year : Int,
-    @SerializedName("prettyName")
-    val prettyName : String,
+    val name : String,
     @SerializedName("image")
     val backgroundUrl : String,
     @SerializedName("logo")
     val logoUrl : String,
     val followed : Boolean,
-    @SerializedName("liveStream")
-    val liveStreamLink : String?
+    val location : String,
+    val nationCode : String,
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
-        return query(name+prettyName)
+        return query(name)
     }
 
     override fun getTitle(): String {
@@ -29,7 +26,7 @@ class Championship(
     }
 
     override fun getDescription(): String {
-        return "Championship"
+        return "Circuit"
     }
 
     override fun getImgRes(): String {
@@ -39,9 +36,10 @@ class Championship(
     override fun onClick(view: View) {
         val activity : Activity = view.context as Activity
         activity.apply {
-            val intent = Intent(this, ChampionshipActivity::class.java).apply {
-                putExtra("championship_id", id)
+            val intent = Intent(this, TrackActivity::class.java).apply {
+                putExtra("track_id", id)
             }
+
             startActivity(intent)
         }
     }

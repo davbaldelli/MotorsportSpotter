@@ -15,10 +15,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.R
-import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
+import com.example.motorsportspotter.adapters.EventCardAdapter
 import com.example.motorsportspotter.databinding.NearbyEventsFragmentBinding
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel

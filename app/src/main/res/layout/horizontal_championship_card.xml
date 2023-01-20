@@ -5,7 +5,7 @@
     <data>
         <variable
             name="championship"
-            type="com.example.motorsportspotter.components.recyclerviews.entities.Championship" />
+            type="com.example.motorsportspotter.models.Championship" />
     </data>
 
     <RelativeLayout

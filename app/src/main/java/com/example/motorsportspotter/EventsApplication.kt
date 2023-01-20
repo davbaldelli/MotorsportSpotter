@@ -14,5 +14,4 @@ class EventsApplication : Application() {
     val tracksRepository by lazy { TracksRepository(database.trackDao()) }
     val championshipRepository by lazy { ChampionshipRepository(database.championshipDao()) }
     val sessionRepository by lazy { SessionRepository(database.sessionDao()) }
-    val newsRepository by lazy { NewsRepository(database.newsDao()) }
 }

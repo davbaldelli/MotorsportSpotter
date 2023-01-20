@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +17,6 @@ import com.example.motorsportspotter.R
 import com.example.motorsportspotter.fragments.home.DiscoverFragment
 import com.example.motorsportspotter.fragments.home.FavouritesEventFragment
 import com.example.motorsportspotter.fragments.home.HomeFragment
-import com.example.motorsportspotter.fragments.home.NewsFragment
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.room.viewmodel.ChampionshipsViewModelFactory
 import com.example.motorsportspotter.room.viewmodel.TracksViewModel
@@ -121,14 +119,6 @@ class Home : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun openNewsActivity(view : View){
-        val newsId = view.tag as Int
-        val intent = Intent(this, NewsActivity::class.java).apply {
-            putExtra("news_id", newsId)
-        }
-        startActivity(intent)
-    }
-
     fun openNearbyEventsActivity(view : View){
         val intent = Intent(this, NearbyEventsActivity::class.java)
         startActivity(intent)
@@ -167,10 +157,6 @@ class Home : AppCompatActivity() {
                 }
                 R.id.discover_bottom_btn -> {
                     changeFragment<DiscoverFragment>()
-                    true
-                }
-                R.id.news_bottom_btn -> {
-                    changeFragment<NewsFragment>()
                     true
                 }
                 else -> false

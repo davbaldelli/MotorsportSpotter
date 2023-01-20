@@ -6,16 +6,16 @@
     <data>
         <variable
             name="championship"
-            type="com.example.motorsportspotter.components.recyclerviews.entities.Championship"/>
+            type="com.example.motorsportspotter.models.Championship"/>
         <variable
             name="ongoingEvents"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            type="java.util.List&lt;com.example.motorsportspotter.models.Event&gt;" />
         <variable
             name="futureEvents"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            type="java.util.List&lt;com.example.motorsportspotter.models.Event&gt;" />
         <variable
             name="pastEvents"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            type="java.util.List&lt;com.example.motorsportspotter.models.Event&gt;" />
     </data>
     <ScrollView
         android:layout_width="match_parent"

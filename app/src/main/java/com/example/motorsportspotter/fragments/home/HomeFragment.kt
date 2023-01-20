@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.components.recyclerviews.adapters.ChampionshipsCardsAdapter
-import com.example.motorsportspotter.components.recyclerviews.adapters.EventCardAdapter
-import com.example.motorsportspotter.components.recyclerviews.adapters.TrackCardsAdapter
+import com.example.motorsportspotter.adapters.ChampionshipsCardsAdapter
+import com.example.motorsportspotter.adapters.EventCardAdapter
+import com.example.motorsportspotter.adapters.TrackCardsAdapter
 import com.example.motorsportspotter.databinding.HomeFragmentBinding
 import com.example.motorsportspotter.room.viewmodel.*
 

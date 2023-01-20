@@ -1,10 +1,7 @@
 package com.example.motorsportspotter.utilities
 
 import android.content.Context
-import android.location.Address
-import android.location.Geocoder
-import com.example.motorsportspotter.components.recyclerviews.entities.Event
-import java.util.*
+import com.example.motorsportspotter.models.Event
 
 class EntitiesFilter {
     companion object{

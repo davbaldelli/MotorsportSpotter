@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.EventsApplication
-import com.example.motorsportspotter.components.recyclerviews.adapters.TrackEventsAdapter
+import com.example.motorsportspotter.adapters.TrackEventsAdapter
 import com.example.motorsportspotter.databinding.TrackFragmentBinding
 import com.example.motorsportspotter.room.viewmodel.EventsViewModel
 import com.example.motorsportspotter.room.viewmodel.EventsViewModelFactory

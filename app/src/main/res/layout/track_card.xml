@@ -6,7 +6,7 @@
     <data>
         <variable
             name="track"
-            type="com.example.motorsportspotter.components.recyclerviews.entities.Track" />
+            type="com.example.motorsportspotter.models.Track" />
     </data>
 
     <RelativeLayout

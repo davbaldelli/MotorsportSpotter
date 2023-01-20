@@ -1,4 +1,4 @@
-package com.example.motorsportspotter.components.recyclerviews.entities
+package com.example.motorsportspotter.models
 
 import android.app.Activity
 import android.content.Intent

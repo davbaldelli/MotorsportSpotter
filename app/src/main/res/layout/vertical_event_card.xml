@@ -5,7 +5,7 @@
     <data>
         <variable
             name="event"
-            type="com.example.motorsportspotter.components.recyclerviews.entities.Event" />
+            type="com.example.motorsportspotter.models.Event" />
     </data>
 
     <RelativeLayout

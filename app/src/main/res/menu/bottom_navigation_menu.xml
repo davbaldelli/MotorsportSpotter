@@ -15,10 +15,5 @@
         android:enabled="true"
         android:icon="@drawable/ic_discover_24"
         android:title="@string/discover"/>
-    <item
-        android:id="@+id/news_bottom_btn"
-        android:enabled="true"
-        android:icon="@drawable/ic_news_24"
-        android:title="@string/news"/>
 
 </menu>

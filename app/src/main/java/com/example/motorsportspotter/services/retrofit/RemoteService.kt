@@ -18,6 +18,4 @@ interface RemoteService {
     @GET("sessions")
     fun allSessions() : Call<List<Session>>?
 
-    @GET("news")
-    fun allNews() : Call<List<News>>?
 }

@@ -1,4 +1,4 @@
-package com.example.motorsportspotter.components.recyclerviews.entities
+package com.example.motorsportspotter.models
 
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime

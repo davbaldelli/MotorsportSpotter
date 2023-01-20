@@ -2,13 +2,10 @@ package com.example.motorsportspotter.room.entities
 
 import com.example.motorsportspotter.utilities.EntitiesConverter
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import com.example.motorsportspotter.components.recyclerviews.entities.Championship as AdapterChampionship
-import com.example.motorsportspotter.components.recyclerviews.entities.Event as AdapterEvent
-import com.example.motorsportspotter.components.recyclerviews.entities.Track as AdapterTrack
-import com.example.motorsportspotter.components.recyclerviews.entities.Session as AdapterSession
-import com.example.motorsportspotter.components.recyclerviews.entities.News as AdapterNews
+import com.example.motorsportspotter.models.Championship as AdapterChampionship
+import com.example.motorsportspotter.models.Event as AdapterEvent
+import com.example.motorsportspotter.models.Track as AdapterTrack
+import com.example.motorsportspotter.models.Session as AdapterSession
 
 class DBEntitiesConvertersFactory {
     companion object {
@@ -62,18 +59,6 @@ class DBEntitiesConvertersFactory {
                 it.logo,
                 it.favourite,
                 it.liveStreamLink,
-            )
-        }
-
-        val NewsConverter = EntitiesConverter<News, AdapterNews>{
-            AdapterNews(
-                it.id,
-                it.title,
-                it.subtitle,
-                it.content,
-                it.author,
-                LocalDate.parse(it.date),
-                it.image
             )
         }
 

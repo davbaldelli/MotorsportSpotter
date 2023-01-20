@@ -21,7 +21,6 @@ class SyncService : Service() {
     private lateinit var tracksRepo : TracksRepository
     private lateinit var champRepo : ChampionshipRepository
     private lateinit var sessionsRepo : SessionRepository
-    private lateinit var newsRepo : NewsRepository
 
     // Handler that receives messages from the thread
     private inner class ServiceHandler(looper: Looper) : Handler(looper) {
@@ -58,7 +57,6 @@ class SyncService : Service() {
             tracksRepo = TracksRepository(db.trackDao())
             champRepo = ChampionshipRepository(db.championshipDao())
             sessionsRepo = SessionRepository(db.sessionDao())
-            newsRepo = NewsRepository(db.newsDao())
 
             val service = RemoteClient.getRemoteService()
             scope.launch {
@@ -90,14 +88,6 @@ class SyncService : Service() {
                     sessionsRes?.body()?.let { sessions ->
                         sessions.forEach { session ->
                             sessionsRepo.insert(session)
-                        }
-                    }
-
-                    val newsRes = service.allNews()?.execute()
-
-                    newsRes?.body()?.let {
-                        it.forEach { news ->
-                            newsRepo.insert(news)
                         }
                     }
 

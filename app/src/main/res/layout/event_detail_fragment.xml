@@ -8,11 +8,11 @@
 
         <variable
             name="event"
-            type="com.example.motorsportspotter.components.recyclerviews.entities.Event" />
+            type="com.example.motorsportspotter.models.Event" />
 
         <variable
             name="similarEvents"
-            type="java.util.List&lt;com.example.motorsportspotter.components.recyclerviews.entities.Event&gt;" />
+            type="java.util.List&lt;com.example.motorsportspotter.models.Event&gt;" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

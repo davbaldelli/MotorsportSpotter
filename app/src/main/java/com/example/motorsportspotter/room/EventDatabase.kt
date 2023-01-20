@@ -11,14 +11,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Event::class, Track::class, Championship::class, Session::class, News::class], version = 1, exportSchema = false)
+@Database(entities = [Event::class, Track::class, Championship::class, Session::class], version = 1, exportSchema = false)
 abstract class EventDatabase : RoomDatabase() {
 
     abstract fun eventDao(): EventDao
     abstract fun trackDao(): TrackDao
     abstract fun championshipDao(): ChampionshipDao
     abstract fun sessionDao(): SessionDao
-    abstract fun newsDao() : NewsDao
 
     private class EventDatabaseCallback(private val scope: CoroutineScope) : Callback() {
 

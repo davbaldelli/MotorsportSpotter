@@ -12,13 +12,13 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.motorsportspotter.components.recyclerviews.adapters.*
-import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.adapters.*
+import com.example.motorsportspotter.models.Event
 import com.example.motorsportspotter.room.entities.Championship
 import com.example.motorsportspotter.room.entities.EventWithTrackAndChamp
-import com.example.motorsportspotter.room.entities.News
 import com.example.motorsportspotter.room.entities.Track
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import java.io.IOException
 import java.time.LocalDate
 import java.util.*
 import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory as Converters
@@ -28,8 +28,7 @@ import com.example.motorsportspotter.room.entities.DBEntitiesConvertersFactory a
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        imgView.load(imgUri) {
-        }
+        imgView.load(imgUri)
     }
 }
 
@@ -37,10 +36,14 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 fun bindAddress(textView: TextView, locationName : String?){
     locationName?.let {
         val geocoder = Geocoder(textView.context, Locale.ITALY)
-        val addresses: List<Address> = geocoder.getFromLocationName(it, 1)
-        if(addresses.isNotEmpty()) {
-            val address = addresses[0]
-            textView.text = "${address.getAddressLine(0)}  ${address.countryCode.flagEmoji}"
+        try {
+            val addresses: List<Address> = geocoder.getFromLocationName(it, 1)
+            if (addresses.isNotEmpty()) {
+                val address = addresses[0]
+                textView.text = String.format("%s %s",address.getAddressLine(0),  address.countryCode.flagEmoji)
+            }
+        } catch (e : IOException){
+            textView.text = ""
         }
     }
 }
@@ -70,14 +73,6 @@ fun bindRecyclerViewRoom(recyclerView: RecyclerView, data: List<Event>?) {
     data?.let{
         val adapter = recyclerView.adapter as EventCardAdapter
         adapter.submitList(data)
-    }
-}
-
-@BindingAdapter("newsListData")
-fun bindNewsCardRecyclerView(recyclerView: RecyclerView, data: List<News>?) {
-    data?.let{
-        val adapter = recyclerView.adapter as NewsCardAdapter
-        adapter.submitList(Converters.NewsConverter.convertAll(it))
     }
 }
 

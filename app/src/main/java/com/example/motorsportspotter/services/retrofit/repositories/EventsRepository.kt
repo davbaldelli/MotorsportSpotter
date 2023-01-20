@@ -1,11 +1,8 @@
 package com.example.motorsportspotter.services.retrofit.repositories
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.motorsportspotter.components.recyclerviews.entities.Event
+import com.example.motorsportspotter.models.Event
 import com.example.motorsportspotter.services.retrofit.RemoteClient
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class EventsRepository {
     val events : MutableLiveData<List<Event>> by lazy {
