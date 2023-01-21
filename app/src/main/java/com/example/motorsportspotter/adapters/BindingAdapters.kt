@@ -18,6 +18,9 @@ import com.example.motorsportspotter.database.entities.Championship
 import com.example.motorsportspotter.database.entities.EventWithTrackAndChamp
 import com.example.motorsportspotter.database.entities.Track
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.IOException
 import java.time.LocalDate
 import java.util.*
@@ -33,8 +36,10 @@ val String.flagEmoji: String
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        imgView.load(imgUri)
+        CoroutineScope(Dispatchers.IO).launch {
+            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+            imgView.load(imgUri)
+        }
     }
 }
 
