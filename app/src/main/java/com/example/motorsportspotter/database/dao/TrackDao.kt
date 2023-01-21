@@ -15,7 +15,7 @@ interface TrackDao {
     @Query("SELECT * FROM tracks")
     fun getAll() : Flow<List<Track>>
 
-    @Query("SELECT * FROM tracks WHERE favourite = 0 LIMIT 30")
+    @Query("SELECT * FROM tracks WHERE favourite = 0 LIMIT 15")
     fun getUnfollowed() : Flow<List<Track>>
 
     @Query("SELECT * FROM tracks WHERE favourite = 1")

@@ -25,7 +25,7 @@ class EventRepository(private val dao: EventDao) {
 
     suspend fun getFavSync() : List<EventWithTrackAndChamp>{
         return withContext(Dispatchers.IO) {
-            dao.getFavouritesSync()
+            dao.getFavouritesOngoingSync()
         }
     }
 
@@ -33,13 +33,11 @@ class EventRepository(private val dao: EventDao) {
     fun futureEventsByChamp(champId : Int) = dao.getFutureFromChampionship(champId)
     fun ongoingByChamp(champId : Int) = dao.getOngoingFromChampionship(champId)
     fun pastEventsByChamp(champId : Int) = dao.getPastFromChampionship(champId)
-
     fun futureEventsByTrack(trackId: Int) = dao.getFutureFromTrack(trackId)
     fun ongoingByTrack(trackId : Int) = dao.getOngoingFromTrack(trackId)
     fun pastEventsByTrack(trackId : Int) = dao.getPastFromTrack(trackId)
-
     fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = dao.getSimilarEvents(champId, trackId, eventId)
-
     fun getEventById(id : Int) = dao.getById(id)
+    fun getEventByIdSync(id : Int) = dao.getByIdSync(id)
 
 }

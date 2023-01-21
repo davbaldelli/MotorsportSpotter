@@ -16,8 +16,10 @@ import com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModelFa
 import com.example.motorsportspotter.database.viewmodel.EventsViewModel
 import com.example.motorsportspotter.database.viewmodel.EventsViewModelFactory
 import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class EventActivity : AppCompatActivity() {
 
@@ -44,17 +46,18 @@ class EventActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        //menuInflater.inflate(R.menu.event_appbar_menu, menu)
+        menuInflater.inflate(R.menu.event_appbar_menu, menu)
+        setActionBarFollowIcon(menu.getItem(0))
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.follow -> {
-                runBlocking {
-                    launch {
-                        eventViewModel.setFavourite(intent.getIntExtra("event_id", 0))
-                    }
+                val id = intent.getIntExtra("event_id", 0)
+                CoroutineScope(Dispatchers.IO).launch {
+                    eventViewModel.setFavourite(id)
+                    setActionBarFollowIcon(item)
                 }
                 true
             }
@@ -66,7 +69,19 @@ class EventActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun setActionBarFollowIcon(item : MenuItem){
+        val id = intent.getIntExtra("event_id", 0)
+        CoroutineScope(Dispatchers.IO).launch {
+            val event = eventViewModel.getByIdSync(id)
+            withContext(Dispatchers.Main){
+                if (event.event.favourites) {
+                    item.setIcon(R.drawable.ic_favorite_white_24)
+                } else {
+                    item.setIcon(R.drawable.ic_not_favorite_white_24)
+                }
+            }
+        }
+    }
 
     fun openChampionshipActivity(view : View){
         val championshipId = view.tag as Int
@@ -94,11 +109,7 @@ class EventActivity : AppCompatActivity() {
     }
 
     fun onChampionshipFollowButtonClick(view : View){
-        runBlocking {
-            launch {
-                championshipsViewModel.changeFollowed(view.tag as Int)
-            }
-        }
+        championshipsViewModel.changeFollowed(view.tag as Int)
     }
 
     fun onBuyTicketsClick(view : View){

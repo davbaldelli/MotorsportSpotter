@@ -22,10 +22,9 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
     }
 
     suspend fun setFavourite(id : Int) {
-        viewModelScope.launch {
-            val result = repository.setFavourite(id)
-        }
+        repository.setFavourite(id)
     }
+
 
     fun futureChampionshipEvents(champId : Int) = repository.futureEventsByChamp(champId).asLiveData()
     fun ongoingChampionshipEvents(champId : Int) = repository.ongoingByChamp(champId).asLiveData()
@@ -35,6 +34,7 @@ class EventsViewModel(private val repository: EventRepository) : ViewModel() {
     fun pastTrackEvents(trackId : Int) = repository.pastEventsByTrack(trackId).asLiveData()
     fun getSimilarEvents(champId: Int, trackId : Int, eventId:Int) = repository.getSimilarEvents(champId, trackId, eventId).asLiveData()
     fun getById(id : Int) = repository.getEventById(id).asLiveData()
+    fun getByIdSync(id : Int) = repository.getEventByIdSync(id)
 }
 
 class EventsViewModelFactory(private val repository: EventRepository) : ViewModelProvider.Factory {

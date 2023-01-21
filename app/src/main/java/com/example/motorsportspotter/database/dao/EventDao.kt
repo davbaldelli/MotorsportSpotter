@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.motorsportspotter.database.entities.Event
 import com.example.motorsportspotter.database.entities.EventWithTrackAndChamp
 import kotlinx.coroutines.flow.Flow
@@ -20,9 +21,10 @@ interface EventDao {
     fun getAll() : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT e.* FROM events e JOIN championships c on c.id = e.championship_id JOIN tracks t on t.id = e.track_id WHERE (e.favourites = 1 OR t.favourite = 1 OR c.favourite = 1 ) AND (DATE('now') BETWEEN start_date AND end_date) ORDER BY start_date")
-    suspend fun getFavouritesSync() : List<EventWithTrackAndChamp>
+    suspend fun getFavouritesOngoingSync() : List<EventWithTrackAndChamp>
 
-    @Query("SELECT * FROM events WHERE (start_date BETWEEN DATE('NOW') AND DATE('NOW', '+7 days')) || (end_date BETWEEN DATE('NOW') AND DATE('NOW', '+7 days')) ORDER BY start_date")
+    @Transaction
+    @Query("SELECT * FROM events WHERE (start_date <= DATE('now') AND DATE('NOW', '+7 days') <= end_date) OR (start_date BETWEEN DATE('NOW') AND DATE('NOW', '+7 days')) OR (end_date BETWEEN DATE('NOW') AND DATE('NOW', '+7 days')) ORDER BY start_date")
     fun getIncomingEvents() : Flow<List<EventWithTrackAndChamp>>
 
     @Query("SELECT e.* FROM events e JOIN championships c on c.id = e.championship_id JOIN tracks t on t.id = e.track_id WHERE (e.favourites = 1 OR t.favourite = 1 OR c.favourite = 1 ) AND end_date >= DATE('now') ORDER BY start_date LIMIT 25")
@@ -30,7 +32,8 @@ interface EventDao {
 
     @Query("SELECT * FROM events WHERE id = :id LIMIT 1")
     fun getById(id : Int) : Flow<EventWithTrackAndChamp>
-
+    @Query("SELECT * FROM events WHERE id = :id LIMIT 1")
+    fun getByIdSync(id : Int) : EventWithTrackAndChamp
     @Query("SELECT * FROM events WHERE (championship_id = :champId OR track_id = :trackId) AND NOT id = :eventId AND end_date > DATE('now') ORDER BY start_date LIMIT 10")
     fun getSimilarEvents(champId: Int, trackId: Int, eventId:Int) : Flow<List<EventWithTrackAndChamp>>
 

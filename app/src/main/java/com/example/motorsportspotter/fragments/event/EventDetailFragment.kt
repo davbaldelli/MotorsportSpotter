@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -33,6 +34,7 @@ class EventDetailFragment : Fragment() {
         viewModel.eventId.observe(viewLifecycleOwner) {id ->
             eventViewModel.getById(id).observe(viewLifecycleOwner) { event ->
                 binding.event = Converters.EventConverter.convertAll(listOf(event))[0]
+                (activity as AppCompatActivity).supportActionBar
                 eventViewModel.getSimilarEvents(event.championship.id, event.track.id, event.event.id).observe(viewLifecycleOwner) { similarEvents ->
                     binding.similarEvents = Converters.EventConverter.convertAll(similarEvents)
                 }
