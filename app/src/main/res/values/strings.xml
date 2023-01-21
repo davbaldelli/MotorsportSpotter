@@ -45,4 +45,5 @@
     <string name="nearby_events_icon">nearby events icon</string>
     <string name="events_near_me">Events near me</string>
     <string name="events_near_you">Events near you</string>
+    <string name="home">Home</string>
 </resources>

@@ -22,6 +22,7 @@ import com.example.motorsportspotter.database.viewmodel.TracksViewModel
 import com.example.motorsportspotter.database.viewmodel.TracksViewModelFactory
 import com.example.motorsportspotter.services.DailyEventNotificationPlanner
 import com.example.motorsportspotter.services.RemoteSyncService
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -67,7 +68,7 @@ class Home : AppCompatActivity() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         val name = "Events Updates"
-        val descriptionText = "Notifications concerning the new about the events"
+        val descriptionText = "Notifications about events sessions"
         val importance = NotificationManager.IMPORTANCE_DEFAULT
         val channel = NotificationChannel("EventUpdate", name, importance).apply {
             description = descriptionText
@@ -78,7 +79,26 @@ class Home : AppCompatActivity() {
         notificationManager.createNotificationChannel(channel)
     }
 
-
+    private fun setBottomNavBehaviour(activity: Activity){
+        val bottomNavigation : BottomNavigationView = activity.findViewById(R.id.bottom_navigation)
+        bottomNavigation.setOnItemSelectedListener{ item ->
+            when(item.itemId) {
+                R.id.home_bottom_btn -> {
+                    changeFragment<HomeFragment>()
+                    true
+                }
+                R.id.favourites_bottom_btn -> {
+                    changeFragment<FavouritesEventFragment>()
+                    true
+                }
+                R.id.discover_bottom_btn -> {
+                    changeFragment<DiscoverFragment>()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
 
     private inline fun <reified T:Fragment> changeFragment(){
         val fragments = fragmentManager.fragments
@@ -134,29 +154,6 @@ class Home : AppCompatActivity() {
         runBlocking {
             launch {
                 championshipsViewModel.changeFollowed(view.tag as Int)
-            }
-        }
-    }
-
-
-
-    private fun setBottomNavBehaviour(activity: Activity){
-        val bottomNavigation : BottomNavigationView = activity.findViewById(R.id.bottom_navigation)
-        bottomNavigation.setOnItemSelectedListener{ item ->
-            when(item.itemId) {
-                R.id.home_bottom_btn -> {
-                    changeFragment<HomeFragment>()
-                    true
-                }
-                R.id.favourites_bottom_btn -> {
-                    changeFragment<FavouritesEventFragment>()
-                    true
-                }
-                R.id.discover_bottom_btn -> {
-                    changeFragment<DiscoverFragment>()
-                    true
-                }
-                else -> false
             }
         }
     }
