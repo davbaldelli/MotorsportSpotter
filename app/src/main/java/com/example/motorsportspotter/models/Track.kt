@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName
 class Track(
     val id : Int,
     val name : String,
+    val commonName : String,
     @SerializedName("image")
     val backgroundUrl : String,
     @SerializedName("logo")
@@ -18,7 +19,7 @@ class Track(
     val nationCode : String,
     ) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
-        return query(name)
+        return query(name+commonName)
     }
 
     override fun getTitle(): String {

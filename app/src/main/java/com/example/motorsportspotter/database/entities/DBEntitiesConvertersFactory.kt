@@ -41,6 +41,7 @@ class DBEntitiesConvertersFactory {
             AdapterTrack(
                 it.id,
                 it.name,
+                it.commonName,
                 it.image,
                 it.logo,
                 it.favourite,

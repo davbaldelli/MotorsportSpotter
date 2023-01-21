@@ -46,6 +46,45 @@
                 app:drawableStartCompat="@drawable/ic_my_location_24" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/events_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:checkable="true"
+                        android:checked="false"
+                        android:text="@string/events"
+                        app:checkedIconEnabled="true"
+                        app:checkedIconTint="#595656" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/champs_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:checked="true"
+                        android:text="@string/championships"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/tracks_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:checked="true"
+                        android:text="@string/tracks"/>
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

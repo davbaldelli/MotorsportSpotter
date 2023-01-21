@@ -46,4 +46,6 @@
     <string name="events_near_me">Events near me</string>
     <string name="events_near_you">Events near you</string>
     <string name="home">Home</string>
+    <string name="championships">Championships</string>
+    <string name="tracks">Tracks</string>
 </resources>

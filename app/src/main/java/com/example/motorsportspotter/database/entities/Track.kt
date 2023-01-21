@@ -11,6 +11,7 @@ data class Track(
         @PrimaryKey
         val id : Int,
         @ColumnInfo(name = "name") val name: String,
+        @ColumnInfo(name = "common_name") val commonName: String,
         @ColumnInfo(name = "image")
         @SerializedName("image")
         val image : String,

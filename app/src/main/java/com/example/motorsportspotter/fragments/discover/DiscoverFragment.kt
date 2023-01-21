@@ -59,6 +59,7 @@ class DiscoverFragment : Fragment() {
             }
             setupRecyclerView(requireActivity())
             setupSearchBar(requireActivity())
+            setupChips()
         }
     }
 
@@ -91,6 +92,25 @@ class DiscoverFragment : Fragment() {
         })
     }
 
+    private fun setupChips(){
+        binding.eventsChip.setOnClickListener {
+            onChipChange(it)
+        }
+        binding.tracksChip.setOnClickListener {
+            onChipChange(it)
+        }
+        binding.champsChip.setOnClickListener {
+            onChipChange(it)
+        }
+    }
+
+    private fun onChipChange(view : View){
+        val query = binding.discoverSearchBar.query.toString()
+        if(query != ""){
+            val adapter = binding.searchResultList.adapter as EventSearchResultAdapter
+            adapter.submitList(searchFromAll(query))
+        }
+    }
 
     private fun searchFromTracks(queryString : String) : List<Track>{
         return tracks.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
@@ -104,12 +124,17 @@ class DiscoverFragment : Fragment() {
         return championships.filter { it.matchSearchQuery { value -> value.lowercase().contains(queryString.lowercase()) } }
     }
 
-
     private fun searchFromAll(queryString: String) : List<SearchResult>{
         val items = ArrayList<SearchResult>()
-        items.addAll(searchFromTracks(queryString))
-        items.addAll(searchFromEvents(queryString))
-        items.addAll(searchFromChampionships(queryString))
+        if(binding.tracksChip.isChecked){
+            items.addAll(searchFromTracks(queryString))
+        }
+        if(binding.eventsChip.isChecked) {
+            items.addAll(searchFromEvents(queryString))
+        }
+        if(binding.champsChip.isChecked){
+            items.addAll(searchFromChampionships(queryString))
+        }
         return items
     }
 }
