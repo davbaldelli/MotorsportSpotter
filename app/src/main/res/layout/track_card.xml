@@ -32,15 +32,17 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="50dp"
-                    android:layout_margin="5dp">
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="50dp">
+
                     <ImageView
+                        imageUrl="@{track.logoUrl}"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_margin="5dp"
                         android:contentDescription="@string/championship_logo"
-                        imageUrl="@{track.logoUrl}"
-                        tools:src="@drawable/nurburgring_logo"/>
+                        tools:src="@drawable/nurburgring_logo" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
@@ -51,7 +53,7 @@
                     android:maxLines="1"
                     android:text="@{track.name}"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                     android:textStyle="bold"
                     tools:text="Nurburgring" />
 

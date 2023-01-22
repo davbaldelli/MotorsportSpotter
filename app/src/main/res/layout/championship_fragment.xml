@@ -43,6 +43,7 @@
                 android:id="@+id/championship_logo_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintBottom_toBottomOf="@+id/championship_image"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +67,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@{championship.name}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/follow_layout"
@@ -127,7 +128,7 @@
                     android:layout_marginBottom="20dp"
                     android:paddingHorizontal="15dp"
                     android:text="@string/about_this_championship"
-                    android:textColor="@color/black"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -153,11 +154,11 @@
                 android:id="@+id/ongoing_events_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/ongoing_events"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/ongoing_camp_events_rw_container"
@@ -187,7 +188,6 @@
             </RelativeLayout>
 
 
-
             <TextView
                 android:id="@+id/future_events_label"
                 android:layout_width="0dp"
@@ -197,7 +197,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/future_events"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/future_camp_events_rw"
@@ -229,7 +229,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/past_events"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/past_camp_events_rw"

@@ -6,10 +6,11 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.motorsportspotter.databinding.EventCardSimilarBinding
+import com.example.motorsportspotter.databinding.EventCardVerticalBinding
 import com.example.motorsportspotter.models.Event
-import com.example.motorsportspotter.databinding.VerticalEventCardBinding
 
-class VerticalEventCardAdapter : ListAdapter<Event, VerticalEventCardViewHolder>(EventCardAdapter) {
+class VerticalEventCardAdapter : ListAdapter<Event, SimilarEventCardViewHolder>(EventCardAdapter) {
     companion object DiffCallback : DiffUtil.ItemCallback<Event>() {
         override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
             return oldItem.name == newItem.name
@@ -21,24 +22,24 @@ class VerticalEventCardAdapter : ListAdapter<Event, VerticalEventCardViewHolder>
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VerticalEventCardViewHolder {
-        return VerticalEventCardViewHolderImpl(VerticalEventCardBinding.inflate(LayoutInflater.from(parent.context)))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimilarEventCardViewHolder {
+        return VerticalEventCardViewHolderImpl(EventCardSimilarBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
 
-    override fun onBindViewHolder(holder: VerticalEventCardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SimilarEventCardViewHolder, position: Int) {
         val event = getItem(position)
         holder.bind(event)
     }
 
 }
 
-abstract class VerticalEventCardViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root){
+abstract class SimilarEventCardViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root){
     abstract fun bind(event: Event)
 }
 
 
-class VerticalEventCardViewHolderImpl(private var binding: VerticalEventCardBinding): VerticalEventCardViewHolder(binding){
+class VerticalEventCardViewHolderImpl(private var binding: EventCardSimilarBinding): SimilarEventCardViewHolder(binding){
     override fun bind(event: Event) {
         binding.event = event
         binding.executePendingBindings()

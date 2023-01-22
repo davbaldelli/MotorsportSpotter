@@ -24,7 +24,7 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
                 android:text='@string/events_near_you'
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 

@@ -47,7 +47,7 @@
                     android:paddingHorizontal="20dp"
                     android:text="@{event.name}"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/black"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     tools:text="Round 1 - Imola" />
@@ -67,6 +67,7 @@
                         android:layout_marginVertical="5dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
+                        android:backgroundTint="@color/white"
                         app:cardCornerRadius="30dp">
 
                         <ImageView
@@ -84,7 +85,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:text="@{event.championship.name}"
-                        android:textColor="@color/black"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         tools:text="Formula 1" />
@@ -115,7 +116,8 @@
                         android:layout_height="20dp"
                         android:layout_marginHorizontal="35dp"
                         android:contentDescription="@string/event_icon"
-                        android:src="@drawable/ic_events_24" />
+                        android:src="@drawable/ic_events_24"
+                        app:tint="?attr/colorControlNormal" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -127,7 +129,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text='@{event.period}'
-                            android:textColor="@color/black"
+                            android:textAppearance="@style/TextAppearance.App.LabelMedium"
                             tools:text="4-6 April" />
 
                     </LinearLayout>
@@ -150,7 +152,8 @@
                         android:layout_height="20dp"
                         android:layout_marginHorizontal="35dp"
                         android:contentDescription="@string/event_icon"
-                        android:src="@drawable/ic_location_24" />
+                        android:src="@drawable/ic_location_24"
+                        app:tint="?attr/colorControlNormal"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -161,14 +164,17 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
                             android:text='@{event.track.name}'
-                            android:textColor="@color/black"
+                            android:textAppearance="@style/TextAppearance.App.LabelMedium"
                             tools:text="Autodromo Enzo e Dino Ferrari" />
 
                         <TextView
                             addressCoordinates="@{event.track.location}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:textAppearance="@style/TextAppearance.App.CardSubtitle"
                             tools:text="Piazza Ayrton Senna da Silva, 1, Imola" />
 
                     </LinearLayout>
@@ -187,7 +193,8 @@
                         android:layout_height="20dp"
                         android:layout_marginHorizontal="35dp"
                         android:contentDescription="@string/event_icon"
-                        android:src="@drawable/ic_format_list_bulleted_24" />
+                        android:src="@drawable/ic_format_list_bulleted_24"
+                        app:tint="?attr/colorControlNormal"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -199,7 +206,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text='@{event.sessionsDesc}'
-                            android:textColor="@color/black"
+                            android:textAppearance="@style/TextAppearance.App.LabelMedium"
                             tools:text="Qualifying: Saturday, April 5, 15:00\nRace 1: Saturday, April 5, 17:00" />
 
                     </LinearLayout>
@@ -227,7 +234,7 @@
                         android:layout_marginBottom="20dp"
                         android:paddingHorizontal="20dp"
                         android:text="@string/info"
-                        android:textColor="@color/black"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -253,7 +260,7 @@
                     android:layout_marginBottom="10dp"
                     android:paddingHorizontal="20dp"
                     android:text="@string/similar_events"
-                    android:textColor="@color/black"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -275,7 +282,7 @@
                             android:orientation="horizontal"
                             android:padding="6dp"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:listitem="@layout/vertical_event_card">
+                            tools:listitem="@layout/event_card_similar">
 
                         </androidx.recyclerview.widget.RecyclerView>
                     </RelativeLayout>

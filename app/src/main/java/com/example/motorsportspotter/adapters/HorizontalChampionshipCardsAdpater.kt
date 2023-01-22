@@ -6,8 +6,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.motorsportspotter.databinding.ChampionshipCardHorizontalBinding
 import com.example.motorsportspotter.models.Championship
-import com.example.motorsportspotter.databinding.HorizontalChampionshipCardBinding
 
 class HorizontalChampionshipCardsAdapter:  ListAdapter<Championship, HorizontalChampionshipViewHolder>(
     HorizontalChampionshipCardsAdapter
@@ -24,7 +24,7 @@ class HorizontalChampionshipCardsAdapter:  ListAdapter<Championship, HorizontalC
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalChampionshipViewHolder {
-        return HorizontalChampionshipViewHolderImpl(HorizontalChampionshipCardBinding.inflate(LayoutInflater.from(parent.context)))
+        return HorizontalChampionshipViewHolderImpl(ChampionshipCardHorizontalBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: HorizontalChampionshipViewHolder, position: Int) {
@@ -39,7 +39,7 @@ abstract class HorizontalChampionshipViewHolder(binding: ViewDataBinding) : Recy
 }
 
 
-class HorizontalChampionshipViewHolderImpl(private var binding: HorizontalChampionshipCardBinding): HorizontalChampionshipViewHolder(binding){
+class HorizontalChampionshipViewHolderImpl(private var binding: ChampionshipCardHorizontalBinding): HorizontalChampionshipViewHolder(binding){
     override fun bind(championship: Championship) {
         binding.championship = championship
         binding.executePendingBindings()

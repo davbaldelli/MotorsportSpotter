@@ -16,10 +16,13 @@
         android:paddingVertical="5dp">
 
         <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Material3.CardView.Elevated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.Material3.CardView.Elevated"
-            android:layout_margin="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:onClick="@{searchResult::onClick}">
 
             <LinearLayout
@@ -30,9 +33,10 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="200dp"
                     android:layout_margin="5dp"
-                    android:padding="1dp">
+                    android:padding="1dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="200dp">
 
                     <ImageView
                         imageUrl="@{searchResult.imgRes}"
@@ -44,6 +48,7 @@
                         android:scaleType="centerCrop"
                         tools:srcCompat="@drawable/audi_gtwc" />
                 </com.google.android.material.card.MaterialCardView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -67,8 +72,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="7dp"
                         android:layout_marginVertical="3dp"
-                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        android:text="@{searchResult.description}" />
+                        android:text="@{searchResult.description}"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelMedium" />
                 </LinearLayout>
 
             </LinearLayout>

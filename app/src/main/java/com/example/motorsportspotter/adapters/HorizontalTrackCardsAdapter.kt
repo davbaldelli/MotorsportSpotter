@@ -6,8 +6,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.motorsportspotter.databinding.TrackCardHorizontalBinding
 import com.example.motorsportspotter.models.Track
-import com.example.motorsportspotter.databinding.HorizontalTrackCardBinding
 
 
 class HorizontalTrackCardsAdapter : ListAdapter<Track, HorizontalTrackViewHolder>(
@@ -25,7 +25,7 @@ class HorizontalTrackCardsAdapter : ListAdapter<Track, HorizontalTrackViewHolder
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalTrackViewHolder {
-        return  HorizontalTrackViewHolderImpl(HorizontalTrackCardBinding.inflate(LayoutInflater.from(parent.context)))
+        return  HorizontalTrackViewHolderImpl(TrackCardHorizontalBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: HorizontalTrackViewHolder, position: Int) {
@@ -37,7 +37,7 @@ abstract class HorizontalTrackViewHolder(binding: ViewDataBinding) : RecyclerVie
     abstract fun bind(track: Track)
 }
 
-class HorizontalTrackViewHolderImpl(private var binding: HorizontalTrackCardBinding): HorizontalTrackViewHolder(binding){
+class HorizontalTrackViewHolderImpl(private var binding: TrackCardHorizontalBinding): HorizontalTrackViewHolder(binding){
     override fun bind(track: Track) {
         binding.track = track
         binding.executePendingBindings()

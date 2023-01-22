@@ -9,11 +9,12 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
+        style="@style/Theme.App.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Motorsport Spotter"
+        android:background="#FD1818"
         app:menu="@menu/top_app_bar"
-        style="@style/Theme.App.Toolbar"/>
+        app:title="Motorsport Spotter" />
 </com.google.android.material.appbar.AppBarLayout>
 
 

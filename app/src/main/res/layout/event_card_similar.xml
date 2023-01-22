@@ -11,15 +11,15 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:padding="5dp"
         android:layout_margin="2dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="200dp"
-            android:layout_height="220dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            style="?attr/materialCardViewElevatedStyle"
             android:onClick="openEventActivity"
-            android:tag="@{event.id}"
-            style="?attr/materialCardViewElevatedStyle">
+            android:tag="@{event.id}">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,8 +42,7 @@
                     android:layout_marginTop="7dp"
                     android:layout_marginBottom="3dp"
                     android:text='@{event.period}'
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textColor="#DD2C00"
+                    android:textAppearance="@style/TextAppearance.App.CardSubtitle.Secondary"
                     tools:text="2022-07-24" />
 
                 <TextView
@@ -56,19 +55,19 @@
                     android:maxLines="2"
                     android:singleLine="false"
                     android:text='@{event.championship.name +" • "+event.name}'
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textAppearance="@style/TextAppearance.App.CardTitle"
                     tools:text="Round 1 - Imola" />
 
                 <TextView
                     android:id="@+id/place_event_circuit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="6dp"
                     android:layout_marginStart="7dp"
-                    android:text='@{event.track.name}'
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textSize="12sp"
-                    tools:text="Circuito Enzo e Dino Ferrari" />
+                    android:text="@{event.track.name}"
+                    android:textAppearance="@style/TextAppearance.App.CardSubtitle"
+                    android:textSize="12sp" />
 
 
             </LinearLayout>

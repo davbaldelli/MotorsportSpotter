@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,62 +9,58 @@
     </data>
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="7dp"
-        android:paddingVertical="5dp">
+        android:padding="5dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/single_card"
-            style="?attr/materialCardViewElevatedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            style="?attr/materialCardViewElevatedStyle"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:onClick="openEventActivity"
             android:tag="@{event.id}">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="15dp">
 
                 <ImageView
-                    android:id="@+id/place_event_imageview"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    imageUrl="@{event.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
                     android:contentDescription="@string/event_image"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{event.imageUrl}"
-                    tools:srcCompat="@drawable/audi_gtwc" />
+                    tools:src="@drawable/audi_gtwc" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/place_event_date"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="3dp"
+                    android:text='@{event.period}'
+                    android:textAppearance="@style/TextAppearance.App.CardSubtitle.Secondary"
+                    tools:text="2022-07-24" />
 
-                    <TextView
-                        android:id="@+id/place_event_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="7dp"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginBottom="3dp"
-                        android:text='@{event.period}'
-                        android:textAppearance="@style/TextAppearance.App.CardSubtitle.Secondary"
-                        tools:text="2022-07-24" />
-
-
-                    <TextView
-                        android:id="@+id/place_event_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="7dp"
-                        android:layout_marginVertical="3dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text='@{event.championship.prettyName +" • "+event.name}'
-                        android:textAppearance="@style/TextAppearance.App.CardTitle"
-                        tools:text="Round 1 - Imola" />
+                <TextView
+                    android:id="@+id/place_event_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="7dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:singleLine="false"
+                    android:text='@{event.championship.name +" • "+event.name}'
+                    android:textAppearance="@style/TextAppearance.App.CardTitle"
+                    tools:text="Round 1 - Imola" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -75,7 +69,6 @@
                         android:layout_marginStart="7dp"
                         android:layout_marginTop="3dp"
                         android:layout_marginBottom="7dp">
-
                         <TextView
                             android:id="@+id/place_event_circuit"
                             android:layout_width="0dp"
@@ -83,8 +76,7 @@
                             android:layout_weight="1"
                             android:text="@{event.track.name}"
                             android:textAppearance="@style/TextAppearance.App.CardSubtitle"
-                            android:textSize="12sp"
-                            tools:text="Autodromo Enzo e Dino Ferrari" />
+                            android:textSize="12sp" />
 
                         <ImageView
                             android:layout_width="20dp"
@@ -95,13 +87,11 @@
                             android:layout_marginHorizontal="10dp"
                             android:src="@drawable/ic_live_circle_red_24"
                             android:contentDescription="@string/live_icon" />
-
                     </LinearLayout>
 
-                </LinearLayout>
 
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
+        </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 </layout>

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.models.Event
 import com.example.motorsportspotter.databinding.EventCardBinding
-import com.example.motorsportspotter.databinding.FirstEventCardBinding
+import com.example.motorsportspotter.databinding.EventCardVerticalBinding
 
 class EventCardAdapter(val fragment: Fragment) : ListAdapter<Event, EventCardViewHolder>(
     DiffCallback
@@ -27,7 +27,7 @@ class EventCardAdapter(val fragment: Fragment) : ListAdapter<Event, EventCardVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventCardViewHolder {
-        return if (viewType == 0) FirstCardViewHolder(FirstEventCardBinding.inflate(LayoutInflater.from(parent.context)))
+        return if (viewType == 0) FirstCardViewHolder(EventCardVerticalBinding.inflate(LayoutInflater.from(parent.context)))
         else NormalCardViewHolder(EventCardBinding.inflate(LayoutInflater.from(parent.context)))
 
     }
@@ -50,7 +50,7 @@ abstract class EventCardViewHolder(binding: ViewDataBinding) : RecyclerView.View
     abstract fun bind(event: Event)
 }
 
-class FirstCardViewHolder(private var binding: FirstEventCardBinding): EventCardViewHolder(binding) {
+class FirstCardViewHolder(private var binding: EventCardVerticalBinding): EventCardViewHolder(binding) {
     override fun bind(event: Event) {
         binding.event = event
         binding.executePendingBindings()

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="@string/favourites"
-            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:textSize="34sp"
             android:textStyle="bold" />
 

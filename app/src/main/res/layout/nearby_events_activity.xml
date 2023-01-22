@@ -15,7 +15,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nearby_events_fragment_container"
-        android:name="com.example.motorsportspotter.fragments.home.NearbyEventsFragment"
+        android:name="com.example.motorsportspotter.fragments.discover.NearbyEventsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

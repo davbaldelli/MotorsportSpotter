@@ -43,6 +43,7 @@
                 android:id="@+id/cardView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +66,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@{track.name}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/follow_layout"
@@ -112,7 +113,8 @@
                     android:layout_marginStart="35dp"
                     android:layout_marginEnd="10dp"
                     android:contentDescription="@string/event_icon"
-                    android:src="@drawable/ic_location_24" />
+                    android:src="@drawable/ic_location_24"
+                    android:tint="?attr/colorControlNormal" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -159,7 +161,7 @@
                     android:layout_marginBottom="20dp"
                     android:paddingHorizontal="15dp"
                     android:text="@string/about_this_track"
-                    android:textColor="@color/black"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -187,7 +189,7 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/ongoing_events"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -217,7 +219,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/future_events"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/future_camp_events_rw"
@@ -248,7 +250,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/past_events"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/past_camp_events_rw"
