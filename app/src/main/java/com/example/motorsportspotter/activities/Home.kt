@@ -4,6 +4,7 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.os.SystemClock
 import android.view.View
 import androidx.activity.viewModels
@@ -60,6 +61,21 @@ class Home : AppCompatActivity() {
 
         Intent(this, RemoteSyncService::class.java).also { intent ->
             startService(intent)
+        }
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        val selectedFragment = findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId
+        outState.putInt("selected-fragment", selectedFragment)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState)
+        savedInstanceState?.let {
+            val selectedFragment = it.getInt("selected-fragment")
+            findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = selectedFragment
         }
 
     }

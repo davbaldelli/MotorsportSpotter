@@ -37,10 +37,6 @@
             android:exported="false"
             android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".activities.NewsActivity"
-            android:exported="false"
-            android:parentActivityName=".activities.Home" />
-        <activity
             android:name=".activities.Home"
             android:exported="true">
             <intent-filter>
