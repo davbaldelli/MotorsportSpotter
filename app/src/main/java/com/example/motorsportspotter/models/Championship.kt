@@ -7,28 +7,26 @@ import com.example.motorsportspotter.activities.ChampionshipActivity
 import com.google.gson.annotations.SerializedName
 
 class Championship(
-    val id : Int,
+    val id: Int,
     val name: String,
-    val year : Int,
-    @SerializedName("prettyName")
-    val prettyName : String,
-    @SerializedName("image")
-    val backgroundUrl : String,
-    @SerializedName("logo")
-    val logoUrl : String,
-    val followed : Boolean,
-    @SerializedName("liveStream")
-    val liveStreamLink : String?
-    ) : Searchable, SearchResult {
+    val year: Int,
+    val description: String,
+    val prettyName: String,
+    val backgroundUrl: String,
+    val logoUrl: String,
+    val followed: Boolean,
+    val liveStreamLink: String?,
+
+) : Searchable, SearchResult {
     override fun matchSearchQuery(query: (String) -> Boolean): Boolean {
-        return query(name+prettyName)
+        return query(name + prettyName)
     }
 
     override fun getTitle(): String {
         return name
     }
 
-    override fun getDescription(): String {
+    override fun getSubtitle(): String {
         return "Championship"
     }
 
@@ -37,7 +35,7 @@ class Championship(
     }
 
     override fun onClick(view: View) {
-        val activity : Activity = view.context as Activity
+        val activity: Activity = view.context as Activity
         activity.apply {
             val intent = Intent(this, ChampionshipActivity::class.java).apply {
                 putExtra("championship_id", id)

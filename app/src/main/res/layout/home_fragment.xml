@@ -53,7 +53,8 @@
                     android:nestedScrollingEnabled="false"
                     android:padding="7dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/event_card">
+                    tools:listitem="@layout/event_card"
+                    tools:itemCount="3">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
@@ -83,7 +84,8 @@
                         championshipsList="@{championshipViewModel.allUnfollowedChampionships}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="7dp"
+                        android:paddingVertical="7dp"
+                        android:paddingHorizontal="2dp"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/championship_card" />
@@ -116,7 +118,8 @@
                         android:id="@+id/suggested_tracks_rw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="7dp"
+                        android:paddingVertical="7dp"
+                        android:paddingHorizontal="2dp"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/track_card"

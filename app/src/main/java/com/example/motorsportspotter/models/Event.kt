@@ -11,11 +11,9 @@ import java.time.format.DateTimeFormatter
 class Event(
     val id : Int,
     val name: String,
-    @SerializedName("startDate")
     val startDate: LocalDate,
-    @SerializedName("endDate")
     val endDate: LocalDate,
-    @SerializedName("image")
+    val description: String,
     val imageUrl: String,
     val track : Track,
     val championship: Championship,
@@ -29,7 +27,7 @@ class Event(
         return "${championship.prettyName} • $name"
     }
 
-    override fun getDescription(): String {
+    override fun getSubtitle(): String {
         return getPeriod()
     }
 

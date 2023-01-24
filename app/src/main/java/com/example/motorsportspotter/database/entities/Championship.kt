@@ -6,28 +6,32 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(indices = [Index(value = ["name","year"], unique = true)], tableName = "championships")
+@Entity(indices = [Index(value = ["name", "year"], unique = true)], tableName = "championships")
 data class Championship(
-        @PrimaryKey
-        val id : Int,
-        @ColumnInfo(name = "name") val name: String,
-        @ColumnInfo(name = "year") val year: Int,
+    @PrimaryKey
+    val id: Int,
 
-        @ColumnInfo(name = "pretty_name")
-        @SerializedName("prettyName")
-        val prettyName : String,
+    @ColumnInfo(name = "name") val name: String,
 
-        @ColumnInfo(name = "image")
-        @SerializedName("image")
-        val image : String,
+    @ColumnInfo(name = "year") val year: Int,
 
-        @ColumnInfo(name = "logo")
-        @SerializedName("logo")
-        val logo : String,
+    @ColumnInfo(name = "description") val description : String,
 
-        @ColumnInfo(name = "favourite") val favourite : Boolean,
+    @ColumnInfo(name = "pretty_name")
+    @SerializedName("prettyName")
+    val prettyName: String,
 
-        @ColumnInfo(name = "live_stream")
-        @SerializedName("liveStream")
-        val liveStreamLink : String?,
+    @ColumnInfo(name = "image")
+    @SerializedName("image")
+    val image: String,
+
+    @ColumnInfo(name = "logo")
+    @SerializedName("logo")
+    val logo: String,
+
+    @ColumnInfo(name = "favourite") val favourite: Boolean,
+
+    @ColumnInfo(name = "live_stream")
+    @SerializedName("liveStream")
+    val liveStreamLink: String?,
 )

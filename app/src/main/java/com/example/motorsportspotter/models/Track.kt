@@ -10,9 +10,8 @@ class Track(
     val id : Int,
     val name : String,
     val commonName : String,
-    @SerializedName("image")
+    val description: String,
     val backgroundUrl : String,
-    @SerializedName("logo")
     val logoUrl : String,
     val followed : Boolean,
     val location : String,
@@ -26,7 +25,7 @@ class Track(
         return name
     }
 
-    override fun getDescription(): String {
+    override fun getSubtitle(): String {
         return "Circuit"
     }
 
