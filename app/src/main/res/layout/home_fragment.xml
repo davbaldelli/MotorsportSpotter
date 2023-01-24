@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <TextView
-                optionalLabel="@{eventViewModel.incomingEvents}"
+                optionalView="@{!eventViewModel.incomingEvents.empty}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
@@ -60,7 +60,7 @@
             </RelativeLayout>
 
             <TextView
-                optionalLabel="@{championshipViewModel.allUnfollowedChampionships}"
+                optionalView="@{!championshipViewModel.allUnfollowedChampionships.empty}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
@@ -95,7 +95,7 @@
             </HorizontalScrollView>
 
             <TextView
-                optionalLabel="@{trackViewModel.unfollowedTracks}"
+                optionalView="@{!trackViewModel.unfollowedTracks.empty}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"

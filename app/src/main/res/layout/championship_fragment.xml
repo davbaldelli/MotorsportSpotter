@@ -110,7 +110,8 @@
                 android:background="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/follow_layout" />
+                app:layout_constraintTop_toBottomOf="@id/follow_layout"
+                optionalView="@{!championship.description.empty}"/>
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
@@ -119,7 +120,8 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/separator1">
+                app:layout_constraintTop_toBottomOf="@id/separator1"
+                optionalView="@{!championship.description.empty}">
 
                 <TextView
                     android:layout_width="match_parent"

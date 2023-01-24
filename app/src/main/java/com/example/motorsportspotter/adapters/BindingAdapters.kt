@@ -99,12 +99,13 @@ fun  bindTracksCardList(recyclerView: RecyclerView, tracks : List<Track>?){
     }
 }
 
-@BindingAdapter("optionalLabel")
-fun bindOptionalLabel(textView: TextView, dataList : List<Any>?){
-    if (dataList != null && dataList.isNotEmpty()) {
-        textView.visibility = View.VISIBLE
+
+@BindingAdapter("optionalView")
+fun bindOptionalView(view: View, visible : Boolean){
+    if (visible) {
+        view.visibility = View.VISIBLE
     }else{
-        textView.visibility = View.GONE
+        view.visibility = View.GONE
     }
 }
 
