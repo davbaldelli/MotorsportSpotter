@@ -1,6 +1,5 @@
 package com.example.motorsportspotter.remote
 
-import com.example.motorsportspotter.services.remote.ApiInterface
 import com.google.gson.*
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
@@ -24,21 +23,6 @@ class RemoteClient {
                 .build()
 
             return retrofit.create(RemoteApiInterface::class.java)
-        }
-
-        fun getApiInterface() : ApiInterface {
-
-            val gson = GsonBuilder()
-                .setDateFormat("yyyy-MM-dd")
-                .registerTypeAdapter(LocalDate::class.java, LocalDateTypeAdapter().nullSafe())
-                .create()
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://spotter.davidebaldelli.it:7151/api/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build()
-
-            return retrofit.create(ApiInterface::class.java)
         }
     }
 

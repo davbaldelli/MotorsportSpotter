@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="20dp"
-                    android:paddingHorizontal="15dp"
+                    android:paddingHorizontal="20dp"
                     android:text="@string/about_this_track"
                     android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                     android:textSize="16sp"
@@ -184,10 +184,11 @@
 
             <TextView
                 android:id="@+id/ongoing_events_label"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
                 android:text="@string/ongoing_events"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
@@ -196,84 +197,106 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/separator2" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ongoing_camp_events_rw"
+            <RelativeLayout
+                android:id="@+id/ongoing_camp_events_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:nestedScrollingEnabled="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label"
-                tools:listitem="@layout/event_card"
-                tools:itemCount="3"
-                altEventList="@{ongoingEvents}"/>
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ongoing_camp_events_rw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="13dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/event_card"
+                    tools:itemCount="3"
+                    altEventList="@{ongoingEvents}"/>
+
+            </RelativeLayout>
+
+
 
             <TextView
                 android:id="@+id/future_events_label"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
                 android:text="@string/future_events"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/future_camp_events_rw"
+                app:layout_constraintBottom_toTopOf="@+id/future_camp_events_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ongoing_camp_events_rw" />
+                app:layout_constraintTop_toBottomOf="@+id/ongoing_camp_events_container" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/future_camp_events_rw"
+            <RelativeLayout
+                android:id="@+id/future_camp_events_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:nestedScrollingEnabled="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/future_events_label"
-                tools:listitem="@layout/event_card"
-                tools:itemCount="3"
-                altEventList="@{futureEvents}"/>
+                app:layout_constraintTop_toBottomOf="@+id/future_events_label">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/future_camp_events_rw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="13dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/event_card"
+                    tools:itemCount="3"
+                    altEventList="@{futureEvents}"/>
+            </RelativeLayout>
+
+
 
             <TextView
                 android:id="@+id/past_events_label"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/past_events"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/past_camp_events_rw"
+                app:layout_constraintBottom_toTopOf="@+id/past_camp_events_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/future_camp_events_rw" />
+                app:layout_constraintTop_toBottomOf="@+id/future_camp_events_container" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/past_camp_events_rw"
-                altEventList="@{pastEvents}"
+            <RelativeLayout
+                android:id="@+id/past_camp_events_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="50dp"
-                android:nestedScrollingEnabled="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/past_events_label"
-                tools:itemCount="3"
-                tools:listitem="@layout/event_card" />
+                app:layout_constraintTop_toBottomOf="@+id/past_events_label">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/past_camp_events_rw"
+                    altEventList="@{pastEvents}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="13dp"
+                    android:layout_marginBottom="50dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/event_card"
+                    tools:itemCount="3"/>
+
+            </RelativeLayout>
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

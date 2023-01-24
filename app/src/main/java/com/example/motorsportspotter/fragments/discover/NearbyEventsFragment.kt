@@ -1,6 +1,7 @@
 package com.example.motorsportspotter.fragments.discover
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Address
@@ -67,7 +68,7 @@ class NearbyEventsFragment : Fragment() {
             resultView.adapter = EventCardAdapter(this)
             val adapter = binding.nearbyEventsRw.adapter as EventCardAdapter
             eventViewModel.allEvents.observe(viewLifecycleOwner) { events ->
-                val filtered = EntitiesFilter.filterEventByRegion(DBEntitiesConvertersFactory.EventConverter.convertAll(events), address.countryCode, requireContext())
+                val filtered = EntitiesFilter.filterEventByRegion(DBEntitiesConvertersFactory.EventConverter.convertAll(events), address.countryCode)
                 adapter.submitList(filtered)
             }
         }
@@ -101,6 +102,7 @@ class NearbyEventsFragment : Fragment() {
 
     }
 
+    @SuppressLint("MissingPermission")
     private fun getLocation(handler: LocationHandler){
         val locationRequest = LocationRequest.create().apply {
             interval = 10000
@@ -128,7 +130,6 @@ class NearbyEventsFragment : Fragment() {
 
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationRes: LocationResult) {
-                locationRes ?: return
                 for (location in locationRes.locations){
                     if (location != null) {
                         handler(location)

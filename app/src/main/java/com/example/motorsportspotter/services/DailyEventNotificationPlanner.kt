@@ -26,7 +26,7 @@ class DailyEventNotificationPlanner: BroadcastReceiver() {
                         intent.putExtra("Description", "${event.event.name} ${session.name} is about to start")
                         intent.putExtra("EventId", event.event.id)
                         intent.putExtra("NotifyId", session.id)
-                        PendingIntent.getBroadcast(context, session.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                        PendingIntent.getBroadcast(context, session.id!!, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
                     }
 
                     val calendar: Calendar = Calendar.getInstance().apply {
