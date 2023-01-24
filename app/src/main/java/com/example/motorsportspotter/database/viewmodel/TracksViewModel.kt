@@ -25,7 +25,7 @@ class TracksViewModel(private val repository: TracksRepository) : ViewModel() {
 
     fun changeFollowed(id : Int) {
         viewModelScope.launch {
-            val result = repository.changeFollowed(id)
+            repository.changeFollowed(id)
         }
     }
 

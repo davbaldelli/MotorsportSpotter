@@ -22,7 +22,7 @@ class ChampionshipsViewModel(private val repository: ChampionshipRepository): Vi
 
     fun changeFollowed(id : Int) {
         viewModelScope.launch{
-            val result = repository.changeFollowed(id)
+            repository.changeFollowed(id)
         }
     }
 

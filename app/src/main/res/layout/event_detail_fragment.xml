@@ -276,7 +276,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/similar_events_rw"
-                            similarDataList="@{similarEvents}"
+                            altEventList="@{similarEvents}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"

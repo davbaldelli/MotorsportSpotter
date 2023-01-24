@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.motorsportspotter.adapters.*
 import com.example.motorsportspotter.database.EventsApplication
-import com.example.motorsportspotter.adapters.ChampionshipsCardsAdapter
-import com.example.motorsportspotter.adapters.EventCardAdapter
-import com.example.motorsportspotter.adapters.TrackCardsAdapter
 import com.example.motorsportspotter.databinding.HomeFragmentBinding
 import com.example.motorsportspotter.database.viewmodel.*
 
@@ -45,8 +43,8 @@ class HomeFragment : Fragment() {
         binding.trackViewModel = tracksViewModel
 
         binding.homeFragmentRw.adapter = EventCardAdapter(this)
-        binding.suggestedTracksRw.adapter = TrackCardsAdapter(this)
-        binding.suggestedChampionshipsRw.adapter = ChampionshipsCardsAdapter(this)
+        binding.suggestedTracksRw.adapter = TrackCardsAdaptersFactory.getTrackCardAdapter()
+        binding.suggestedChampionshipsRw.adapter = ChampionshipCardAdaptersFactory.getChampionshipCardAdapter()
 
         return binding.root
     }

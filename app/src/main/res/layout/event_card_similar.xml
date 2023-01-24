@@ -16,7 +16,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="220dp"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
             style="?attr/materialCardViewElevatedStyle"
             android:onClick="openEventActivity"
             android:tag="@{event.id}">

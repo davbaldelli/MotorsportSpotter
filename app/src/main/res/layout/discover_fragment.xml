@@ -27,24 +27,30 @@
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/discover_search_bar"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
 
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/discover_search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    app:iconifiedByDefault="true" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
                 android:drawablePadding="10dp"
-                android:drawableTint="?attr/colorControlNormal"
                 android:gravity="center_vertical"
                 android:minHeight="48dp"
                 android:onClick="openNearbyEventsActivity"
                 android:padding="10dp"
                 android:text="@string/events_near_me"
-                app:drawableStartCompat="@drawable/ic_my_location_24" />
+                app:drawableStartCompat="@drawable/ic_my_location_24"
+                app:drawableTint="?attr/colorControlNormal" />
 
 
             <LinearLayout

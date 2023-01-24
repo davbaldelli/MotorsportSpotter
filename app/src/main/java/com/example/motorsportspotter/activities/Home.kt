@@ -49,7 +49,7 @@ class Home : AppCompatActivity() {
 
         val alarmMgr = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val alarmIntent = Intent(applicationContext, DailyEventNotificationPlanner::class.java).let { intent ->
-            PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
         alarmMgr.setInexactRepeating(

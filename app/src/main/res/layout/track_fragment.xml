@@ -114,7 +114,7 @@
                     android:layout_marginEnd="10dp"
                     android:contentDescription="@string/event_icon"
                     android:src="@drawable/ic_location_24"
-                    android:tint="?attr/colorControlNormal" />
+                    app:tint="?attr/colorControlNormal" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -209,7 +209,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ongoing_events_label"
                 tools:listitem="@layout/event_card"
                 tools:itemCount="3"
-                trackDataList="@{ongoingEvents}"/>
+                altEventList="@{ongoingEvents}"/>
 
             <TextView
                 android:id="@+id/future_events_label"
@@ -240,7 +240,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/future_events_label"
                 tools:listitem="@layout/event_card"
                 tools:itemCount="3"
-                trackDataList="@{futureEvents}"/>
+                altEventList="@{futureEvents}"/>
 
             <TextView
                 android:id="@+id/past_events_label"
@@ -260,7 +260,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/past_camp_events_rw"
-                trackDataList="@{pastEvents}"
+                altEventList="@{pastEvents}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"

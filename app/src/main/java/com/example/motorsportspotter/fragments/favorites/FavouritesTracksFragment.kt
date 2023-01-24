@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.database.EventsApplication
-import com.example.motorsportspotter.adapters.HorizontalTrackCardsAdapter
+import com.example.motorsportspotter.adapters.TrackCardsAdaptersFactory
 import com.example.motorsportspotter.databinding.FavouritesTracksFragmentBinding
 import com.example.motorsportspotter.database.viewmodel.TracksViewModel
 import com.example.motorsportspotter.database.viewmodel.TracksViewModelFactory
@@ -26,7 +26,7 @@ class FavouritesTracksFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = tracksViewModel
-        binding.favTracksRw.adapter = HorizontalTrackCardsAdapter()
+        binding.favTracksRw.adapter = TrackCardsAdaptersFactory.getHorizontalTrackCardAdapter()
 
         return binding.root
     }

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.example.motorsportspotter.adapters.EventCardsAdaptersFactory
 import com.example.motorsportspotter.database.EventsApplication
-import com.example.motorsportspotter.adapters.TrackEventsAdapter
 import com.example.motorsportspotter.databinding.TrackFragmentBinding
 import com.example.motorsportspotter.database.viewmodel.EventsViewModel
 import com.example.motorsportspotter.database.viewmodel.EventsViewModelFactory
@@ -37,9 +37,9 @@ class TrackFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = TrackFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.ongoingCampEventsRw.adapter = TrackEventsAdapter()
-        binding.futureCampEventsRw.adapter = TrackEventsAdapter()
-        binding.pastCampEventsRw.adapter = TrackEventsAdapter()
+        binding.ongoingCampEventsRw.adapter = EventCardsAdaptersFactory.getTrackEventCardAdapter()
+        binding.futureCampEventsRw.adapter = EventCardsAdaptersFactory.getTrackEventCardAdapter()
+        binding.pastCampEventsRw.adapter = EventCardsAdaptersFactory.getTrackEventCardAdapter()
         return binding.root
     }
 

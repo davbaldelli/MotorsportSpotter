@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.example.motorsportspotter.adapters.EventCardsAdaptersFactory
 import com.example.motorsportspotter.database.EventsApplication
-import com.example.motorsportspotter.adapters.ChampionshipEventCardAdapter
 import com.example.motorsportspotter.databinding.ChampionshipFragmentBinding
 import com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModelFactory
@@ -35,9 +35,9 @@ class ChampionshipFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ChampionshipFragmentBinding.inflate(inflater)
-        binding.ongoingCampEventsRw.adapter = ChampionshipEventCardAdapter()
-        binding.futureCampEventsRw.adapter = ChampionshipEventCardAdapter()
-        binding.pastCampEventsRw.adapter = ChampionshipEventCardAdapter()
+        binding.ongoingCampEventsRw.adapter = EventCardsAdaptersFactory.getChampionshipEventCardAdapter()
+        binding.futureCampEventsRw.adapter = EventCardsAdaptersFactory.getChampionshipEventCardAdapter()
+        binding.pastCampEventsRw.adapter = EventCardsAdaptersFactory.getChampionshipEventCardAdapter()
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }

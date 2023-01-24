@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.motorsportspotter.adapters.ChampionshipCardAdaptersFactory
 import com.example.motorsportspotter.database.EventsApplication
-import com.example.motorsportspotter.adapters.HorizontalChampionshipCardsAdapter
 import com.example.motorsportspotter.databinding.FavouritesChampionshipsFragmentBinding
 import com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModel
 import com.example.motorsportspotter.database.viewmodel.ChampionshipsViewModelFactory
@@ -27,7 +27,7 @@ class FavouritesChampionshipsFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel =  championshipsViewModel
-        binding.followedChampionshipsRw.adapter = HorizontalChampionshipCardsAdapter()
+        binding.followedChampionshipsRw.adapter = ChampionshipCardAdaptersFactory.getHorizontalChampionshipCardAdapter()
 
         return binding.root
     }

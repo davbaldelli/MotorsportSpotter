@@ -51,7 +51,7 @@
                     android:layout_margin="5dp"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@{championship.name}"
+                    android:text="@{championship.prettyName}"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                     android:textStyle="bold"

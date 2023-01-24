@@ -46,7 +46,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_fragment_rw"
-                    listData="@{eventViewModel.incomingEvents}"
+                    eventList="@{eventViewModel.incomingEvents}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="false"
@@ -80,7 +80,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/suggested_championships_rw"
-                        suggestedChampionshipsList="@{championshipViewModel.allUnfollowedChampionships}"
+                        championshipsList="@{championshipViewModel.allUnfollowedChampionships}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -118,7 +118,7 @@
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/track_card"
-                        suggestedTracksList="@{trackViewModel.unfollowedTracks}"/>
+                        tracksList="@{trackViewModel.unfollowedTracks}"/>
 
                 </RelativeLayout>
             </HorizontalScrollView>

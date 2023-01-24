@@ -9,7 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.database.EventsApplication
-import com.example.motorsportspotter.adapters.EventSearchResultAdapter
+import com.example.motorsportspotter.adapters.SearchResultAdapter
 import com.example.motorsportspotter.models.Championship
 import com.example.motorsportspotter.models.Event
 import com.example.motorsportspotter.models.SearchResult
@@ -60,16 +60,21 @@ class DiscoverFragment : Fragment() {
             setupRecyclerView(requireActivity())
             setupSearchBar(requireActivity())
             setupChips()
+
+            //binding.discoverSearchBar.onActionViewExpanded()
+            binding.discoverSearchBar.apply {
+                onActionViewExpanded()
+            }
         }
     }
 
     private fun setupRecyclerView(activity: Activity){
-        binding.searchResultList.adapter = EventSearchResultAdapter()
+        binding.searchResultList.adapter = SearchResultAdapter()
     }
 
     private fun setupSearchBar(activity: Activity){
         val searchBar = binding.discoverSearchBar
-        val adapter = binding.searchResultList.adapter as EventSearchResultAdapter
+        val adapter = binding.searchResultList.adapter as SearchResultAdapter
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if(query != null && query != ""){
@@ -107,7 +112,7 @@ class DiscoverFragment : Fragment() {
     private fun onChipChange(view : View){
         val query = binding.discoverSearchBar.query.toString()
         if(query != ""){
-            val adapter = binding.searchResultList.adapter as EventSearchResultAdapter
+            val adapter = binding.searchResultList.adapter as SearchResultAdapter
             adapter.submitList(searchFromAll(query))
         }
     }

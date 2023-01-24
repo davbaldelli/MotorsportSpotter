@@ -23,7 +23,7 @@ abstract class EventDatabase : RoomDatabase() {
 
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            INSTANCE?.let { database ->
+            INSTANCE?.let { _ ->
                 scope.launch(Dispatchers.IO) {
                     //populateDatabase(database.eventDao(), database.trackDao(), database.championshipDao(), database.sessionDao())
                 }

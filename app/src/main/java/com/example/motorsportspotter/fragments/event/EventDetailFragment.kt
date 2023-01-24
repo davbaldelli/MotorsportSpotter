@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.example.motorsportspotter.adapters.EventCardsAdaptersFactory
 import com.example.motorsportspotter.database.EventsApplication
-import com.example.motorsportspotter.adapters.VerticalEventCardAdapter
 import com.example.motorsportspotter.databinding.EventDetailFragmentBinding
 import com.example.motorsportspotter.database.viewmodel.EventsViewModel
 import com.example.motorsportspotter.database.viewmodel.EventsViewModelFactory
@@ -29,7 +29,7 @@ class EventDetailFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = EventDetailFragmentBinding.inflate(inflater)
-        binding.similarEventsRw.adapter = VerticalEventCardAdapter()
+        binding.similarEventsRw.adapter = EventCardsAdaptersFactory.getSimilarEventCardAdapter()
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.eventId.observe(viewLifecycleOwner) {id ->
             eventViewModel.getById(id).observe(viewLifecycleOwner) { event ->

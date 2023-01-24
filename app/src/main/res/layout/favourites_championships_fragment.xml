@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            horizontalChampionshipsList="@{viewModel.followedChampionships}"
+            championshipsList="@{viewModel.followedChampionships}"
             tools:listitem="@layout/championship_card_horizontal"/>
 
     </FrameLayout>
