@@ -78,7 +78,7 @@ fun bindEventCardList(recyclerView: RecyclerView, data: List<EventWithTrackAndCh
 @BindingAdapter("altEventList")
 fun bindAlternativeEventCardList(recyclerView: RecyclerView, data: List<Event>?){
     data?.let {
-        val adapter = recyclerView.adapter as AlternativeEventCardAdapter
+        val adapter = recyclerView.adapter as EventCardAdapter
         adapter.submitList(it)
     }
 }

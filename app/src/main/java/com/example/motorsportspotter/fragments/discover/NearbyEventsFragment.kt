@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.database.EventsApplication
 import com.example.motorsportspotter.adapters.EventCardAdapter
+import com.example.motorsportspotter.adapters.EventCardsAdaptersFactory
 import com.example.motorsportspotter.databinding.NearbyEventsFragmentBinding
 import com.example.motorsportspotter.database.entities.DBEntitiesConvertersFactory
 import com.example.motorsportspotter.database.viewmodel.EventsViewModel
@@ -65,7 +66,7 @@ class NearbyEventsFragment : Fragment() {
                 geocoder.getFromLocation(location.latitude, location.longitude, 1)
             address = addresses[0]
             val resultView = binding.nearbyEventsRw
-            resultView.adapter = EventCardAdapter(this)
+            resultView.adapter = EventCardsAdaptersFactory.getEventCardAdapter()
             val adapter = binding.nearbyEventsRw.adapter as EventCardAdapter
             eventViewModel.allEvents.observe(viewLifecycleOwner) { events ->
                 val filtered = EntitiesFilter.filterEventByRegion(DBEntitiesConvertersFactory.EventConverter.convertAll(events), address.countryCode)

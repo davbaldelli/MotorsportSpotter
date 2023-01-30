@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         binding.championshipViewModel = championshipsViewModel
         binding.trackViewModel = tracksViewModel
 
-        binding.homeFragmentRw.adapter = EventCardAdapter(this)
+        binding.homeFragmentRw.adapter = EventCardsAdaptersFactory.getEventCardAdapter()
         binding.suggestedTracksRw.adapter = TrackCardsAdaptersFactory.getTrackCardAdapter()
         binding.suggestedChampionshipsRw.adapter = ChampionshipCardAdaptersFactory.getChampionshipCardAdapter()
 

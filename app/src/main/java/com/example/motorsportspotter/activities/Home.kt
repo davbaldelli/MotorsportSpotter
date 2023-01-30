@@ -44,7 +44,7 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
-        setBottomNavBehaviour(this)
+        setBottomNavBehaviour()
         createNotificationChannel()
 
         val alarmMgr = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -65,21 +65,6 @@ class Home : AppCompatActivity() {
 
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        val selectedFragment = findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId
-        outState.putInt("selected-fragment", selectedFragment)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState)
-        savedInstanceState?.let {
-            val selectedFragment = it.getInt("selected-fragment")
-            findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = selectedFragment
-        }
-
-    }
-
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
@@ -95,8 +80,8 @@ class Home : AppCompatActivity() {
         notificationManager.createNotificationChannel(channel)
     }
 
-    private fun setBottomNavBehaviour(activity: Activity){
-        val bottomNavigation : BottomNavigationView = activity.findViewById(R.id.bottom_navigation)
+    private fun setBottomNavBehaviour(){
+        val bottomNavigation : BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnItemSelectedListener{ item ->
             when(item.itemId) {
                 R.id.home_bottom_btn -> {

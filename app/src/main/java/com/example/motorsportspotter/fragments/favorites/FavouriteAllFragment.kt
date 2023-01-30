@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.motorsportspotter.database.EventsApplication
 import com.example.motorsportspotter.adapters.EventCardAdapter
+import com.example.motorsportspotter.adapters.EventCardsAdaptersFactory
 import com.example.motorsportspotter.databinding.FavouriteAllFragmentBinding
 import com.example.motorsportspotter.database.viewmodel.EventsViewModel
 import com.example.motorsportspotter.database.viewmodel.EventsViewModelFactory
@@ -28,7 +29,7 @@ class FavouriteAllFragment : Fragment() {
         binding = FavouriteAllFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = eventViewModel
-        binding.favEventsRw.adapter = EventCardAdapter(this)
+        binding.favEventsRw.adapter = EventCardsAdaptersFactory.getEventCardAdapter()
         return binding.root
     }
 
