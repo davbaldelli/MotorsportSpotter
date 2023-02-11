@@ -3,11 +3,13 @@ package com.example.motorsportspotter.adapters
 import android.R
 import android.location.Address
 import android.location.Geocoder
+import android.os.Build
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -48,14 +50,30 @@ fun bindAddress(textView: TextView, locationName : String?){
     locationName?.let {
         val geocoder = Geocoder(textView.context, Locale.ITALY)
         try {
-            val addresses: List<Address> = geocoder.getFromLocationName(it, 1)
-            if (addresses.isNotEmpty()) {
-                val address = addresses[0]
-                textView.text = String.format("%s %s",address.getAddressLine(0),  address.countryCode.flagEmoji)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                geocoder.getFromLocationName(it, 1) { addresses ->
+                    setAddressLabel(addresses, textView)
+                }
+            } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                val addresses = geocoder.getFromLocationName(it, 1)
+                addresses?.let {
+                    setAddressLabel(addresses, textView)
+                }
             }
         } catch (e : IOException){
             textView.text = ""
         }
+    }
+}
+
+fun setAddressLabel(addresses : List<Address>, textView: TextView) {
+    if (addresses.isNotEmpty()) {
+        val address = addresses[0]
+        textView.text = String.format(
+            "%s %s",
+            address.getAddressLine(0),
+            address.countryCode.flagEmoji
+        )
     }
 }
 
