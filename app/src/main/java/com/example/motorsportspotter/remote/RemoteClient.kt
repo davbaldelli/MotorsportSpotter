@@ -18,7 +18,7 @@ class RemoteClient {
                 .create()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://spotter.davidebaldelli.it:7151/api/")
+                .baseUrl("https://home.davidebaldelli.it/api/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
 

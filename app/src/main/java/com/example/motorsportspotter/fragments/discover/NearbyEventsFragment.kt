@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
@@ -62,9 +63,20 @@ class NearbyEventsFragment : Fragment() {
 
         val handler = { location : Location ->
             val geocoder = Geocoder(requireContext(), Locale.ITALY)
-            val addresses: List<Address> =
-                geocoder.getFromLocation(location.latitude, location.longitude, 1)
-            address = addresses[0]
+            if(Build.VERSION.SDK_INT < 33) {
+                val addresses: MutableList<Address>? =
+                    geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                address = addresses!![0]
+            }
+            else{
+                geocoder.getFromLocation(location.latitude, location.longitude, 1) { addresses ->
+                    run {
+                        if(addresses.isNotEmpty()){
+                            address = addresses[0]
+                        }
+                    }
+                }
+            }
             val resultView = binding.nearbyEventsRw
             resultView.adapter = EventCardsAdaptersFactory.getEventCardAdapter()
             val adapter = binding.nearbyEventsRw.adapter as EventCardAdapter
@@ -89,8 +101,20 @@ class NearbyEventsFragment : Fragment() {
                     }
                     else -> {
                         val geocoder = Geocoder(requireContext(), Locale.ITALY)
-                        val addresses: List<Address> = geocoder.getFromLocation(44.0217208, 12.4915422,1)
-                        address = addresses[0]
+                        if(Build.VERSION.SDK_INT < 33) {
+                            val addresses: MutableList<Address>? =
+                                geocoder.getFromLocation(44.0217208, 12.4915422, 1)
+                            address = addresses!![0]
+                        }
+                        else {
+                            geocoder.getFromLocation(44.0217208, 12.4915422, 1) { addresses ->
+                                run {
+                                    if(addresses.isNotEmpty()){
+                                        address = addresses[0]
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
