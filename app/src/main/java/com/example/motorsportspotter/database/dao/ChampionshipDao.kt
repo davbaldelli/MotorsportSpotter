@@ -4,13 +4,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Upsert
 import com.example.motorsportspotter.database.entities.Championship
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ChampionshipDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Upsert
     suspend fun insert(championship: Championship)
+
+    @Query("DELETE FROM championships WHERE id NOT IN(:ids)")
+    suspend fun deleteNotExistingChampionships(ids : List<Int>)
 
     @Query("SELECT * FROM championships")
     fun getAll() : Flow<List<Championship>>

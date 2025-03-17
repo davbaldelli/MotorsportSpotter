@@ -5,17 +5,21 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Upsert
 import com.example.motorsportspotter.database.entities.Event
 import com.example.motorsportspotter.database.entities.EventWithTrackAndChamp
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EventDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Upsert
     suspend fun insert(event: Event)
 
     @Query("UPDATE events SET favourites = NOT favourites WHERE id = :id")
     suspend fun setFavourite(id : Int) : Int
+
+    @Query("DELETE FROM events WHERE id NOT IN(:ids)")
+    suspend fun deleteNotExistingEvents(ids : List<Int>)
 
     @Transaction
     @Query("SELECT * FROM events WHERE end_date >= DATE('NOW') ORDER BY start_date")

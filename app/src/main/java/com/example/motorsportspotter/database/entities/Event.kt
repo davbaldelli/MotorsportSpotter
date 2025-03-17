@@ -8,12 +8,14 @@ import com.google.gson.annotations.SerializedName
     foreignKeys = [ForeignKey(
         entity = Championship::class,
         parentColumns = arrayOf("id"),
-        childColumns = arrayOf("championship_id")
+        childColumns = arrayOf("championship_id"),
+        onDelete = ForeignKey.CASCADE
     ),
         ForeignKey(
             entity = Track::class,
             parentColumns = arrayOf("id"),
-            childColumns = arrayOf("track_id")
+            childColumns = arrayOf("track_id"),
+            onDelete = ForeignKey.CASCADE
         )]
 )
 data class Event(

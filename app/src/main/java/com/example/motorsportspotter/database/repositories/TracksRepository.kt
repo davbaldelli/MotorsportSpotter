@@ -26,4 +26,10 @@ class TracksRepository(private val dao : TrackDao) {
         }
     }
 
+    suspend fun clearNotExistingTracks(ids : List<Int>) {
+        withContext(Dispatchers.IO) {
+            dao.clearNotExistingTracks(ids)
+        }
+    }
+
 }

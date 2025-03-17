@@ -57,33 +57,47 @@ class RemoteSyncService : Service() {
             scope.launch {
                 try {
                     val champsRes = service.allChampionships()?.execute()
+                    val champIds = champsRes?.body()?.map { it.id }
                     champsRes?.body()?.let {
                         it.forEach { champ ->
                             champRepo.insert(champ)
                         }
                     }
+                    champIds?.let {
+                        champRepo.deleteNotExistingChampionships(it)
+                    }
 
                     val trackRes = service.allTracks()?.execute()
+                    val trackIds = trackRes?.body()?.map { it.id }
                     trackRes?.body()?.let {
                         it.forEach { track ->
                             tracksRepo.insert(track)
                         }
                     }
+                    trackIds?.let {
+                        tracksRepo.clearNotExistingTracks(it)
+                    }
 
                     val eventRes = service.allEvents()?.execute()
-
+                    val eventIds = eventRes?.body()?.map { it.id }
                     eventRes?.body()?.let {
                         it.forEach { event ->
                             eventRepo.insert(event)
                         }
                     }
+                    eventIds?.let {
+                        eventRepo.deleteNotExistingEvents(it)
+                    }
 
                     val sessionsRes = service.allSessions()?.execute()
-
+                    val sessionIds = sessionsRes?.body()?.map { it.id }
                     sessionsRes?.body()?.let { sessions ->
                         sessions.forEach { session ->
                             sessionsRepo.insert(session)
                         }
+                    }
+                    sessionIds?.let {
+                        sessionsRepo.deleteNotExistingSessions(it as List<Int>)
                     }
 
                 } catch (e: IOException) {

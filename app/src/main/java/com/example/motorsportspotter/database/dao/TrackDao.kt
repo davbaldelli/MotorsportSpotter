@@ -1,16 +1,21 @@
 package com.example.motorsportspotter.database.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Upsert
 import com.example.motorsportspotter.database.entities.Track
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TrackDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Upsert
     suspend fun insert(track : Track)
+
+    @Query("DELETE FROM tracks WHERE id NOT IN(:ids)")
+    fun clearNotExistingTracks(ids : List<Int>)
 
     @Query("SELECT * FROM tracks")
     fun getAll() : Flow<List<Track>>

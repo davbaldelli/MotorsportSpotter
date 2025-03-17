@@ -14,7 +14,9 @@ class EventRepository(private val dao: EventDao) {
     val favouritesEvents = dao.getFavourites()
 
     suspend fun insert(event: Event) {
-        dao.insert(event)
+        withContext(Dispatchers.IO) {
+            dao.insert(event)
+        }
     }
 
     suspend fun setFavourite(id : Int) : Int{
@@ -26,6 +28,12 @@ class EventRepository(private val dao: EventDao) {
     suspend fun getFavSync() : List<EventWithTrackAndChamp>{
         return withContext(Dispatchers.IO) {
             dao.getFavouritesOngoingSync()
+        }
+    }
+
+    suspend fun deleteNotExistingEvents(ids : List<Int>) {
+        withContext(Dispatchers.IO) {
+            dao.deleteNotExistingEvents(ids)
         }
     }
 
