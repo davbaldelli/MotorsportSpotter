@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.motorsportspotter.models.SearchResult
-import com.example.motorsportspotter.databinding.EventSearchResultCardBinding
+import com.example.motorsportspotter.databinding.SearchResultCardBinding
 
 class SearchResultAdapter : ListAdapter<SearchResult, SearchResultViewHolder>(
     SearchResultAdapter
@@ -23,7 +23,7 @@ class SearchResultAdapter : ListAdapter<SearchResult, SearchResultViewHolder>(
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
-        return SearchResultViewHolder(EventSearchResultCardBinding.inflate(LayoutInflater.from(parent.context)))
+        return SearchResultViewHolder(SearchResultCardBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) {
@@ -33,7 +33,7 @@ class SearchResultAdapter : ListAdapter<SearchResult, SearchResultViewHolder>(
 
 }
 
-class SearchResultViewHolder(private var binding : EventSearchResultCardBinding) : RecyclerView.ViewHolder(binding.root) {
+class SearchResultViewHolder(private var binding : SearchResultCardBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(result : SearchResult){
         binding.searchResult = result
         binding.executePendingBindings()

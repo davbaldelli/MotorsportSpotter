@@ -101,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/event_search_result_card" />
+                    tools:listitem="@layout/search_result_card" />
             </RelativeLayout>
 
         </LinearLayout>
