@@ -46,8 +46,35 @@ data class Event(
     @ColumnInfo(name = "image")
     val image: String,
 
-    @ColumnInfo(name = "favourites")
+    @ColumnInfo(name = "favourites", defaultValue = "0")
     val favourites: Boolean,
+)
+
+data class RemoteEvent(
+    val id: Int,
+
+    val name: String,
+
+    val description: String,
+
+    @ColumnInfo(name = "track_id", index = true)
+    @SerializedName("trackId")
+    val trackId: Int,
+
+    @ColumnInfo(name = "championship_id", index = true)
+    @SerializedName("championshipId")
+    val champId: Int,
+
+    @ColumnInfo(name = "start_date")
+    @SerializedName("startDate")
+    val startDate: String,
+
+    @ColumnInfo(name = "end_date")
+    @SerializedName("endDate")
+    val endDate: String,
+
+    val image: String,
+
 )
 
 

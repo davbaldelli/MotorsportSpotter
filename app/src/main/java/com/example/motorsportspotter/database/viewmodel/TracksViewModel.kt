@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.motorsportspotter.database.entities.RemoteTrack
 import com.example.motorsportspotter.database.entities.Track
 import com.example.motorsportspotter.database.repositories.TracksRepository
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +16,7 @@ class TracksViewModel(private val repository: TracksRepository) : ViewModel() {
     val unfollowedTracks = repository.unfollowedTracks.asLiveData()
     val followedTracks = repository.followedTracks.asLiveData()
 
-    fun insert(track : Track) {
+    fun insert(track : RemoteTrack) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insert(track)
         }

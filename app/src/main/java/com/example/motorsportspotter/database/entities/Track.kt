@@ -22,9 +22,27 @@ data class Track(
 
     @SerializedName("locationName") @ColumnInfo(name = "location_name") val locationName: String,
 
-    @ColumnInfo(name = "favourite") val favourite: Boolean,
+    @ColumnInfo(name = "favourite", defaultValue = "0") val favourite: Boolean,
 
     @ColumnInfo(name = "nation_code")
 
     @SerializedName("nationCode") val nationCode: String,
+)
+
+data class RemoteTrack(
+    val id: Int,
+
+    val name: String,
+
+    @ColumnInfo(name = "common_name") val commonName: String,
+
+    val description: String,
+
+    val image: String,
+
+    val logo: String,
+
+    @SerializedName("locationName") @ColumnInfo(name = "location_name") val locationName: String,
+
+    @ColumnInfo(name = "nation_code") @SerializedName("nationCode") val nationCode: String,
 )

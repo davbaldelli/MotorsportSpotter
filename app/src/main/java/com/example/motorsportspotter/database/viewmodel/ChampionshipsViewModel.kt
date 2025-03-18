@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.motorsportspotter.database.entities.Championship
+import com.example.motorsportspotter.database.entities.RemoteChampionship
 import com.example.motorsportspotter.database.repositories.ChampionshipRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +15,7 @@ class ChampionshipsViewModel(private val repository: ChampionshipRepository): Vi
     val allUnfollowedChampionships = repository.allUnfollowedChampionships.asLiveData()
     val followedChampionships = repository.followedChampionships.asLiveData()
 
-    fun insert(championship: Championship) {
+    fun insert(championship: RemoteChampionship) {
         viewModelScope.launch(Dispatchers.IO){
             repository.insert(championship)
         }

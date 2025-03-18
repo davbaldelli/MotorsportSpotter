@@ -6,13 +6,14 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Upsert
+import com.example.motorsportspotter.database.entities.RemoteTrack
 import com.example.motorsportspotter.database.entities.Track
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TrackDao {
-    @Upsert
-    suspend fun insert(track : Track)
+    @Upsert(entity = Track::class)
+    suspend fun insert(track : RemoteTrack)
 
     @Query("DELETE FROM tracks WHERE id NOT IN(:ids)")
     fun clearNotExistingTracks(ids : List<Int>)

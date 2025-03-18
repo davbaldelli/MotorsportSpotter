@@ -7,13 +7,13 @@ import retrofit2.http.GET
 
 interface RemoteApiInterface {
     @GET("tracks")
-    fun allTracks(): Call<List<Track>>?
+    fun allTracks(): Call<List<RemoteTrack>>?
 
     @GET("championships")
-    fun allChampionships() : Call<List<Championship>>?
+    fun allChampionships() : Call<List<RemoteChampionship>>?
 
     @GET("events")
-    fun allEvents() : Call<List<Event>>?
+    fun allEvents() : Call<List<RemoteEvent>>?
 
     @GET("sessions")
     fun allSessions() : Call<List<Session>>?

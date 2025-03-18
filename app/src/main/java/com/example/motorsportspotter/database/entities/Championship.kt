@@ -18,18 +18,37 @@ data class Championship(
     @ColumnInfo(name = "description") val description : String,
 
     @ColumnInfo(name = "pretty_name")
-    @SerializedName("prettyName")
     val prettyName: String,
 
     @ColumnInfo(name = "image")
-    @SerializedName("image")
     val image: String,
 
     @ColumnInfo(name = "logo")
-    @SerializedName("logo")
     val logo: String,
 
-    @ColumnInfo(name = "favourite") val favourite: Boolean,
+    @ColumnInfo(name = "favourite", defaultValue = "0")
+    val favourite: Boolean,
+
+    @ColumnInfo(name = "live_stream")
+    val liveStreamLink: String?,
+)
+
+data class RemoteChampionship(
+    val id: Int,
+
+    val name: String,
+
+    val year: Int,
+
+    val description : String,
+
+    @ColumnInfo(name = "pretty_name")
+    @SerializedName("prettyName")
+    val prettyName: String,
+
+    val image: String,
+
+    val logo: String,
 
     @ColumnInfo(name = "live_stream")
     @SerializedName("liveStream")

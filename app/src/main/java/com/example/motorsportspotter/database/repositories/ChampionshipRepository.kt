@@ -2,6 +2,7 @@ package com.example.motorsportspotter.database.repositories
 
 import com.example.motorsportspotter.database.dao.ChampionshipDao
 import com.example.motorsportspotter.database.entities.Championship
+import com.example.motorsportspotter.database.entities.RemoteChampionship
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
@@ -11,7 +12,7 @@ class ChampionshipRepository(private val dao: ChampionshipDao) {
     val allUnfollowedChampionships = dao.getUnfollowed()
     val followedChampionships = dao.getFollowed()
 
-    suspend fun insert(championship: Championship) {
+    suspend fun insert(championship: RemoteChampionship) {
         withContext(Dispatchers.IO){
             dao.insert(championship)
         }

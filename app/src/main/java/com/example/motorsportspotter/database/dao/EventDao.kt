@@ -8,12 +8,13 @@ import androidx.room.Transaction
 import androidx.room.Upsert
 import com.example.motorsportspotter.database.entities.Event
 import com.example.motorsportspotter.database.entities.EventWithTrackAndChamp
+import com.example.motorsportspotter.database.entities.RemoteEvent
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EventDao {
-    @Upsert
-    suspend fun insert(event: Event)
+    @Upsert(entity = Event::class)
+    suspend fun insert(event: RemoteEvent)
 
     @Query("UPDATE events SET favourites = NOT favourites WHERE id = :id")
     suspend fun setFavourite(id : Int) : Int

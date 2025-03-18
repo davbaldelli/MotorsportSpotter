@@ -2,6 +2,7 @@ package com.example.motorsportspotter.database.repositories
 
 import androidx.annotation.WorkerThread
 import com.example.motorsportspotter.database.dao.TrackDao
+import com.example.motorsportspotter.database.entities.RemoteTrack
 import com.example.motorsportspotter.database.entities.Track
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,7 +15,7 @@ class TracksRepository(private val dao : TrackDao) {
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun insert(track: Track) {
+    suspend fun insert(track: RemoteTrack) {
         dao.insert(track)
     }
 

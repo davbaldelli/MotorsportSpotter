@@ -3,6 +3,7 @@ package com.example.motorsportspotter.database.repositories
 import com.example.motorsportspotter.database.dao.EventDao
 import com.example.motorsportspotter.database.entities.Event
 import com.example.motorsportspotter.database.entities.EventWithTrackAndChamp
+import com.example.motorsportspotter.database.entities.RemoteEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -13,7 +14,7 @@ class EventRepository(private val dao: EventDao) {
 
     val favouritesEvents = dao.getFavourites()
 
-    suspend fun insert(event: Event) {
+    suspend fun insert(event: RemoteEvent) {
         withContext(Dispatchers.IO) {
             dao.insert(event)
         }

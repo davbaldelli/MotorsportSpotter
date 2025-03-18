@@ -6,12 +6,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Upsert
 import com.example.motorsportspotter.database.entities.Championship
+import com.example.motorsportspotter.database.entities.RemoteChampionship
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ChampionshipDao {
-    @Upsert
-    suspend fun insert(championship: Championship)
+    @Upsert(entity = Championship::class)
+    suspend fun insert(championship: RemoteChampionship)
 
     @Query("DELETE FROM championships WHERE id NOT IN(:ids)")
     suspend fun deleteNotExistingChampionships(ids : List<Int>)
