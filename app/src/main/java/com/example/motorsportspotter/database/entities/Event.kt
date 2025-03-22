@@ -5,12 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(
     indices = [Index(value = ["name", "championship_id"], unique = true)], tableName = "events",
-    foreignKeys = [ForeignKey(
-        entity = Championship::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("championship_id"),
-        onDelete = ForeignKey.CASCADE
-    ),
+    foreignKeys = [
+        ForeignKey(
+            entity = Championship::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("championship_id"),
+            onDelete = ForeignKey.CASCADE
+        ),
         ForeignKey(
             entity = Track::class,
             parentColumns = arrayOf("id"),
